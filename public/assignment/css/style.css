@@ -1,0 +1,17 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 36px;
+}
+.navbar-header {
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+}
+span.glyphicon {
+    margin-right: 15px;
+}
