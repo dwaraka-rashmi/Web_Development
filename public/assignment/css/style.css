@@ -6,6 +6,9 @@ form div label {
     margin-bottom: 0px;
 }
 
+form div textarea {
+    margin-bottom: 5px;
+}
 
 body {
     padding-top: 60px;
