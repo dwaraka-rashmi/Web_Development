@@ -36,3 +36,9 @@ p.navbar-text.pull-left {
     border-bottom-left-radius: 8px;
     opacity: 0.7;
 }
+.widget-list {
+    width:100% !important;
+    display: inherit;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

@@ -21,45 +21,43 @@
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Choose Widget
+                Widget Edit
             </a>
+            <p class="navbar-text pull-right">
+                <a href="../widget/widget-list.html" class="navbar-link">
+                  <span class="glyphicon glyphicon-ok">
+                  </span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <div class="list-group">
-    <a class="widget-list" href="../widget/widget-heading.html">
-         Header
-    </a>
-    <a class="widget-list" href="#">
-        Label
-    </a>
-    <a class="widget-list" href="#">
-        HTML
-    </a>
-    <a class="widget-list" href="#">
-        Text Input
-    </a>
-    <a class="widget-list" href="#">
-        Link
-    </a>
-    <a class="widget-list" href="#">
-        Button
-    </a>
-    <a class="widget-list" href="../widget/widget-image.html">
-        Image
-    </a>
-    <a class="widget-list" href="../widget/widget-youtube.html">
-        Youtube
-    </a>
-    <a class="widget-list" href="#">
-        Date Table
-    </a>
-    <a class="widget-list" href="#">
-        Repeater
-    </a>
-    </div>
+    <form>
+        <div class="form-group">
+            <label for="widget-name">Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="widget-name">
+        </div>
+        <div class="form-group">
+            <label for="widget-content">Text</label>
+                <input type="text"
+                       class="form-control"
+                       id="widget-content"
+                       placeholder="US Senate Reaches Compromise on Emergency">
+        </div>
+        <div class="form-group">
+            <label for="widget-size">Size</label>
+            <input type="text"
+                   class="form-control"
+                   id="widget-size"
+                   placeholder="3">
+        </div>
+    </form>
+    <a class="btn btn-danger  btn-block"
+       href="../widget/widget-list.html">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
