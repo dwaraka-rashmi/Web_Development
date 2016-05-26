@@ -49,6 +49,9 @@
             .when("/widget-chooser", {
                 templateUrl: "views/widget/widget-chooser.view.client.html"
             })
+            .otherwise({
+                redirectTo: "/login"
+            })
 
     }
 })();
