@@ -5,7 +5,7 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/profile" class="navbar-link">
+                <a ng-click="model.updateUser(model.user)" class="navbar-link">
                   <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -24,7 +24,10 @@
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="RashmiDwaraka">
+            <input ng-model="model.user.username"
+                   type="text" class="form-control" id="username" placeholder="RashmiDwaraka">
+                   <!--value="{{model.user.username}}"-->
+
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
@@ -32,11 +35,13 @@
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Rashmi">
+            <input ng-model="model.user.firstName"
+                    type="text" class="form-control" id="first-name" placeholder="Rashmi">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Dwaraka">
+            <input ng-model="model.user.lastName"
+                    type="text" class="form-control" id="last-name" placeholder="Dwaraka">
         </div>
     </form>
 
