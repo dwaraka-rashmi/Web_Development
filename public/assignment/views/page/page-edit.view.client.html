@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/assignment/css/style.css" rel="stylesheet"/>
 </head>
@@ -15,16 +15,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../widget/widget-list.html" class="navbar-link">
+                <a href="page-list.view.client.html" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Widget Edit
+                Edit Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="../widget/widget-list.html" class="navbar-link">
+                <a href="page-list.view.client.html" class="navbar-link">
                   <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -36,35 +36,23 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <label for="widget-name">Name</label>
+            <label for="page-name">Name</label>
             <input type="text"
                    class="form-control"
-                   id="widget-name"
-                   placeholder="Name">
+                   id="page-name"
+                   value="Blog Post"
+                   placeholder="Page Name">
         </div>
         <div class="form-group">
-            <label for="widget-content">Text</label>
+            <label for="page-description">Title</label>
                 <input type="text"
                        class="form-control"
-                       id="widget-content"
-                       placeholder="US Senate Reaches Compromise on Emergency">
+                       id="page-description"
+                       placeholder="Page Title">
         </div>
-        <div class="form-group">
-            <label for="widget-size">Size</label>
-            <select type="text"
-                   class="form-control"
-                   id="widget-size"
-                   placeholder="3">
-            <option value="volvo">3</option>
-            <option value="saab">4</option>
-            <option value="mercedes">5</option>
-            <option value="audi">6</option>
-                </select>
-        </div>
-        <br/>
     </form>
     <a class="btn btn-danger  btn-block"
-       href="../widget/widget-list.html">Delete</a>
+       href="page-list.view.client.html">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -79,6 +67,8 @@
         </div>
     </div>
 </nav>
+
+
 
 </body>
 </html>

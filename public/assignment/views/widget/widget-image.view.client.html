@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../widget/widget-list.html" class="navbar-link">
+                <a href="st.html" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -24,7 +24,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="../widget/widget-list.html" class="navbar-link">
+                <a href="st.html" class="navbar-link">
                   <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -53,19 +53,27 @@
             <input type="text"
                    class="form-control"
                    id="widget-url"
-                   value="https://www.youtube.com/embed/aD4grQXZPfg"
-                   placeholder="https://www.youtube.com/embed/aD4grQXZPfg">
+                   value="http://blogs-images.forbes.com/sap/files/2016/04/Tesla-Motors-Model-3-Mainstream-04-08-2016-C-1200x800.jpg"
+                   placeholder="http://blogs-images.forbes.com/sap/files/2016/04/Tesla-Motors-Model-3-Mainstream-04-08-2016-C-1200x800.jpg">
         </div>
         <div class="form-group">
             <label for="widget-width">Width</label>
             <input type="text"
                    class="form-control"
                    id="widget-width"
+                   value="100%"
                    placeholder="100%">
         </div>
+        <div class="form-group">
+            <label for="widget-upload">Upload</label>
+            <input type="file" class="form-control"
+                   name="files[]" id="widget-upload" multiple>
+        </div>
     </form>
-    <a class="btn btn-danger  btn-block"
-       href="../widget/widget-list.html">Delete</a>
+    <a class="btn btn-primary btn-block"
+       href="st.html">Upload Image</a>
+    <a class="btn btn-danger btn-block"
+       href="st.html">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

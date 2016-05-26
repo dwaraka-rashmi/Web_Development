@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/assignment/css/style.css" rel="stylesheet"/>
 </head>
@@ -15,16 +15,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../widget/widget-list.html" class="navbar-link">
+                <a href="page-list.view.client.html" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Widget Edit
+                New Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="../widget/widget-list.html" class="navbar-link">
+                <a href="page-list.view.client.html" class="navbar-link">
                   <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -34,46 +34,23 @@
 </nav>
 
 <div class="container">
+
     <form>
         <div class="form-group">
-            <label for="widget-name">Name</label>
+            <label for="page-name">Name</label>
             <input type="text"
                    class="form-control"
-                   id="widget-name">
+                   id="page-name"
+                   placeholder="Page Name">
         </div>
         <div class="form-group">
-            <label for="widget-content">Text</label>
+            <label for="page-description">Title</label>
                 <input type="text"
                        class="form-control"
-                       id="widget-content"
-                       placeholder="Description">
-        </div>
-        <div class="form-group">
-            <label for="widget-url">URL</label>
-            <input type="text"
-                   class="form-control"
-                   id="widget-url"
-                   value="http://blogs-images.forbes.com/sap/files/2016/04/Tesla-Motors-Model-3-Mainstream-04-08-2016-C-1200x800.jpg"
-                   placeholder="http://blogs-images.forbes.com/sap/files/2016/04/Tesla-Motors-Model-3-Mainstream-04-08-2016-C-1200x800.jpg">
-        </div>
-        <div class="form-group">
-            <label for="widget-width">Width</label>
-            <input type="text"
-                   class="form-control"
-                   id="widget-width"
-                   value="100%"
-                   placeholder="100%">
-        </div>
-        <div class="form-group">
-            <label for="widget-upload">Upload</label>
-            <input type="file" class="form-control"
-                   name="files[]" id="widget-upload" multiple>
+                       id="page-description"
+                       placeholder="Page Title">
         </div>
     </form>
-    <a class="btn btn-primary btn-block"
-       href="../widget/widget-list.html">Upload Image</a>
-    <a class="btn btn-danger btn-block"
-       href="../widget/widget-list.html">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -88,8 +65,6 @@
         </div>
     </div>
 </nav>
-
-
 
 </body>
 </html>
