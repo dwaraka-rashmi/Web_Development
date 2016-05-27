@@ -34,7 +34,7 @@
             }
             var newUser = {
                 _id: (new Date()).getTime()+"",
-                name: username,
+                username: username,
                 password: password
             };
             users.push(newUser);
@@ -73,18 +73,12 @@
         }
 
         //updateUser(userId, user) - updates the user in local users array whose _id matches the userId parameter
-        function updateUser(userId,username,firstName,lastName){
-
-            for(var i in users){
-                if(users[i].username === username && users[i]._id !== userId){
-                    return false;
-                }
-            }
+        function updateUser(userId,user){
             for(var i in users) {
                 if (users[i]._id === userId) {
-                    users[i].username = username;
-                    users[i].firstName = firstName;
-                    users[i].lastName = lastName;
+                    users[i].firstName = user.firstName;
+                    users[i].lastName = user.lastName;
+                    //console.log(user);
                     return true;
                 }
             }

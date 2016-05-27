@@ -13,11 +13,17 @@
         vm.id = id;
         function init(){
             vm.user = UserService.findUserById(id);
+            vm.success = false;
+            vm.error = false;
         }
         init();
 
         function updateUser(newUser){
-            UserService.updateUser(id,newUser);
+            var result = UserService.updateUser(id,newUser);
+            if(result)
+                vm.success = true;
+            else
+                vm.error = true;
         }
     }
 })();
