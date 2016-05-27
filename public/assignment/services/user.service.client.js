@@ -13,8 +13,7 @@
     ];
 
     function UserService(){
-
-
+        
         var api = {
             createUser: createUser,
             findUserById: findUserById,
@@ -26,8 +25,21 @@
         return api;
 
         //createUser(user) - adds the user parameter instance to the local users array
-        function createUser(user){
-            users.push(user);
+        function createUser(username,password){
+
+            for(var i in users) {
+                if (users[i].username === username) {
+                    return null;
+                }
+            }
+            var newUser = {
+                _id: (new Date()).getTime()+"",
+                name: username,
+                password: password
+            };
+            users.push(newUser);
+            return newUser;
+
         }
 
         //findUserById(userId) - returns the user in local users array whose _id matches the userId parameter
@@ -45,10 +57,9 @@
             for(var i in users) {
                 if (users[i].username === username) {
                     return  users[i];
-                } else {
-                    return null;
                 }
             }
+            return null;
         }
 
         //findUserByCredentials(username, password) - returns the user whose username and password match the username and password parameters
@@ -62,11 +73,18 @@
         }
 
         //updateUser(userId, user) - updates the user in local users array whose _id matches the userId parameter
-        function updateUser(userId,user){
+        function updateUser(userId,username,firstName,lastName){
+
+            for(var i in users){
+                if(users[i].username === username && users[i]._id !== userId){
+                    return false;
+                }
+            }
             for(var i in users) {
                 if (users[i]._id === userId) {
-                    users[i].firstName = user.firstName;
-                    //console.log(user);
+                    users[i].username = username;
+                    users[i].firstName = firstName;
+                    users[i].lastName = lastName;
                     return true;
                 }
             }
@@ -81,7 +99,6 @@
                 }
             }
         }
-
 
     }
 
