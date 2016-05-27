@@ -5,7 +5,7 @@
                 Websites
             </a>
             <p class="navbar-text pull-right">
-                <a href="website-new.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
                   <span class="glyphicon glyphicon-plus">
                   </span>
                 </a>
@@ -13,14 +13,13 @@
         </div>
     </div>
 </nav>
-{{model.websites}}
 <div class="container">
     <ul class="list-group">
-        <li class="list-group-item">
+        <li ng-repeat="website in model.websites" class="list-group-item">
             <a href="/assignment/page/page-list.html">
-                Gizmodo
+                {{website.name}}
             </a>
-            <a href="/assignment/website/website-edit.html" class="pull-right">
+            <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
                 <span class="glyphicon glyphicon-play"></span>
             </a>

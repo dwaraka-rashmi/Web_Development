@@ -17,14 +17,23 @@
     function WebsiteService(){
 
         var api = {
-            findWebsitesByUser : findWebsitesByUser
+            findWebsitesByUser : findWebsitesByUser,
+            createWebsite : createWebsite
         };
         return api;
 
         //createWebsite(userId, website) - adds the website parameter 
         // instance to the local websites array. The new website's developerId is set to the userId parameter
-        // function createWebsite(userId,website){
-        // }
+        function createWebsite(userId,name,description){
+            var newWebsite = {
+                _id: (new Date()).getTime()+"",
+                name: name,
+                description: description,
+                developerId : userId
+            }
+            websites.push(newWebsite);
+            return newWebsite;
+        }
 
         //findWebsitesByUser(userId) - retrieves the websites in local websites array whose developerId matches the parameter userId
         function findWebsitesByUser(userId){
