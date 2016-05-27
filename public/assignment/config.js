@@ -31,7 +31,10 @@
                 controllerAs:"model"
             })
             .when("/user/:uid/website/:wid", {
-                templateUrl: "views/website/website-edit.view.client.html"
+                templateUrl: "views/website/website-edit.view.client.html",
+                controller: "EditWebsiteController",
+                controllerAs:"model"
+
             })
             .when("/user/:uid/website", {
                 templateUrl: "views/website/website-list.view.client.html",
@@ -48,7 +51,9 @@
                 templateUrl: "views/page/page-new.view.client.html"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget", {
-                templateUrl: "views/widget/widget-list.view.client.html"
+                templateUrl: "views/widget/widget-list.view.client.html",
+                controller: "WidgetListController",
+                controllerAs:"model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/:wgid/widget-heading", {
                 templateUrl: "views/widget/widget-heading.view.client.html"
