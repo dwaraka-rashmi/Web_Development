@@ -63,12 +63,27 @@
 
         // updatePage(pageId, page) updates the page in local pages array whose _id matches the pageId parameter
         function updatePage(pageId, page){
+            for(var i in pages){
+                if(pages[i]._id === pageId){
+                    pages[i].name = page.name;
+                    pages[i].description = page.description;
+                    return true;
+                }
+            }
+            return false;
+
 
         }
 
         // deletePage(pageId) removes the page from local pages array whose _id matches the pageId parameter
         function deletePage(pageId){
-
+            for(var i in pages){
+                if(pages[i]._id === pageId){
+                    pages.splice(i,1);
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

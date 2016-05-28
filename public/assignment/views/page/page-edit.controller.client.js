@@ -9,15 +9,33 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
-        vm.deleteWebsite = deleteWebsite;
+        vm.pageId = $routeParams.pid;
+        vm.deletePage = deletePage;
+        vm.updatePage = updatePage;
 
-        function deleteWebsite(websiteId){
-            var result = PageService.deleteWebsite(websiteId);
+        function init(){
+            vm.page = PageService.findPageById(vm.pageId);
+        }
+        init();
+
+        function deletePage(pageId){
+            var result = PageService.deletePage(pageId);
             if(result){
-                $location.url("/user/"+vm.userId+"/website")
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page")
             }
             else {
                 vm.error = "Unable to delete website"
+            }
+
+        }
+
+        function updatePage(page){
+            var result = PageService.updatePage(vm.pageId,page);
+            if(result){
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page")
+            }
+            else {
+                vm.error = "update failed!";
             }
 
         }
