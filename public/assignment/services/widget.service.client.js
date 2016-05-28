@@ -19,7 +19,7 @@
     ];
 
     function WidgetService(){
-        
+
         var api = {
             createWidget: createWidget,
             findWidgetsByPageId: findWidgetsByPageId,
@@ -33,15 +33,17 @@
         //     The new widget's pageId is set to the pageId parameter
         function createWidget(pageId, widget){
             //if(widget.name === undefined)
-              //  return null;
+            //  return null;
             var newWidget = {
                 _id: (new Date()).getTime()+"",
                 widgetType: widget.widgetType
-            }
+            };
+
             widgets.push(newWidget);
             return newWidget;
+
         }
-        
+
         // findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId
         // matches the parameter pageId
         function findWidgetsByPageId(pageId){
@@ -68,12 +70,23 @@
         function updateWidget(widgetId, widget) {
             for (var i in widgets) {
                 if (widgets[i]._id === widgetId) {
+                    widgets[i].name = widget.name;
+                    widgets[i].pageId = widget.pageId;
+                    if(widget.content != undefined){
+                        widgets[i].text = widget.content;
+                    }
+                    if(widget.url != undefined){
+                        widgets[i].url = widget.url;
+                    }
+                    if(widget.upload != undefined){
+                        widgets[i].upload = widget.upload;
+                    }
                     return true;
                 }
             }
             return false;
         }
-        
+
         //deleteWidget(widgetId) - removes the widget from local widgets array whose _id matches the widgetId parameter
         function deleteWidget(widgetId){
             for(var i in widgets){

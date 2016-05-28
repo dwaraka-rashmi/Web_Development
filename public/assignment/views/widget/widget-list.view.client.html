@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="bar-header">
             <p class="navbar-text pull-left">
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
@@ -20,7 +20,6 @@
     </div>
 </nav>
 <div class="container">
-
     <div ng-repeat="widget in model.widgets"
          class="jga-widget">
         <div class="jga-widget-tool">
@@ -40,7 +39,7 @@
                     <h1 ng-switch-default>{{widget.text}}</h1>
             </div>
             <div ng-switch-when="HTML">
-                <div ng-bind-html="{{model.getSafeHtml(widget)}}"></div>
+                <div ng-bind-html="model.getSafeHtml(widget)"></div>
             </div>
             <div ng-switch-when="IMAGE">
                 <img ng-src="{{widget.url}}" width="{{widget.width}}"/>

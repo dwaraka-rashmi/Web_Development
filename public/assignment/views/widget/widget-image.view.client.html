@@ -28,22 +28,22 @@
         <div class="form-group">
             <label for="widget-name">Name</label>
             <input ng-model="model.widget.name"
-                    type="text"
+                   type="text"
                    class="form-control"
                    id="widget-name">
         </div>
         <div class="form-group">
             <label for="widget-content">Text</label>
-                <input ng-model="model.widget.content"
-                        type="text"
-                       class="form-control"
-                       id="widget-content"
-                       placeholder="Description">
+            <input ng-model="model.widget.content"
+                   type="text"
+                   class="form-control"
+                   id="widget-content"
+                   placeholder="Description">
         </div>
         <div class="form-group">
             <label for="widget-url">URL</label>
             <input ng-model="model.widget.url"
-                    type="text"
+                   type="text"
                    class="form-control"
                    id="widget-url"
                    value="http://blogs-images.forbes.com/sap/files/2016/04/Tesla-Motors-Model-3-Mainstream-04-08-2016-C-1200x800.jpg"
@@ -52,7 +52,7 @@
         <div class="form-group">
             <label for="widget-width">Width</label>
             <input ng-model="model.widget.width"
-                    type="text"
+                   type="text"
                    class="form-control"
                    id="widget-width"
                    value="100%"
@@ -61,14 +61,16 @@
         <div class="form-group">
             <label for="widget-upload">Upload</label>
             <input ng-model="model.widget.upload"
-                    type="file" class="form-control"
+                   type="file" class="form-control"
                    name="files[]" id="widget-upload" multiple>
         </div>
     </form>
     <a class="btn btn-primary btn-block"
-       href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Upload Image</a>
-    <a class="btn btn-danger btn-block"
-       href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Delete</a>
+    href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Upload Image</a>
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-danger  btn-block">Delete</a>
+    <!--<a class="btn btn-danger btn-block"-->
+    <!--href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Delete</a>-->
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
