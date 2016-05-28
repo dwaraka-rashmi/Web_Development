@@ -21,23 +21,29 @@
 </nav>
 
 <div class="container">
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
     <form>
         <div class="form-group">
             <label for="widget-name">Name</label>
-            <input type="text"
+            <input ng-model="model.widget.name"
+                    type="text"
                    class="form-control"
                    id="widget-name">
         </div>
         <div class="form-group">
             <label for="widget-content">Text</label>
-                <input type="text"
+                <input ng-model="model.widget.content"
+                        type="text"
                        class="form-control"
                        id="widget-content"
                        placeholder="Description">
         </div>
         <div class="form-group">
             <label for="widget-url">URL</label>
-            <input type="text"
+            <input ng-model="model.widget.url"
+                    type="text"
                    class="form-control"
                    id="widget-url"
                    value="http://blogs-images.forbes.com/sap/files/2016/04/Tesla-Motors-Model-3-Mainstream-04-08-2016-C-1200x800.jpg"
@@ -45,7 +51,8 @@
         </div>
         <div class="form-group">
             <label for="widget-width">Width</label>
-            <input type="text"
+            <input ng-model="model.widget.width"
+                    type="text"
                    class="form-control"
                    id="widget-width"
                    value="100%"
@@ -53,7 +60,8 @@
         </div>
         <div class="form-group">
             <label for="widget-upload">Upload</label>
-            <input type="file" class="form-control"
+            <input ng-model="model.widget.upload"
+                    type="file" class="form-control"
                    name="files[]" id="widget-upload" multiple>
         </div>
     </form>

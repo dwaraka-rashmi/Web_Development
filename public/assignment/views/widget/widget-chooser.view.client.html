@@ -15,63 +15,63 @@
 </nav>
 
 <div class="container">
-    <div  ng-repeat="widget in model.widgets" class="list-group">
-        <span>
-        <a class="navbar-brand" href="#/widget-heading">
-            {{widget.widgetType}}
-        </a>
-    </span>
-    </div>
-    <!--<span>-->
+    <!--<div  ng-repeat="widget in model.widgets" class="list-group">-->
+        <!--<span>-->
         <!--<a class="navbar-brand" href="#/widget-heading">-->
-            <!--Header-->
+            <!--{{widget.widgetType}}-->
         <!--</a>-->
     <!--</span>-->
-        <!--<span>-->
-             <!--<a class="navbar-brand" href="#">-->
-        <!--Label-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-             <!--<a class="navbar-brand" href="#">-->
-        <!--HTML-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-             <!--<a class="navbar-brand" href="#">-->
-        <!--Text Input-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-             <!--<a class="navbar-brand" href="#">-->
-        <!--Link-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-            <!--<a class="navbar-brand" href="#">-->
-        <!--Button-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-             <!--<a class="navbar-brand" href="#/widget-image">-->
-        <!--Image-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-             <!--<a class="navbar-brand" href="#/widget-youtube">-->
-        <!--Youtube-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-            <!--<a class="navbar-brand" href="#">-->
-        <!--Date Table-->
-    <!--</a>-->
-        <!--</span>-->
-        <!--<span>-->
-         <!--<a class="navbar-brand" href="#">-->
-        <!--Repeater-->
-    <!--</a>-->
-    <!--</span>-->
+    <!--</div>-->
+    <span>
+        <a ng-click = "model.redirectTo('header')" class="navbar-brand">
+            Header
+        </a>
+    </span>
+        <span>
+             <a class="navbar-brand" href="#">
+        Label
+    </a>
+        </span>
+        <span>
+             <a class="navbar-brand" href="#">
+        HTML
+    </a>
+        </span>
+        <span>
+             <a class="navbar-brand" href="#">
+        Text Input
+    </a>
+        </span>
+        <span>
+             <a class="navbar-brand" href="#">
+        Link
+    </a>
+        </span>
+        <span>
+            <a class="navbar-brand" href="#">
+        Button
+    </a>
+        </span>
+        <span>
+             <a class="navbar-brand" href="#/views/widget/widget-image.view.client.html">
+        Image
+    </a>
+        </span>
+        <span>
+             <a class="navbar-brand" href="#/widget-youtube">
+        Youtube
+    </a>
+        </span>
+        <span>
+            <a class="navbar-brand" href="#">
+        Date Table
+    </a>
+        </span>
+        <span>
+         <a class="navbar-brand" href="#">
+        Repeater
+    </a>
+    </span>
 </div>
 </div>
 

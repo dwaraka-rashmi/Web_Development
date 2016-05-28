@@ -11,22 +11,32 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.widgetId = $routeParams.wgid;
+        vm.updateWidget = updateWidget;
 
         function init(){
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
         }
         init();
 
-        function getSafeHtml(widget){
-            return $sce.trustAsHtml(widget.text);
+        function updateWidget(widget){
+            var result = WidgetService.updateWidget(vm.widgetId, widget);
+            if(result){
+                $location.url("/user/"+vm.userId+"/website")
+            }
+            else {
+                vm.error = "Unable to delete website"
+            }
         }
-
-        function getSafeUrl(widget){
-            var urlParts = widget.url.split("/");
-            var id = urlParts[urlParts.length - 1];
-            var url = "https://www.youtube.com/embed/"+id;
-            return $sce.trustAsResourceUrl(url);
-        }
+        // function getSafeHtml(widget){
+        //     return $sce.trustAsHtml(widget.text);
+        // }
+        //
+        // function getSafeUrl(widget){
+        //     var urlParts = widget.url.split("/");
+        //     var id = urlParts[urlParts.length - 1];
+        //     var url = "https://www.youtube.com/embed/"+id;
+        //     return $sce.trustAsResourceUrl(url);
+        // }
 
 
     }

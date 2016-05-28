@@ -5,18 +5,23 @@
     angular
         .module("WebAppMaker")
         .controller("NewWidgetController",NewWidgetController);
-    function NewWidgetController($sce,$routeParams,WidgetService){
+    function NewWidgetController($location,$sce,$routeParams,WidgetService){
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
+        vm.redirectTo = redirectTo;
 
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
+
+        function redirectTo(type){
+         //   $location.url()
+        }
 
         function getSafeHtml(widget){
             return $sce.trustAsHtml(widget.text);

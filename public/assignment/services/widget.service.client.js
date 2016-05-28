@@ -23,9 +23,9 @@
         var api = {
             createWidget: createWidget,
             findWidgetsByPageId: findWidgetsByPageId,
-            findWidgetById: findWidgetById
-            // updateWidget: updateWidget,
-            // deleteWidget: deleteWidget
+            findWidgetById: findWidgetById,
+            updateWidget: updateWidget,
+            deleteWidget: deleteWidget
         };
         return api;
 
@@ -67,10 +67,26 @@
         }
 
         //updateWidget(widgetId, widget) - updates the widget in local widgets array whose _id matches the widgetId parameter
-
+        function updateWidget(widgetId, widget) {
+            for (var i in widgets) {
+                if (widgets[i]._id === widgetId) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
         //deleteWidget(widgetId) - removes the widget from local widgets array whose _id matches the widgetId parameter
-
-
+        function deleteWidget(widgetId){
+            for(var i in widgets){
+                if(widgets[i]._id === widgetId){
+                    widgets.splice(i,1);
+                    return true;
+                }
+            }
+            return false;
+        }
+        
     }
 
 })();
