@@ -12,15 +12,20 @@
         vm.pageId = $routeParams.pid;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
-        vm.redirectTo = redirectTo;
+        vm.createWidget = createWidget;
+
 
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
 
-        function redirectTo(type){
-         //   $location.url()
+        function createWidget(type){
+            var widget = {
+                widgetType:type
+            };
+            vm.widget = WidgetService.createWidget(vm.pageId,widget);
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widget._id);
         }
 
         function getSafeHtml(widget){
@@ -33,7 +38,6 @@
             var url = "https://www.youtube.com/embed/"+id;
             return $sce.trustAsResourceUrl(url);
         }
-
 
     }
 })();

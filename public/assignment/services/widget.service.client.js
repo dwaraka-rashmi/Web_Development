@@ -32,16 +32,14 @@
         // createWidget(pageId, widget) - adds the widget parameter instance to the local widgets array.
         //     The new widget's pageId is set to the pageId parameter
         function createWidget(pageId, widget){
-            if(widget.name === undefined)
-                return null;
+            //if(widget.name === undefined)
+              //  return null;
             var newWidget = {
                 _id: (new Date()).getTime()+"",
-                name: widget.name,
-                description: widget.description,
-                developerId : userId
+                widgetType: widget.widgetType
             }
-            websites.push(newWebsite);
-            return newWebsite;
+            widgets.push(newWidget);
+            return newWidget;
         }
         
         // findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId
@@ -86,7 +84,7 @@
             }
             return false;
         }
-        
+
     }
 
 })();

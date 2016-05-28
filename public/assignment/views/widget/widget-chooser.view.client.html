@@ -23,7 +23,7 @@
     <!--</span>-->
     <!--</div>-->
     <span>
-        <a ng-click = "model.redirectTo('header')" class="navbar-brand">
+        <a ng-click = "model.createWidget('HEADER')" class="navbar-brand">
             Header
         </a>
     </span>
@@ -53,12 +53,14 @@
     </a>
         </span>
         <span>
-             <a class="navbar-brand" href="#/views/widget/widget-image.view.client.html">
+             <a ng-click = "model.createWidget('IMAGE')"
+                class="navbar-brand">
         Image
     </a>
         </span>
         <span>
-             <a class="navbar-brand" href="#/widget-youtube">
+             <a ng-click = "model.createWidget('YOUTUBE')"
+                class="navbar-brand">
         Youtube
     </a>
         </span>
