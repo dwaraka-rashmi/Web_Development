@@ -25,17 +25,17 @@
         return api;
 
         //createUser(user) - adds the user parameter instance to the local users array
-        function createUser(username,password){
+        function createUser(user){
 
             for(var i in users) {
-                if (users[i].username === username) {
+                if (users[i].username === user.username) {
                     return null;
                 }
             }
             var newUser = {
                 _id: (new Date()).getTime()+"",
-                username: username,
-                password: password
+                username: user.username,
+                password: user.password
             };
             users.push(newUser);
             return newUser;

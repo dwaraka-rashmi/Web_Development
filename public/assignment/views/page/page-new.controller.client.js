@@ -11,8 +11,8 @@
         vm.websiteId = $routeParams.wid;
         vm.createPage = createPage;
 
-        function createPage(name,description){
-            var newPage = PageService.createPage(vm.websiteId,name,description);
+        function createPage(page){
+            var newPage = PageService.createPage(vm.websiteId,page);
             if(newPage){
                 $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
             }

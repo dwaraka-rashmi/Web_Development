@@ -24,13 +24,13 @@
 
         // createPage(websiteId, page) adds the page parameter instance to the local pages array. The new
         //     page's websiteId is set to the websiteId parameter
-        function createPage(websiteId,name,description){
-            if(name === undefined)
+        function createPage(websiteId,page){
+            if(page.name === undefined)
                 return null;
             var newPage = {
                 _id: (new Date()).getTime()+"",
-                name: name,
-                description: description,
+                name: page.name,
+                description: page.description,
                 websiteId : websiteId
             }
             pages.push(newPage);

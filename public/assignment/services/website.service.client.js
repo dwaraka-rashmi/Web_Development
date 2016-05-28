@@ -27,14 +27,14 @@
 
         //createWebsite(userId, website) - adds the website parameter 
         // instance to the local websites array. The new website's developerId is set to the userId parameter
-        function createWebsite(userId,name,description){
+        function createWebsite(userId,website){
 
-            if(name === undefined)
+            if(website.name === undefined)
                 return null;
             var newWebsite = {
                 _id: (new Date()).getTime()+"",
-                name: name,
-                description: description,
+                name: website.name,
+                description: website.description,
                 developerId : userId
             }
             websites.push(newWebsite);

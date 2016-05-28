@@ -9,13 +9,12 @@
 
         var vm = this;
         vm.createUser = createUser;
-        vm.user = null;
 
 
-        function createUser(username,password,verifyPassword){
+        function createUser(user){
 
-            if(password.match(verifyPassword)){
-                vm.user = UserService.createUser(username,password);
+            if(user.password.match(user.verifyPassword)){
+                vm.user = UserService.createUser(user);
             }
             if(vm.user){
                 $location.url("/user/"+vm.user._id);

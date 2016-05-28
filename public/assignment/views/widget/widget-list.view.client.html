@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/page-list" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
@@ -11,7 +11,7 @@
                 Widgets
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/widget-chooser" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
                   <span class="glyphicon glyphicon-plus">
                   </span>
                 </a>
@@ -19,7 +19,6 @@
         </div>
     </div>
 </nav>
-
 <div class="container">
 
     <div ng-repeat="widget in model.widgets"
@@ -54,26 +53,25 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
             <p class="navbar-text pull-left">
-                <a href="#/profile" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                   <span class="glyphicon glyphicon-play">
                   </span>
                 </a>
             </p>
             <p class="navbar-text pull-left">
-                <a href="#/profile" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                   <span class="glyphicon glyphicon-eye-open">
                   </span>
                 </a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="#/profile" class="navbar-link">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
                   <span class="glyphicon glyphicon-user">
                   </span>
                 </a>

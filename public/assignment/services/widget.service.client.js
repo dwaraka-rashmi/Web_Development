@@ -19,13 +19,33 @@
     ];
 
     function WidgetService(){
-
-
+        
         var api = {
-            findWidgetsByPageId: findWidgetsByPageId
+            createWidget: createWidget,
+            findWidgetsByPageId: findWidgetsByPageId,
+            findWidgetById: findWidgetById
+            // updateWidget: updateWidget,
+            // deleteWidget: deleteWidget
         };
         return api;
+
+        // createWidget(pageId, widget) - adds the widget parameter instance to the local widgets array.
+        //     The new widget's pageId is set to the pageId parameter
+        function createWidget(pageId, widget){
+            if(widget.name === undefined)
+                return null;
+            var newWidget = {
+                _id: (new Date()).getTime()+"",
+                name: widget.name,
+                description: widget.description,
+                developerId : userId
+            }
+            websites.push(newWebsite);
+            return newWebsite;
+        }
         
+        // findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId
+        // matches the parameter pageId
         function findWidgetsByPageId(pageId){
             var resultSet = [];
             for(var i in widgets){
@@ -35,6 +55,20 @@
             }
             return resultSet;
         }
+
+        //findWidgetById(widgetId) - retrieves the widget in local widgets array whose _id matches the widgetId parameter
+        function findWidgetById(widgetId){
+            for(var i in widgets){
+                if(widgets[i]._id === widgetId){
+                    return widgets[i];
+                }
+            }
+            return null;
+        }
+
+        //updateWidget(widgetId, widget) - updates the widget in local widgets array whose _id matches the widgetId parameter
+
+        //deleteWidget(widgetId) - removes the widget from local widgets array whose _id matches the widgetId parameter
 
 
     }
