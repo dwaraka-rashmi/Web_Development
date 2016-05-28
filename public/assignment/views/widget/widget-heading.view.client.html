@@ -12,8 +12,8 @@
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.updateWidget(model.widget,model.pageId)" class="navbar-link">
-                <!--<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"-->
-                   <!--class="navbar-link">-->
+                    <!--<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"-->
+                    <!--class="navbar-link">-->
                 <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -37,30 +37,32 @@
         </div>
         <div class="form-group">
             <label for="widget-content">Text</label>
-                <input ng-model="model.widget.content"
-                        type="text"
-                       class="form-control"
-                       id="widget-content"
-                       placeholder="US Senate Reaches Compromise on Emergency">
+            <input ng-model="model.widget.content"
+                   type="text"
+                   class="form-control"
+                   id="widget-content"
+                   placeholder="US Senate Reaches Compromise on Emergency">
         </div>
         <div class="form-group">
             <label for="widget-size">Size</label>
             <select ng-model="model.widget.size"
                     type="text"
-                   class="form-control"
-                   id="widget-size"
-                   placeholder="3">
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-                </select>
+                    class="form-control"
+                    id="widget-size"
+                    placeholder="3">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
         </div>
         <br/>
     </form>
     <a ng-click="model.deleteWidget()"
-            class="btn btn-danger  btn-block">Delete</a>
-       <!--href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Delete</a>-->
+       class="btn btn-danger  btn-block">Delete</a>
+    <!--href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Delete</a>-->
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

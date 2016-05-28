@@ -78,6 +78,12 @@
                     if(widget.url != undefined){
                         widgets[i].url = widget.url;
                     }
+                    if(widget.size != undefined){
+                        widgets[i].size = widget.size;
+                    }
+                    if(widget.width != undefined){
+                        widgets[i].width = widget.width;
+                    }
                     if(widget.upload != undefined){
                         widgets[i].upload = widget.upload;
                     }
