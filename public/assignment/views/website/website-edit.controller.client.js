@@ -11,7 +11,7 @@
         vm.websiteId = $routeParams.wid;
         vm.deleteWebsite = deleteWebsite;
         vm.updateWebsite = updateWebsite;
-
+        vm.error = false;
         function init(){
             vm.webiste = WebsiteService.findWebsiteById(vm.websiteId);
         }
@@ -23,13 +23,14 @@
                 $location.url("/user/"+vm.userId+"/website");
             }
             else {
-                vm.error = "Unable to delete website"
+                vm.error = "Unable to delete website";
             }
         }
 
         function updateWebsite(website){
+            website.developerId = vm.userId;
             vm.website = WebsiteService.updateWebsite(vm.websiteId,vm.website);
-            if(!vm.website){
+            if(vm.website){
                 $location.url("/user/"+vm.userId+"/website");
             }
             else {

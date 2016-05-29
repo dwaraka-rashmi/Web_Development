@@ -12,14 +12,15 @@
         vm.pageId = $routeParams.pid;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
-
+        vm.error = false;
+        
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
 
         function getSafeHtml(widget){
-            return $sce.trustAsHtml(widget.text);
+            return $sce.trustAsHtml(widget.text)
         }
 
         function getSafeUrl(widget){

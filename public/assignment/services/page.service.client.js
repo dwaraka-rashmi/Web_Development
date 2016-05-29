@@ -72,7 +72,6 @@
             }
             return false;
 
-
         }
 
         // deletePage(pageId) removes the page from local pages array whose _id matches the pageId parameter

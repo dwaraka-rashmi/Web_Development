@@ -82,7 +82,7 @@
                         widgets[i].size = widget.size;
                     }
                     else {
-                        widgets[i].size = "1";
+                        widgets[i].size = 1;
                     }
                     if(widget.width != undefined){
                         widgets[i].width = widget.width;
@@ -112,4 +112,4 @@
 
     }
 
-})();
+})()

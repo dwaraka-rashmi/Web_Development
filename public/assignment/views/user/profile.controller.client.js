@@ -8,7 +8,7 @@
     function ProfileController($routeParams, UserService){
         var vm = this;
         vm.updateUser = updateUser;
-      
+        vm.error = false;
         var id = $routeParams.uid;
         vm.id = id;
         function init(){

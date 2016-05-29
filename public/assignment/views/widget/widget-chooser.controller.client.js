@@ -26,6 +26,7 @@
             {text: "DATA TABLE"},
             {text: "REPEATER"}
         ];
+        vm.error = false;
 
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);

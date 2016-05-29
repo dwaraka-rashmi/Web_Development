@@ -9,6 +9,7 @@
 
         var vm = this;
         vm.createUser = createUser;
+        vm.error = false;
 
 
         function createUser(user){

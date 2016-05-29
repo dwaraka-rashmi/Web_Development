@@ -9,7 +9,7 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.createWebsite = createWebsite;
-
+        vm.error = false;
         function createWebsite(website){
             var newWebsite = WebsiteService.createWebsite(vm.userId,website);
             if(newWebsite){

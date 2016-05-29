@@ -19,17 +19,19 @@
         init();
 
         function deletePage(pageId){
+
             var result = PageService.deletePage(pageId);
             if(result){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page")
+                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
             }
             else {
-                vm.error = "Unable to delete website"
+                vm.error = "Unable to delete website";
             }
 
         }
 
         function updatePage(page){
+
             var result = PageService.updatePage(vm.pageId,page);
             if(result){
                 $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page")

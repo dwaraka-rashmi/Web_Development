@@ -13,6 +13,7 @@
         vm.widgetId = $routeParams.wgid;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
+        vm.error = false;
 
         function init(){
             vm.widget = WidgetService.findWidgetById(vm.widgetId);

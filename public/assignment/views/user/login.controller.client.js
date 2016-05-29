@@ -8,7 +8,7 @@
     function LoginController($location,UserService){
 
         var vm = this;
-
+        vm.error = false;
         vm.login = function(username,password){
             var newUser = UserService.findUserByCredentials(username,password);
             //console.log(newUser);
