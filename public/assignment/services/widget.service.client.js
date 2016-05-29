@@ -81,8 +81,14 @@
                     if(widget.size != undefined){
                         widgets[i].size = widget.size;
                     }
+                    else {
+                        widgets[i].size = "1";
+                    }
                     if(widget.width != undefined){
                         widgets[i].width = widget.width;
+                    }
+                    else {
+                        widgets[i].width = "100%";
                     }
                     if(widget.upload != undefined){
                         widgets[i].upload = widget.upload;

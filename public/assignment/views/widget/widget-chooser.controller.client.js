@@ -14,6 +14,18 @@
         vm.getSafeUrl = getSafeUrl;
         vm.createWidget = createWidget;
 
+        vm.widgetTypes = [
+            {text: "HEADER"},
+            {text: "LABEL"},
+            {text: "HTML"},
+            {text: "TEXT INPUT"},
+            {text: "LINK"},
+            {text: "BUTTON"},
+            {text: "IMAGE"},
+            {text: "YOUTUBE"},
+            {text: "DATA TABLE"},
+            {text: "REPEATER"}
+        ];
 
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
@@ -24,8 +36,10 @@
             var widget = {
                 widgetType:type
             };
+
             vm.widget = WidgetService.createWidget(vm.pageId,widget);
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widget._id);
+
         }
 
         function getSafeHtml(widget){

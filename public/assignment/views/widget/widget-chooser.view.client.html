@@ -15,65 +15,68 @@
 </nav>
 
 <div class="container">
-    <!--<div  ng-repeat="widget in model.widgets" class="list-group">-->
-        <!--<span>-->
-        <!--<a class="navbar-brand" href="#/widget-heading">-->
-            <!--{{widget.widgetType}}-->
-        <!--</a>-->
-    <!--</span>-->
-    <!--</div>-->
-    <span>
-        <a ng-click = "model.createWidget('HEADER')" class="navbar-brand">
-            Header
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <div ng-repeat="widgetType in model.widgetTypes" class="list-group">
+        <span>
+        <a class="navbar-brand" ng-click = "model.createWidget(widgetType.text)">
+            {{widgetType.text}}
         </a>
     </span>
-        <span>
-             <a class="navbar-brand" href="#">
-        Label
-    </a>
-        </span>
-        <span>
-             <a class="navbar-brand" href="#">
-        HTML
-    </a>
-        </span>
-        <span>
-             <a class="navbar-brand" href="#">
-        Text Input
-    </a>
-        </span>
-        <span>
-             <a class="navbar-brand" href="#">
-        Link
-    </a>
-        </span>
-        <span>
-            <a class="navbar-brand" href="#">
-        Button
-    </a>
-        </span>
-        <span>
-             <a ng-click = "model.createWidget('IMAGE')"
-                class="navbar-brand">
-        Image
-    </a>
-        </span>
-        <span>
-             <a ng-click = "model.createWidget('YOUTUBE')"
-                class="navbar-brand">
-        Youtube
-    </a>
-        </span>
-        <span>
-            <a class="navbar-brand" href="#">
-        Date Table
-    </a>
-        </span>
-        <span>
-         <a class="navbar-brand" href="#">
-        Repeater
-    </a>
-    </span>
+    </div>
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('HEADER')" class="navbar-brand">-->
+    <!--Header-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('LABEL')" class="navbar-brand">-->
+    <!--Label-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('HTML')" class="navbar-brand">-->
+    <!--HTML-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('TEXT INPUT')" class="navbar-brand">-->
+    <!--Text Input-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('LINK')" class="navbar-brand">-->
+    <!--Link-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('BUTTON')" class="navbar-brand">-->
+    <!--Button-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('IMAGE')"-->
+    <!--class="navbar-brand">-->
+    <!--Image-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('YOUTUBE')"-->
+    <!--class="navbar-brand">-->
+    <!--Youtube-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('DATA TABLE')" class="navbar-brand">-->
+    <!--Date Table-->
+    <!--</a>-->
+    <!--</span>-->
+    <!--<span>-->
+    <!--<a ng-click = "model.createWidget('REPEATER')" class="navbar-brand">-->
+    <!--Repeater-->
+    <!--</a>-->
+    <!--</span>-->
 </div>
 </div>
 
