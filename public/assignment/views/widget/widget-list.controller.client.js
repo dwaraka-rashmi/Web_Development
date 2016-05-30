@@ -5,7 +5,9 @@
     angular
         .module("WebAppMaker")
         .controller("WidgetListController",WidgetListController);
+
     function WidgetListController($sce,$routeParams,WidgetService){
+
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
@@ -13,7 +15,7 @@
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
         vm.error = false;
-        
+
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
@@ -29,7 +31,6 @@
             var url = "https://www.youtube.com/embed/"+id;
             return $sce.trustAsResourceUrl(url);
         }
-
 
     }
 })();

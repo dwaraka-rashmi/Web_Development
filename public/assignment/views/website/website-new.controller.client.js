@@ -6,19 +6,27 @@
         .module("WebAppMaker")
         .controller("NewWebsiteController",NewWebsiteController);
     function NewWebsiteController($location,$routeParams,WebsiteService){
+
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.createWebsite = createWebsite;
         vm.error = false;
+
         function createWebsite(website){
-            var newWebsite = WebsiteService.createWebsite(vm.userId,website);
-            if(newWebsite){
-                $location.url("/user/"+vm.userId+"/website")
+
+            if(website.name) {
+                var newWebsite = WebsiteService.createWebsite(vm.userId,website);
+                if(newWebsite){
+                    $location.url("/user/"+vm.userId+"/website")
+                }
+                else {
+                    vm.error = "Unable to create website";
+                }
             }
             else {
-                vm.error = "Unable to create website"
+                vm.error = "Unable to create website";
             }
         }
-        
+
     }
 })();

@@ -6,6 +6,7 @@
         .module("WebAppMaker")
         .controller("NewWidgetController",NewWidgetController);
     function NewWidgetController($location,$sce,$routeParams,WidgetService){
+
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;

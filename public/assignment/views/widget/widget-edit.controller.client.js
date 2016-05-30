@@ -5,7 +5,9 @@
     angular
         .module("WebAppMaker")
         .controller("EditWidgetController",EditWidgetController);
+
     function EditWidgetController($location,$sce,$routeParams,WidgetService){
+
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
@@ -29,6 +31,7 @@
                 vm.error = "Unable to delete Widget"
             }
         }
+
         function updateWidget(widget,pageId){
             widget.pageId = pageId;
             var result = WidgetService.updateWidget(vm.widgetId, widget);
@@ -39,17 +42,6 @@
                 vm.error = "Unable to update Widget"
             }
         }
-        // function getSafeHtml(widget){
-        //     return $sce.trustAsHtml(widget.text);
-        // }
-        //
-        // function getSafeUrl(widget){
-        //     var urlParts = widget.url.split("/");
-        //     var id = urlParts[urlParts.length - 1];
-        //     var url = "https://www.youtube.com/embed/"+id;
-        //     return $sce.trustAsResourceUrl(url);
-        // }
-
 
     }
 })();
