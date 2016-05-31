@@ -12,8 +12,8 @@
         vm.createPage = createPage;
 
         function createPage(page){
-            
-            if(page.name){
+
+            if(page){
 
                 var newPage = PageService.createPage(vm.websiteId,page);
                 if(newPage){
