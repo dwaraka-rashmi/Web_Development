@@ -29,12 +29,10 @@ module.exports = function(app){
     }
 
     function findUserByCredentials(username,password,res){
-
         for(var i in users){
-
             if(users[i].username===username && users[i].password===password){
                 res.send(users[i]);
-                return;
+                return users[i];
             }
         }
         res.send({});
