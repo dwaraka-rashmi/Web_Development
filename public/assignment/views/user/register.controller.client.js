@@ -5,10 +5,12 @@
     angular
         .module("WebAppMaker")
         .controller("RegisterController",RegisterController);
-    function RegisterController($location,UserService){
+    function RegisterController($location,$routeParams,UserService){
 
         var vm = this;
+        var id = $routeParams.uid;
         vm.createUser = createUser;
+        
         vm.error = false;
 
         function createUser(user){

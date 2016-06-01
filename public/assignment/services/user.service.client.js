@@ -60,25 +60,31 @@
         }
 
         //updateUser(userId, user) - updates the user in local users array whose _id matches the userId parameter
-        function updateUser(userId,user){
-            for(var i in users) {
-                if (users[i]._id === userId) {
-                    users[i].firstName = user.firstName;
-                    users[i].lastName = user.lastName;
-                    //console.log(user);
-                    return true;
-                }
-            }
-            return false;
+        function updateUser(userId,newUser){
+            var url = "/api/user/"+userId;
+            return $http.put(url,newUser);
+
+            // for(var i in users) {
+            //     if (users[i]._id === userId) {
+            //         users[i].firstName = user.firstName;
+            //         users[i].lastName = user.lastName;
+            //         //console.log(user);
+            //         return true;
+            //     }
+            // }
+            // return false;
         }
 
         //deleteUser(userId) - removes the user whose _id matches the userId parameter
         function deleteUser(userId){
-            for(var i in users) {
-                if (users[i]._id === userId) {
-                    users.splice(i,1);
-                }
-            }
+            var url = "/api/user/"+userId;
+            return $http.delete(url);
+
+            // for(var i in users) {
+            //     if (users[i]._id === userId) {
+            //         users.splice(i,1);
+            //     }
+            // }
         }
 
     }
