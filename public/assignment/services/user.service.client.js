@@ -7,7 +7,7 @@
         .factory("UserService",UserService);
 
     function UserService($http){
-        
+
         var api = {
             createUser: createUser,
             findUserById: findUserById,
@@ -21,29 +21,26 @@
         //createUser(user) - adds the user parameter instance to the local users array
         function createUser(user){
 
-            for(var i in users) {
-                if (users[i].username === user.username) {
-                    return null;
-                }
-            }
             var newUser = {
-                _id: (new Date()).getTime()+"",
                 username: user.username,
                 password: user.password
             };
-            users.push(newUser);
-            return newUser;
+            return $http.post("/api/user",newUser);
+            //users.push(newUser);
+            //return newUser;
 
         }
 
         //findUserById(userId) - returns the user in local users array whose _id matches the userId parameter
         function findUserById(userId){
-            for(var i in users) {
-                if (users[i]._id === userId) {
-                    return  users[i];
-                }
-            }
-            return null;
+            var url = "/api/user/"+userId;
+            return $http.get(url);
+            // for(var i in users) {
+            //     if (users[i]._id === userId) {
+            //         return  users[i];
+            //     }
+            // }
+            // return null;
         }
 
         //findUserByUsername(username) - returns the user in local users array whose username matches the parameter username

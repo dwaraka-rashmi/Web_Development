@@ -15,20 +15,26 @@
             if(user) {
                 if (user.username && user.password && user.verifyPassword) {
                     if (user.password.match(user.verifyPassword)) {
-                        vm.user = UserService.createUser(user);
-                    }
-                    if (vm.user) {
-                        $location.url("/user/" + vm.user._id);
+                        UserService
+                            .createUser(user)
+                            .then(function(response){
+                                var user = response.data;
+                                if(user)
+                                    $location.url("/user/" + user._id);
+                            });
                     }
                     else {
                         vm.error = "Could not be Registered";
                     }
                 }
+                else {
+                    vm.error = "Could not be Registered";
+                }
             }
             else {
                 vm.error = "Error! Kindly fill in all the fields";
             }
-
         }
+
     }
 })();
