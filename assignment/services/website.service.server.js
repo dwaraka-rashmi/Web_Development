@@ -12,18 +12,62 @@ module.exports = function(app){
         { "_id": "789", "name": "Chess",       "developerId": "234" }
     ];
 
-    app.get("/api/user", getUsers);
-    app.get("/api/user/:id", getUserById);
-    app.post("/api/user", createUser);
-    app.put("/api/user/:id", updateUser);
-    app.delete("/api/user/:id",deleteUser);
+    app.post("/api/user/:userId/website",createWebsite);
+    app.get("/api/user/:userId/website",findAllWebsitesForUser);
+    app.get("/api/website/:websiteId",findWebsiteById);
+    app.put("/api/website/:websiteId",updateWebsite);
+    app.delete("/api/website/:websiteId",deleteWebsite);
 
-    function deleteUser(req,res){
-        var id = req.params.id;
+    function createWebsite(req,res){
+        var newWebsite = req.body;
+        newWebsite._id =  (new Date()).getTime()+"";
+        // console.log(newWebsite);
+        websites.push(newWebsite);
+        res.send(newWebsite);
+    }
 
-        for(var i in users) {
-            if (users[i]._id === id) {
-                users.splice(i,1);
+    function findAllWebsitesForUser(req,res) {
+        var id = req.params.userId;
+        var AllWebsitesForUser = [];
+        for (var i in websites) {
+            if (websites[i].developerId === id) {
+                AllWebsitesForUser.push(websites[i]);
+            }
+        }
+        // console.log(AllWebsitesForUser);
+        res.send(AllWebsitesForUser);
+    }
+
+    function findWebsiteById(req,res) {
+        var id = req.params.websiteId;
+        for(var i in websites){
+            if(websites[i]._id === id){
+                res.send(websites[i]);
+                return;
+            }
+        }
+        res.send({});
+    }
+
+    function updateWebsite(req,res) {
+        var websiteId = req.params.websiteId;
+        var website = req.body;
+        for(var i in websites) {
+            if (websites[i]._id === websiteId) {
+                websites[i].name = website.name;
+                websites[i].developerId = website.developerId;
+                res.send(websites[i]);
+                return;
+            }
+        }
+        res.send({});
+    }
+
+    function deleteWebsite(req,res) {
+        var websiteId = req.params.websiteId;
+        for(var i in websites){
+            if(websites[i]._id === websiteId){
+                websites.splice(i,1);
                 res.send(200);
                 return;
             }
@@ -31,73 +75,4 @@ module.exports = function(app){
         res.send(400);
     }
 
-
-    function updateUser(req,res){
-        var id = req.params.id;
-        var user = req.body;
-        for(var i in users) {
-            if (users[i]._id === id) {
-                users[i].firstName = user.firstName;
-                users[i].lastName = user.lastName;
-                //console.log(user);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
-    }
-
-    function createUser(req,res){
-        var user = req.body;
-        user._id = (new Date()).getTime()+"";
-        users.push(user);
-        console.log(users);
-        res.send(user);
-    }
-
-    function getUsers(req,res){
-        var username = req.query.username;
-        var password = req.query.password;
-        //console.log(username+" "+password);
-        if(username&&password){
-            findUserByCredentials(username,password,res);
-        }
-        else
-        if(username){
-            findUserByUsername(username,res);
-        }
-        else
-            res.send(users);
-    }
-
-    function findUserByCredentials(username,password,res){
-        for(var i in users){
-            if(users[i].username===username && users[i].password===password){
-                res.send(users[i]);
-                return users[i];
-            }
-        }
-        res.send({});
-    }
-    function findUserByUsername(username,res){
-
-        for(var i in users){
-
-            if(users[i].username===username){
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
-    }
-    function getUserById(req,res){
-        var id = req.params.id;
-        for(var i in users){
-            if(users[i]._id === id){
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
-    }
 };

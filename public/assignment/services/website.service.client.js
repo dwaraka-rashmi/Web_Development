@@ -5,9 +5,7 @@
     angular
         .module("WebAppMaker")
         .factory("WebsiteService",WebsiteService);
-    
-
-    function WebsiteService(){
+    function WebsiteService($http){
 
         var api = {
             findWebsitesByUser : findWebsitesByUser,
@@ -25,64 +23,45 @@
             if(website.name === undefined)
                 return null;
             var newWebsite = {
-                _id: (new Date()).getTime()+"",
                 name: website.name,
                 description: website.description,
                 developerId : userId
             }
-            websites.push(newWebsite);
+            newWebsite = $http.post("/api/user/"+userId+"/website",newWebsite);
             return newWebsite;
+
         }
 
         //findWebsitesByUser(userId) - retrieves the websites in local websites array whose developerId
         // matches the parameter userId
         function findWebsitesByUser(userId){
-            var resultSet = [];
-            for(var i in websites){
-                if(websites[i].developerId === userId){
-                    resultSet.push(websites[i]);
-                }
-            }
-            return resultSet;
+            var websites = $http.get("/api/user/"+userId+"/website");
+            return websites;
         }
 
         // findWebsiteById(websiteId) retrieves the website in local websites array whose _id matches the
         // websiteId parameter
         function findWebsiteById(websiteId){
+            var website = $http.get("/api/website/"+websiteId);
+            return website;
 
-            for(var i in websites){
-                if(websites[i]._id === websiteId){
-                    return websites[i];
-                }
-            }
-            return null;
         }
 
         // updateWebsite(websiteId, website) updates the website in local websites array whose _id matches
         // the websiteId parameter
-        function updateWebsite(websiteId, website){
+        function updateWebsite(website){
 
-            for(var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    websites[i].name = website.name;
-                    websites[i].developerId = website.developerId;
-                    return true;
-                }
-            }
-            return false;
+            var website = $http.put("/api/website/"+website._id,website);
+            return website;
+
         }
 
         // deleteWebsite(websiteId) removes the website from local websites array whose _id matches the
         // websiteId parameter
         function deleteWebsite(websiteId){
 
-            for(var i in websites){
-                if(websites[i]._id === websiteId){
-                    websites.splice(i,1);
-                    return true;
-                }
-            }
-            return false;
+            var result = $http.delete("/api/website/"+websiteId);
+            return result;
         }
     }
 

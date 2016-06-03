@@ -13,30 +13,41 @@
         vm.updateWebsite = updateWebsite;
         vm.error = false;
         function init(){
-            vm.webiste = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .then(
+                    function(response){
+                        vm.website = response.data;
+                    },
+                    function(response){
+                        vm.error="Unable to fetch the website";
+                    })
         }
         init();
 
         function deleteWebsite(websiteId){
-            var result = WebsiteService.deleteWebsite(websiteId);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website");
-            }
-            else {
-                vm.error = "Unable to delete website";
-            }
+            WebsiteService
+                .deleteWebsite(websiteId)
+                .then(
+                    function(response){
+                        $location.url("/user/"+vm.userId+"/website");
+                    },
+                    function(response){
+                        vm.error = "Unable to delete website";
+                    });
         }
 
         function updateWebsite(website){
-            website.developerId = vm.userId;
-            vm.website = WebsiteService.updateWebsite(vm.websiteId,vm.website);
-            if(vm.website){
-                $location.url("/user/"+vm.userId+"/website");
-            }
-            else {
-                vm.error = "update failed!";
-            }
-
+            WebsiteService
+                .updateWebsite(website)
+                .then(
+                    function(response){
+                        //vm.website = response.data;
+                        $location.url("/user/"+vm.userId+"/website");
+                    },
+                    function(response){
+                        vm.error = "update failed!";
+                    });
         }
 
     }
