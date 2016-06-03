@@ -18,7 +18,7 @@
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
 
-    function WidgetService(){
+    function WidgetService($http){
 
         var api = {
             createWidget: createWidget,
@@ -58,12 +58,14 @@
 
         //findWidgetById(widgetId) - retrieves the widget in local widgets array whose _id matches the widgetId parameter
         function findWidgetById(widgetId){
-            for(var i in widgets){
-                if(widgets[i]._id === widgetId){
-                    return widgets[i];
-                }
-            }
-            return null;
+            var url = "/api/widget/"+widgetId;
+            return $http.get(url);
+            // for(var i in widgets){
+            //     if(widgets[i]._id === widgetId){
+            //         return widgets[i];
+            //     }
+            // }
+            // return null;
         }
 
         //updateWidget(widgetId, widget) - updates the widget in local widgets array whose _id matches the widgetId parameter

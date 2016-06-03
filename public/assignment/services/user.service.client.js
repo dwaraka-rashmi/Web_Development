@@ -26,8 +26,6 @@
                 password: user.password
             };
             return $http.post("/api/user",newUser);
-            //users.push(newUser);
-            //return newUser;
 
         }
 
@@ -35,22 +33,14 @@
         function findUserById(userId){
             var url = "/api/user/"+userId;
             return $http.get(url);
-            // for(var i in users) {
-            //     if (users[i]._id === userId) {
-            //         return  users[i];
-            //     }
-            // }
-            // return null;
+
         }
 
         //findUserByUsername(username) - returns the user in local users array whose username matches the parameter username
         function findUserByUsername(username){
-            for(var i in users) {
-                if (users[i].username === username) {
-                    return  users[i];
-                }
-            }
-            return null;
+            var url = "/api/user?username="+username;
+            return $http.get(url);
+
         }
 
         //findUserByCredentials(username, password) - returns the user whose username and password match the username and password parameters
@@ -64,15 +54,6 @@
             var url = "/api/user/"+userId;
             return $http.put(url,newUser);
 
-            // for(var i in users) {
-            //     if (users[i]._id === userId) {
-            //         users[i].firstName = user.firstName;
-            //         users[i].lastName = user.lastName;
-            //         //console.log(user);
-            //         return true;
-            //     }
-            // }
-            // return false;
         }
 
         //deleteUser(userId) - removes the user whose _id matches the userId parameter
@@ -80,11 +61,6 @@
             var url = "/api/user/"+userId;
             return $http.delete(url);
 
-            // for(var i in users) {
-            //     if (users[i]._id === userId) {
-            //         users.splice(i,1);
-            //     }
-            // }
         }
 
     }
