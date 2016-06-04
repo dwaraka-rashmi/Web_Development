@@ -19,32 +19,37 @@
 
         function init(){
             // vm.widget = WidgetService.findWidgetById(vm.widgetId);
-            WidgetService.findWidgetById(vm.widgetId)
+            WidgetService
+                .findWidgetById(vm.widgetId)
                 .then(function(response){
-                    vm.widget = response.data();
-                })
+                    vm.widget = response.data;
+                });
         }
         init();
 
         function deleteWidget(){
-            var result = WidgetService.deleteWidget(vm.widgetId);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget")
-            }
-            else{
-                vm.error = "Unable to delete Widget"
-            }
+            WidgetService
+                .deleteWidget(vm.widgetId)
+                .then(
+                    function(response){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    },
+                    function(response){
+                        vm.error = "Unable to delete Widget";
+                    });
         }
 
-        function updateWidget(widget,pageId){
-            widget.pageId = pageId;
-            var result = WidgetService.updateWidget(vm.widgetId, widget);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget")
-            }
-            else {
-                vm.error = "Unable to update Widget"
-            }
+        function updateWidget(widget){
+            WidgetService
+                .updateWidget(vm.widgetId, widget)
+                .then(
+                    function(response){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    },
+                    function(response){
+                        vm.error = "Unable to update Widget";
+                    }
+                )
         }
 
     }

@@ -11,7 +11,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(model.widget,model.pageId)" class="navbar-link">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
                   <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
@@ -65,6 +65,8 @@
                    name="files[]" id="widget-upload" multiple>
         </div>
     </form>
+    <!--<a ng-click="model.uploadImage"-->
+            <!--class="btn btn-primary btn-block">Upload Image</a>-->
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Upload Image</a>
     <a ng-click="model.deleteWidget()"

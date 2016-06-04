@@ -29,19 +29,26 @@
         ];
         vm.error = false;
 
-        function init(){
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
-        }
-        init();
+        // function init(){
+        //     vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+        // }
+        // init();
 
         function createWidget(type){
             var widget = {
                 widgetType:type
             };
 
-            vm.widget = WidgetService.createWidget(vm.pageId,widget);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widget._id);
-
+            WidgetService
+                .createWidget(vm.pageId,widget)
+                .then(
+                    function(response){
+                        vm.widget = response.data;
+                        if(vm.widget._id)
+                            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widget._id);
+                        else
+                            vm.error = "Unable to create a Widget";
+                    });
         }
 
         function getSafeHtml(widget){

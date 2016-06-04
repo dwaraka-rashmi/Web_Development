@@ -21,7 +21,7 @@
                     },
                     function(response){
                         vm.error="Unable to fetch the website";
-                    })
+                    });
         }
         init();
 
