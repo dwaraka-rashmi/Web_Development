@@ -11,7 +11,15 @@
         vm.websiteId = $routeParams.wid;
         
         function init(){
-            vm.pages = PageService.findPageByWebsiteId($routeParams.wid);
+            PageService
+                .findPageByWebsiteId($routeParams.wid)
+                .then(
+                    function(response){
+                        vm.pages = response.data;
+                    },
+                    function(response){
+                        vm.error = "Unable to fetch pages";
+                    });
         }
         init();
 

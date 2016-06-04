@@ -5,13 +5,8 @@
     angular
         .module("WebAppMaker")
         .factory("PageService", PageService);
-    var pages = [
-        {"_id": "321", "name": "Post 1", "websiteId": "456"},
-        {"_id": "432", "name": "Post 2", "websiteId": "456"},
-        {"_id": "543", "name": "Post 3", "websiteId": "456"}
-    ];
 
-    function PageService() {
+    function PageService($http) {
 
         var api = {
             createPage: createPage,
@@ -28,12 +23,12 @@
             if(page.name === undefined)
                 return null;
             var newPage = {
-                _id: (new Date()).getTime()+"",
+                //_id: (new Date()).getTime()+"",
                 name: page.name,
                 description: page.description,
                 websiteId : websiteId
             }
-            pages.push(newPage);
+            var newPage = $http.post("/api/website/"+websiteId+"/page",newPage);
             return newPage;
 
         }
@@ -41,48 +36,30 @@
         // findPageByWebsiteId(websiteId) retrieves the pages in local pages array whose websiteId matches
         // the parameter websiteId
         function findPageByWebsiteId(websiteId){
-            var pageList = [];
-            for(var i in pages){
-                if(pages[i].websiteId === websiteId){
-                    pageList.push(pages[i]);
-                }
-            }
-            return pageList;
+
+            var pages = $http.get("/api/website/"+websiteId+"/page");
+            return pages;
         }
 
         // findPageById(pageId) retrieves the page in local pages array whose _id matches the pageId parameter
         function findPageById(pageId){
-            for(var i in pages){
-                if(pages[i]._id === pageId){
-                    return pages[i];
-                }
-            }
-            return null;
 
+            var page = $http.get("/api/page/"+pageId);
+            return page;
         }
 
         // updatePage(pageId, page) updates the page in local pages array whose _id matches the pageId parameter
         function updatePage(pageId, page){
-            for(var i in pages){
-                if(pages[i]._id === pageId){
-                    pages[i].name = page.name;
-                    pages[i].description = page.description;
-                    return true;
-                }
-            }
-            return false;
 
+            var page = $http.put("/api/page/"+pageId,page);
+            return page;
         }
 
         // deletePage(pageId) removes the page from local pages array whose _id matches the pageId parameter
         function deletePage(pageId){
-            for(var i in pages){
-                if(pages[i]._id === pageId){
-                    pages.splice(i,1);
-                    return true;
-                }
-            }
-            return false;
+
+            var result = $http.delete("/api/page/"+pageId);
+            return result;
         }
 
     }

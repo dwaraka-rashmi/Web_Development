@@ -15,13 +15,14 @@
         function createWebsite(website){
 
             if(website) {
-                var newWebsite = WebsiteService.createWebsite(vm.userId,website);
-                if(newWebsite){
-                    $location.url("/user/"+vm.userId+"/website")
-                }
-                else {
-                    vm.error = "Unable to create website";
-                }
+                WebsiteService
+                    .createWebsite(vm.userId,website)
+                    .then(function(response){
+                        if(response.data._id)
+                            $location.url("/user/"+vm.userId+"/website");
+                        else
+                            vm.error = "Unable to create website";
+                    });
             }
             else {
                 vm.error = "Unable to create website";

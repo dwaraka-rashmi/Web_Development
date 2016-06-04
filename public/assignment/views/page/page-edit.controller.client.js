@@ -14,32 +14,43 @@
         vm.updatePage = updatePage;
 
         function init(){
-            vm.page = PageService.findPageById(vm.pageId);
+            PageService
+                .findPageById(vm.pageId)
+                .then(
+                    function(response){
+                        vm.page = response.data;
+                    },
+                    function(response){
+                        vm.error = "Unable to fetch the Page";
+                    })
         }
         init();
 
         function deletePage(pageId){
 
-            var result = PageService.deletePage(pageId);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-            }
-            else {
-                vm.error = "Unable to delete website";
-            }
-
+            PageService
+                .deletePage(pageId)
+                .then(
+                    function(response){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                    },
+                    function(response){
+                        vm.error = "Unable to delete Page";
+                    });
         }
 
         function updatePage(page){
 
-            var result = PageService.updatePage(vm.pageId,page);
-            if(result){
-                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page")
-            }
-            else {
-                vm.error = "update failed!";
-            }
-
+            PageService
+                .updatePage(vm.pageId,page)
+                .then(
+                    function(response){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page")
+                    },
+                    function(response){
+                        vm.error = "update failed!";
+                    }
+                )
         }
 
     }

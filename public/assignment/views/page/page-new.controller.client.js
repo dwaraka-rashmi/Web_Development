@@ -14,14 +14,15 @@
         function createPage(page){
 
             if(page){
-
-                var newPage = PageService.createPage(vm.websiteId,page);
-                if(newPage){
-                    $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
-                }
-                else {
-                    vm.error = "Unable to create Page";
-                }
+                PageService
+                    .createPage(vm.websiteId,page)
+                    .then(
+                        function(response){
+                            if(response.data._id)
+                                $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+                            else
+                                vm.error = "Unable to create Page";
+                        });
             }
             else {
                 vm.error = "Unable to create Page";
