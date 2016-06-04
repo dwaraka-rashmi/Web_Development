@@ -11,6 +11,8 @@
         </div>
         <div ng-switch-default>
             <h1>Unable to customise this widget type</h1>
+            <a ng-click="model.deleteWidget()" width="90%"
+               class="btn btn-danger  btn-block">Delete</a>
             <p class="navbar-text pull-right">
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
                   <span class="glyphicon glyphicon-plus">

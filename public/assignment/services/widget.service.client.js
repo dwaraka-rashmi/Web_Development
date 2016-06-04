@@ -23,7 +23,8 @@
         function createWidget(pageId, widget){
 
             var newWidget = {
-                widgetType: widget.widgetType
+                widgetType: widget.widgetType,
+                pageId : pageId
             };
 
             var newWidget = $http.post("/api/page/"+pageId+"/widget",newWidget);
@@ -33,7 +34,6 @@
         // findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId
         // matches the parameter pageId
         function findWidgetsByPageId(pageId){
-
             var widgets = $http.get("/api/page/"+pageId+"/widget");
             return widgets;
         }
@@ -59,4 +59,4 @@
 
     }
 
-})()
+})();

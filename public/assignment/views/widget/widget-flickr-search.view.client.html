@@ -65,7 +65,6 @@
 </nav>
 
 <div class="container">
-
     <div class="input-group">
         <input ng-model="searchText" type="text" class="form-control">
     <span class="input-group-btn">
@@ -74,13 +73,11 @@
         </a>
     </span>
     </div>
-
     <div class="row">
         <div ng-repeat="photo in model.photos.photo" class="col-xs-4">
             <img width="100%" ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
         </div>
     </div>
-
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
