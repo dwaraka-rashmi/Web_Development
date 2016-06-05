@@ -56,6 +56,7 @@ module.exports = function(app){
             if (websites[i]._id === websiteId) {
                 websites[i].name = website.name;
                 websites[i].developerId = website.developerId;
+                websites[i].description = website.description;
                 res.send(websites[i]);
                 return;
             }

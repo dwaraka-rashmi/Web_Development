@@ -14,7 +14,8 @@
             findWidgetsByPageId: findWidgetsByPageId,
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
-            deleteWidget: deleteWidget
+            deleteWidget: deleteWidget,
+            uploadImage : uploadImage
         };
         return api;
 
@@ -55,6 +56,13 @@
         function deleteWidget(widgetId){
             var result = $http.delete("/api/widget/"+widgetId);
             return result;
+        }
+        
+        function uploadImage(){
+            var widgetId = req.body.widgetId ;
+            var width = req.body.width ;
+            var myFile = req.file;
+            
         }
 
     }
