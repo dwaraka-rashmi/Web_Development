@@ -26,6 +26,7 @@
                     function(response){
                         vm.error = "Unable to fetch the widgets";
                     });
+            $(".container").sortable({axis:"y"});
         }
         init();
 
