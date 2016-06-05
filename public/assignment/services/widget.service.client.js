@@ -14,8 +14,7 @@
             findWidgetsByPageId: findWidgetsByPageId,
             findWidgetById: findWidgetById,
             updateWidget: updateWidget,
-            deleteWidget: deleteWidget,
-            uploadImage : uploadImage
+            deleteWidget: deleteWidget
         };
         return api;
 
@@ -58,12 +57,12 @@
             return result;
         }
         
-        function uploadImage(){
-            var widgetId = req.body.widgetId ;
-            var width = req.body.width ;
-            var myFile = req.file;
-            
-        }
+        // function uploadImage(){
+        //     var widgetId = req.body.widgetId ;
+        //     var width = req.body.width ;
+        //     var myFile = req.file;
+        //
+        // }
 
     }
 

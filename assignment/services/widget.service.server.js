@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.get("/api/widget/:widgetId",findWidgetById);
     app.put("/api/widget/:widgetId",updateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
-    app.post ("/api/upload ", upload.single('myFile'), uploadImage );
+    app.post("/api/upload",upload.single('myFile'),uploadImage);
 
     function createWidget(req,res){
         var newWidget = req.body;
@@ -119,7 +119,7 @@ module.exports = function (app) {
         res.send(400);
     }
 
-    function uploadImage (req, res) {
+    function uploadImage(req, res) {
         var widgetId = req.body.widgetId ;
         var width = req.body.width ;
         var myFile = req.file;
@@ -130,7 +130,15 @@ module.exports = function (app) {
         var size = myFile.size;
         var mimetype = myFile.mimetype;
 
-        res.send(200);
+        var id = req.params.widgetId;
+        for(var i in widgets){
+            if(widgets[i]._id === widgetId){
+                widgets[i].url = "/uploads/"+filename;
+                console.log(widgets[i]);
+            }
+        }
+
+        res.redirect("/assignment/index.html#/user/:uid/website/:wid/page/:pid/widget/"+widgetId);
     }
 
 

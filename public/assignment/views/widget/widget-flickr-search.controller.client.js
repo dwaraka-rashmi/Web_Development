@@ -8,7 +8,7 @@
 
     function FlickrImageSearchController($routeParams,FlickrService) {
         var vm = this;
-        vm.userId=$routeParams.uid;
+        // vm.userId=$routeParams.uid;
         vm.searchPhotos = searchPhotos;
 
         function searchPhotos(searchText) {
@@ -20,6 +20,7 @@
                     data = JSON.parse(data);
                     vm.photos = data.photos;
                 });
+            return true;
         }
     }
 })();
