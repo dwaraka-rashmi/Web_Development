@@ -23,18 +23,20 @@
         </a>
     </span>
     </div>
+<<<<<<< HEAD
     <!--<div class="row">-->
         <!--<div ng-repeat="photo in model.photos.photo" class="col-xs-4">-->
             <!--<img width="100%" ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
         <!--</div>-->
     <!--</div>-->
+=======
+>>>>>>> ce7486c1cef70a8d39a4ead4a346ad385f7060fc
     <div class="row">
         <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
             <img ng-click="model.selectPhoto(photo)"
                  ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
         </div>
     </div>
-
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
