@@ -28,7 +28,6 @@
                     function(response){
                         vm.error="Unable to search Flickr";
                     });
-<<<<<<< HEAD
         }
 
         function selectPhoto(photo) {
@@ -54,8 +53,6 @@
                     function(response){
                         vm.error = "Unable to select the picture";
                     });
-=======
->>>>>>> ce7486c1cef70a8d39a4ead4a346ad385f7060fc
         }
 
     }
