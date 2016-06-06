@@ -124,23 +124,26 @@ module.exports = function (app) {
         var widgetId = req.body.widgetId ;
         var width = req.body.width ;
         var myFile = req.file;
-        var originalname = myFile.originalname; // file name on user's computer
-        var filename = myFile.filename; // new file name in upload folder
-        var path = myFile.path; // full path of uploaded file
-        var destination = myFile.destination; // folder where file is saved to
-        var size = myFile.size;
-        var mimetype = myFile.mimetype;
+        if(myFile) {
+            var originalname = myFile.originalname; // file name on user's computer
+            var filename = myFile.filename; // new file name in upload folder
+            var path = myFile.path; // full path of uploaded file
+            var destination = myFile.destination; // folder where file is saved to
+            var size = myFile.size;
+            var mimetype = myFile.mimetype;
 
-        var id = req.params.widgetId;
-        for(var i in widgets){
-            if(widgets[i]._id === widgetId){
-                widgets[i].url = "/uploads/"+filename;
-                // console.log(widgets[i]);
+            var id = req.params.widgetId;
+            for (var i in widgets) {
+                if (widgets[i]._id === widgetId) {
+                    widgets[i].url = "/uploads/" + filename;
+                    // console.log(widgets[i]);
+                }
             }
-        }
 
-        console.log(req.body);
-        res.redirect("/assignment/index.html#/user/"+req.body.userId+"/website/"+req.body.websiteId+"/page/"+req.body.pageId+"/widget/"+widgetId);
+            console.log(req.body);
+            res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
+        }
+        res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
 
     }
 
