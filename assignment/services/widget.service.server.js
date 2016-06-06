@@ -120,6 +120,7 @@ module.exports = function (app) {
     }
 
     function uploadImage(req, res) {
+
         var widgetId = req.body.widgetId ;
         var width = req.body.width ;
         var myFile = req.file;
@@ -134,11 +135,13 @@ module.exports = function (app) {
         for(var i in widgets){
             if(widgets[i]._id === widgetId){
                 widgets[i].url = "/uploads/"+filename;
-                console.log(widgets[i]);
+                // console.log(widgets[i]);
             }
         }
 
-        res.redirect("/assignment/index.html#/user/:uid/website/:wid/page/:pid/widget/"+widgetId);
+        console.log(req.body);
+        res.redirect("/assignment/index.html#/user/"+req.body.userId+"/website/"+req.body.websiteId+"/page/"+req.body.pageId+"/widget/"+widgetId);
+
     }
 
 

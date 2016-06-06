@@ -57,12 +57,6 @@
             return result;
         }
         
-        // function uploadImage(){
-        //     var widgetId = req.body.widgetId ;
-        //     var width = req.body.width ;
-        //     var myFile = req.file;
-        //
-        // }
 
     }
 
