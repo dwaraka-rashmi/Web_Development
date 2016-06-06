@@ -21,7 +21,6 @@ module.exports = function(app){
     function createWebsite(req,res){
         var newWebsite = req.body;
         newWebsite._id =  (new Date()).getTime()+"";
-        // console.log(newWebsite);
         websites.push(newWebsite);
         res.send(newWebsite);
     }

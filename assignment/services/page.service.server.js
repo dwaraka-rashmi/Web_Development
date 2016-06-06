@@ -1,10 +1,10 @@
 module.exports = function (app) {
+
     var pages = [
         {"_id": "321", "name": "Post 1", "websiteId": "456"},
         {"_id": "432", "name": "Post 2", "websiteId": "456"},
         {"_id": "543", "name": "Post 3", "websiteId": "456"}
     ];
-
 
     app.post("/api/website/:websiteId/page",createPage);
     app.get("/api/website/:websiteId/page",findAllPagesForWebsite);
@@ -15,7 +15,6 @@ module.exports = function (app) {
     function createPage(req,res){
         var newPage = req.body;
         newPage._id =  (new Date()).getTime()+"";
-        // console.log(newPage);
         pages.push(newPage);
         res.send(newPage);
     }
@@ -28,7 +27,6 @@ module.exports = function (app) {
                 AllPagesForWebsite.push(pages[i]);
             }
         }
-        // console.log(AllPagesForWebsite);
         res.send(AllPagesForWebsite);
     }
 
@@ -58,7 +56,7 @@ module.exports = function (app) {
     }
 
     function deletePage(req,res) {
-        
+
         var pageId = req.params.pageId;
         for(var i in pages){
             if(pages[i]._id === pageId){

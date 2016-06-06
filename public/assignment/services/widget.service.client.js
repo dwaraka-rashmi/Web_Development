@@ -56,7 +56,6 @@
             var result = $http.delete("/api/widget/"+widgetId);
             return result;
         }
-        
 
     }
 
