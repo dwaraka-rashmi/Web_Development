@@ -139,11 +139,10 @@ module.exports = function (app) {
                     // console.log(widgets[i]);
                 }
             }
+        }
 
             console.log(req.body);
             res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
-        }
-        res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
 
     }
 
