@@ -4,7 +4,7 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.151",
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "mongoose": "^4.4.20",
     "multer": "^1.1.0"
