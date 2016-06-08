@@ -6,7 +6,7 @@ module.exports=function(){
     var mongoose = require("mongoose");
     mongoose.connect('mongodb://localhost/cs5610WebDev');
     var models = {
-        userModel: require("./user.model.server")()
+        userModel: require("./user/user.model.server")()
     };
     
     return models;
