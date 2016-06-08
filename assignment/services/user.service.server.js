@@ -1,8 +1,9 @@
 /**
  * Created by Rashmi_Dwaraka on 5/31/2016.
  */
-module.exports = function(app){
+module.exports = function(app,models){
 
+    var userModel = models.userModel;
     var users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -25,6 +26,7 @@ module.exports = function(app){
                 return;
             }
         }
+        userModel.createUser(user);
         user._id = (new Date()).getTime()+"";
         users.push(user);
         console.log(users);
