@@ -1,81 +1,338 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+<!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+<!--<meta name="viewport" content="initial-scale=1.25, user-scalable = no">-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Web Dev Course Home Page</title>-->
+<!--<script src="./js/jquery.js"></script>-->
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+<!--<link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
+<!--<link href="/css/style.css" rel="stylesheet"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-header">-->
+<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+<!--data-target="#menu" aria-expanded="false" aria-controls="menu">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--<a class="navbar-brand" href="#">Web Development</a>-->
+<!--</div>-->
+<!--<div class="collapse navbar-collapse" id="menu">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li class="active">-->
+<!--<a href="#">Home <span class="sr-only">(current)</span></a>-->
+<!--</li>-->
+<!--<li role="separator" class="divider"></li>-->
+<!--<li>-->
+<!--<a href="project/index.html">Project</a>-->
+<!--</li>-->
+<!--<li role="separator" class="divider"></li>-->
+<!--<li>-->
+<!--<a href="assignment/index.html">Assignment</a>-->
+<!--</li>-->
+<!--<li role="separator" class="divider"></li>-->
+<!--<li>-->
+<!--<a href="test/index.html">Tes/t MongoDB</a>-->
+<!--</li>-->
+<!--<li role="separator" class="divider"></li>-->
+<!--<li>-->
+<!--<a href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev">GitHub</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+<!--<div class="container">-->
+<!--<div id="home-row-1" class="row clearfix">-->
+<!--<div class="col-12">-->
+<!--<div class="about">-->
+<!--<img class="img-circle img-responsive" src="images/ProfilePic.jpg" align ="middle"/>-->
+<!--&lt;!&ndash;<img src="images/bg1.jpg" class="img-responsive" alt="Responsive image" width="100%" height="20%"/>&ndash;&gt;-->
+<!--<h1 class="font-semibold">-->
+<!--&lt;!&ndash;<img src="images/bg1.jpg" class="img-circle text-center" height="150" width="150">&ndash;&gt;-->
+<!--<br>Rashmi Dwaraka</h1>-->
+<!--<h4 class="font-thin">MS Computer Science</h4>-->
+<!--<h4 class="font-thin">Northeastern University</h4>-->
+<!--<h4 class="font-thin">Dec 2017</h4>-->
+<!--<p class="font-thin">-->
+<!--</p>-->
+<!--<br>-->
+<!--<br>-->
+<!--</div>&lt;!&ndash; /col-12 &ndash;&gt;-->
+<!--</div>&lt;!&ndash; /row &ndash;&gt;-->
+<!--</div>-->
+<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-footer">-->
+<!--<p class="navbar-text pull-right">-->
+<!--</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE HTML>
+<html>
 <head>
+    <title>HOME Page</title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
-    <script src="./js/jquery.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){
+            window.scrollTo(0,1);
+        }
+    </script>
+    <meta name="keywords" content="Stylo Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndriodCompatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!---pop-up-box---->
+    <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <!---//pop-up-box---->
+    <script>
+        $(document).ready(function() {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+        });
+    </script>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#menu" aria-expanded="false" aria-controls="menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Web Development</a>
+<!--header start here-->
+<div class="header">
+    <div class="container">
+        <div class="header-top">
+            <div class="top-navg">
+                <span class="menu"> <img src="images/icon.png" alt=""/></span>
+                <nav class="cl-effect-1">
+                    <ul class="res">
+                        <li><a class="scroll active" href="#home">Home</a></li>
+                        <li><a class="scroll" href="#about">About</a></li>
+                        <li><a class="scroll" href="#project">Project</a></li>
+                        <li><a class="scroll" href="#assignment">Assignment</a></li>
+                        <li><a class="scroll" href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- script-for-menu -->
+                <script>
+                    $( "span.menu" ).click(function() {
+                        $( "ul.res" ).slideToggle( 300, function() {
+                            // Animation complete.
+                        });
+                    });
+                </script>
+                <!-- /script-for-menu -->
+            </div>
+            <div class="clearfix"> </div>
         </div>
-        <div class="collapse navbar-collapse" id="menu">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                    <a href="project/index.html">Project</a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                    <a href="assignment/index.html">Assignment</a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                    <a href="test/index.html">Test MongoDB</a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                    <a href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev">GitHub</a>
-                </li>
-            </ul>
+        <div class="banner">
+            <img class="img-circle img-responsive" src="images/ProfilePic.jpg" align ="middle"/>
+            <h1>Rashmi Dwaraka</h1>
+            <p>Masters in Computer Science at Northeastern University</p>
         </div>
     </div>
-</nav>
-<div class="container">
-    <div id="home-row-1" class="row clearfix">
-        <div class="col-12">
-            <div class="about">
-                <img class="img-circle img-responsive" src="images/ProfilePic.jpg" align ="middle"/>
-                <!--<img src="images/bg1.jpg" class="img-responsive" alt="Responsive image" width="100%" height="20%"/>-->
-                <h1 class="font-semibold">
-                    <!--<img src="images/bg1.jpg" class="img-circle text-center" height="150" width="150">-->
-                    <br>Rashmi Dwaraka</h1>
-                <h4 class="font-thin">MS Computer Science</h4>
-                <h4 class="font-thin">Northeastern University</h4>
-                <h4 class="font-thin">Dec 2017</h4>
-                <p class="font-thin">
-                </p>
-                <br>
-                <br>
-            </div><!-- /col-12 -->
-        </div><!-- /row -->
-    </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-footer">
-                <p class="navbar-text pull-right">
-                </p>
+</div>
+<!--header end here-->
+<!--weare start here-->
+<div class="weare" id="about">
+    <div class="container bg">
+        <div class="weare-main">
+            <h2>About</h2>
+            <img src="images/circles.png" alt="">
+            <p>blah blah...............</p>
+        </div>
+        <div class="weare-bottom">
+            <div class="col-md-6 weare-right">
+                <h3>Courses</h3>
+                <div class="poling">
+                    <h4>Programming Design Paradigm</h4>
+                    <h4>Information Retrieval</h4>
+                    <h4>Web Development</h4>
+                </div>
             </div>
         </div>
-    </nav>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!--about end here-->
+<!--we do start here-->
+<div class="wedo" id="project">
+    <div class="container bg">
+        <div class="wedo-main">
+            <h3>Web Development Course Project</h3>
+            <img src="images/circles.png" alt=""/>
+        </div>
+        <div class="wedo-center">
+            <div class="col-md-4 wedo-grid">
+                <span class="glyphicon glyphicon glyphicon-user"> </span>
+                <h4><a href="#">Project Title</a></h4>
+                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo</p>
+                <a class="btn btn-primary btn-lg"
+                   href="/assignment/#/login">Login</a>
+                <a class="btn btn-success btn-lg"
+                   href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment">Github</a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!--we do end here-->
+<!--Assignment start here-->
+<div class="assignment" id='assignment'>
+    <div class="container bg">
+        <div class="assignment-top">
+            <h3>Web Development Course Assignment</h3>
+            <img src="images/circles.png" alt=""/>
+        </div>
+        <div class="assignment-bottom">
+            <p>
+                <a class="btn btn-primary btn-lg"
+                href="/assignment/#/login">Login</a>
+                <a class="btn btn-success btn-lg"
+                   href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment">Github</a>
+                <!--<button type="button" class="btn btn-primary btn-lg">Login</button>-->
+                <!--<button type="button" class="btn btn-primary btn-lg">Github</button>-->
+            </p>
+            <!--<div class="row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<a href="#" class="thumbnail">-->
+                        <!--<img src="./images/bg-image1.jpg" alt="...">-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<a href="#" class="thumbnail">-->
+                        <!--<img src="./images/bg-image1.jpg" alt="...">-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--Assignment end here-->
+<!--contact start here-->
+<div class="contact" id="contact">
+    <div class="container bg">
+        <div class="contact-main">
+            <div class="contact-top">
+                <h3>Contact</h3>
+                <img src="images/circles.png" alt="">
+                <br>
+                <h4>email: rashmidwaraka@gmail.com</h4>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <!--contact end here-->
+        <!--map start here-->
+        <div class="map">
+            <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'>
+            </script>
+            <div style='overflow:hidden;height:300px;width:100%;'>
+                <div id='gmap_canvas' style='height:300px;width:100%;'>
+                </div>
+                <div>
+                    <small><a href="http://embedgooglemaps.com">
+                        embed google maps
+                    </a></small>
+                </div>
+                <div>
+                    <small>
+                        <a href="https://termsandcondiitionssample.com">
+                            terms and conditions generator</a></small>
+                </div>
+                <style>#gmap_canvas img{
+                    max-width:none!important;
+                    background:none!important
+                }
+                </style>
+            </div>
+            <script type='text/javascript'>
+                function init_map(){
+                    var myOptions = {
+                        zoom:12,center:new google.maps.LatLng(42.3600825,-71.05888010000001),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                    marker = new google.maps.Marker(
+                            {map: map,position: new google.maps.LatLng(42.3600825,-71.05888010000001)
+                            });
+                    infowindow = new google.maps.InfoWindow({
+                        content:'<strong>Boston</strong><br>Boston<br>'
+                    });
+                    google.maps.event.addListener(marker, 'click', function(){
+                        infowindow.open(map,marker);
+                    });
+                    infowindow.open(map,marker);
+                }
+                google.maps.event.addDomListener(window, 'load', init_map);
+            </script>
+        </div>
+        <!--map end here-->
+        <div class="social">
+            <div class="container">
+                <div class="social-main">
+                    <ul>
+                        <li><span class="fa" onclick="location='https://www.facebook.com/rashmi.dwaraka?_rdr'"></span></li>
+                        <li><span class="tw" onclick="location='https://twitter.com/search?q=rashmi.dwaraka'"></span></li>
+                        <li><span class="g" onclick="location='https://plus.google.com/u/0/+rashmidwaraka5'"></span></li>
+                        <li><span class="in" onclick="location='https://www.linkedin.com/in/rashmidwaraka'"></span></li>
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        /*
+                         var defaults = {
+                         containerID: 'toTop', // fading element id
+                         containerHoverID: 'toTopHover', // fading element hover id
+                         scrollSpeed: 1200,
+                         easingType: 'linear'
+                         };
+                         */
+
+                        $().UItoTop({ easingType: 'easeOutQuart' });
+
+                    });
+                </script>
+                <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
