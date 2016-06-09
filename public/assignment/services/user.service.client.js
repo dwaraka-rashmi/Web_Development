@@ -25,7 +25,8 @@
                 username: user.username,
                 password: user.password
             };
-            return $http.post("/api/user",newUser);
+            var result = $http.post("/api/user",newUser);
+            return result;
 
         }
 

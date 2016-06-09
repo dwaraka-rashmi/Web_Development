@@ -1,7 +1,7 @@
 /**
  * Created by Rashmi_Dwaraka on 5/31/2016.
  */
-module.exports = function(app){
+module.exports = function(app,models){
 
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456" },

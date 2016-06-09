@@ -10,7 +10,7 @@
         var vm = this;
         var id = $routeParams.uid;
         vm.createUser = createUser;
-        
+
         vm.error = false;
 
         function createUser(user){
@@ -19,13 +19,17 @@
                     if (user.password.match(user.verifyPassword)) {
                         UserService
                             .createUser(user)
-                            .then(function(response){
-                                var user = response.data;
-                                if(user._id)
+                            .then(
+                                function(response){
+                                    var user = response.data;
+                                    if(user._id)
                                     $location.url("/user/" + user._id);
-                                else
+                                    else
+                                        vm.error = "Username already exists";
+                                },
+                                function(error){
                                     vm.error = "Username already exists";
-                            });
+                                });
                     }
                     else {
                         vm.error = "Could not be Registered";

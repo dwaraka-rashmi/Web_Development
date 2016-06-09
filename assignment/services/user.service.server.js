@@ -4,12 +4,13 @@
 module.exports = function(app,models){
 
     var userModel = models.userModel;
-    var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
+
+    // var users = [
+    //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+    //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+    //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+    // ];
 
     app.post("/api/user", createUser);
     app.get("/api/user", getUsers);
@@ -20,17 +21,34 @@ module.exports = function(app,models){
     function createUser(req,res){
         var user = req.body;
         //duplicate username validation
-        for(var i in users){
-            if(users[i].username===user.username){
-                res.send({});
-                return;
-            }
-        }
-        userModel.createUser(user);
-        user._id = (new Date()).getTime()+"";
-        users.push(user);
-        console.log(users);
-        res.send(user);
+        userModel
+            .findUserByName(user.username)
+            .then(
+                function(success){
+                    console.log("success:"+success);
+                    console.log("success l "+success.length);
+                    if(success.length==0) {
+                        userModel
+                            .createUser(user)
+                            .then(
+                                function (user) {
+                                    console.log(user);
+                                    res.json(user);
+                                },
+                                function (error) {
+                                    res.statusCode(400).send(error);
+                                }
+                            );
+                    }
+                    else {
+                        console.log("already exists");
+                        res.json({});
+                        // res.statusCode(400).send(error);
+                    }
+                },
+                function(error){
+                    res.statusCode(400).send(error);
+                });
     }
 
     function getUsers(req,res){
@@ -38,72 +56,90 @@ module.exports = function(app,models){
         var password = req.query.password;
         //console.log(username+" "+password);
         if(username&&password){
-            findUserByCredentials(username,password,res);
+            userModel
+                .findUserByCredentials(username,password)
+                .then(
+                    function(user){
+                        console.log(user);
+                        res.json(user);
+                    },
+                    function(error) {
+                        res.statusCode(400).send(error);
+                    }
+                );
         }
         else
         if(username){
-            findUserByUsername(username,res);
+            userModel
+                .findUserByUsername(username)
+                .then(
+                    function(user){
+                        console.log(user);
+                        res.json(user);
+                    },
+                    function(error) {
+                        res.statusCode(400).send(error);
+                    }
+                );
         }
-        else
-            res.send(users);
+        else {
+
+            res.statusCode(400).send(error);
+        }
     }
 
-    function findUserByCredentials(username,password,res){
-        for(var i in users){
-            if(users[i].username===username && users[i].password===password){
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
-    }
-
-    function findUserByUsername(username,res){
-        for(var i in users){
-            if(users[i].username===username){
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
-    }
 
     function getUserById(req,res){
+
         var id = req.params.id;
-        for(var i in users){
-            if(users[i]._id === id){
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.send({});
+
+        userModel
+            .findUserById(id)
+            .then(
+                function(user) {
+                    res.send(user);
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+
     }
 
     function updateUser(req,res){
+
         var id = req.params.id;
-        var user = req.body;
-        for(var i in users) {
-            if (users[i]._id === id) {
-                users[i].firstName = user.firstName;
-                users[i].lastName = user.lastName;
-                //console.log(user);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+        var newUser = req.body;
+
+        userModel
+            .updateUser(id, newUser)
+            .then(
+                function(stats) {
+                    console.log(stats);
+                    res.send(200);
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+
     }
 
     function deleteUser(req,res){
+
         var id = req.params.id;
-        for(var i in users) {
-            if (users[i]._id === id) {
-                users.splice(i,1);
-                res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+
+        userModel
+            .deleteUser(id)
+            .then(
+                function(stats) {
+                    console.log(stats);
+                    res.send(200);
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
+                }
+            );
     }
 
 };
