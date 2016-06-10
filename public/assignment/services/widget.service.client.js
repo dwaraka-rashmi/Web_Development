@@ -23,12 +23,11 @@
         function createWidget(pageId, widget){
 
             var newWidget = {
-                widgetType: widget.widgetType,
-                pageId : pageId
+                widgetType: widget.widgetType
             };
 
-            var newWidget = $http.post("/api/page/"+pageId+"/widget",newWidget);
-            return newWidget;
+            return $http.post("/api/page/"+pageId+"/widget",newWidget);
+
         }
 
         // findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId

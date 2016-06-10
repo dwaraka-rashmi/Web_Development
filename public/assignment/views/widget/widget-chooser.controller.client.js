@@ -29,18 +29,18 @@
         ];
         vm.error = false;
 
-        function init(){
-            WidgetService
-                .findWidgetsByPageId(vm.pageId)
-                .then(
-                    function(response){
-                        vm.widgets = response.data;
-                    },
-                    function(response){
-                        vm.error = "Unable to fetch Widgets";
-                    });
-        }
-        init();
+        // function init(){
+        //     WidgetService
+        //         .findWidgetsByPageId(vm.pageId)
+        //         .then(
+        //             function(response){
+        //                 vm.widgets = response.data;
+        //             },
+        //             function(response){
+        //                 vm.error = "Unable to fetch Widgets";
+        //             });
+        // }
+        // init();
 
         function createWidget(type){
             var widget = {
