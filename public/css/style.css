@@ -648,6 +648,7 @@ img.zoom-img:hover {
     }
     .assignment-top h3 {
         font-size: 1.9em;
+        margin-bottom: auto;
     }
     .assignment-top {
         padding: 1em 0em 1em 0em;
@@ -655,6 +656,7 @@ img.zoom-img:hover {
 
     .contact-top h3 {
         font-size: 1.9em;
+        margin-bottom: auto;
     }
     .contact-bottom input.name {
         margin: 0em 0.5em 0em 0em;
@@ -746,6 +748,8 @@ img.zoom-img:hover {
     }
     .wedo-main h3 {
         font-size: 1.6em;
+        margin-bottom: auto;
+
     }
     span.glyphicon.glyphicon.glyphicon-user {
         font-size: 2.5em;
@@ -768,11 +772,9 @@ img.zoom-img:hover {
     }
     .assignment-top h3 {
         font-size: 1.6em;
+        margin-bottom: auto;
     }
 
-    .contact-top h3 {
-        font-size: 1.6em;
-    }
     .contact-top {
         padding: 1em 0em 1em 0em;
     }

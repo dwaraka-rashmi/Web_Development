@@ -31,7 +31,8 @@ module.exports = function() {
     }
 
     function findUserByCredentials(username, password) {
-        return User.findOne({username: username, password: password});
+        var user = User.findOne({username: username, password: password});
+        return user;
     }
 
     function findUserById(userId) {
