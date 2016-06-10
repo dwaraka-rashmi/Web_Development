@@ -3,7 +3,7 @@
  */
 module.exports=function(){
 
-    var connectionString = 'mongodb://127.0.0.1:27017/test';
+    var connectionString = 'mongodb://127.0.0.1:27017/webdev';
 
     if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -12,9 +12,10 @@ module.exports=function(){
             process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
             process.env.OPENSHIFT_APP_NAME;
     }
-    
+
     var mongoose = require("mongoose");
-    mongoose.connect('mongodb://localhost/cs5610WebDev');
+    mongoose.connect(connectionString);
+    // mongoose.connect('mongodb://localhost/cs5610WebDev');
 
     var models = {
         userModel: require("./user/user.model.server")()
