@@ -21,9 +21,13 @@
             // vm.widget = WidgetService.findWidgetById(vm.widgetId);
             WidgetService
                 .findWidgetById(vm.widgetId)
-                .then(function(response){
-                    vm.widget = response.data;
-                });
+                .then(
+                    function(response){
+                        vm.widget = response.data;
+                    },
+                    function (error) {
+                        vm.error="some error ocurred";
+                    });
         }
         init();
 
@@ -39,17 +43,22 @@
                     });
         }
 
-        function updateWidget(widget){
-            WidgetService
-                .updateWidget(vm.widgetId, widget)
-                .then(
-                    function(response){
-                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
-                    },
-                    function(response){
-                        vm.error = "Unable to update Widget";
-                    }
-                )
+        function updateWidget(widget) {
+            if (widget.name === undefined)
+                vm.error = "Kindly enter the name of the widget";
+            else
+            {
+                WidgetService
+                    .updateWidget(vm.widgetId, widget)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                        },
+                        function (response) {
+                            vm.error = "Unable to update Widget";
+                        }
+                    )
+            }
         }
 
     }

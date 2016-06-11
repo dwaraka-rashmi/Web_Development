@@ -45,4 +45,4 @@ module.exports = function() {
         return Widget.remove({_id: widgetId});
     }
 
-};
+}

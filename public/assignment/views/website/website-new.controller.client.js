@@ -17,12 +17,16 @@
             if(website) {
                 WebsiteService
                     .createWebsite(vm.userId,website)
-                    .then(function(response){
-                        if(response.data._id)
-                            $location.url("/user/"+vm.userId+"/website");
-                        else
+                    .then(
+                        function(response){
+                            if(response.data)
+                                $location.url("/user/"+vm.userId+"/website");
+                            else
+                                vm.error = "Unable to create website";
+                        },
+                        function(error){
                             vm.error = "Unable to create website";
-                    });
+                        });
             }
             else {
                 vm.error = "Unable to create website";

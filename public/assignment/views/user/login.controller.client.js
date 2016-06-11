@@ -9,19 +9,27 @@
 
         var vm = this;
         vm.error = false;
-        vm.login = function(username,password){
-            UserService
-                .findUserByCredentials(username,password)
-                .then(function(response) {
-                    console.log(response);
-                    var user = response.data;
-                    if (user._id) {
-                        $location.url("/user/" + user._id);
-                    }
-                    else {
-                        vm.error = "user not found";
-                    }
-                });
+        vm.login = function(username,password) {
+            if (username === undefined && password === undefined)
+                vm.error = "Kindly enter Username and Password";
+            else {
+                UserService
+                    .findUserByCredentials(username, password)
+                    .then(function (response) {
+                            console.log(response);
+                            var user = response.data;
+                            if (user) {
+                                $location.url("/user/" + user._id);
+                            }
+                            else {
+                                vm.error = "user not found";
+                            }
+                        },
+                        function (error) {
+                            vm.error = "user not found";
+
+                        });
+            }
         }
     }
 })();
