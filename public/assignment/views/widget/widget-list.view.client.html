@@ -19,8 +19,8 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div ng-repeat="widget in model.widgets"
+<div wam-sortable wam-callback="model.reorderWidget(start, end)" class="container">
+    <div ng-repeat="widget in model.widgets | orderBy : 'order'"
          class="jga-widget">
         <div class="jga-widget-tool">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">

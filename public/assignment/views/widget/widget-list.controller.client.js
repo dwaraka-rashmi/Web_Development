@@ -14,6 +14,7 @@
         vm.pageId = $routeParams.pid;
         vm.getSafeHtml = getSafeHtml;
         vm.getSafeUrl = getSafeUrl;
+        vm.reorderWidget = reorderWidget;
         vm.error = false;
 
         function init(){
@@ -26,9 +27,13 @@
                     function(response){
                         vm.error = "Unable to fetch the widgets";
                     });
-            $(".container").sortable({axis:"y"});
+            // $(".container").sortable({axis:"y"});
         }
         init();
+
+        function reorderWidget(){
+            
+        }
 
         function getSafeHtml(widget){
             return $sce.trustAsHtml(widget.text)

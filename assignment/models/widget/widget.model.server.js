@@ -19,10 +19,20 @@ module.exports = function() {
     };
     return api;
 
+
      function createWidget(pageId, widget){
         widget._page = pageId;
-         console.log(widget);
-        return Widget.create(widget);
+         return Widget
+             .find({_page: pageId})
+             .then(
+                 function (widgets) {
+                     widget.order = widgets.length;
+                     return Widget.create(widget);
+                 },
+                 function (error) {
+                     return null;
+                 }
+             );
     }
 
     function findAllWidgetsForPage(pageId){
