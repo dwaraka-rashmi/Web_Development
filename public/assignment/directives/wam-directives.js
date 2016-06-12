@@ -20,6 +20,7 @@
                     },
                     stop: function(event, ui) {
                         end = ui.item.index();
+                        // alert($(this).data().$scope.model.widgets);
                         scope.wamCallback({
                             start: start,
                             end: end

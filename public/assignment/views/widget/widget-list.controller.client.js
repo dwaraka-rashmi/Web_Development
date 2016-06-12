@@ -31,8 +31,18 @@
         }
         init();
 
-        function reorderWidget(){
-            
+        function reorderWidget(start,end){
+            console.log(start+" "+end);
+            WidgetService
+                .reorderWidget(vm.pageId,start,end)
+                .then(
+                    function(response){
+                        // vm.widgets = response.data;
+                        init();
+                    },
+                    function(response){
+                        vm.error = "Unable to reorder widgets";
+                    });
         }
 
         function getSafeHtml(widget){

@@ -57,12 +57,11 @@
             return result;
         }
 
-        function reorderWidget(start, end) {
+        function reorderWidget(pageId,start, end) {
             // var pageId =
             console.log(start);
             console.log(end);
-            $http.put("/page/"+pageId+"/widget?start="+start+"&end="+end)
-                .then(init);
+            return $http.put("/page/"+pageId+"/widget?start="+start+"&end="+end);
         }
 
     }

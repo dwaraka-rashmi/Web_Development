@@ -23,6 +23,49 @@ module.exports = function (app,models) {
     app.put("/api/widget/:widgetId",updateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
     app.post("/api/upload",upload.single('myFile'),uploadImage);
+    app.put("/page/:pageId/widget",reorderWidget);
+
+
+    function reorderWidget(req,res){
+
+        var pageId = req.params.pageId;
+        var start = req.query.start;
+        var end = req.query.end;
+        start = start;
+        end = end;
+        widgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(
+                function(widgets) {
+                    widgets.forEach(function(widget){
+                        delete widget._id;
+                        if(widget.order==start){
+                            
+                            widget.order = end;
+                        }
+                        else if(widget.order>start && widget.order<=end){
+                            widget.order = widget.order-1;
+                        }
+                        else if(widget.order<start && widget.order>=end){
+                            widget.order = widget.order+1;
+                        }
+
+                    });
+                    // console.log(widgets);
+                    widgetModel
+                        .reorderWidget(pageId,widgets)
+                        .then(
+                            function(response){
+                                res.json(widgets);
+                            },
+                            function(error){
+                                res.json({});
+                            });
+                },
+                function(error){
+                    res.json({});
+                });
+    }
 
     function createWidget(req,res){
         var id = req.params.pageId;
@@ -99,55 +142,6 @@ module.exports = function (app,models) {
                     res.json({});
                 }
             );
-        // for(var i in widgets) {
-        //     if (widgets[i]._id === id) {
-        //
-        //         switch(widget.widgetType){
-        //             case 'HEADER':
-        //                 widgets[i].name = widget.name;
-        //                 if(widget.content != undefined){
-        //                     widgets[i].text = widget.content;
-        //                 }
-        //                 widgets[i].size = widget.size;
-        //                 break;
-        //             case 'IMAGE':
-        //                 widgets[i].name = widget.name;
-        //                 if(widget.content != undefined){
-        //                     widgets[i].text = widget.content;
-        //                 }
-        //                 if(widget.url != undefined){
-        //                     widgets[i].url = widget.url;
-        //                 }
-        //                 if(widget.width != undefined){
-        //                     widgets[i].width = widget.width;
-        //                 }
-        //                 else {
-        //                     widgets[i].width = "100%";
-        //                 }
-        //                 break;
-        //             case 'YOUTUBE':
-        //                 widgets[i].name = widget.name;
-        //                 if(widget.content != undefined){
-        //                     widgets[i].text = widget.content;
-        //                 }
-        //                 if(widget.url != undefined){
-        //                     widgets[i].url = widget.url;
-        //                 }
-        //                 if(widget.width != undefined){
-        //                     widgets[i].width = widget.width;
-        //                 }
-        //                 else {
-        //                     widgets[i].width = "100%";
-        //                 }
-        //                 break;
-        //             default: break;
-        //         }
-        //         res.send(widgets[i]);
-        //         return;
-        //     }
-        // }
-        // res.send({});
-
     }
 
     function deleteWidget(req,res) {
@@ -194,8 +188,8 @@ module.exports = function (app,models) {
             }
         }
 
-            console.log(req.body);
-            res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
+        console.log(req.body);
+        res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
 
     }
 
