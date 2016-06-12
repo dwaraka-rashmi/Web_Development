@@ -25,6 +25,7 @@
                         });
             }
             else {
+                $("#page-name").css({'background-color' : 'red'});
                 vm.error = "Unable to create Page";
             }
         }

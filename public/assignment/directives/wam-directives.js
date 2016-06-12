@@ -30,7 +30,6 @@
         }
         return {
             scope: {
-                // data: "=model.widgets",
                 wamCallback: '&'
             },
             link: linker

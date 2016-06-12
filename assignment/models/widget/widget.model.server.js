@@ -9,7 +9,6 @@ module.exports = function() {
     var Widget = mongoose.model("Widget", WidgetSchema);
 
     var api = {
-
         createWidget: createWidget,
         findAllWidgetsForPage : findAllWidgetsForPage,
         findWidgetById:findWidgetById,
@@ -18,7 +17,6 @@ module.exports = function() {
         reorderWidget:reorderWidget
     };
     return api;
-
 
     function createWidget(pageId, widget){
         widget._page = pageId;
@@ -56,10 +54,7 @@ module.exports = function() {
     }
 
     function reorderWidget(pageId,widgets){
-
         return  Widget.update({_page: pageId}, {$set: widgets}, false, true);
-
     }
-
-
+    
 }

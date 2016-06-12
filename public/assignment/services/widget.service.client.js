@@ -22,11 +22,9 @@
         // createWidget(pageId, widget) - adds the widget parameter instance to the local widgets array.
         //     The new widget's pageId is set to the pageId parameter
         function createWidget(pageId, widget){
-
             var newWidget = {
                 widgetType: widget.widgetType
             };
-
             return $http.post("/api/page/"+pageId+"/widget",newWidget);
 
         }
@@ -46,7 +44,6 @@
 
         //updateWidget(widgetId, widget) - updates the widget in local widgets array whose _id matches the widgetId parameter
         function updateWidget(widgetId, widget) {
-
             var result = $http.put("/api/widget/"+widgetId,widget);
             return result;
         }

@@ -29,6 +29,7 @@
                         });
             }
             else {
+                $("#website-name").css({'background-color' : 'red'});
                 vm.error = "Unable to create website";
             }
         }

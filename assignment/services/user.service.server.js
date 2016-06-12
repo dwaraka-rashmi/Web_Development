@@ -5,13 +5,6 @@ module.exports = function(app,models){
 
     var userModel = models.userModel;
 
-    // var users = [
-    //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-    //     {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    //     {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    //     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    // ];
-
     app.post("/api/user", createUser);
     app.get("/api/user", getUsers);
     app.get("/api/user/:id", getUserById);
@@ -83,7 +76,6 @@ module.exports = function(app,models){
                 );
         }
         else {
-
             res.statusCode(400).send(error);
         }
     }
@@ -92,7 +84,6 @@ module.exports = function(app,models){
     function getUserById(req,res){
 
         var id = req.params.id;
-
         userModel
             .findUserById(id)
             .then(

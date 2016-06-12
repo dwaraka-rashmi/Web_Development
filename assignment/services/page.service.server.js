@@ -1,11 +1,6 @@
 module.exports = function (app,models) {
 
     var pageModel = models.pageModel;
-    // var pages = [
-    //     {"_id": "321", "name": "Post 1", "websiteId": "456"},
-    //     {"_id": "432", "name": "Post 2", "websiteId": "456"},
-    //     {"_id": "543", "name": "Post 3", "websiteId": "456"}
-    // ];
 
     app.post("/api/website/:websiteId/page",createPage);
     app.get("/api/website/:websiteId/page",findAllPagesForWebsite);
@@ -26,9 +21,6 @@ module.exports = function (app,models) {
                     res.json({});
                 }
             );
-        // newPage._id =  (new Date()).getTime()+"";
-        // pages.push(newPage);
-        // res.send(newPage);
     }
 
     function findAllPagesForWebsite(req,res) {
@@ -43,13 +35,6 @@ module.exports = function (app,models) {
                     res.json({});
                 }
             );
-        // var AllPagesForWebsite = [];
-        // for (var i in pages) {
-        //     if (pages[i].websiteId === id) {
-        //         AllPagesForWebsite.push(pages[i]);
-        //     }
-        // }
-        // res.send(AllPagesForWebsite);
     }
 
     function findPageById(req,res) {
@@ -64,13 +49,6 @@ module.exports = function (app,models) {
                     res.json({});
                 }
             );
-        // for(var i in pages){
-        //     if(pages[i]._id === id){
-        //         res.send(pages[i]);
-        //         return;
-        //     }
-        // }
-        // res.send({});
     }
 
     function updatePage(req,res) {
@@ -86,15 +64,6 @@ module.exports = function (app,models) {
                     res.json({});
                 }
             );
-        // for(var i in pages){
-        //     if(pages[i]._id === pageId){
-        //         pages[i].name = page.name;
-        //         pages[i].description = page.description;
-        //         res.send(pages[i]);
-        //         return;
-        //     }
-        // }
-        // res.send({});
     }
 
     function deletePage(req,res) {
@@ -110,15 +79,6 @@ module.exports = function (app,models) {
                     res.json(400);
                 }
             );
-        // for(var i in pages){
-        //     if(pages[i]._id === pageId){
-        //         pages.splice(i,1);
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
-
     }
 
 }
