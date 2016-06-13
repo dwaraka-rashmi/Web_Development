@@ -54,47 +54,47 @@ module.exports = function() {
     }
 
     function reorderWidget(pageId,start,end){
-        // var widgetId = widget._id;
-        // delete widget._id;
-        // return Widget
-        //     .update({_id: widgetId},{
-        //         $set: widget
-        //     });
-        // for(var i = 0;i<widgets.length;i++){
-        //     delete widgets[i]._id;
-        // }
-        // // widgets.forEach(function(widget){
-        // //     delete widget._id;
-        // // });
-        // console.log(widgets);
-        // // Widget.remove({_page: pageId},function(error, doc, result) {
-        //     return  Widget.update({_page: pageId}, {$set: widgets}, false, true);
-        // // });
+        console.log("Start="+start);
+        console.log("End="+end);
+        start = parseInt(start);
+        end = parseInt(end);
 
-            return Widget
-                    .find({_page:pageId},
-                        function(err,widgets){
-                        widgets.forEach(function(widget){
-                            if(widget.order==start){
-                   //             delete widget._id;
-                                widget.order = end;
-                                widget.save(function(){});
-                            }
-                            else if(widget.order>start && widget.order<end){
-                                //delete widget._id;
-                                widget.order = widget.order-1;
-                                widget.save(function(){});
-                            }
-                            else if(widget.order<start && widget.order>end){
-                                // delete widget._id;
-                                widget.order = widget.order+1
-                                widget.save(function(){});
-                            }
-                        });
+        return Widget
+            .find({_page: pageId}, function (err, widgets) {
+                // console.log('Start : '+start)
+                // console.log('End : '+end)
+                widgets.forEach(function(widget){
+
+                    if(start< end){
+                        if(widget.order > start && widget.order <= end){
+                            console.log("old"+widget.order);
+                            widget.order= widget.order - 1;
+                            widget.save();
+                            console.log("new"+widget.order);
+                        }
+                        else if(widget.order === start){
+                            console.log("old"+widget.order);
+                            widget.order = end;
+                            widget.save();
+                            console.log("new"+widget.order);
+                        }
+                    } else{
+                        if(widget.order <= start && widget.order > end){
+                            console.log("old"+widget.order);
+                            widget.order=widget.order+1;
+                            widget.save();
+                            console.log("new"+widget.order);
+
+                        }
+                        else if(widget.order === start){
+                            console.log("old"+widget.order);
+                            widget.order = end;
+                            widget.save();
+                            console.log("new"+widget.order);
+                        }
+                    }
                 });
-
-
-
+            });
     }
 
 }
