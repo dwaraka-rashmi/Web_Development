@@ -53,8 +53,14 @@ module.exports = function() {
         return Widget.remove({_id: widgetId});
     }
 
-    function reorderWidget(pageId,widgets){
-        return  Widget.update({_page: pageId}, {$set: widgets}, false, true);
+    function reorderWidget(pageId,widget){
+        var widgetId = widget._id;
+        delete widget._id;
+        return Widget
+            .update({_id: widgetId},{
+                $set: widget
+            });
+        // return  Widget.update({_page: pageId}, {$set: widget}, false, true);
     }
-    
+
 }

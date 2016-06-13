@@ -18,34 +18,61 @@ module.exports = function (app,models) {
         var pageId = req.params.pageId;
         var start = req.query.start;
         var end = req.query.end;
-        
+
         widgetModel
             .findAllWidgetsForPage(pageId)
             .then(
                 function(widgets) {
                     widgets.forEach(function(widget){
-                        delete widget._id;
+                        //delete widget._id;
                         if(widget.order==start){
                             widget.order = end;
+                            widgetModel
+                                .reorderWidget(pageId,widget)
+                                .then(
+                                    function(response){
+                                        res.json(widgets);
+                                    },
+                                    function(error){
+                                        res.json({});
+                                    });
                         }
                         else if(widget.order>start && widget.order<=end){
                             widget.order = widget.order-1;
+                            widgetModel
+                                .reorderWidget(pageId,widget)
+                                .then(
+                                    function(response){
+                                        res.json(widget);
+                                    },
+                                    function(error){
+                                        res.json({});
+                                    });
                         }
                         else if(widget.order<start && widget.order>=end){
                             widget.order = widget.order+1;
+                            widgetModel
+                                .reorderWidget(pageId,widget)
+                                .then(
+                                    function(response){
+                                        res.json(widget);
+                                    },
+                                    function(error){
+                                        res.json({});
+                                    });
                         }
 
                     });
                     // console.log(widgets);
-                    widgetModel
-                        .reorderWidget(pageId,widgets)
-                        .then(
-                            function(response){
-                                res.json(widgets);
-                            },
-                            function(error){
-                                res.json({});
-                            });
+                    // widgetModel
+                    //     .reorderWidget(pageId,widgets)
+                    //     .then(
+                    //         function(response){
+                    //             res.json(widgets);
+                    //         },
+                    //         function(error){
+                    //             res.json({});
+                    //         });
                 },
                 function(error){
                     res.json({});
