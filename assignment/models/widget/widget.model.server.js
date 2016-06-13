@@ -63,6 +63,8 @@ module.exports = function() {
             .find({_page: pageId}, function (err, widgets) {
                 // console.log('Start : '+start)
                 // console.log('End : '+end)
+                // if(start> end)
+                //     start-=1;
                 widgets.forEach(function(widget){
 
                     if(start< end){
@@ -79,7 +81,7 @@ module.exports = function() {
                             console.log("new"+widget.order);
                         }
                     } else{
-                        if(widget.order <= start && widget.order > end){
+                        if(widget.order < start && widget.order >= end){
                             console.log("old"+widget.order);
                             widget.order=widget.order+1;
                             widget.save();
