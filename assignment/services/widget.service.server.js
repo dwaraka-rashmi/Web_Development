@@ -20,63 +20,94 @@ module.exports = function (app,models) {
         var end = req.query.end;
 
         widgetModel
-            .findAllWidgetsForPage(pageId)
-            .then(
-                function(widgets) {
-                    widgets.forEach(function(widget){
-                        //delete widget._id;
-                        if(widget.order==start){
-                            widget.order = end;
-                            widgetModel
-                                .reorderWidget(pageId,widget)
-                                .then(
-                                    function(response){
-                                        res.json(widgets);
-                                    },
-                                    function(error){
-                                        res.json({});
-                                    });
-                        }
-                        else if(widget.order>start && widget.order<=end){
-                            widget.order = widget.order-1;
-                            widgetModel
-                                .reorderWidget(pageId,widget)
-                                .then(
-                                    function(response){
-                                        res.json(widget);
-                                    },
-                                    function(error){
-                                        res.json({});
-                                    });
-                        }
-                        else if(widget.order<start && widget.order>=end){
-                            widget.order = widget.order+1;
-                            widgetModel
-                                .reorderWidget(pageId,widget)
-                                .then(
-                                    function(response){
-                                        res.json(widget);
-                                    },
-                                    function(error){
-                                        res.json({});
-                                    });
-                        }
+            .reorderWidget(pageId,start,end)
+            .then(function(widgets){
+                res.json(widgets);
+            },
+            function(widgets){
+                res,json({});
+            });
+        // widgetModel
+        //     .findAllWidgetsForPage(pageId)
+        //     .then(
+        //         function(widgets){
+        //             widgets.forEach(function(widget){
+        //                 if(widget.order==start){
+        //                     delete widget._id;
+        //                     widget.order = end;
+        //                 }
+        //                 else if(widget.order>start && widget.order<end){
+        //                     delete widget._id;
+        //                     widget.order = widget.order-1;
+        //                 }
+        //                 else if(widget.order<start && widget.order>end){
+        //                     delete widget._id;
+        //                     widget.order = widget.order+1
+        //                 }
+        //             });
+        //             //console.log(widgets);
+        //             widgetModel
+        //                 .reorderWidget(pageId,widgets)
+        //                 .then(
+        //                     function(widgets){
+        //                         res.json(widgets);
+        //                     },
+        //                     function(error){
+        //                         res.json({});
+        //                     }
+        //                 );
+        //
+        //         },
+        //         function(error){
+        //             res.json({});
+        //         }
+        //     )
 
-                    });
-                    // console.log(widgets);
-                    // widgetModel
-                    //     .reorderWidget(pageId,widgets)
-                    //     .then(
-                    //         function(response){
-                    //             res.json(widgets);
-                    //         },
-                    //         function(error){
-                    //             res.json({});
-                    //         });
-                },
-                function(error){
-                    res.json({});
-                });
+        // widgetModel
+        //     .findAllWidgetsForPage(pageId)
+        //     .then(
+        //         function(widgets) {
+        //             widgets.forEach(function(widget){
+        //                 if(widget.order==start){
+        //                     widget.order = end; widgetModel
+        //                         .reorderWidget(pageId,widget)
+        //                         .then(
+        //                             function(response){
+        //                                 res.json(widgets);
+        //                             },
+        //                             function(error){
+        //                                 res.json({});
+        //                             });
+        //                 }
+        //                 else if(widget.order>start && widget.order<=end){
+        //                     widget.order = widget.order-1; widgetModel
+        //                         .reorderWidget(pageId,widget)
+        //                         .then(
+        //                             function(response){
+        //                                 res.json(widget);
+        //                             },
+        //                             function(error){
+        //                                 res.json({});
+        //                             });
+        //                 }
+        //                 else if(widget.order<start && widget.order>=end){
+        //                     widget.order = widget.order+1;
+        //                     widgetModel
+        //                         .reorderWidget(pageId,widget)
+        //                         .then(
+        //                             function(response){
+        //                                 res.json(widget);
+        //                             },
+        //                             function(error){
+        //                                 res.json({});
+        //                             });
+        //                 }
+        //
+        //             });
+        //         },
+        //         function(error){
+        //             res.json({});
+        //         });
     }
 
     function createWidget(req,res){

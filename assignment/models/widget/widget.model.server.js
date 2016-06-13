@@ -53,14 +53,48 @@ module.exports = function() {
         return Widget.remove({_id: widgetId});
     }
 
-    function reorderWidget(pageId,widget){
-        var widgetId = widget._id;
-        delete widget._id;
-        return Widget
-            .update({_id: widgetId},{
-                $set: widget
-            });
-        // return  Widget.update({_page: pageId}, {$set: widget}, false, true);
+    function reorderWidget(pageId,start,end){
+        // var widgetId = widget._id;
+        // delete widget._id;
+        // return Widget
+        //     .update({_id: widgetId},{
+        //         $set: widget
+        //     });
+        // for(var i = 0;i<widgets.length;i++){
+        //     delete widgets[i]._id;
+        // }
+        // // widgets.forEach(function(widget){
+        // //     delete widget._id;
+        // // });
+        // console.log(widgets);
+        // // Widget.remove({_page: pageId},function(error, doc, result) {
+        //     return  Widget.update({_page: pageId}, {$set: widgets}, false, true);
+        // // });
+
+            return Widget
+                    .find({_page:pageId},
+                        function(err,widgets){
+                        widgets.forEach(function(widget){
+                            if(widget.order==start){
+                   //             delete widget._id;
+                                widget.order = end;
+                                widget.save(function(){});
+                            }
+                            else if(widget.order>start && widget.order<end){
+                                //delete widget._id;
+                                widget.order = widget.order-1;
+                                widget.save(function(){});
+                            }
+                            else if(widget.order<start && widget.order>end){
+                                // delete widget._id;
+                                widget.order = widget.order+1
+                                widget.save(function(){});
+                            }
+                        });
+                });
+
+
+
     }
 
 }
