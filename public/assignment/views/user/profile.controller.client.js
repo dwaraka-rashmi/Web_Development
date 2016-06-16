@@ -25,8 +25,7 @@
                     },
                     function(error){
                         vm.error = "Unable to logout";
-                    }
-                );
+                    });
         }
 
         function unregister(){
@@ -44,7 +43,7 @@
                 .findUserById(id)
                 .then(function(response){
                     vm.user = response.data;
-                })
+                });
             vm.success = false;
             vm.error = false;
         }
@@ -58,7 +57,7 @@
                     },
                     function(error){
                         vm.error = error;
-                    })
+                    });
         }
     }
 })();

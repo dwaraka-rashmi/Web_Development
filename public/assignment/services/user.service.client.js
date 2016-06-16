@@ -11,7 +11,7 @@
         var api = {
             createUser: createUser,
             login : login,
-            logout:logout,
+            logout: logout,
             loggedIn:loggedIn,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
