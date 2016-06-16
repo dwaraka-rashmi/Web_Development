@@ -10,6 +10,7 @@
 
         var api = {
             createUser: createUser,
+            register: register,
             login : login,
             logout: logout,
             loggedIn:loggedIn,
@@ -30,7 +31,15 @@
             };
             var result = $http.post("/api/user",newUser);
             return result;
+        }
 
+        function register(user){
+
+            var newUser = {
+                username: user.username,
+                password: user.password
+            };
+            return $http.post("/api/register",newUser);
         }
 
         function login(username,password){

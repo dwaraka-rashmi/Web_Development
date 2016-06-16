@@ -10,6 +10,7 @@ module.exports = function(app,models){
     var userModel = models.userModel;
 
     app.post("/api/user", createUser);
+    app.post("/api/register", register);
     app.get("/api/user", getUsers);
     app.get("/api/loggedIn", loggedIn);
     app.post("/api/login", passport.authenticate('wam'), login);
@@ -30,8 +31,7 @@ module.exports = function(app,models){
                     if(user.username === username && user.password === password) {
                         done(null, user);
                     }
-                    else
-                    {
+                    else {
                         done(null, false);
                     }
                 },
@@ -58,13 +58,10 @@ module.exports = function(app,models){
             );
     }
 
-
     function login(req,res){
-
         var user = req.user;
         console.log("login"+user);
         res.json(user);
-
     }
 
     function logout(req,res){
@@ -79,6 +76,43 @@ module.exports = function(app,models){
         else {
             res.json('0');
         }
+    }
+
+    function register(req,res){
+
+        var username = req.body.username;
+        var password = req.body.password;
+        userModel
+            .findUserByName(username)
+            .then(
+                function(user){
+                    if(user){
+                        res.status(400).send("Username already in use");
+                        return;
+                    }
+                    else {
+                        return userModel
+                            .createUser(req.body);
+                    }
+                },
+                function(error){
+                    res.status(400).send(error);
+                })
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(error){
+                    res.status(400).send(error);
+                });
     }
 
     function createUser(req,res){
@@ -145,7 +179,7 @@ module.exports = function(app,models){
 
     function getUserByUsername(username,req,res){
         userModel
-            .findUserByUsername(username)
+            .findUserByName(username)
             .then(
                 function(user){
                     console.log(user);

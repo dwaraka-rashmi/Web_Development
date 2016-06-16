@@ -39,7 +39,8 @@ module.exports = function() {
     }
 
     function findUserByName(username){
-        return User.find({username: username});
+        return User.findOne({username: username});
+        // return User.find({username: username});
     }
 
     function createUser(user) {
