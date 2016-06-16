@@ -13,10 +13,11 @@
             if (username === undefined && password === undefined)
                 vm.error = "Kindly enter Username and Password";
             else {
+                // .findUserByCredentials(username, password)
                 UserService
-                    .findUserByCredentials(username, password)
+                    .login(username, password)
                     .then(function (response) {
-                            console.log(response);
+                            console.log(response.data);
                             var user = response.data;
                             if (user) {
                                 $location.url("/user/" + user._id);

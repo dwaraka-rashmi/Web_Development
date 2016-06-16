@@ -24,6 +24,10 @@
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
+                // ,
+                // resolve:{
+                //     loggedIn:checkLoggedIn
+                // }
             })
             .when("/user/:uid/website", {
                 templateUrl: "views/website/website-list.view.client.html",
@@ -78,5 +82,26 @@
             .otherwise({
                 redirectTo: "/login"
             });
+
+        function checkLoggedIn(UserServices,$location,$q){
+            var deferred = $q.defer();
+            UserServices
+                .loggedIn()
+                .then(
+                    function(response){
+                        var user = response.data;
+                        console.log(user);
+                        if(user ==  '0'){
+                            deferred.reject();
+                        } else {
+                            deferred.resolve();
+                        }
+                    },
+                    function(err){
+                        $location.url("/");
+                    }
+                );
+            return deferred.promise;
+        }
     }
 })();

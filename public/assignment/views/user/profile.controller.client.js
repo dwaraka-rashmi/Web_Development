@@ -13,7 +13,21 @@
         var id = $routeParams.uid;
         vm.id = id;
         vm.unregister = unregister;
+        vm.logout = logout;
         vm.error = false;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    }
+                );
+        }
 
         function unregister(){
             UserService.deleteUser(id)

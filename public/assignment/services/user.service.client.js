@@ -10,6 +10,9 @@
 
         var api = {
             createUser: createUser,
+            login : login,
+            logout:logout,
+            loggedIn:loggedIn,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
@@ -28,6 +31,23 @@
             var result = $http.post("/api/user",newUser);
             return result;
 
+        }
+
+        function login(username,password){
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post("/api/login",user);
+
+        }
+
+        function logout(){
+            return $http.post("/api/logout");
+        }
+
+        function loggedIn(){
+            return $http.get("/api/loggedIn");
         }
 
         //findUserById(userId) - returns the user in local users array whose _id matches the userId parameter
