@@ -5,12 +5,13 @@
     angular
         .module("WebAppMaker")
         .controller("ProfileController",ProfileController);
-    function ProfileController($location,$routeParams, UserService){
+    function ProfileController($location,$routeParams, UserService,$rootScope){
 
         var vm = this;
         vm.updateUser = updateUser;
         vm.error = false;
-        var id = $routeParams.uid;
+        // var id = $routeParams.uid;
+        var id = $rootScope.currentUser._id;
         vm.id = id;
         vm.unregister = unregister;
         vm.logout = logout;

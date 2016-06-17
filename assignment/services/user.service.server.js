@@ -5,6 +5,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(app,models){
 
@@ -19,10 +20,55 @@ module.exports = function(app,models){
     app.get("/api/user/:id", getUserById);
     app.put("/api/user/:id", updateUser);
     app.delete("/api/user/:id",deleteUser);
+    app.get("/auth/facebook",passport.authenticate('facebook'));
+    //,facebookLogin);
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/assignment/#/user',
+            failureRedirect: '/assignment/#/login'
+        }));
 
     passport.use('wam',new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+    var facebookConfig = {
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+    passport.use('facebook',new FacebookStrategy(facebookConfig, facebookLogin));
+
+    // function facebookLogin(req,res){
+    //     res.send(200);
+    // }
+
+    function facebookLogin(token, refreshToken, profile, done) {
+        userModel
+            .findFacebookUser(profile.id)
+            .then(
+                function(facebookuser){
+                    if(facebookuser){
+                        return done(null,facebookuser);
+                    } else {
+                        facebookuser = {
+                            username: profile.displayName.replace(/ /g,' '),
+                            facebook: {
+                                token:token,
+                                id: profile.id,
+                                displayName:profile.displayName
+                            }
+                        };
+                        userModel
+                            .createUser(facebookuser)
+                            .then(
+                                function(user){
+                                    done(null,user);
+                                }
+                            );
+                    }
+                }
+            )
+    }
 
     function localStrategy(username, password, done) {
         userModel
@@ -34,12 +80,6 @@ module.exports = function(app,models){
                     } else {
                         return done(null, false);
                     }
-                    // if(user.username === username && user.password === password) {
-                    //     done(null, user);
-                    // }
-                    // else {
-                    //     done(null, false);
-                    // }
                 },
                 function(err) {
                     done(err);
@@ -72,7 +112,7 @@ module.exports = function(app,models){
 
     function logout(req,res){
         req.logout();
-        res.send(200);
+        res.status(200).send("Logged out successful!");
     }
 
     function loggedIn(req,res){
@@ -197,8 +237,7 @@ module.exports = function(app,models){
                 }
             );
     }
-
-
+    
     function getUserById(req,res){
 
         var id = req.params.id;
