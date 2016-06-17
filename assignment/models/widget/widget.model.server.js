@@ -61,38 +61,24 @@ module.exports = function() {
 
         return Widget
             .find({_page: pageId}, function (err, widgets) {
-                // console.log('Start : '+start)
-                // console.log('End : '+end)
-                // if(start> end)
-                //     start-=1;
                 widgets.forEach(function(widget){
-
                     if(start< end){
                         if(widget.order > start && widget.order <= end){
-                            console.log("old"+widget.order);
                             widget.order= widget.order - 1;
                             widget.save();
-                            console.log("new"+widget.order);
                         }
                         else if(widget.order === start){
-                            console.log("old"+widget.order);
                             widget.order = end;
                             widget.save();
-                            console.log("new"+widget.order);
                         }
                     } else{
                         if(widget.order < start && widget.order >= end){
-                            console.log("old"+widget.order);
                             widget.order=widget.order+1;
                             widget.save();
-                            console.log("new"+widget.order);
-
                         }
                         else if(widget.order === start){
-                            console.log("old"+widget.order);
                             widget.order = end;
                             widget.save();
-                            console.log("new"+widget.order);
                         }
                     }
                 });

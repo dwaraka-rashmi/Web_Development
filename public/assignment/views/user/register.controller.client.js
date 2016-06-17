@@ -29,19 +29,6 @@
                                 function(error){
                                     vm.error = "Username already exists";
                                 });
-                        // UserService
-                        //     .createUser(user)
-                        //     .then(
-                        //         function(response){
-                        //             var user = response.data;
-                        //             if(user._id)
-                        //             $location.url("/user/" + user._id);
-                        //             else
-                        //                 vm.error = "Username already exists";
-                        //         },
-                        //         function(error){
-                        //             vm.error = "Username already exists";
-                        //         });
                     }
                     else {
                         vm.error = "Could not be Registered";
