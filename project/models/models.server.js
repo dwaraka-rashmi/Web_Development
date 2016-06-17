@@ -16,7 +16,9 @@ module.exports=function(){
 
     var mongoose = require("mongoose");
     mongoose.connect(connectionString);
-    
+
+    // mongoose.connect('mongodb://localhost/cs5610WebDev');
+
     var models = {
         userModel: require("./user/user.model.server")(),
         websiteModel: require("./website/website.model.server")(),
