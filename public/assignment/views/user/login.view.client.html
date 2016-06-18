@@ -5,14 +5,17 @@
     <h1>Login</h1>
     <input ng-model="username"
            type="text"
+           id="usernameInput"
            class="form-control"
            placeholder="username" required />
     <input ng-model="password"
            type="password"
+           id="passwordInput"
            class="form-control"
            placeholder="password" required />
+    {{model.invalidUser}}
     <a ng-click="model.login(username, password)"
-       class="btn btn-primary btn-block">Login</a>
+       class="btn btn-primary btn-block" type="submit">Login</a>
     <a class="btn btn-success btn-block"
        href="#/register">Register</a>
     <a href="/auth/facebook" class="btn btn-primary btn-block">

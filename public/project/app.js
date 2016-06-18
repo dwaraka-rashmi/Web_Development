@@ -3,5 +3,6 @@
  */
 (function() {
     angular
-        .module("WebAppMaker",["ngRoute"]);
+        .module("BestShop",["ngRoute"]);
 })();
+

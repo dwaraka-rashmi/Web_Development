@@ -18,7 +18,8 @@
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            getUsers: getUsers
         };
         return api;
 
@@ -77,6 +78,10 @@
         function findUserByCredentials(username,password){
             var url = "/api/user?username="+username+"&password="+password;
             return $http.get(url);
+        }
+
+        function getUsers(){
+            return $http.get("/api/user");
         }
 
         //updateUser(userId, user) - updates the user in local users array whose _id matches the userId parameter

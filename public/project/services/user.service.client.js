@@ -3,13 +3,17 @@
  */
 (function(){
     angular
-        .module("WebAppMaker")
+        .module("BestShop")
         .factory("UserService",UserService);
 
     function UserService($http){
 
         var api = {
             createUser: createUser,
+            register: register,
+            login : login,
+            logout: logout,
+            loggedIn:loggedIn,
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
@@ -25,8 +29,34 @@
                 username: user.username,
                 password: user.password
             };
-            return $http.post("/api/user",newUser);
+            var result = $http.post("/api/user",newUser);
+            return result;
+        }
 
+        function register(user){
+
+            var newUser = {
+                username: user.username,
+                password: user.password
+            };
+            return $http.post("/api/register",newUser);
+        }
+
+        function login(username,password){
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post("/api/login",user);
+
+        }
+
+        function logout(){
+            return $http.post("/api/logout");
+        }
+
+        function loggedIn(){
+            return $http.get("/api/loggedIn");
         }
 
         //findUserById(userId) - returns the user in local users array whose _id matches the userId parameter

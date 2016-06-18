@@ -21,7 +21,6 @@ module.exports = function(app,models){
     app.put("/api/user/:id", updateUser);
     app.delete("/api/user/:id",deleteUser);
     app.get("/auth/facebook",passport.authenticate('facebook'));
-    //,facebookLogin);
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect: '/assignment/#/user',
@@ -76,9 +75,9 @@ module.exports = function(app,models){
             .then(
                 function(user) {
                     if(user && bcrypt.compareSync(password, user.password)) {
-                        return done(null, user);
+                        done(null, user);
                     } else {
-                        return done(null, false);
+                        done(null, false);
                     }
                 },
                 function(err) {
@@ -204,7 +203,16 @@ module.exports = function(app,models){
             getUserByUsername(username,req,res);
         }
         else {
-            res.statusCode(400).send(error);
+            userModel.findUsers()
+                .then(
+                    function(users){
+                        res.json(users);
+                    },
+                    function(error){
+                        res.statusCode(400).send(error);
+                    }
+                )
+
         }
     }
 

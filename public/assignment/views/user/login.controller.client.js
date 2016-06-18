@@ -10,10 +10,17 @@
         var vm = this;
         vm.error = false;
         vm.login = function(username,password) {
-            if (username === undefined && password === undefined)
+            if (username === undefined || password === undefined) {
                 vm.error = "Kindly enter Username and Password";
+                if(username === undefined) {
+                    $("#usernameInput").css("border-color", "lightcoral");
+                    // $("#usernameInput").val("*Username Required");
+                }
+                if(password === undefined) {
+                    $("#passwordInput").css("border-color", "lightcoral");
+                }
+            }
             else {
-                // .findUserByCredentials(username, password)
                 UserService
                     .login(username, password)
                     .then(function (response) {
@@ -28,7 +35,6 @@
                         },
                         function (error) {
                             vm.error = "user not found";
-
                         });
             }
         }

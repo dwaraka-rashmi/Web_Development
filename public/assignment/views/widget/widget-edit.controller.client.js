@@ -44,8 +44,10 @@
         }
 
         function updateWidget(widget) {
-            if (widget.name === undefined)
+            if (widget.name === undefined) {
+                $("#widget-name").css("border-color", "lightcrimson");
                 vm.error = "Kindly enter the name of the widget";
+            }
             else
             {
                 WidgetService

@@ -7,6 +7,7 @@ module.exports = function() {
 
     var api = {
         createUser: createUser,
+        findUsers:findUsers,
         findUserById: findUserById,
         findUserByName: findUserByName,
         findUserByCredentials: findUserByCredentials,
@@ -16,6 +17,9 @@ module.exports = function() {
     };
     return api;
 
+    function findUsers(){
+        return User.find();
+    }
     function updateUser(userId, user) {
         delete user._id;
         return User

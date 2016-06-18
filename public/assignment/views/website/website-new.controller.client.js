@@ -29,7 +29,7 @@
                         });
             }
             else {
-                $("#website-name").css({'background-color' : 'red'});
+                $("#website-name").css({'border-color' : 'lightcrimson'});
                 vm.error = "Unable to create website";
             }
         }

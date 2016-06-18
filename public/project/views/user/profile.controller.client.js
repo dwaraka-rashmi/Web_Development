@@ -3,17 +3,31 @@
  */
 (function(){
     angular
-        .module("WebAppMaker")
+        .module("BestShop")
         .controller("ProfileController",ProfileController);
-    function ProfileController($location,$routeParams, UserService){
+    function ProfileController($location,$routeParams, UserService,$rootScope){
 
         var vm = this;
         vm.updateUser = updateUser;
         vm.error = false;
-        var id = $routeParams.uid;
+        // var id = $routeParams.uid;
+        var id = $rootScope.currentUser._id;
         vm.id = id;
         vm.unregister = unregister;
+        vm.logout = logout;
         vm.error = false;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
 
         function unregister(){
             UserService.deleteUser(id)
@@ -30,7 +44,7 @@
                 .findUserById(id)
                 .then(function(response){
                     vm.user = response.data;
-                })
+                });
             vm.success = false;
             vm.error = false;
         }
@@ -44,7 +58,7 @@
                     },
                     function(error){
                         vm.error = error;
-                    })
+                    });
         }
     }
 })();

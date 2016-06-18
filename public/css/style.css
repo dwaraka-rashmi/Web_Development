@@ -6,8 +6,10 @@
 }
 
 .img-circle {
-    border-radius: 30%;
-    width: 50%;
+    border-radius: 60%;
+    width: 40%;
+    margin-top: 10%;
+    align-content: center;
 }
 
 .img-responsive {
@@ -82,14 +84,7 @@ a:hover {
 .links{
     margin-top: 10%;
 }
-.img-circle {
-    border-radius: 45%;
-    width: 50%;
-}
 
-.img-responsive {
-    margin: 0 auto;
-}
 
 h4, h5, h6,
 h1, h2, h3 {margin-top: 0;}
@@ -180,7 +175,7 @@ nav a:focus {
     position:relative;
 }
 .header-top {
-    padding: 2em 0em;
+    padding: 2em 2em 2em 2em;
 }
 span.menu {
     display: none;
@@ -229,7 +224,7 @@ span.menu {
 }
 .banner{
     text-align:center;
-    padding:15em 0 5em;
+    padding: 3em 2em 2em 2em;
     margin-top: -45px;
 }
 .banner h1{
@@ -302,6 +297,7 @@ span.menu {
     font-weight: 600;
 }
 .wedo{
+    margin-top: 3%;
     background:#fff;
     padding:1em 0em 1em 0em;
 }
@@ -543,7 +539,7 @@ img.zoom-img:hover {
         min-height: 500px;
     }
     .banner {
-        padding: 7em 0 5em;
+        padding: 3em 2em 2em 2em;
     }
     .poll {
         margin-bottom: 1em;
@@ -619,7 +615,8 @@ img.zoom-img:hover {
         min-height: 400px;
     }
     .banner {
-        padding: 4em 0 0em;
+        margin-top: 1%;
+        padding: 3em 2em 2em 2em;
     }
     .banner h1 {
         font-size: 2.5em;
@@ -684,6 +681,7 @@ img.zoom-img:hover {
         min-height: 350px;
     }
     .banner {
+        margin-top: 1%;
         padding: 1em 0em 1em 0em;
     }
     .wrapper {
@@ -701,13 +699,15 @@ img.zoom-img:hover {
 }
 @media(max-width:480px){
     span.menu img {
-        width: 82%;
-        padding-right: 0.5em
+        width: 50%;
+        margin-right: 10%;
+        padding-right: 10%;
     }
     .banner h1 {
         font-size: 1.6em;
     }
     .banner {
+        margin-top: 1%;
         padding: 1.5em 0 0em;
     }
     .header {
@@ -811,7 +811,8 @@ img.zoom-img:hover {
         font-size: 0.8em;
     }
     .banner {
-        padding: 0.7em 0 0em;
+        margin-top: 1%;
+        padding: 3em 2em 2em 2em;
     }
     .header {
         min-height: 200px;
