@@ -1,12 +1,12 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                Best Shop
+                Profile
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.updateUser(model.user)" class="navbar-link">
-                  <span class="glyphicon glyphicon-shopping-cart">
+                  <span class="glyphicon glyphicon-ok">
                   </span>
                 </a>
             </p>
@@ -17,22 +17,14 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="input-group">
-        <input ng-model="model.searchText" type="text" class="form-control" placeholder="Start Shopping..">
-    <span class="input-group-btn">
-        <a ng-click="model.searchProducts(model.searchText)" class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
-    </div>
     <div class="row">
-        <a href="#" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
+        <div class="col-xs-6 thumbnail" ng-repeat="item in model.items">
             <span>
             <div style="width:100%">{{item.name}}</div>
             <div class="btn btn-primary">$ {{item.salePrice}}</div>
                 </span>
             <img ng-src="{{item.thumbnailImage}}"/>
-        </a>
+        </div>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
