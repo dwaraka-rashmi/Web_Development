@@ -2,8 +2,8 @@
 module.exports = function() {
 
     var mongoose = require("mongoose");
-    var UserSchema = require("./user.schema.server")();
-    var User = mongoose.model("UserProject", UserSchema);
+    var UserSchemaProject = require("./user.schema.server")();
+    var UserProject = mongoose.model("UserProject", UserSchemaProject);
 
     var api = {
         createUser: createUser,
@@ -18,7 +18,7 @@ module.exports = function() {
 
     function updateUser(userId, user) {
         delete user._id;
-        return User
+        return UserProject
             .update({_id: userId},{
                 $set: {
                     firstName: user.firstName,
@@ -28,32 +28,32 @@ module.exports = function() {
     }
 
     function deleteUser(userId) {
-        return User.remove({_id: userId});
+        return UserProject.remove({_id: userId});
     }
 
     function findUserByCredentials(username, password) {
-        return User.findOne({username: username, password: password});
+        return UserProject.findOne({username: username, password: password});
     }
 
     function findUserById(userId) {
-        return User.findById(userId);
+        return UserProject.findById(userId);
     }
 
     function findUserByName(username){
-        return User.findOne({username: username});
+        return UserProject.findOne({username: username});
         // return User.find({username: username});
     }
 
     function createUser(user) {
         console.log("user.model.server.createUser()");
         console.log(user);
-        var created_user = User.create(user);
+        var created_user = UserProject.create(user);
         console.log(created_user);
         return created_user;
     }
 
     function findFacebookUser(id){
-        return User.findOne({"facebook.id":id});
+        return UserProject.findOne({"facebook.id":id});
     }
 
 };
