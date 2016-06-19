@@ -42,10 +42,6 @@ module.exports = function(app,models){
     };
     passport.use('facebook',new FacebookStrategy(facebookConfig, facebookLogin));
 
-    // function facebookLogin(req,res){
-    //     res.send(200);
-    // }
-
     function facebookLogin(token, refreshToken, profile, done) {
         userModel
             .findFacebookUser(profile.id)
