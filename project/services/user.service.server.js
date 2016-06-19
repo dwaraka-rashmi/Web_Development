@@ -5,84 +5,79 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
-var FacebookStrategy = require('passport-facebook').Strategy;
+// var PFacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(app,models){
 
-    var userModel = models.userModel;
+    var userModelProject = models.userModelProject;
 
     app.post("/api/user", createUser);
     app.post("/api/register", register);
     app.get("/api/user", getUsers);
     app.get("/api/loggedIn", loggedIn);
-    app.post("/api/login", passport.authenticate('wam'), login);
+    app.post("/api/login", passport.authenticate('bs'), login);
     app.post("/api/logout", logout);
     app.get("/api/user/:id", getUserById);
     app.put("/api/user/:id", updateUser);
     app.delete("/api/user/:id",deleteUser);
-    app.get("/auth/facebook",passport.authenticate('facebook'));
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/assignment/#/user',
-            failureRedirect: '/assignment/#/login'
-        }));
+    // app.get("/auth/facebook",passport.authenticate('facebookP'));
+    // app.get('/auth/facebook/callback',
+    //     passport.authenticate('facebookP', {
+    //         successRedirect: '/project/#/user',
+    //         failureRedirect: '/project/#/login'
+    //     }));
 
-    passport.use('wam',new LocalStrategy(localStrategy));
+    passport.use('bs',new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
     // var facebookConfig = {
     //     clientID     : process.env.FACEBOOK_CLIENT_ID,
     //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL1
     // };
-    var facebookConfig = {
-        clientID     : "1609669596013043",
-        clientSecret : "3943cb5ff15d5140878e01c978390589",
-        callbackURL  : "http://webdev-dwarakarashmi.rhcloud.com/auth/facebook/callback"
-    };
-    passport.use('facebook',new FacebookStrategy(facebookConfig, facebookLogin));
+    // passport.use('facebookP',new PFacebookStrategy(facebookConfig, facebookLogin));
 
     // function facebookLogin(req,res){
     //     res.send(200);
     // }
 
-    function facebookLogin(token, refreshToken, profile, done) {
-        userModel
-            .findFacebookUser(profile.id)
-            .then(
-                function(facebookuser){
-                    if(facebookuser){
-                        return done(null,facebookuser);
-                    } else {
-                        facebookuser = {
-                            username: profile.displayName.replace(/ /g,''),
-                            facebook: {
-                                token:token,
-                                id: profile.id,
-                                displayName:profile.displayName
-                            }
-                        };
-                        userModel
-                            .createUser(facebookuser)
-                            .then(
-                                function(user){
-                                    done(null,user);
-                                }
-                            );
-                    }
-                }
-            )
-    }
+    // function facebookLogin(token, refreshToken, profile, done) {
+    //     userModelProject
+    //         .findFacebookUser(profile.id)
+    //         .then(
+    //             function(facebookuser){
+    //                 if(facebookuser){
+    //                     return done(null,facebookuser);
+    //                 } else {
+    //                     facebookuser = {
+    //                         username: profile.displayName.replace(/ /g,''),
+    //                         facebook: {
+    //                             token:token,
+    //                             id: profile.id,
+    //                             displayName:profile.displayName
+    //                         }
+    //                     };
+    //                     userModelProject
+    //                         .createUser(facebookuser)
+    //                         .then(
+    //                             function(user){
+    //                                 done(null,user);
+    //                             }
+    //                         );
+    //                 }
+    //             }
+    //         )
+    // }
 
     function localStrategy(username, password, done) {
-        userModel
+        userModelProject
             .findUserByName(username)
             .then(
                 function(user) {
                     if(user && bcrypt.compareSync(password, user.password)) {
-                        done(null, user);
+                        return done(null, user);
                     } else {
-                        done(null, false);
+                        return done(null, false);
                     }
                 },
                 function(err) {
@@ -96,7 +91,7 @@ module.exports = function(app,models){
     }
 
     function deserializeUser(user, done) {
-        userModel
+        userModelProject
             .findUserById(user._id)
             .then(
                 function(user){
@@ -132,7 +127,7 @@ module.exports = function(app,models){
 
         var username = req.body.username;
         var password = req.body.password;
-        userModel
+        userModelProject
             .findUserByName(username)
             .then(
                 function(user){
@@ -142,7 +137,7 @@ module.exports = function(app,models){
                     }
                     else {
                         req.body.password = bcrypt.hashSync(req.body.password);
-                        return userModel
+                        return userModelProject
                             .createUser(req.body);
                     }
                 },
@@ -169,12 +164,12 @@ module.exports = function(app,models){
     function createUser(req,res){
         var user = req.body;
         //duplicate username validation
-        userModel
+        userModelProject
             .findUserByName(user.username)
             .then(
                 function(success){
                     if(success.length==0) {
-                        userModel
+                        userModelProject
                             .createUser(user)
                             .then(
                                 function (user) {
@@ -208,22 +203,13 @@ module.exports = function(app,models){
             getUserByUsername(username,req,res);
         }
         else {
-            userModel.findUsers()
-                .then(
-                    function(users){
-                        res.json(users);
-                    },
-                    function(error){
-                        res.statusCode(400).send(error);
-                    }
-                )
-
+            res.statusCode(400).send(error);
         }
     }
 
     function getUserByCredentials(username,password,req,res){
 
-        userModel
+        userModelProject
             .findUserByCredentials(username,password)
             .then(
                 function(user){
@@ -238,7 +224,7 @@ module.exports = function(app,models){
     }
 
     function getUserByUsername(username,req,res){
-        userModel
+        userModelProject
             .findUserByName(username)
             .then(
                 function(user){
@@ -250,11 +236,11 @@ module.exports = function(app,models){
                 }
             );
     }
-    
+
     function getUserById(req,res){
 
         var id = req.params.id;
-        userModel
+        userModelProject
             .findUserById(id)
             .then(
                 function(user) {
@@ -272,7 +258,7 @@ module.exports = function(app,models){
         var id = req.params.id;
         var newUser = req.body;
 
-        userModel
+        userModelProject
             .updateUser(id, newUser)
             .then(
                 function(stats) {
@@ -290,7 +276,7 @@ module.exports = function(app,models){
 
         var id = req.params.id;
 
-        userModel
+        userModelProject
             .deleteUser(id)
             .then(
                 function(stats) {
