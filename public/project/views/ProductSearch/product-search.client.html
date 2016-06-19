@@ -18,19 +18,15 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-        </ul>
-    </div>
+    <!--<div class="dropdown">-->
+        <!--<button class="btn btn-default dropdown-toggle"-->
+                <!--type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+            <!--Category <span class="caret"></span>-->
+        <!--</button>-->
+        <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+            <!--<li ng-repeat="category in model.categories">{{category.text}}</li>-->
+        <!--</ul>-->
+    <!--</div>-->
     <div class="input-group">
         <input ng-model="model.searchText" type="text" class="form-control">
     <span class="input-group-btn">
@@ -39,10 +35,12 @@
         </a>
     </span>
     </div>
+    <br/>
+    <!--{{model.items}}-->
     <div class="row">
-        <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
-            <img ng-click="model.selectPhoto(photo)"
-                 ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+        <div class="col-xs-12 thumbnail" ng-repeat="item in model.items">
+            <div>{{item.name}}</div>
+            <img ng-src="{{item.thumbnailImage}}"/>
         </div>
     </div>
 </div>
@@ -54,7 +52,7 @@
                   <span class="glyphicon glyphicon-user">
                   </span>
                 </a>
-            </p>
+                </p>
         </div>
     </div>
 </nav>

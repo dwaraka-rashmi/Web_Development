@@ -37,6 +37,11 @@ p.navbar-text.pull-left {
     margin-left: 0px !important;
 }
 
+.thumbnail {
+    align-content: center;
+    background-color: aliceblue;
+}
+
 .jga-widget {
     margin-bottom: 5px;
 }

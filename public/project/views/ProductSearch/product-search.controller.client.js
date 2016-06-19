@@ -9,20 +9,22 @@
     function ProductSearchController($location,$routeParams,ProductSearchService) {
         var vm = this;
         vm.searchProducts = searchProducts;
-        
-        function init(){
-            ProductSearchService
-                .getCategory()
-                .then(
-                    function(response){
-                        vm.category = response.data;
-                    },
-                    function(err){
-                        vm.error = "Unable to access Server";
-                    }
-                )
-        }
-        init();
+
+        vm.categories = [
+            {text: "Father's Day Savings"},
+            {text:"Electronics & Office"},
+            {text:"Movies, Music & Books"},
+            {text:"Home, Furniture & Patio"},
+            {text:"Home Improvement"},
+            {text:"Clothing, Shoes & Jewelry"},
+            {text:"Baby & Toddler"},
+            {text:"Toys & Video Games"},
+            {text:"Food, Household & Pets"},
+            {text:"Health, Beauty & Pharmacy"},
+            {text:"Sports, Fitness & Outdoors"},
+            {text:"Auto & Tires"},
+            {text:"Photo, Gifts & Personalized Shop"},
+            {text:"Crafts & Party Supplies"}];
         
         function searchProducts(searchText) {
             ProductSearchService
@@ -30,6 +32,9 @@
                 .then(
                     function(response){
                         console.log(response.data);
+                        vm.items= response.data.items;
+                        // if(window.innerWidth<400)
+                            
                     },
                     function(response){
                         vm.error="Unable to search Flickr";
