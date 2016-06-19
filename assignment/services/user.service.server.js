@@ -30,15 +30,10 @@ module.exports = function(app,models){
     passport.use('wam',new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-    // var facebookConfig = {
-    //     clientID     : process.env.FACEBOOK_CLIENT_ID,
-    //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    // };
     var facebookConfig = {
-        clientID     : "1609669596013043",
-        clientSecret : "3943cb5ff15d5140878e01c978390589",
-        callbackURL  : "http://webdev-dwarakarashmi.rhcloud.com/auth/facebook/callback"
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
     };
     passport.use('facebook',new FacebookStrategy(facebookConfig, facebookLogin));
 
