@@ -5,7 +5,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
-var PFacebookStrategy = require('passport-facebook').Strategy;
+// var PFacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(app,models){
 
@@ -20,55 +20,54 @@ module.exports = function(app,models){
     app.get("/api/user/:id", getUserById);
     app.put("/api/user/:id", updateUser);
     app.delete("/api/user/:id",deleteUser);
-    app.get("/auth/facebook",passport.authenticate('facebookP'));
-    //,facebookLogin);
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebookP', {
-            successRedirect: '/project/#/user',
-            failureRedirect: '/project/#/login'
-        }));
+    // app.get("/auth/facebook",passport.authenticate('facebookP'));
+    // app.get('/auth/facebook/callback',
+    //     passport.authenticate('facebookP', {
+    //         successRedirect: '/project/#/user',
+    //         failureRedirect: '/project/#/login'
+    //     }));
 
     passport.use('bs',new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-    var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL1
-    };
-    passport.use('facebookP',new PFacebookStrategy(facebookConfig, facebookLogin));
+    // var facebookConfig = {
+    //     clientID     : process.env.FACEBOOK_CLIENT_ID,
+    //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+    //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL1
+    // };
+    // passport.use('facebookP',new PFacebookStrategy(facebookConfig, facebookLogin));
 
     // function facebookLogin(req,res){
     //     res.send(200);
     // }
 
-    function facebookLogin(token, refreshToken, profile, done) {
-        userModelProject
-            .findFacebookUser(profile.id)
-            .then(
-                function(facebookuser){
-                    if(facebookuser){
-                        return done(null,facebookuser);
-                    } else {
-                        facebookuser = {
-                            username: profile.displayName.replace(/ /g,''),
-                            facebook: {
-                                token:token,
-                                id: profile.id,
-                                displayName:profile.displayName
-                            }
-                        };
-                        userModelProject
-                            .createUser(facebookuser)
-                            .then(
-                                function(user){
-                                    done(null,user);
-                                }
-                            );
-                    }
-                }
-            )
-    }
+    // function facebookLogin(token, refreshToken, profile, done) {
+    //     userModelProject
+    //         .findFacebookUser(profile.id)
+    //         .then(
+    //             function(facebookuser){
+    //                 if(facebookuser){
+    //                     return done(null,facebookuser);
+    //                 } else {
+    //                     facebookuser = {
+    //                         username: profile.displayName.replace(/ /g,''),
+    //                         facebook: {
+    //                             token:token,
+    //                             id: profile.id,
+    //                             displayName:profile.displayName
+    //                         }
+    //                     };
+    //                     userModelProject
+    //                         .createUser(facebookuser)
+    //                         .then(
+    //                             function(user){
+    //                                 done(null,user);
+    //                             }
+    //                         );
+    //                 }
+    //             }
+    //         )
+    // }
 
     function localStrategy(username, password, done) {
         userModelProject
