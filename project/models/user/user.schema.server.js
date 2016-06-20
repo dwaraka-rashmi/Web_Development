@@ -10,13 +10,12 @@ module.exports = function() {
         password: String,
         firstName: String,
         lastName: String,
-        facebook:{
+        google:{
             token:String,
-            id:String,
-            displayName:String
+            id:String
         },
         dob: Date,
-        websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
+        //websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.user"});
 

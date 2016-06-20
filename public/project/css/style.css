@@ -6,6 +6,9 @@ input.form-control {
     margin-bottom: 2%;
     margin-top: 5%;
 }
+.container .jumbotron{
+    background-color: beige!important;
+}
 
 .product-search{
     margin-top: -5%;
