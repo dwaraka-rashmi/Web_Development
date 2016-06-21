@@ -4,16 +4,16 @@ var session = require('express-session');
 var passport = require('passport');
 
 var app = express();
-var connectionString = 'mongodb://127.0.0.1:27017/webdev';
-// var connectionString = 'mongodb://localhost/cs5610WebDev';
+// var connectionString = 'mongodb://127.0.0.1:27017/webdev';
+var connectionString = 'mongodb://localhost/cs5610WebDev';
 
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-        process.env.OPENSHIFT_APP_NAME;
-}
+// if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+//     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+//         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+//         process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+//         process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+//         process.env.OPENSHIFT_APP_NAME;
+// }
 
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
@@ -32,7 +32,7 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 // app.use(function(req,res,next){
-//     if (req.method === 'OPTIONS') {
+//     if (reqmethod === 'OPTIONS') {
 //         // add needed headers
 //         var headers = {};
 //         headers["Access-Control-Allow-Origin"] = "*";
@@ -46,11 +46,11 @@ app.use(express.static(__dirname + '/public'));
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
-var assignment = require("./assignment/app.js");
-assignment(app);
-app.listen(port, ipaddress);
-
-// var project = require("./project/app.js");
-// project(app);
+// var assignment = require("./assignment/app.js");
+// assignment(app);
 // app.listen(port, ipaddress);
+
+var project = require("./project/app.js");
+project(app);
+app.listen(port, ipaddress);
 

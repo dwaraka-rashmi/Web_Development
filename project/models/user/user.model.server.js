@@ -10,6 +10,7 @@ module.exports = function() {
         findUserById: findUserById,
         findUserByName: findUserByName,
         findUserByCredentials: findUserByCredentials,
+        findAllUsers:findAllUsers,
         updateUser: updateUser,
         deleteUser: deleteUser,
         findFacebookUser:findFacebookUser,
@@ -23,7 +24,10 @@ module.exports = function() {
             .update({_id: userId},{
                 $set: {
                     firstName: user.firstName,
-                    lastName: user.lastName
+                    lastName: user.lastName,
+                    pic: user.pic,
+                    followers:user.followers,
+                    followedBy:user.followedBy
                 }
             });
     }
@@ -45,12 +49,12 @@ module.exports = function() {
         // return User.find({username: username});
     }
 
+    function findAllUsers(){
+        return UserProject.find();
+    }
+
     function createUser(user) {
-        console.log("user.model.server.createUser()");
-        console.log(user);
-        var created_user = UserProject.create(user);
-        console.log(created_user);
-        return created_user;
+        return UserProject.create(user);
     }
 
     function findFacebookUser(id){

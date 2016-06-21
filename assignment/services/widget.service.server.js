@@ -116,18 +116,21 @@ module.exports = function (app,models) {
             var mimetype = myFile.mimetype;
 
             var id = req.params.widgetId;
-            for (var i in widgets) {
-                if (widgets[i]._id === widgetId) {
-                    widgets[i].url = "/uploads/" + filename;
-                    // console.log(widgets[i]);
-                }
-            }
+
+            var widget = { "url": "/uploads/" + filename};
+            widgetModel
+                .updateWidget(id,widget)
+                .then(
+                    function(widget){
+                        console.log(req.body);
+                        res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
+                    },
+                    function(error){
+                        res.json({});
+                    }
+                );
         }
 
-        console.log(req.body);
-        res.redirect("/assignment/index.html#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget/" + widgetId);
-
     }
-
 
 }

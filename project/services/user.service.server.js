@@ -1,7 +1,6 @@
 /**
  * Created by Rashmi_Dwaraka on 5/31/2016.
  */
-
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
@@ -18,36 +17,46 @@ module.exports = function(app,models){
     app.post("/api/login", passport.authenticate('bs'), login);
     app.post("/api/logout", logout);
     app.get("/api/user/:id", getUserById);
+    app.get("/api/allUsers/",getAllUsers);
     app.put("/api/user/:id", updateUser);
+    app.put("/api/user/follow/:id",followUser);
     app.delete("/api/user/:id",deleteUser);
+
+    var multer = require('multer'); // npm install multer save
+    var uploadProPic = multer ({ dest: __dirname+'/../../public/uploads' });
+
+    app.post("/api/uploadPic",uploadProPic.single('myFile'),uploadImage);
+
     // app.get("/auth/facebook",passport.authenticate('facebookP'));
     // app.get('/auth/facebook/callback',
     //     passport.authenticate('facebookP', {
     //         successRedirect: '/project/#/user',
     //         failureRedirect: '/project/#/login'
     //     }));
+
     app.get("/auth/google", passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get("/auth/google/callback",
         passport.authenticate('google', {
             successRedirect: '/project/#/user',
             failureRedirect: '/project/#/login'
         }));
-    var googleConfig = {
-        clientID     : process.env.GOOGLE_CLIENT_ID,
-        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL  : process.env.GOOGLE_CALLBACK_URL
-    };
-
 
     passport.use('bs',new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+
     // var facebookConfig = {
     //     clientID     : process.env.FACEBOOK_CLIENT_ID,
     //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL1
     // };
     // passport.use('facebookP',new PFacebookStrategy(facebookConfig, facebookLogin));
+
+    var googleConfig = {
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    };
     passport.use('google',new GoogleStrategy(googleConfig, googleStrategy));
 
     function googleStrategy(token, refreshToken, profile, done) {
@@ -88,6 +97,7 @@ module.exports = function(app,models){
             );
     }
 
+    //Facebook Login function
     // function facebookLogin(token, refreshToken, profile, done) {
     //     userModelProject
     //         .findFacebookUser(profile.id)
@@ -152,7 +162,6 @@ module.exports = function(app,models){
 
     function login(req,res){
         var user = req.user;
-        console.log("login"+user);
         res.json(user);
     }
 
@@ -291,20 +300,31 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    res.send(user);
+                    res.json(user);
                 },
                 function(error) {
                     res.statusCode(404).send(error);
                 }
             );
+    }
 
+    function getAllUsers(req,res){
+
+        userModelProject
+            .findAllUsers()
+            .then(
+                function(users){
+                    res.json(users);
+                },
+                function(error){
+                    res.statusCode(404).send(error);
+                });
     }
 
     function updateUser(req,res){
 
         var id = req.params.id;
         var newUser = req.body;
-
         userModelProject
             .updateUser(id, newUser)
             .then(
@@ -314,15 +334,42 @@ module.exports = function(app,models){
                 },
                 function(error) {
                     res.statusCode(404).send(error);
+                });
+    }
+
+    function followUser(req,res){
+
+        var id = req.params.id;
+        var userFollowed = req.body;
+        console.log(userFollowed);
+        userModelProject
+            .findUserById(id)
+            .then(
+                function(user) {
+                    console.log("old"+user);
+                    user.followers.push(userFollowed.userId);
+                    console.log("new"+user);
+                    userModelProject
+                        .updateUser(id,user)
+                        .then(
+                            function(stats) {
+                                console.log(stats);
+                                res.send(200);
+                            },
+                            function(error) {
+                                res.statusCode(404).send(error);
+                            }
+                        );
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
                 }
             );
-
     }
 
     function deleteUser(req,res){
 
         var id = req.params.id;
-
         userModelProject
             .deleteUser(id)
             .then(
@@ -334,6 +381,37 @@ module.exports = function(app,models){
                     res.statusCode(404).send(error);
                 }
             );
+    }
+
+    function uploadImage(req, res) {
+
+        console.log(req.body);
+        var myFile = req.file;
+        if(myFile) {
+            var originalname = myFile.originalname; // file name on user's computer
+            var filename = myFile.filename; // new file name in upload folder
+            var path = myFile.path; // full path of uploaded file
+            var destination = myFile.destination; // folder where file is saved to
+            var size = myFile.size;
+            var mimetype = myFile.mimetype;
+
+            var user = {
+                "pic" : "/uploads/" + filename
+            };
+            console.log(user);
+            var id = req.body.userId;
+            userModelProject
+                .updateUser(id, user)
+                .then(
+                    function(stats) {
+                        console.log(stats);
+                        // res.redirect("/project/index.html#/user/" + req.body.userId);
+                        res.redirect("/project/index.html#/user");
+                    },
+                    function(error) {
+                        res.statusCode(404).send(error);
+                    });
+        }
     }
 
 };

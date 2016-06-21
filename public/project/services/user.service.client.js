@@ -17,8 +17,11 @@
             findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
+            findUsers:findUsers,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            followUser:followUser,
+            searchUsers:searchUsers
         };
         return api;
 
@@ -86,12 +89,31 @@
 
         }
 
+        function followUser(loggedUserId,userId){
+            var url = "/api/user/follow/"+loggedUserId;
+            var userToFollow = {
+                userId : userId
+            };
+            return $http.put(url,userToFollow);
+        }
+
         //deleteUser(userId) - removes the user whose _id matches the userId parameter
         function deleteUser(userId){
             var url = "/api/user/"+userId;
             return $http.delete(url);
 
         }
+
+        function findUsers(){
+            var url = "/api/allUsers/";
+            return $http.get(url);
+        }
+
+        function searchUsers(){
+        
+        }
+
+
 
     }
 

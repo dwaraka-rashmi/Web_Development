@@ -10,12 +10,16 @@ module.exports = function() {
         password: String,
         firstName: String,
         lastName: String,
+        pic:String,
         google:{
             token:String,
             id:String
         },
         dob: Date,
-        //websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Website'}],
+        followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserProject'}],
+        followedBy: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserProject'}],
+        productsSaved:[{type: mongoose.Schema.Types.ObjectId, ref: 'ProductProject'}],
+        productsReviewed:[{type: mongoose.Schema.Types.ObjectId, ref: 'ProductProject'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.user"});
 

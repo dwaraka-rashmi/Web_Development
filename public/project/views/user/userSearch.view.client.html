@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Find Best Shop Users
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container product-search">
+    <div class="input-group">
+        <input ng-model="model.searchText" type="text" class="form-control" placeholder="Find Best Shop Users..">
+    <span class="input-group-btn">
+        <a ng-click="model.searchUsers(model.searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <div class="row">
+        <a href="#/user/{{user._id}}" class="col-xs-6 thumbnail" ng-repeat="user in model.users">
+            <span>
+            <div style="width:100%">{{user.username}}</div>
+            <!--<div class="btn btn-primary">$ {{item.salePrice}}</div>-->
+                </span>
+            <img ng-src="{{user.pic}}"/>
+        </a>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-right">
+                <a href="#/user" class="navbar-link">
+                  <span class="glyphicon glyphicon-user">
+                  </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

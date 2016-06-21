@@ -20,7 +20,7 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/", {
+            .when("/user", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
@@ -28,14 +28,27 @@
                     loggedIn:checkLoggedIn
                 }
             })
-            .when("/user/product", {
+            .when("/product/search", {
                 templateUrl: "views/ProductSearch/product-search.client.html",
                 controller: "ProductSearchController",
                 controllerAs: "model"
             })
+            .when("/product/:pid", {
+                templateUrl: "views/ProductSearch/product-detail.client.html",
+                controller: "ProductController",
+                controllerAs: "model"
+            })
+            .when("/user/search",{
+                templateUrl: "views/user/userSearch.view.client.html",
+                controller: "UserSearchController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
             .when("/user/:uid", {
-                templateUrl: "views/user/profile.view.client.html",
-                controller: "ProfileController",
+                templateUrl: "views/user/userProfile.view.client.html",
+                controller: "UserProfileController",
                 controllerAs: "model",
                 resolve:{
                     loggedIn:checkLoggedIn

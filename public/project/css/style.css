@@ -1,5 +1,15 @@
 input.form-control {
-    margin-bottom: 5%;
+    margin-bottom: 1%;
+}
+
+.media-middle{
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+.upload-image{
+    margin-bottom: 1%;
 }
 
 .input-group{
@@ -7,9 +17,12 @@ input.form-control {
     margin-top: 5%;
 }
 .container .jumbotron{
-    background-color: beige!important;
+    background-color: #f9ae54!important;
+    /*background-color: beige!important;*/
 }
-
+.jumbotron{
+    background-color: aliceblue!important;
+}
 .product-search{
     margin-top: -5%;
 }
