@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductSearchController",ProductSearchController);
 
-    function ProductSearchController($location,$routeParams,ProductSearchService) {
+    function ProductSearchController($location,$routeParams,ProductSearchService,User) {
         var vm = this;
         vm.searchProducts = searchProducts;
 

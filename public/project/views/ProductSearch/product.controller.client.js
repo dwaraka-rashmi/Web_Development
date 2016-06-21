@@ -6,40 +6,50 @@
         .module("BestShop")
         .controller("ProductController",ProductController);
 
-    function ProductController($location,$routeParams,ProductSearchService) {
-        var vm = this;
-        vm.searchProducts = searchProducts;
+    function ProductController($location,$routeParams,ProductService,ProductSearchService) {
 
-        vm.categories = [
-            {text: "Father's Day Savings"},
-            {text:"Electronics & Office"},
-            {text:"Movies, Music & Books"},
-            {text:"Home, Furniture & Patio"},
-            {text:"Home Improvement"},
-            {text:"Clothing, Shoes & Jewelry"},
-            {text:"Baby & Toddler"},
-            {text:"Toys & Video Games"},
-            {text:"Food, Household & Pets"},
-            {text:"Health, Beauty & Pharmacy"},
-            {text:"Sports, Fitness & Outdoors"},
-            {text:"Auto & Tires"},
-            {text:"Photo, Gifts & Personalized Shop"},
-            {text:"Crafts & Party Supplies"}];
-        
-        function searchProducts(searchText) {
+        var vm = this;
+        var itemId = $routeParams.pid;
+
+        function init(){
             ProductSearchService
-                .searchProducts(searchText)
+                .getProductById(itemId)
                 .then(
                     function(response){
-                        console.log(response.data);
-                        vm.items= response.data.items;
-                        // if(window.innerWidth<400)
-                            
+                        var item = response.data;
+                        vm.item = item;
+                        console.log(item);
+                        ProductService
+                            .updateProduct(item)
+                            .then(
+                                function(response){
+                                    var productId = response.data.id;
+                                    $location.url("/product/"+productId);
+                                },
+                                function(error){
+                                    vm.error="Unable to update DB";
+                                });
                     },
-                    function(response){
-                        vm.error="Unable to search Flickr";
+                    function(error){
+                        vm.error="Unable to access Walmart";
                     });
         }
+        init();
+
+
+        // function updateUserPreference(item){
+        //     UserService
+        //         .updateUserPreference(item)
+        //         .then(
+        //             function(response){
+        //                 console.log(response.data);
+        //             },
+        //             function(error){
+        //                 vm.error="Unable to update DB";
+        //             });
+        // }
+
     }
+
 })();
 

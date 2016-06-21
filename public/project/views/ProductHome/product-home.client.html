@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Welcome to Best Shop
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container product-search">
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <div class="login">
+        <a class="btn btn-success btn-block"
+           href="#/login">Sign In</a>
+    </div>
+    <div class="login">
+        <a class="btn btn-success btn-block"
+           href="#/register">Sign Up</a>
+    </div>
+    <h3>Deals of the day!</h3>
+    <div class="row">
+        <a href="#/product/{{item.itemId}}" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
+            <span>
+            <div style="width:100%">{{item.name}}</div>
+            <div class="btn btn-primary btn-sm">$ {{item.salePrice}}</div>
+            </span>
+            <img ng-src="{{item.thumbnailImage}}"/>
+        </a>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <!--<p class="navbar-text pull-right">-->
+            <!--<a href="#/user/{{model.userId}}" class="navbar-link">-->
+            <!--<span class="glyphicon glyphicon-user">-->
+            <!--</span>-->
+            <!--</a>-->
+            <!--</p>-->
+        </div>
+    </div>
+</nav>

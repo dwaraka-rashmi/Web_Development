@@ -4,45 +4,27 @@
 (function(){
     angular
         .module("BestShop")
-        .controller("ProductSearchController",ProductSearchController);
+        .controller("ProductHomeController",ProductHomeController);
 
-    function ProductSearchController($location,$routeParams,ProductSearchService) {
+    function ProductHomeController($location,$routeParams,ProductSearchService){
+
         var vm = this;
-        vm.searchProducts = searchProducts;
-
-        vm.categories = [
-            {text: "Father's Day Savings"},
-            {text:"Electronics & Office"},
-            {text:"Movies, Music & Books"},
-            {text:"Home, Furniture & Patio"},
-            {text:"Home Improvement"},
-            {text:"Clothing, Shoes & Jewelry"},
-            {text:"Baby & Toddler"},
-            {text:"Toys & Video Games"},
-            {text:"Food, Household & Pets"},
-            {text:"Health, Beauty & Pharmacy"},
-            {text:"Sports, Fitness & Outdoors"},
-            {text:"Auto & Tires"},
-            {text:"Photo, Gifts & Personalized Shop"},
-            {text:"Crafts & Party Supplies"}];
-
-        function searchProducts(searchText) {
+        var getProduct = getProduct;
+        // var updateProductDatabase = updateProductDatabase;
+        function init() {
             ProductSearchService
-                .searchProducts(searchText)
+                .getDeals()
                 .then(
                     function(response){
                         console.log(response.data);
                         vm.items= response.data.items;
                         // if(window.innerWidth<400)
-
                     },
                     function(response){
-                        vm.error="Unable to search Flickr";
+                        vm.error="Unable to access Walmart";
                     });
         }
+        init();
+    
     }
 })();
-
-/**
- * Created by Rashmi_Dwaraka on 6/19/2016.
- */

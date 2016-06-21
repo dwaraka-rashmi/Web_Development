@@ -46,11 +46,20 @@ app.use(express.static(__dirname + '/public'));
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
-// var assignment = require("./assignment/app.js");
-// assignment(app);
-// app.listen(port, ipaddress);
-
-var project = require("./project/app.js");
-project(app);
+var assignment = require("./assignment/app.js");
+assignment(app);
 app.listen(port, ipaddress);
 
+// var project = require("./project/app.js");
+// project(app);
+// app.listen(port, ipaddress);
+
+
+app.all('/*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:3000");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+    res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
+    next();
+
+});

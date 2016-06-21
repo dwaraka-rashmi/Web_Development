@@ -8,6 +8,24 @@ input.form-control {
     width: 40%;
 }
 
+.price{
+    display: block;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.product-name {
+    width:100%;
+    margin-top: -10%;
+}
+
+.login {
+    display: inline-block;
+    width: 40%;
+    margin-left: 4%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
 .upload-image{
     margin-bottom: 1%;
 }
@@ -18,8 +36,8 @@ input.form-control {
 }
 .container .jumbotron{
     background-color: #f9ae54!important;
-    /*background-color: beige!important;*/
 }
+
 .jumbotron{
     background-color: aliceblue!important;
 }
@@ -247,4 +265,9 @@ nav.nav-bar ul {
         padding-right: 40%;
         padding-top: 30px ;
     }
+}
+
+.container .jumbotron .product-detail{
+    background-color: floralwhite;
+    margin: -10% -5% -10% -5%;
 }
