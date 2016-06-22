@@ -1,0 +1,162 @@
+
+.container { margin-top: 20px; }
+.mb20 { margin-bottom: 20px; }
+
+hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
+hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
+hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
+
+.search {
+    background-color: transparent;
+    background-color: #eeeeee;
+}
+.search-result .thumbnail { border-radius: 1 !important; border-color: black;}
+.search-result:first-child { margin-top: 0 !important; }
+.search-result { margin-top: 20px; }
+.search-result .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
+.search-result ul { padding-left: 0 !important; list-style: none;  }
+.search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
+.search-result ul li i { padding-right: 5px; }
+.search-result .col-md-7 { position: relative; }
+.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result h3 > a, .search-result i { color: #248dc1 !important; }
+.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; }
+.search-result span.plus { position: absolute; right: 0; top: 126px; }
+.search-result span.plus a { background-color: #248dc1; padding: 5px 5px 3px 5px; }
+.search-result span.plus a:hover { background-color: #414141; }
+.search-result span.plus a i { color: #fff !important; }
+.search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
+
+.content h1 {
+    text-align: center;
+}
+.content .content-footer p {
+    color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
+.content .content-footer p a {
+    color: inherit;
+    font-weight: bold;
+}
+
+/*	--------------------------------------------------
+	:: Table Filter
+	-------------------------------------------------- */
+.panel {
+    border: 1px solid #ddd;
+    background-color: #fcfcfc;
+}
+.panel .btn-group {
+    margin: 15px 0 30px;
+}
+.panel .btn-group .btn {
+    transition: background-color .3s ease;
+}
+.table-filter {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+.table-filter tbody tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+.table-filter tbody tr td {
+    padding: 10px;
+    vertical-align: middle;
+    border-top-color: #eee;
+}
+.table-filter tbody tr.selected td {
+    background-color: #eee;
+}
+.table-filter tr td:first-child {
+    width: 38px;
+}
+.table-filter tr td:nth-child(2) {
+    width: 35px;
+}
+.ckbox {
+    position: relative;
+}
+.ckbox input[type="checkbox"] {
+    opacity: 0;
+}
+.ckbox label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ckbox label:before {
+    content: '';
+    top: 1px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+}
+.ckbox input[type="checkbox"]:checked + label:before {
+    border-color: #2BBCDE;
+    background-color: #2BBCDE;
+}
+.ckbox input[type="checkbox"]:checked + label:after {
+    top: 3px;
+    left: 3.5px;
+    content: '\e013';
+    color: #fff;
+    font-size: 11px;
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+}
+.table-filter .star {
+    color: #ccc;
+    text-align: center;
+    display: block;
+}
+.table-filter .star.star-checked {
+    color: #F0AD4E;
+}
+.table-filter .star:hover {
+    color: #ccc;
+}
+.table-filter .star.star-checked:hover {
+    color: #F0AD4E;
+}
+.table-filter .media-photo {
+    width: 35px;
+}
+.table-filter .media-body {
+    display: block;
+    /* Had to use this style to force the div to expand (wasn't necessary with my bootstrap version 3.3.6) */
+}
+.table-filter .media-meta {
+    font-size: 11px;
+    color: #999;
+}
+.table-filter .media .title {
+    color: #2BBCDE;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+}
+.table-filter .media .title span {
+    font-size: .8em;
+    margin-right: 20px;
+}
+.table-filter .media .title span.pagado {
+    color: #5cb85c;
+}
+.table-filter .media .title span.pendiente {
+    color: #f0ad4e;
+}
+.table-filter .media .title span.cancelado {
+    color: #d9534f;
+}
+.table-filter .media .summary {
+    font-size: 14px;
+}

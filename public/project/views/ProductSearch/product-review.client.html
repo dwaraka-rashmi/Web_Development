@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Product Review
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateProductReview()" class="navbar-link">
+                  <span class="glyphicon glyphicon-ok">
+                  </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<!--<div class="container">-->
+<!--<div ng-if="model.error" class="alert alert-danger">-->
+<!--{{model.error}}-->
+<!--</div>-->
+<!--<div class="jumbotron">-->
+<!--<div class="product-detail">-->
+<!--<span>-->
+<!--<div class="product-name">{{model.item.name}}</div>-->
+<!--<div class="btn btn-default price">Sale Price ${{model.item.salePrice}}</div>-->
+<!--</span>-->
+<!--<img class="price" ng-src="{{model.item.customerRatingImage}}"/>-->
+<!--<img class="price" ng-src="{{model.item.mediumImage}}"/>-->
+<!--</div>-->
+<!--</div>-->
+<!--<a href="#/product/{{model.item.itemId}}/review/{{model.userId}}" class="btn btn-group btn-primary">Add Customer Review</a>-->
+<!--</div>-->
+<div class="container">
+    <div class="row">
+        <h3>Status Upload Snipp</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="widget-area no-padding blank">
+                <div class="status-upload">
+                    <form>
+                        <textarea placeholder="Type a new review..." ></textarea>
+                        <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-group search" ng-repeat= "item in model.items">
+        <section class="col-xs-12 col-sm-6 col-md-12">
+            <article class="search-result row">
+                <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
+                    <h3><a href="#/user/{{model.userId}}">{{item.username}}</a></h3>
+                </div>
+                    <form>
+                        <textarea value={{item.review}} ></textarea>
+                    </form>
+                <span class="clearfix borda"></span>
+            </article>
+        </section>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-left">
+                <a href="{{model.item.productUrl}}" class="navbar-link">
+                  <span class="glyphicon glyphicon-new-window">
+                  </span>
+                </a>
+            </p>
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                  <span class="glyphicon glyphicon-user">
+                  </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

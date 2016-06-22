@@ -86,6 +86,10 @@ p.navbar-text.pull-left {
     margin-left: 0px !important;
 }
 
+.list-group .search{
+    padding:1px;
+    border:1px solid #021a40;
+}
 .thumbnail {
     align-content: center;
     background-color: white;
@@ -96,9 +100,6 @@ p.navbar-text.pull-left {
 
 }
 
-.thumbnail>img{
-    margin-right: 0px;
-}
 .jga-widget {
     margin-bottom: 5px;
 }

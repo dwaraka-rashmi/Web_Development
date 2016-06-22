@@ -46,6 +46,22 @@
                     loggedIn:checkLoggedIn
                 }
             })
+            .when("/product/:pid/review", {
+                templateUrl: "views/ProductSearch/product-review.client.html",
+                controller: "ProductReviewController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
+            .when("/product/:pid/review/:uid", {
+                templateUrl: "views/ProductSearch/product-add-review.client.html",
+                controller: "ProductAddReviewController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
             .when("/product/deal/:pid", {
                 templateUrl: "views/ProductHome/product-deal-detail.client.html",
                 controller: "ProductDealController",

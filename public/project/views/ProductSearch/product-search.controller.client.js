@@ -25,16 +25,17 @@
             {text:"Auto & Tires"},
             {text:"Photo, Gifts & Personalized Shop"},
             {text:"Crafts & Party Supplies"}];
-        
+        vm.search = false;
         function searchProducts(searchText) {
             ProductSearchService
                 .searchProducts(searchText)
                 .then(
                     function(response){
                         console.log(response.data);
+                        vm.search = true;
+                        vm.term = response.data.query;
+                        vm.totalResults = response.data.totalResults;
                         vm.items= response.data.items;
-                        // if(window.innerWidth<400)
-                            
                     },
                     function(response){
                         vm.error="Unable to search Flickr";
