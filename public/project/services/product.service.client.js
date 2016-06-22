@@ -13,9 +13,9 @@
         };
         return api;
 
-        function updateProduct(userId){
-            var url = "/api/product/"+userId;
-            return $http.put(url,newUser);
+        function updateProduct(item){
+            var url = "/api/product/"
+            return $http.put(url,item);
         }
 
     }

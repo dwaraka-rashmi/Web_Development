@@ -1,9 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Login
+            </a>
+            <!--<p class="navbar-text pull-right">-->
+                <!--<a ng-click="model.addToCart()" class="navbar-link">-->
+                  <!--<span class="glyphicon glyphicon-shopping-cart">-->
+                  <!--</span>-->
+                <!--</a>-->
+            <!--</p>-->
+        </div>
+    </div>
+</nav>
 <div class="container">
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
     <div class="jumbotron">
-        <h1>Login</h1>
+        <!--<h1>Login</h1>-->
         <input ng-model="username"
                type="text"
                class="form-control"

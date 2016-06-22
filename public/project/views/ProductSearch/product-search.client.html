@@ -1,6 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
             <a class="navbar-brand" href="#">
                 Best Shop
             </a>
@@ -26,7 +32,7 @@
     </span>
     </div>
     <div class="row">
-        <a href="#" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
+        <a href="#/product/{{item.itemId}}" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
             <span>
             <div style="width:100%">{{item.name}}</div>
             <div class="btn btn-primary">$ {{item.salePrice}}</div>

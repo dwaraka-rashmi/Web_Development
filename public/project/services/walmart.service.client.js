@@ -29,7 +29,7 @@
             // var url = "http://api.walmartlabs.com/v1/vod?format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&callback=JSON_CALLBACK";
             // var url = "http://api.walmartlabs.com/v1/vod?format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9";
             return $http.jsonp(url);
-
+            //     return $http.get(url);
         }
         
         function searchProducts(searchTerm) {

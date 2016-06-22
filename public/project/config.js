@@ -33,12 +33,31 @@
             .when("/product/search", {
                 templateUrl: "views/ProductSearch/product-search.client.html",
                 controller: "ProductSearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
             })
             .when("/product/:pid", {
                 templateUrl: "views/ProductSearch/product-detail.client.html",
                 controller: "ProductController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
+            .when("/product/deal/:pid", {
+                templateUrl: "views/ProductHome/product-deal-detail.client.html",
+                controller: "ProductDealController",
                 controllerAs: "model"
+            })
+            .when("/user/:uid/product", {
+                templateUrl: "views/ProductSearch/product-saved.client.html",
+                controller: "ProductSavedController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
             })
             .when("/user/search",{
                 templateUrl: "views/user/userSearch.view.client.html",

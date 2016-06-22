@@ -1,5 +1,9 @@
 input.form-control {
     margin-bottom: 1%;
+    border-color: black;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    border-color: black;
 }
 
 .media-middle{
@@ -22,8 +26,8 @@ input.form-control {
 .login {
     display: inline-block;
     width: 40%;
-    margin-left: 4%;
-    margin-right: 5%;
+    margin-left: 3%;
+    margin-right: 4%;
     margin-top: 5%;
 }
 .upload-image{
@@ -36,6 +40,7 @@ input.form-control {
 }
 .container .jumbotron{
     background-color: #f9ae54!important;
+    opacity: 0.8;
 }
 
 .jumbotron{

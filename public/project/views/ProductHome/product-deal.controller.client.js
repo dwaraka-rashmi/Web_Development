@@ -4,29 +4,31 @@
 (function(){
     angular
         .module("BestShop")
-        .controller("ProductHomeController",ProductHomeController);
+        .controller("ProductDealController",ProductDealController);
 
-    function ProductHomeController($location,$routeParams,$rootScope,ProductSearchService){
+    function ProductDealController($location,$routeParams,$rootScope,ProductService,ProductSearchService) {
 
         var vm = this;
-        var getProduct = getProduct;
-        // var updateProductDatabase = updateProductDatabase;
-        function init() {
+        var itemId = $routeParams.pid;
+        vm.alert = false;
+        function init(){
             ProductSearchService
-                .getDeals()
+                .getProductById(itemId)
                 .then(
                     function(response){
-                        console.log(response.data);
-                        vm.items= response.data.items;
+                        var item = response.data;
+                        vm.item = item;
+                        console.log(item);
                         if(!$rootScope.currentUser) {
                             vm.alert = "Login to continue..";
                         }
                     },
-                    function(response){
+                    function(error){
                         vm.error="Unable to access Walmart";
                     });
         }
         init();
-    
+
     }
+
 })();

@@ -35,21 +35,8 @@
                     });
         }
         init();
-
-
-        // function updateUserPreference(item){
-        //     UserService
-        //         .updateUserPreference(item)
-        //         .then(
-        //             function(response){
-        //                 console.log(response.data);
-        //             },
-        //             function(error){
-        //                 vm.error="Unable to update DB";
-        //             });
-        // }
+        
 
     }
 
 })();
-

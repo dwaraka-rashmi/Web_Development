@@ -11,17 +11,23 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="login">
-        <a class="btn btn-success btn-block"
-           href="#/login">Sign In</a>
+    <div ng-if="model.alert" class="alert alert-warning">
+        <div class="login">
+            <a class="btn btn-success btn-block"
+               href="#/login">Sign In</a>
+        </div>
+        <div class="login">
+            <a class="btn btn-success btn-block"
+               href="#/register">Sign Up</a>
+        </div>
     </div>
-    <div class="login">
+    <div ng-if="!model.alert" class="alert alert-info">
         <a class="btn btn-success btn-block"
-           href="#/register">Sign Up</a>
+           href="#/product/search">Start Shopping..</a>
     </div>
     <h3>Deals of the day!</h3>
     <div class="row">
-        <a href="#/product/{{item.itemId}}" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
+        <a href="#/product/deal/{{item.itemId}}" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
             <span>
             <div style="width:100%">{{item.name}}</div>
             <div class="btn btn-primary btn-sm">$ {{item.salePrice}}</div>
@@ -33,12 +39,12 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
-            <!--<p class="navbar-text pull-right">-->
-            <!--<a href="#/user/{{model.userId}}" class="navbar-link">-->
-            <!--<span class="glyphicon glyphicon-user">-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--</p>-->
+            <p ng-if="!model.alert" class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+            <span class="glyphicon glyphicon-user">
+            </span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
