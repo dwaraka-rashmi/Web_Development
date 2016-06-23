@@ -5,7 +5,6 @@ var passport = require('passport');
 
 var app = express();
 
-
 // var connectionString = 'mongodb://localhost/cs5610WebDev';
 
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
