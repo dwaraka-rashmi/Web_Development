@@ -514,22 +514,10 @@ img.zoom-img:hover {
 .tech-icon{
     display: block;
     margin: auto;
+    width: 100%;
     /*padding: 0px 0px 0px 50px;*/
 }
-.bootstrap-icon {
-    /*width: 40%;*/
-    width: 45%;
-    padding: 0px 0px 0px 50px;
-    /*display: inline-block;*/
-}
-.passport-icon {
-    width: 30%;
-    padding: 0px 0px 0px 20px;
-    /*display: inline-block;*/
-    /*display: block;*/
-    /*margin: auto;*/
-    /*width: 40%;*/
-}
+
 #toTop {
     display: none;
     text-decoration: none;

@@ -45,7 +45,7 @@
             return $http.put(url,item);
         }
         
-        function createProduct(){
+        function createProduct(item){
             var url = "/api/product/";
             return $http.post(url,item);
         }

@@ -17,19 +17,19 @@ module.exports = function() {
     return api;
     
     function findProductReviewByItemId(itemId){
-        return ProductProject.findOne({itemId:itemId});
+        return ReviewProject.findOne({itemId:itemId});
     }
     
     function updateProductReview(productId,product){
         delete product._id;
-        return ProductProject
+        return ReviewProject
             .update({_id: productId},{
                 $set: product
             });
     }
 
     function createProductReview(review){
-        return ProductProject.create(review);
+        return ReviewProject.create(review);
     }
     
 };

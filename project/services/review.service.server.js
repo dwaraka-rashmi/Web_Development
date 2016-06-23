@@ -6,7 +6,7 @@ module.exports = function(app,models){
 
     var reviewModelProject = models.reviewModelProject;
 
-    app.get("/api/product/review",getProductReviewById);
+    app.get("/api/product/review/:id",getProductReviewById);
     app.put("/api/product/review/:rid",updateProductReview);
     app.post("/api/product/review",createProductReview);
 

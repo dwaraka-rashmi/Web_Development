@@ -20,7 +20,7 @@ module.exports = function(app,models){
     function getProductById(req,res){
         var itemId = req.params.id;
         productModelProject
-            .getProductById(itemId)
+            .findProductByItemId(itemId)
             .then(
                 function(item){
                     res.json(item);

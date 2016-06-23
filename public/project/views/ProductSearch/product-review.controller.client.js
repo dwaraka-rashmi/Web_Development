@@ -6,11 +6,12 @@
         .module("BestShop")
         .controller("ProductReviewController",ProductReviewController);
 
-    function ProductReviewController($location,$routeParams,$rootScope,ProductService,ProductSearchService) {
+    function ProductReviewController($location,$routeParams,$rootScope,ProductService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
         vm.addReview = addReview;
+        vm.updateReview = updateReview;
 
         if($rootScope.currentUser) {
             vm.userId = $rootScope.currentUser._id;
@@ -30,7 +31,7 @@
                 .then(
                     function(response){
                         console.log(response.data);
-                        vm.item = response.data;
+                        vm.items = [response.data];
                     },
                     function(error){
                         vm.error="Unable to access Walmart";
@@ -43,7 +44,8 @@
                 .createProductReview(review,itemId, vm.userId)
                 .then(
                     function(response){
-                        updateUserProductReview(ReviewId);
+                        var review = response.data;
+                        updateUserProductReview(review._id);
                     },
                     function(error){
                         vm.error = "Unable to add the review. Try again later."
