@@ -30,7 +30,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Success!</strong> Your profile was saved.
     </div>
-<div class="jumbotron">
     <div  ng-if="model.user.pic" class="media-body media-middle">
         <a href="{{model.user.pic}}">
             <img class="media-object" src="{{model.user.pic}}" alt="Profile Picture">
@@ -64,15 +63,9 @@
         <input  name="userId" value="{{model.id}}" style="display: none"/>
         <button type="submit" class="btn btn-block btn-primary upload-image">Upload Image</button>
     </form>
-    <!--<a class="btn btn-primary btn-block"-->
-       <!--href="#/user/{{model.user._id}}/website">Websites</a>-->
-    <!--<a class="btn btn-danger  btn-block"-->
-       <!--href="#/login">Logout</a>-->
     <a ng-click="model.logout()" class="btn btn-danger  btn-block">Logout</a>
     <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
-    </div>
 </div>
-
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">

@@ -354,6 +354,33 @@ module.exports = function(app,models){
                         .then(
                             function(stats) {
                                 console.log(stats);
+                                updateFollowedBy(userFollowed.userId,id,res);
+                                // res.send(200);
+                            },
+                            function(error) {
+                                res.statusCode(404).send(error);
+                            }
+                        );
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+    }
+
+    function updateFollowedBy(id,followedById,res){
+        userModelProject
+            .findUserById(id)
+            .then(
+                function(user) {
+                    console.log("old"+user);
+                    user.followedBy.push(followedById);
+                    console.log("new"+user);
+                    userModelProject
+                        .updateUser(id,user)
+                        .then(
+                            function(stats) {
+                                console.log(stats);
                                 res.send(200);
                             },
                             function(error) {

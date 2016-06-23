@@ -14,12 +14,21 @@
         vm.id = loggedUserId;
         vm.followUser = followUser;
         vm.error = false;
+        vm.followed = false;
 
         function init(){
             UserService
                 .findUserById(userId)
                 .then(function(response){
                     vm.user = response.data;
+                    var followedBy = vm.user.followedBy;
+                    for(var i = 0; i < followedBy.length; i++)
+                    {
+                        if(followedBy[i] == loggedUserId)
+                        {
+                            vm.followed = true;
+                        }
+                    }
                 });
             vm.success = false;
             vm.error = false;
@@ -31,7 +40,8 @@
                 .followUser(loggedUserId,userId)
                 .then(
                     function(response){
-                        vm.success = response;
+                        vm.followed = true;
+                        init();
                     },
                     function(error){
                         vm.error = error;

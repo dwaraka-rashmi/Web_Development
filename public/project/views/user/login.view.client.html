@@ -11,10 +11,10 @@
                 Login
             </a>
             <!--<p class="navbar-text pull-right">-->
-                <!--<a ng-click="model.addToCart()" class="navbar-link">-->
-                  <!--<span class="glyphicon glyphicon-shopping-cart">-->
-                  <!--</span>-->
-                <!--</a>-->
+            <!--<a ng-click="model.addToCart()" class="navbar-link">-->
+            <!--<span class="glyphicon glyphicon-shopping-cart">-->
+            <!--</span>-->
+            <!--</a>-->
             <!--</p>-->
         </div>
     </div>
@@ -23,23 +23,21 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="jumbotron">
-        <!--<h1>Login</h1>-->
-        <input ng-model="username"
-               type="text"
-               class="form-control"
-               placeholder="username" required />
-        <input ng-model="password"
-               type="password"
-               class="form-control"
-               placeholder="password" required />
-        <a ng-click="model.login(username, password)"
-           class="btn btn-primary btn-block">Login</a>
-        <a class="btn btn-success btn-block"
-           href="#/register">Register</a>
-        <a href="/auth/google" class="btn btn-danger btn-block">
-            <span class="fa fa-google-plus"></span>
-            Google
-        </a>
-    </div>
+    <!--<h1>Login</h1>-->
+    <input ng-model="username"
+           type="text"
+           class="form-control"
+           placeholder="username" required />
+    <input ng-model="password"
+           type="password"
+           class="form-control"
+           placeholder="password" required />
+    <a ng-click="model.login(username, password)"
+       class="btn btn-primary btn-block">Login</a>
+    <a class="btn btn-success btn-block"
+       href="#/register">Register</a>
+    <a href="/auth/google" class="btn btn-danger btn-block">
+        <span class="fa fa-google-plus"></span>
+        Google
+    </a>
 </div>
