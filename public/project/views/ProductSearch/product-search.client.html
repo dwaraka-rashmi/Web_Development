@@ -54,8 +54,8 @@
     </span>
     </div>
     <hgroup ng-if="model.search" class="mb20">
-        <h1>Search Results</h1>
-        <h2 class="lead"><strong class="text-danger">{{model.totalResults}}</strong> results were found for the search for <strong class="text-danger">{{model.term}}</strong></h2>
+        <h5>Search Results</h5>
+        <h6 class="lead"><strong class="text-danger">{{model.totalResults}}</strong> results were found for the search for <strong class="text-danger">{{model.term}}</strong></h6>
     </hgroup>
     <div class="list-group search" ng-repeat= "item in model.items">
         <section class="col-xs-12 col-sm-6 col-md-12">
@@ -65,16 +65,18 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3">
                     <a href="#/product/{{item.itemId}}" title="{{item.name}}" class="thumbnail">
-                        <img img-responsive src="{{item.thumbnailImage}}" alt="Click to Buy or Rent!" /></a>
+                        <img img-responsive src="{{item.thumbnailImage}}" alt="Image not available!" /></a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3">
                     <ul class="meta-search">
+                        <li><i class="glyphicon glyphicon-usd"></i><span>Sale Price: {{item.salePrice}}</span></li>
                         <li><i class="glyphicon glyphicon-usd"></i><span>Shipping Rate: {{item.standardShipRate}}</span></li>
                         <li><i class="fa fa-clock-o"></i><span>Stock: {{item.stock}}</span></li>
-                        <img img-responsive src="{{item.customerRatingImage}}" alt="Click to Buy or Rent!" />
+                        <img img-responsive src="{{item.customerRatingImage}}" alt="Reviews not available" />
                     </ul>
                 </div>
                 <span class="clearfix borda"></span>
+                <hr class="section-divide"/>
             </article>
         </section>
     </div>

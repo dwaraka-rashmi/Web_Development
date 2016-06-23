@@ -1,8 +1,8 @@
 .about {
-    margin-top: 5%;
+    /*margin-top: 5%;*/
     /*padding: 40px 15px;*/
     text-align: center;
-    background-image: url("/images/bg1.jpg");
+    /*background-image: url("/images/bg1.jpg");*/
 }
 
 .img-circle {
@@ -29,6 +29,7 @@ body {
     /*padding-bottom: 60px;*/
     overflow-y: auto;
     overflow-x: hidden;
+    background-color: aliceblue;
 }
 
 p.navbar-text.pull-right {
@@ -165,7 +166,7 @@ nav a:focus {
     transform: translateX(0px);
 }
 .header{
-    background: url(../images/bg-image1.jpg)no-repeat;
+    background: url(../images/1597945.jpg)no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -225,6 +226,7 @@ span.menu {
 .banner{
     text-align:center;
     padding: 3em 2em 2em 2em;
+    background-image: url(../images/1597945.jpg);
     margin-top: -45px;
 }
 .banner h1{
@@ -241,7 +243,7 @@ span.menu {
     font-style: italic;
 }
 .header span.mover {
-    background: url(../images/mover.png)no-repeat 0px 0px;
+    background: url(../images/1597945.jpg)no-repeat 0px 0px;
     width: 60px;
     height: 60px;
     display: block;
@@ -457,7 +459,7 @@ img.zoom-img:hover {
 .social {
     padding: 1.4em 0em;
     text-align: center;
-    background: cadetblue;
+    background: url(../images/1597945.jpg);
 }
 .social ul {
     padding: 0em;
@@ -508,6 +510,25 @@ img.zoom-img:hover {
 .social p a:hover{
     text-decoration:none;
     color:#fff;
+}
+.tech-icon{
+    display: block;
+    margin: auto;
+    /*padding: 0px 0px 0px 50px;*/
+}
+.bootstrap-icon {
+    /*width: 40%;*/
+    width: 45%;
+    padding: 0px 0px 0px 50px;
+    /*display: inline-block;*/
+}
+.passport-icon {
+    width: 30%;
+    padding: 0px 0px 0px 20px;
+    /*display: inline-block;*/
+    /*display: block;*/
+    /*margin: auto;*/
+    /*width: 40%;*/
 }
 #toTop {
     display: none;
@@ -702,12 +723,14 @@ img.zoom-img:hover {
         width: 50%;
         margin-right: 10%;
         padding-right: 10%;
+
     }
     .banner h1 {
         font-size: 1.6em;
     }
     .banner {
-        margin-top: 1%;
+        /*margin-top: 1%;*/
+        margin-top: -15%;
         padding: 1.5em 0 0em;
     }
     .header {
@@ -811,7 +834,7 @@ img.zoom-img:hover {
         font-size: 0.8em;
     }
     .banner {
-        margin-top: 1%;
+        margin-top: -15%;
         padding: 3em 2em 2em 2em;
     }
     .header {
@@ -897,6 +920,164 @@ img.zoom-img:hover {
     }
 }
 
-.bg {
-    background-color: white;
+
+/*navigation style*/
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: red!important;
+    text-align: center;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: red!important;
+   text-align: center;
+}
+
+.navbar, .navbar-inverse {
+    border-radius: 0;
+    border: none;
+    margin-bottom: 0;
+    /*min-height: 40px;*/
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: maroon;
+}
+
+.nav li {
+    display: inline;
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-family: Lato;
+    font-size: 1.7em;
+    font-weight: 300;
+    padding: 0px 0px 10px 10px;
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+    background-color: #444444;
+    transition: 0.7s all linear;
+    height: 50%;
+}
+
+/*.navbar-default{*/
+    /*margin-top:50px; !* you don't need add this line *!*/
+    /*border-radius: 0px;*/
+/*}*/
+/*.bg {*/
+    /*background-color: white;*/
+/*}*/
+
+/*.navbar-inverse .navbar-nav > li > a {*/
+    /*color: #9d9d9d;*/
+/*}*/
+/*.navbar-inverse .navbar-nav > li > a:hover,*/
+/*.navbar-inverse .navbar-nav > li > a:focus*/
+/*{*/
+    /*color: #fff;*/
+    /*background-color: transparent;*/
+    /*border-bottom: 3px solid #f62329;*/
+    /*background: url("http://s31.postimg.org/9k42omozb/arrow.png") bottom;*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #080808;
+    border-bottom: 3px solid #f62329;
+    background: url("http://s31.postimg.org/9k42omozb/arrow.png") bottom;
+    background-repeat: no-repeat;
+
+}
+
+/* content tile*/
+
+.tile-progress {
+    background-color: #303641;
+    color: #fff;
+}
+.tile-progress {
+    background: #00a65b;
+    color: #fff;
+    margin-bottom: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.tile-progress .tile-header {
+    padding: 15px 20px;
+    padding-bottom: 40px;
+}
+.tile-progress .tile-progressbar {
+    height: 2px;
+    background: rgba(0,0,0,0.18);
+    margin: 0;
+}
+.tile-progress .tile-progressbar span {
+    background: #fff;
+}
+.tile-progress .tile-progressbar span {
+    display: block;
+    background: #fff;
+    width: 0;
+    height: 100%;
+    -webkit-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+    -moz-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+    -o-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+    transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+}
+.tile-progress .tile-footer {
+    padding: 20px;
+    text-align: right;
+    background: rgba(0,0,0,0.1);
+    -webkit-border-radius: 0 0 3px 3px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 0 0 3px 3px;
+    -moz-background-clip: padding;
+    border-radius: 0 0 3px 3px;
+    background-clip: padding-box;
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+}
+.tile-progress.tile-red {
+    background-color: #f56954;
+    color: #fff;
+}
+.tile-progress {
+    background-color: #303641;
+    color: #fff;
+}
+.tile-progress.tile-blue {
+    background-color: #0073b7;
+    color: #fff;
+}
+.tile-progress.tile-aqua {
+    background-color: #00c0ef;
+    color: #fff;
+}
+.tile-progress.tile-green {
+    background-color: #00a65a;
+    color: #fff;
+}
+.tile-progress.tile-cyan {
+    background-color: #00b29e;
+    color: #fff;
+}
+.tile-progress.tile-purple {
+    background-color: #ba79cb;
+    color: #fff;
+}
+.tile-progress.tile-pink {
+    background-color: #ec3b83;
+    color: #fff;
 }

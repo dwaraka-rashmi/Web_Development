@@ -36,22 +36,66 @@
 <!--<a href="#/product/{{model.item.itemId}}/review/{{model.userId}}" class="btn btn-group btn-primary">Add Customer Review</a>-->
 <!--</div>-->
 <div class="container">
-    <div class="row">
-        <h3>Status Upload Snipp</h3>
+    <div ng-if="model.alert" class="alert alert-warning">
+        <div class="login">
+            <a class="btn btn-success btn-block"
+               href="#/login">Sign In</a>
+        </div>
+        <div class="login">
+            <a class="btn btn-success btn-block"
+               href="#/register">Sign Up</a>
+        </div>
     </div>
-    <div class="row">
+    <h4>Product: {{model.item.name}}</h4>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+        <div ng-if="model.item.numReviews">
+            <i class="glyphicon glyphicon-user"></i><span>{{model.item.numReviews}}</span>
+            <img img-responsive src="{{item.customerRatingImage}}" alt="No reviews available to view" />
+        </div>
+    </div>
+    <span>
+        <div class="row">
         <div class="col-md-6">
             <div class="widget-area no-padding blank">
                 <div class="status-upload">
                     <form>
-                        <textarea placeholder="Type a new review..." ></textarea>
-                        <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                        <textarea ng-model="model.review" id="review-text-area" class="review-text" placeholder="Type a new review..." ></textarea>
+                        <button ng-click="model.addReview(model.review)" id="review-button"
+                                type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="list-group search" ng-repeat= "item in model.items">
+        <div class=amazing-reviews>
+            <blockquote>
+                <header>
+                    <strong>Ullamco laboris!</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            </blockquote>
+        </div>
+    </span>
+    <div class="list-group search" ng-repeat= "reviews in model.item.reviews">
+        <div class=amazing-reviews>
+            <blockquote>
+            <header>
+               <span data-rating=5>
+                 <i class=ion-star></i><i class=ion-star></i><i class=ion-star></i><i class=ion-star></i><i class=ion-star></i>
+                </span>
+            <strong>Ullamco laboris!</strong>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            </blockquote>
+        </div>
+        <div class=amazing-reviews>
+            <blockquote>
+            <header>
+               <span data-rating={{model.rating}}>
+                 <i class=ion-star></i><i class=ion-star></i><i class=ion-star></i><i class=ion-star></i><i class=ion-star></i>
+                </span>
+            <a href="#/user/{{model.userId}}"><strong>{{item.username}}</strong></a>
+            <p>{{item.review}}</p>
+            </blockquote>
+        </div>
         <section class="col-xs-12 col-sm-6 col-md-12">
             <article class="search-result row">
                 <div class="col-xs-12 col-sm-12 col-md-6 excerpet">

@@ -155,7 +155,8 @@ a:hover {
 }
 body{
     font-family: 'Open Sans Condensed', sans-serif;
-    /*background: white;*/
+    background-color: ghostwhite;
+    /*style="background-image: url('images/shop.jpg');"*/
 }
 .nav-bar {
     margin-top: -8%;

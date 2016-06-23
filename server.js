@@ -4,6 +4,7 @@ var session = require('express-session');
 var passport = require('passport');
 
 var app = express();
+
 // var connectionString = 'mongodb://127.0.0.1:27017/webdev';
 var connectionString = 'mongodb://localhost/cs5610WebDev';
 

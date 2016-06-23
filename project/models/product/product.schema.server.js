@@ -6,13 +6,10 @@ module.exports = function() {
     var mongoose = require("mongoose");
 
     var ProductSchemaProject = mongoose.Schema({
-        name: String,
-        productDetails:{},
-        category:String,//category api not working with jsonp
-        productReviews:{
-            _user:{type:mongoose.Schema.ObjectId,ref:"UserProject"},
-            review: String
-        },
+        productName: String,
+        itemId: String,
+        Users :{type:mongoose.Schema.ObjectId,ref:"UserProject"},
+        Reviews:{type:mongoose.Schema.ObjectId,ref:"ReviewProject"},
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.product"});
 

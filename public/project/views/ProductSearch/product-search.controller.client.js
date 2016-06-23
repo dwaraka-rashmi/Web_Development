@@ -26,6 +26,7 @@
             {text:"Photo, Gifts & Personalized Shop"},
             {text:"Crafts & Party Supplies"}];
         vm.search = false;
+        
         function searchProducts(searchText) {
             ProductSearchService
                 .searchProducts(searchText)

@@ -10,7 +10,7 @@
 
         var vm = this;
         var getProduct = getProduct;
-        // var updateProductDatabase = updateProductDatabase;
+        
         function init() {
             ProductSearchService
                 .getDeals()

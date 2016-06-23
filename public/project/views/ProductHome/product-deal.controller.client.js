@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductDealController",ProductDealController);
 
-    function ProductDealController($location,$routeParams,$rootScope,ProductService,ProductSearchService) {
+    function ProductDealController($location,$routeParams,$rootScope,ProductService,ProductSearchService,$http) {
 
         var vm = this;
         var itemId = $routeParams.pid;

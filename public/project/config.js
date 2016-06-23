@@ -11,6 +11,10 @@
                 templateUrl: "views/ProductHome/product-home.client.html",
                 controller: "ProductHomeController",
                 controllerAs: "model"
+                // ,
+                // resolve:{
+                //     loggedIn:checkLoggedIn
+                // }
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",

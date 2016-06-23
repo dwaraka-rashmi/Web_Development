@@ -9,8 +9,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
@@ -57,78 +60,167 @@
     </script>
 </head>
 <body>
-<!--header start here-->
-<div class="header">
+
+<div class="container">
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <!--<span class="icon-bar"></span>-->
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="scroll active" href="#home">Home</a></li>
+                    <!--<li><a class="scroll" href="#about">About</a></li>-->
+                    <li><a class="scroll" href="#project">Project</a></li>
+                    <li><a class="scroll" href="#assignment">Assignment</a></li>
+                    <li><a class="scroll" href="#contact">Contact</a></li>
+                    <!--<li><a class="scroll" href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment">Github</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--header start here-->
+    <!--<div class="header">-->
+    <!--<div class="header-top">-->
+    <!--<div class="top-navg">-->
+    <!--<span class="menu"> <img src="images/icon.png" alt=""/></span>-->
+    <!--<nav class="cl-effect-1">-->
+    <!--<ul class="res">-->
+    <!--<li><a class="scroll active" href="#home">Home</a></li>-->
+    <!--&lt;!&ndash;<li><a class="scroll" href="#about">About</a></li>&ndash;&gt;-->
+    <!--<li><a class="scroll" href="#project">Project</a></li>-->
+    <!--<li><a class="scroll" href="#assignment">Assignment</a></li>-->
+    <!--<li><a class="scroll" href="#contact">Contact</a></li>-->
+    <!--</ul>-->
+    <!--</nav>-->
+    <!--&lt;!&ndash; script-for-menu &ndash;&gt;-->
+    <!--<script>-->
+    <!--$( "span.menu" ).click(function() {-->
+    <!--$( "ul.res" ).slideToggle( 300, function() {-->
+    <!--// Animation complete.-->
+    <!--});-->
+    <!--});-->
+    <!--</script>-->
+    <!--&lt;!&ndash; /script-for-menu &ndash;&gt;-->
+    <!--</div>-->
+    <!--<div class="clearfix"> </div>-->
+    <!--</div>-->
+    <!--<div class="col-lg-12 ">-->
+    <!--<nav class="navbar navbar-default navbar-inverse">-->
+    <!--<div class="container">-->
+    <!--<div class="row">-->
+    <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+    <!--<ul class="nav navbar-nav">-->
+    <!--<li><a class="scroll active" href="#home">Home</a></li>-->
+    <!--&lt;!&ndash;<li><a class="scroll" href="#about">About</a></li>&ndash;&gt;-->
+    <!--<li><a class="scroll" href="#project">Project</a></li>-->
+    <!--<li><a class="scroll" href="#assignment">Assignment</a></li>-->
+    <!--<li><a class="scroll" href="#contact">Contact</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</nav>-->
+    <!--</div>-->
+    <div class="banner navbar-static-top">
+        <img class="img-circle img-responsive" src="images/profilePic1.jpg" align ="middle"/>
+        <h1>Rashmi Dwaraka</h1>
+        <p>Masters in Computer Science at Northeastern University</p>
+    </div>
+</div>
+<!--<div class="wedo" id="project">-->
+<!--<div class="container bg">-->
+<!--<div class="wedo-main">-->
+<!--<h3>Web Development Course Project</h3>-->
+<!--<img src="images/circles.png" alt=""/>-->
+<!--</div>-->
+<!--<div class="wedo-center">-->
+<!--<div class="col-md-4 wedo-grid">-->
+<!--<span class="glyphicon glyphicon glyphicon-user"> </span>-->
+<!--<h4><a href="#">Project Title</a></h4>-->
+<!--<p>An E-commerce Website aggregator</p>-->
+<!--<a class="btn btn-primary btn-lg"-->
+<!--href="/project/#/login">Login</a>-->
+<!--<a class="btn btn-success btn-lg"-->
+<!--href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment">Github</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="clearfix"> </div>-->
+<!--</div>-->
+<div class="assignment">
     <div class="container">
-        <div class="header-top">
-            <div class="top-navg">
-                <span class="menu"> <img src="images/icon.png" alt=""/></span>
-                <nav class="cl-effect-1">
-                    <ul class="res">
-                        <li><a class="scroll active" href="#home">Home</a></li>
-                        <!--<li><a class="scroll" href="#about">About</a></li>-->
-                        <li><a class="scroll" href="#project">Project</a></li>
-                        <li><a class="scroll" href="#assignment">Assignment</a></li>
-                        <li><a class="scroll" href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <!-- script-for-menu -->
-                <script>
-                    $( "span.menu" ).click(function() {
-                        $( "ul.res" ).slideToggle( 300, function() {
-                            // Animation complete.
-                        });
-                    });
-                </script>
-                <!-- /script-for-menu -->
+        <div class="row">
+            <div class="col-md-6" id='project'>
+                <div class="tile-progress tile-primary">
+                    <div class="tile-header">
+                        <h3>Project</h3>
+                        <span>A Shoppers Community for Walmart
+                        </span>
+                        <span class="glyphicon glyphicon-shopping-cart">
+                  </span>
+                    </div>
+                    <div class="tile-progressbar">
+                        <span data-fill="65.5%" style="width: 65.5%;"></span>
+                    </div>
+                    <div class="tile-footer">
+                        <a href="/project/index.html#/" class="btn btn-primary btn-sm">Login</a>
+                        <a href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/project"
+                                class="btn btn-primary btn-sm">Github</a>
+                    </div>
+                </div>
             </div>
-            <div class="clearfix"> </div>
-        </div>
-        <div class="banner">
-            <img class="img-circle img-responsive" src="images/profilePic1.jpg" align ="middle"/>
-            <h1>Rashmi Dwaraka</h1>
-            <p>Masters in Computer Science at Northeastern University</p>
-        </div>
-    </div>
-</div>
-<div class="wedo" id="project">
-    <div class="container bg">
-        <div class="wedo-main">
-            <h3>Web Development Course Project</h3>
-            <img src="images/circles.png" alt=""/>
-        </div>
-        <div class="wedo-center">
-            <div class="col-md-4 wedo-grid">
-                <span class="glyphicon glyphicon glyphicon-user"> </span>
-                <h4><a href="#">Project Title</a></h4>
-                <p>An E-commerce Website aggregator</p>
-                <a class="btn btn-primary btn-lg"
-                   href="/project/#/login">Login</a>
-                <a class="btn btn-success btn-lg"
-                   href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment">Github</a>
+            <div class="col-md-6" id='assignment'>
+                <div class="tile-progress tile-primary">
+                    <div class="tile-header">
+                        <h3>Assignment</h3>
+                        <span>Web Application Maker</span>
+                        <span class="glyphicon glyphicon-tags">
+                  </span>
+                    </div>
+                    <div class="tile-progressbar">
+                        <span data-fill="65.5%" style="width: 65.5%;"></span>
+                    </div>
+                    <div class="tile-footer">
+                        <button href="/assignment/index.html#/login"
+                                type="button" class="btn btn-primary btn-sm">Login</button>
+                        <button href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment"
+                                type="button" class="btn btn-primary btn-sm">Github</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="clearfix"> </div>
 </div>
-<div class="assignment" id='assignment'>
-    <div class="container bg">
-        <div class="assignment-top">
-            <h3>Web Development Course Assignment</h3>
-            <img src="images/circles.png" alt=""/>
-        </div>
-        <div class="assignment-bottom">
-            <p>
-                <a class="btn btn-primary btn-lg"
-                href="/assignment/#/login">Login</a>
-                <a class="btn btn-success btn-lg"
-                   href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment">Github</a>
-                <!--<button type="button" class="btn btn-primary btn-lg">Login</button>-->
-                <!--<button type="button" class="btn btn-primary btn-lg">Github</button>-->
-            </p>
-            <div class="clearfix"> </div>
+<div class="container" id='about'>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile-progress tile-primary">
+                <div class="tile-header">
+                    <h3>Technologies Used:</h3>
+                    <div class="tech-icon">
+                        <img responsive src="../images/tech.png"/>
+                        <img responsive class="bootstrap-icon" src="../images/icon-bootstrap.png"/>
+                        <img responsive class="passport-icon" src="../images/passportjs.png"/>
+                    </div>
+                </div>
+                <div class="tile-progressbar">
+                    <span data-fill="65.5%" style="width: 65.5%;"></span>
+                </div>
+                <div class="tile-footer">
+                    <span>Web Development CS5610 Course</span>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 <div class="contact" id="contact">
     <div class="container bg">
@@ -217,6 +309,7 @@
             </script>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
