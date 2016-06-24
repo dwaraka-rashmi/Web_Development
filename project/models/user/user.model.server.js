@@ -14,7 +14,8 @@ module.exports = function() {
         updateUser: updateUser,
         deleteUser: deleteUser,
         findFacebookUser:findFacebookUser,
-        findUserByGoogleId:findUserByGoogleId
+        findUserByGoogleId:findUserByGoogleId,
+        findMatchedUsers:findMatchedUsers
     };
     return api;
 
@@ -57,6 +58,13 @@ module.exports = function() {
     
     function findUserByGoogleId(id){
         return UserProject.findOne({"google.id":id});
+    }
+
+    function findMatchedUsers(text){
+        return UserProject.find({'$or':[
+            {'username':{'$regex':text,'$options':'i'}},
+            {'firstName':{'$regex':text,'$options':'i'}},
+            {'lastName':{'$regex':text,'$options':'i'}}]})
     }
 
 };

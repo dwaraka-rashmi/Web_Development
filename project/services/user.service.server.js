@@ -10,6 +10,7 @@ module.exports = function(app,models){
 
     var userModelProject = models.userModelProject;
 
+    app.get("/api/user/search",searchUser);
     app.post("/api/user", createUser);
     app.post("/api/register", register);
     app.get("/api/user", getUsers);
@@ -22,7 +23,7 @@ module.exports = function(app,models){
     app.put("/api/user/follow/:id",followUser);
     app.put("/api/user/unfollow/:id",unfollowUser);
     app.delete("/api/user/:id",deleteUser);
-
+    
     var multer = require('multer'); // npm install multer save
     var uploadProPic = multer ({ dest: __dirname+'/../../public/uploads' });
 
@@ -322,6 +323,19 @@ module.exports = function(app,models){
                 });
     }
 
+    function searchUser(req,res){
+        var text = req.query.searchText;
+        userModelProject
+            .findMatchedUsers(text)
+            .then(
+                function(users){
+                    res.json(users);
+                },
+                function(err){
+                    res.statusCode(404).send(err);
+                });
+    }
+
     function updateUser(req,res){
 
         var id = req.params.id;
@@ -496,5 +510,7 @@ module.exports = function(app,models){
                     });
         }
     }
+
+
 
 };

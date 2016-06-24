@@ -119,8 +119,10 @@
             return $http.get(url);
         }
 
-        function searchUsers(){
-        
+
+        function searchUsers(text){
+            var url = "/api/user/search?searchText="+text;
+            return $http.get(url);
         }
 
 

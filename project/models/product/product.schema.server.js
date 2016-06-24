@@ -8,6 +8,7 @@ module.exports = function() {
     var ProductSchemaProject = mongoose.Schema({
         productName: String,
         itemId: String,
+        category : String,
         Users :[{type:mongoose.Schema.ObjectId,ref:"UserProject"}],
         Reviews:[{type:mongoose.Schema.ObjectId,ref:"ReviewProject"}],
         dateCreated: {type: Date, default: Date.now}

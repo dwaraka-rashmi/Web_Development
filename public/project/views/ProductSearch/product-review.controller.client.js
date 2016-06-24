@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductReviewController",ProductReviewController);
 
-    function ProductReviewController($location,$routeParams,$window,ProductService) {
+    function ProductReviewController($location,$routeParams,$window,ProductService,UserService) {
 
         var vm = this;
         var itemId = $routeParams.pid;

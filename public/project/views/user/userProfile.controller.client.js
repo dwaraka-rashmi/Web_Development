@@ -5,12 +5,17 @@
     angular
         .module("BestShop")
         .controller("UserProfileController",UserProfileController);
-    function UserProfileController($location,$routeParams, UserService,$rootScope){
+    function UserProfileController($location,$routeParams, UserService,$window){
 
         var vm = this;
         vm.error = false;
         var userId = $routeParams.uid;
-        var loggedUserId = $rootScope.currentUser._id;
+        var id = undefined;
+        if($window.sessionStorage.getItem("currentUser")) {
+            var id = $window.sessionStorage.getItem("currentUser");
+        }
+        vm.id = id;
+        var loggedUserId = id;
         vm.id = loggedUserId;
         vm.followUser = followUser;
         vm.unfollowUser = unfollowUser;

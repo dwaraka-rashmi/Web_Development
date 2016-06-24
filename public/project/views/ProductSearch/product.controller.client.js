@@ -11,7 +11,7 @@
         var vm = this;
         var itemId = $routeParams.pid;
         var userId = null;
-        if(!$window.sessionStorage.getItem("currentUser")) {
+        if($window.sessionStorage.getItem("currentUser")) {
             userId = $window.sessionStorage.getItem("currentUser");
         }
 
@@ -39,16 +39,18 @@
                         if(item)
                         {
                             if(userId){
-                                item.Users.push(userId);
-                                ProductSearchService
+                                if(item.Users.indexOf(userId)<0) {
+                                    item.Users.push(userId);
+                                    ProductSearchService
                                         .updateProduct(item)
-                                        .then(function(response){
+                                        .then(function (response) {
                                                 vm.success = "user prefernce saved";
                                                 updateUserProductPreference(item._id);
                                             },
-                                            function(error){
+                                            function (error) {
                                                 vm.error = "Unable to update user preference";
                                             });
+                                }
                             }
                             else {
                                 vm.error = "user not logged In";
@@ -59,7 +61,8 @@
                                 var item = {
                                     itemId : itemId,
                                     productName: vm.item.name,
-                                    Users : [userId]
+                                    Users : [userId],
+                                    category:vm.item.categoryPath
                                 };
                                 ProductSearchService
                                     .createProduct(item)
@@ -90,16 +93,18 @@
                 .then(
                     function(response){
                         var user = response.data;
-                        user.productsSaved.push(productId);
-                        UserService
-                            .updateUser(user._id,user)
-                            .then(
-                                function(response){
-                                    vm.success = "user updated";
-                                },
-                                function(error){
-                                    vm.error = "user not updated";
-                                });
+                        if(user.productsSaved.indexOf(productId)>=0) {
+                            user.productsSaved.push(productId);
+                            UserService
+                                .updateUser(user._id, user)
+                                .then(
+                                    function (response) {
+                                        vm.success = "user updated";
+                                    },
+                                    function (error) {
+                                        vm.error = "user not updated";
+                                    });
+                        }
                     },
                     function(error){
                         vm.error = "user not updated";

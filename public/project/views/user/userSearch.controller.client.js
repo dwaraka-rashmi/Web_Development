@@ -9,10 +9,14 @@
         .module("BestShop")
         .controller("UserSearchController",UserSearchController);
 
-    function UserSearchController($location,$routeParams,UserService,$rootScope) {
+    function UserSearchController($location,$routeParams,UserService,$window) {
 
         var vm = this;
-        var userId = $rootScope.currentUser._id;
+        var id;
+        if($window.sessionStorage.getItem("currentUser")) {
+            var id = $window.sessionStorage.getItem("currentUser");
+        }
+        userId = id;
         vm.searchUsers = searchUsers;
         
         function init(){
@@ -36,14 +40,14 @@
 
         function searchUsers(searchText) {
             UserService
-                .searchUsers(searchText,userId)
+                .searchUsers(searchText)
                 .then(
                     function(response){
                         console.log(response.data);
                         vm.users = response.data;
                     },
                     function(response){
-                        vm.error="Unable to search Flickr";
+                        vm.error="Unable to search for users";
                     });
         }
      

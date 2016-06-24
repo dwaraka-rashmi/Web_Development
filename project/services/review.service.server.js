@@ -32,8 +32,8 @@ module.exports = function(app,models){
         };
         reviewModelProject
             .createProductReview(reviewObject)
-            .then(function(response){
-                    res.json(200);
+            .then(function(review){
+                    res.json(review);
                 },
                 function(error){
                     res.json(400);
