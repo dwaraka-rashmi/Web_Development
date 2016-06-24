@@ -22,7 +22,7 @@
                                 function(response){
                                     var user = response.data;
                                     if(user._id)
-                                        $location.url("/user/" + user._id);
+                                        $location.url("/user/");
                                     else
                                         vm.error = "Username already exists";
                                 },

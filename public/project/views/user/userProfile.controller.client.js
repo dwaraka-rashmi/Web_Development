@@ -13,6 +13,7 @@
         var loggedUserId = $rootScope.currentUser._id;
         vm.id = loggedUserId;
         vm.followUser = followUser;
+        vm.unfollowUser = unfollowUser;
         vm.error = false;
         vm.followed = false;
 
@@ -47,5 +48,19 @@
                         vm.error = error;
                     });
         }
+
+        function unfollowUser(){
+            UserService
+                .unfollowUser(loggedUserId,userId)
+                .then(
+                    function(response){
+                        vm.followed = false;
+                        init();
+                    },
+                    function(error){
+                        vm.error = error;
+                    });
+        }
+        
     }
 })();

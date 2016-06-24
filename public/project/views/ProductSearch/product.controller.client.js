@@ -6,13 +6,13 @@
         .module("BestShop")
         .controller("ProductController",ProductController);
 
-    function ProductController($location,$routeParams,ProductService,$rootScope,ProductSearchService,UserService) {
+    function ProductController($location,$routeParams,ProductService,$window,ProductSearchService,UserService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
         var userId = null;
-        if($rootScope.currentUser) {
-            userId = $rootScope.currentUser._id;
+        if(!$window.sessionStorage.getItem("currentUser")) {
+            userId = $window.sessionStorage.getItem("currentUser");
         }
 
         function init(){

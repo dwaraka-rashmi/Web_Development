@@ -21,6 +21,7 @@
             updateUser: updateUser,
             deleteUser: deleteUser,
             followUser:followUser,
+            unfollowUser:unfollowUser,
             searchUsers:searchUsers
         };
         return api;
@@ -95,6 +96,15 @@
                 userId : userId
             };
             return $http.put(url,userToFollow);
+        }
+        
+        function unfollowUser(loggedUserId,userId){
+            var url = "/api/user/unfollow/"+loggedUserId;
+            var userToUnFollow = {
+                userId : userId
+            };
+            return $http.put(url,userToUnFollow);
+            
         }
 
         //deleteUser(userId) - removes the user whose _id matches the userId parameter

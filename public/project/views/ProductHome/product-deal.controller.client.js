@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductDealController",ProductDealController);
 
-    function ProductDealController($location,$routeParams,$rootScope,ProductService,ProductSearchService,$http) {
+    function ProductDealController($location,$routeParams,$window,ProductService,ProductSearchService,$http) {
 
         var vm = this;
         var itemId = $routeParams.pid;
@@ -19,7 +19,7 @@
                         var item = response.data;
                         vm.item = item;
                         console.log(item);
-                        if(!$rootScope.currentUser) {
+                        if(!$window.sessionStorage.getItem("currentUser")) {
                             vm.alert = "Login to continue..";
                         }
                     },

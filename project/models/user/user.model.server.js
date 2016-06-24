@@ -22,13 +22,7 @@ module.exports = function() {
         delete user._id;
         return UserProject
             .update({_id: userId},{
-                $set: {
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    pic: user.pic,
-                    followers:user.followers,
-                    followedBy:user.followedBy
-                }
+                $set: user
             });
     }
 

@@ -6,15 +6,15 @@
         .module("BestShop")
         .controller("ProductReviewController",ProductReviewController);
 
-    function ProductReviewController($location,$routeParams,$rootScope,ProductService) {
+    function ProductReviewController($location,$routeParams,$window,ProductService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
         vm.addReview = addReview;
         vm.updateReview = updateReview;
-
-        if($rootScope.currentUser) {
-            vm.userId = $rootScope.currentUser._id;
+        
+        if($window.sessionStorage.getItem("currentUser")) {
+            vm.userId = $window.sessionStorage.getItem("currentUser");
         }
         else
         {

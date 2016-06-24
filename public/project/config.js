@@ -99,7 +99,7 @@
                 redirectTo: "/login"
             });
 
-        function checkLoggedIn(UserService,$location,$q,$rootScope){
+        function checkLoggedIn(UserService,$location,$q,$rootScope,$window){
             var deferred = $q.defer();
             UserService
                 .loggedIn()
@@ -108,11 +108,15 @@
                         var user = response.data;
                         // console.log(user);
                         if(user ==  '0'){
+                            console.log(user._id);
                             $rootScope.currentUser = null;
+                            $window.sessionStorage.setItem("currentUser",user._id);
                             deferred.reject();
                             $location.url("/login");
                         } else {
+                            console.log(user._id);
                             $rootScope.currentUser = user;
+                            $window.sessionStorage.setItem("currentUser",user._id);
                             deferred.resolve();
                         }
                     },

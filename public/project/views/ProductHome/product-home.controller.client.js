@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductHomeController",ProductHomeController);
 
-    function ProductHomeController($location,$routeParams,$rootScope,ProductSearchService){
+    function ProductHomeController($location,$routeParams,$window,ProductSearchService){
 
         var vm = this;
         var getProduct = getProduct;
@@ -18,7 +18,7 @@
                     function(response){
                         console.log(response.data);
                         vm.items= response.data.items;
-                        if(!$rootScope.currentUser) {
+                        if(!$window.sessionStorage.getItem("currentUser")) {
                             vm.alert = "Login to continue..";
                         }
                     },

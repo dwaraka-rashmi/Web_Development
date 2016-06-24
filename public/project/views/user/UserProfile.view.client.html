@@ -20,17 +20,18 @@
                 <div class="media">
                     <a class="thumbnail pull-left" href="#">
                         <!--<img class="media-object" src="{{model.user.pic}}">-->
-                        <img class="media-object img-circle" src="{{model.user.pic}}" alt="Profile Picture">
+                        <img class="media-object img-circle" src="{{model.user.pic}}" alt="Profile Picture"
+                        onError="this.onerror=null;this.src='./images/profilePic.png';">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{model.user.username}} - {{model.user.firstName}} {{model.user.lastName}}</h4>
                         <p><span class="label label-info">{{model.user.followers.length}} followers</span>
                             <span class="label label-warning">{{model.user.followedBy.length}} following</span>
-                            <span ng-if="model.followed" class="label label-warning">
-                                <a ng-click="model.unfollowUser(model.userId)">Unfollow</a>
+                            <span ng-if="model.followed" class="label label-danger">
+                                <a class="follow-button" ng-click="model.unfollowUser()">Unfollow</a>
                             </span>
-                            <span ng-if="!model.followed" class="label label-warning">
-                                <a  ng-click="model.followUser(model.userId)">follow</a>
+                            <span ng-if="!model.followed" class="label label-success">
+                                <a class="follow-button" ng-click="model.followUser()">follow</a>
                             </span>
                         </p>
                     </div>

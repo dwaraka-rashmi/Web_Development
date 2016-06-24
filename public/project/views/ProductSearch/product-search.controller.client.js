@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductSearchController",ProductSearchController);
 
-    function ProductSearchController($location,$routeParams,ProductSearchService) {
+    function ProductSearchController($location,$routeParams,$window,ProductSearchService) {
         var vm = this;
         vm.searchProducts = searchProducts;
 
@@ -26,7 +26,9 @@
             {text:"Photo, Gifts & Personalized Shop"},
             {text:"Crafts & Party Supplies"}];
         vm.search = false;
-        
+        if($window.sessionStorage.getItem("currentUser")) {
+            var userId = $window.sessionStorage.getItem("currentUser");
+        }
         function searchProducts(searchText) {
             ProductSearchService
                 .searchProducts(searchText)

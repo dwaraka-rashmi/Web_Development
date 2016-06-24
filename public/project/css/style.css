@@ -6,6 +6,12 @@ input.form-control {
     border-color: black;
 }
 
+.media-object {
+    width : 40%;
+    display: block;
+    margin: auto;
+}
+
 .media-middle{
     display: block;
     margin: auto;
@@ -277,4 +283,8 @@ nav.nav-bar ul {
 .container .jumbotron .product-detail{
     background-color: floralwhite;
     margin: -10% -5% -10% -5%;
+}
+
+.follow-button {
+    color: white !important;
 }

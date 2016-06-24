@@ -20,6 +20,7 @@ module.exports = function(app,models){
     app.get("/api/allUsers/",getAllUsers);
     app.put("/api/user/:id", updateUser);
     app.put("/api/user/follow/:id",followUser);
+    app.put("/api/user/unfollow/:id",unfollowUser);
     app.delete("/api/user/:id",deleteUser);
 
     var multer = require('multer'); // npm install multer save
@@ -373,8 +374,63 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    console.log("old"+user);
                     user.followedBy.push(followedById);
+                    userModelProject
+                        .updateUser(id,user)
+                        .then(
+                            function(stats) {
+                                res.send(200);
+                            },
+                            function(error) {
+                                res.statusCode(404).send(error);
+                            }
+                        );
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+    }
+
+    function unfollowUser(req,res){
+        var id = req.params.id;
+        var userUnFollowed = req.body;
+        userModelProject
+            .findUserById(id)
+            .then(
+                function(user) {
+                    console.log("old"+user);
+                    console.log(user.followers.indexOf(userUnFollowed.userId));
+                    user.followers.splice((user.followers.indexOf(userUnFollowed.userId)),1);
+                    console.log("new"+user);
+                    userModelProject
+                        .updateUser(id,user)
+                        .then(
+                            function(stats) {
+                                console.log(stats);
+                                updateUnFollowedBy(userUnFollowed.userId,id,res);
+                                // res.send(200);
+                            },
+                            function(error) {
+                                res.statusCode(404).send(error);
+                            }
+                        );
+                },
+                function(error) {
+                    res.statusCode(404).send(error);
+                }
+            );
+    }
+
+    function updateUnFollowedBy(id,followedById,res){
+        userModelProject
+            .findUserById(id)
+            .then(
+                function(user) {
+                    console.log("old"+user);
+                    // user.followedBy.remove(followedById);
+                    // user.save();
+                    user.followedBy.splice(user.followedBy.indexOf(followedById),1);
                     console.log("new"+user);
                     userModelProject
                         .updateUser(id,user)

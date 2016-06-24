@@ -32,7 +32,7 @@
             <div style="width:100%">{{item.name}}</div>
             <div class="btn btn-primary btn-sm">$ {{item.salePrice}}</div>
             </span>
-            <img ng-src="{{item.thumbnailImage}}"/>
+            <img ng-src="{{item.thumbnailImage}}" onError="this.onerror=null;this.src='./images/itemImage.PNG';"/>
         </a>
     </div>
 </div>

@@ -40,7 +40,8 @@
             <div class="btn btn-default price">Sale Price ${{model.item.salePrice}}</div>
                 </span>
             <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
-            <img class="price" ng-src="{{model.item.mediumImage}}"/>
+            <img class="price" ng-src="{{model.item.mediumImage}}"
+                 onError="this.onerror=null;this.src='./images/itemImage.PNG';"/>
         </div>
     </div>
 </div>

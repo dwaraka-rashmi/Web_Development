@@ -5,13 +5,16 @@
     angular
         .module("BestShop")
         .controller("ProfileController",ProfileController);
-    function ProfileController($location,$routeParams, UserService,$rootScope){
+    function ProfileController($location,$routeParams, UserService,$window){
 
         var vm = this;
         vm.updateUser = updateUser;
         vm.error = false;
         // var id = $routeParams.uid;
-        var id = $rootScope.currentUser._id;
+        var id = undefined;
+        if($window.sessionStorage.getItem("currentUser")) {
+            var id = $window.sessionStorage.getItem("currentUser");
+        }
         vm.id = id;
         vm.unregister = unregister;
         vm.logout = logout;
@@ -22,6 +25,7 @@
                 .logout()
                 .then(
                     function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
                         $location.url("/login");
                     },
                     function(error){
