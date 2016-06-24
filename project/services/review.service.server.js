@@ -28,7 +28,8 @@ module.exports = function(app,models){
         var reviewObject = {
             itemId : req.body.itemId,
             _user : req.body.userId,
-            productReviews: req.body.review
+            productReviews: req.body.review,
+            username:req.body.username
         };
         reviewModelProject
             .createProductReview(reviewObject)

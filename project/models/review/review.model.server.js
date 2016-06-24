@@ -17,7 +17,7 @@ module.exports = function() {
     return api;
     
     function findProductReviewByItemId(itemId){
-        return ReviewProject.findOne({itemId:itemId});
+        return ReviewProject.find({itemId:itemId});
     }
     
     function updateProductReview(reviewId,review){

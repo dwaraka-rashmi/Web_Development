@@ -20,22 +20,24 @@
             return $http.get(url);
         }
         
-        function updateProductReview(reviewId,review,itemId,userId){
+        function updateProductReview(reviewId,review,itemId,userId,username){
             var url = "/api/product/review/"+reviewId;
             var ProductReview = {
                 review : review,
                 itemId : itemId,
-                userId: userId
+                userId: userId,
+                username:username
             };
             return $http.put(url,ProductReview);
         }
 
-        function createProductReview(review,itemId,userId){
+        function createProductReview(review,itemId,userId,username){
             var url = "/api/product/review/";
             var ProductReview = {
                 review : review,
                 itemId : itemId,
-                userId: userId
+                userId: userId,
+                username:username
             };
             return $http.post(url,ProductReview);
         }

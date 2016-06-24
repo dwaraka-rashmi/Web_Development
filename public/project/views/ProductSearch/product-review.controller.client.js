@@ -15,6 +15,7 @@
         
         if($window.sessionStorage.getItem("currentUser")) {
             vm.userId = $window.sessionStorage.getItem("currentUser");
+            vm.username = $window.sessionStorage.getItem("currentUsername");
         }
         else
         {
@@ -31,7 +32,7 @@
                 .then(
                     function(response){
                         console.log(response.data);
-                        vm.items = [response.data];
+                        vm.items = response.data;
                     },
                     function(error){
                         vm.error="Unable to access Walmart";
@@ -41,7 +42,7 @@
 
         function addReview(review){
             ProductReviewService
-                .createProductReview(review,itemId, vm.userId)
+                .createProductReview(review,itemId, vm.userId,vm.username)
                 .then(
                     function(response){
                         var review = response.data;
@@ -54,7 +55,7 @@
         
         function updateReview(reviewId,review){
             ProductReviewService
-                .updateProductReview(reviewId,review,itemId, vm.userId)
+                .updateProductReview(reviewId,review,itemId, vm.userId,vm.username)
                 .then(
                     function(response){
                         init();

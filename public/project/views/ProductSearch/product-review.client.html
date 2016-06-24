@@ -51,19 +51,12 @@
             </div>
         </div>
     </div>
-        <div class=amazing-reviews>
-            <blockquote>
-                <header>
-                    <strong>Ullamco laboris!</strong>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-            </blockquote>
-        </div>
     </span>
     {{model.item}}
     <div class="list-group search" ng-repeat= "review in model.items">
         <div class=amazing-reviews>
             <blockquote>
-            <a href="#/user/{{model.userId}}"><strong>{{review._user}}</strong></a>
+            <a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
             <p>{{review.productReviews}}</p>
             </blockquote>
         </div>
