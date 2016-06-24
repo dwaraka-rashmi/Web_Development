@@ -42,7 +42,7 @@ button.upload-image{
 
 .input-group{
     margin-bottom: 2%;
-    margin-top: 5%;
+    margin-top: 0%;
 }
 .container .jumbotron{
     background-color: #f9ae54!important;
@@ -292,4 +292,9 @@ nav.nav-bar ul {
 
 .follow-button:hover {
     text-decoration: none;
+}
+
+.logo>img {
+    width: 70%;
+    margin-left: -15px;
 }

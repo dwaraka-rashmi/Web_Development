@@ -18,7 +18,7 @@ module.exports = function() {
         dob: Date,
         followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserProject'}],
         followedBy: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserProject'}],
-        productsSaved:[{type: mongoose.Schema.Types.ObjectId, ref: 'ProductProject'}],
+        productsSaved:[],
         Reviews:[{type: mongoose.Schema.Types.ObjectId, ref: 'ReviewProject'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.user"});

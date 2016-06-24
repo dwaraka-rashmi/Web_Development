@@ -68,7 +68,7 @@
                                     .createProduct(item)
                                     .then(function(response){
                                             vm.success = "user prefernce saved";
-                                            updateUserProductPreference(item._id);
+                                            updateUserProductPreference(response.data.itemId);
                                         },
                                         function(error){
                                             vm.error = "Unable to update user preference";
@@ -83,7 +83,6 @@
                         vm.error = "Unable to update user preference";
                     }
                 )
-
         }
 
         function updateUserProductPreference(productId){
@@ -93,7 +92,7 @@
                 .then(
                     function(response){
                         var user = response.data;
-                        if(user.productsSaved.indexOf(productId)>=0) {
+                        if(user.productsSaved.indexOf(productId)<0) {
                             user.productsSaved.push(productId);
                             UserService
                                 .updateUser(user._id, user)
@@ -128,7 +127,6 @@
         }
         
     }
-
 
 
 })();
