@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductHomeController",ProductHomeController);
 
-    function ProductHomeController($location,$routeParams,$window,ProductSearchService){
+    function ProductHomeController($location,$window,ProductSearchService,UserService){
 
         var vm = this;
         var getProduct = getProduct;
@@ -27,6 +27,22 @@
                     });
         }
         init();
+        
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
     
     }
 })();

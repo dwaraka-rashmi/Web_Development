@@ -9,7 +9,7 @@
         .module("BestShop")
         .controller("UserSearchController",UserSearchController);
 
-    function UserSearchController($location,$routeParams,UserService,$window) {
+    function UserSearchController($location,UserService,$window) {
 
         var vm = this;
         var id;
@@ -18,7 +18,7 @@
         }
         userId = id;
         vm.searchUsers = searchUsers;
-        
+
         function init(){
             UserService
                 .findUsers()
@@ -26,9 +26,12 @@
                     function(response){
                         var usersRet = response.data;
                         for (var i in usersRet) {
-                           if (usersRet[i]._id === userId) {
-                               usersRet.splice(i,1);
-                           }
+                            if (usersRet[i]._id === userId) {
+                                usersRet.splice(i,1);
+                            }
+                            if(!usersRet[i].pic){
+                                usersRet[i].pic = "../project/images/profilePic.png";
+                            }
                         }
                         vm.users = usersRet;
                     },
@@ -50,7 +53,23 @@
                         vm.error="Unable to search for users";
                     });
         }
-     
+
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
+
     }
 })();
 

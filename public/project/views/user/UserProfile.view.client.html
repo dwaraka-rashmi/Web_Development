@@ -2,14 +2,20 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
+                <a href="#/user/search" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Profile
+                {{model.user.username}}'s Profile
             </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off">
+                  </span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
@@ -19,18 +25,17 @@
             <div class="well well-sm">
                 <div class="media">
                     <a class="thumbnail pull-left" href="#">
-                        <!--<img class="media-object" src="{{model.user.pic}}">-->
-                        <img class="media-object img-circle" src="{{model.user.pic}}" alt="Profile Picture"
-                        onError="this.onerror=null;this.src='./images/profilePic.png';">
+                        <img class="media-object img-circle" src="{{model.user.pic}}"
+                             onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{model.user.username}} - {{model.user.firstName}} {{model.user.lastName}}</h4>
-                        <p><span class="label label-info">{{model.user.followers.length}} followers</span>
-                            <span class="label label-warning">{{model.user.followedBy.length}} following</span>
-                            <span ng-if="model.followed" class="label label-danger">
+                        <p><span class="btn btn-info btn-block">{{model.user.followers.length}} followers</span>
+                            <span class="btn btn-warning btn-block">{{model.user.followedBy.length}} following</span>
+                            <span ng-if="model.followed" class="btn btn-danger btn-block">
                                 <a class="follow-button" ng-click="model.unfollowUser()">Unfollow</a>
                             </span>
-                            <span ng-if="!model.followed" class="label label-success">
+                            <span ng-if="!model.followed" class="btn btn-success btn-block">
                                 <a class="follow-button" ng-click="model.followUser()">follow</a>
                             </span>
                         </p>
@@ -43,8 +48,14 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
+            <p class="navbar-text pull-left">
+                <a href="#/" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.user._id}}" class="navbar-link">
+                <a href="#/user" class="navbar-link">
                   <span class="glyphicon glyphicon-user">
                   </span>
                 </a>

@@ -11,10 +11,6 @@
                 templateUrl: "views/ProductHome/product-home.client.html",
                 controller: "ProductHomeController",
                 controllerAs: "model"
-                // ,
-                // resolve:{
-                //     loggedIn:checkLoggedIn
-                // }
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
@@ -71,7 +67,7 @@
                 controller: "ProductDealController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/product", {
+            .when("/user/product", {
                 templateUrl: "views/ProductSearch/product-saved.client.html",
                 controller: "ProductSavedController",
                 controllerAs: "model",
@@ -111,12 +107,14 @@
                             console.log(user._id);
                             $rootScope.currentUser = null;
                             $window.sessionStorage.setItem("currentUser",user._id);
+                            $window.sessionStorage.setItem("currentUsername",user.username);
                             deferred.reject();
                             $location.url("/login");
                         } else {
                             console.log(user._id);
                             $rootScope.currentUser = user;
                             $window.sessionStorage.setItem("currentUser",user._id);
+                            $window.sessionStorage.setItem("currentUsername",user.username);
                             deferred.resolve();
                         }
                     },

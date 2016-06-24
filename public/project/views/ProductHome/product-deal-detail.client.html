@@ -11,8 +11,8 @@
                 Product
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.addToCart()" class="navbar-link">
-                  <span class="glyphicon glyphicon-shopping-cart">
+                <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off">
                   </span>
                 </a>
             </p>
@@ -41,7 +41,7 @@
                 </span>
             <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
             <img class="price" ng-src="{{model.item.mediumImage}}"
-                 onError="this.onerror=null;this.src='./images/itemImage.PNG';"/>
+                 onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
         </div>
     </div>
 </div>

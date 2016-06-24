@@ -26,6 +26,7 @@
                 .then(
                     function(response){
                         $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
                         $location.url("/login");
                     },
                     function(error){
@@ -48,6 +49,9 @@
                 .findUserById(id)
                 .then(function(response){
                     vm.user = response.data;
+                    if(!vm.user.pic){
+                        vm.user.pic = "../project/images/profilePic.png";
+                    }
                 });
             vm.success = false;
             vm.error = false;

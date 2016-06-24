@@ -32,7 +32,7 @@
     <div ng-if="model.user.pic" class="media-body media-middle">
         <a href="{{model.user.pic}}">
             <img class="media-object image-circle" src="{{model.user.pic}}" alt="Profile Picture"
-                 onError="this.onerror=null;this.src='./images/profilePic.png';">
+                 onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
         </a>
     </div>
     <form>
@@ -56,15 +56,14 @@
             <input ng-model="model.user.lastName"
                    type="text" class="form-control" id="last-name" placeholder="Dwaraka">
         </div>
+        <form action="/api/uploadPic"  method="post" enctype="multipart/form-data">
+            <input  name="myFile" type="file" class="form-control"/>
+            <input  name="userId" value="{{model.id}}" style="display: none"/>
+            <button type="submit" class="btn btn-block btn-primary upload-image">Upload Image</button>
+        </form>
+        <a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
+        <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
     </form>
-
-    <form action="/api/uploadPic"  method="post" enctype="multipart/form-data">
-        <input  name="myFile" type="file" class="form-control"/>
-        <input  name="userId" value="{{model.id}}" style="display: none"/>
-        <button type="submit" class="btn btn-block btn-primary upload-image">Upload Image</button>
-    </form>
-    <a ng-click="model.logout()" class="btn btn-danger  btn-block">Logout</a>
-    <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
@@ -77,8 +76,8 @@
                 </a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.id}}/product" class="navbar-link">
-                  <span class="glyphicon glyphicon-cart">
+                <a href="#/product/search" class="navbar-link">
+                  <span class="glyphicon glyphicon-shopping-cart">
                   </span>
                 </a>
             </p>

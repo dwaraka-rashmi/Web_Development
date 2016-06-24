@@ -361,14 +361,11 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    console.log("old"+user);
                     user.followers.push(userFollowed.userId);
-                    console.log("new"+user);
                     userModelProject
                         .updateUser(id,user)
                         .then(
                             function(stats) {
-                                console.log(stats);
                                 updateFollowedBy(userFollowed.userId,id,res);
                                 // res.send(200);
                             },
@@ -413,10 +410,7 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    console.log("old"+user);
-                    console.log(user.followers.indexOf(userUnFollowed.userId));
                     user.followers.splice((user.followers.indexOf(userUnFollowed.userId)),1);
-                    console.log("new"+user);
                     userModelProject
                         .updateUser(id,user)
                         .then(
@@ -441,11 +435,7 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    console.log("old"+user);
-                    // user.followedBy.remove(followedById);
-                    // user.save();
                     user.followedBy.splice(user.followedBy.indexOf(followedById),1);
-                    console.log("new"+user);
                     userModelProject
                         .updateUser(id,user)
                         .then(
@@ -510,7 +500,6 @@ module.exports = function(app,models){
                     });
         }
     }
-
 
 
 };

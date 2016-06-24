@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductReviewController",ProductReviewController);
 
-    function ProductReviewController($location,$routeParams,$window,ProductService,UserService) {
+    function ProductReviewController($location,$routeParams,$window,ProductReviewService,UserService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
@@ -26,7 +26,7 @@
 
         function init(){
             //upate on fetching data from db abd update product to db
-            ProductService
+            ProductReviewService
                 .getProductReviewByItemId(itemId)
                 .then(
                     function(response){
@@ -40,7 +40,7 @@
         init();
 
         function addReview(review){
-            ProductService
+            ProductReviewService
                 .createProductReview(review,itemId, vm.userId)
                 .then(
                     function(response){
@@ -53,7 +53,7 @@
         }
         
         function updateReview(reviewId,review){
-            ProductService
+            ProductReviewService
                 .updateProductReview(reviewId,review,itemId, vm.userId)
                 .then(
                     function(response){
@@ -87,6 +87,24 @@
                         vm.error = "user not updated";
                     });
         }
+
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
+        
     }
+
 
 })();

@@ -36,8 +36,8 @@ input.form-control {
     margin-right: 4%;
     margin-top: 5%;
 }
-.upload-image{
-    margin-bottom: 1%;
+button.upload-image{
+    margin-bottom: 1%!important;
 }
 
 .input-group{
@@ -287,4 +287,9 @@ nav.nav-bar ul {
 
 .follow-button {
     color: white !important;
+    cursor: pointer;
+}
+
+.follow-button:hover {
+    text-decoration: none;
 }

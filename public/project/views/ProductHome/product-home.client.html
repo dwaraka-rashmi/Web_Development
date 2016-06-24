@@ -4,6 +4,12 @@
             <a class="navbar-brand" href="#">
                 Welcome to Best Shop
             </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off">
+                  </span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
@@ -32,7 +38,7 @@
             <div style="width:100%">{{item.name}}</div>
             <div class="btn btn-primary btn-sm">$ {{item.salePrice}}</div>
             </span>
-            <img ng-src="{{item.thumbnailImage}}" onError="this.onerror=null;this.src='./images/itemImage.PNG';"/>
+            <img ng-src="{{item.thumbnailImage}}" onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
         </a>
     </div>
 </div>

@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
+                <a href="#/product/search" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
             </p>
@@ -11,8 +11,8 @@
                 Product
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.addToCart()" class="navbar-link">
-                  <span class="glyphicon glyphicon-shopping-cart">
+                <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off">
                   </span>
                 </a>
             </p>
@@ -30,7 +30,8 @@
             <div class="btn btn-default price">Sale Price ${{model.item.salePrice}}</div>
                 </span>
             <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
-            <img class="price" ng-src="{{model.item.mediumImage}}"/>
+            <img class="price" ng-src="{{model.item.mediumImage}}"
+                onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
         </div>
     </div>
     <a href="#/product/{{model.item.itemId}}/review/" class="btn btn-group btn-primary">Customer Reviews</a>
@@ -45,7 +46,7 @@
                 </a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}" class="navbar-link">
+                <a href="#/user" class="navbar-link">
                   <span class="glyphicon glyphicon-user">
                   </span>
                 </a>

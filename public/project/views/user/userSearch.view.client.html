@@ -2,14 +2,20 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
+                <a href="#/user" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
                 Find Best Shop Users
             </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off">
+                  </span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
@@ -31,16 +37,24 @@
             <div style="width:100%">{{user.username}}</div>
             <!--<div class="btn btn-primary">$ {{item.salePrice}}</div>-->
                 </span>
-            <img ng-src="{{user.pic}}"/>
+            <img class="media-object img-circle" ng-src="{{user.pic}}"
+                 onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
+            <!--<img ng-src="{{user.pic}}"/>-->
         </a>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
+            <p class="navbar-text pull-left">
+                <a href="#/" class="navbar-link">
+                  <span class="glyphicon glyphicon-home">
+                  </span>
+                </a>
+            </p>
             <p class="navbar-text pull-right">
-                <a href="#/user" class="navbar-link">
-                  <span class="glyphicon glyphicon-user">
+                <a href="#/product/search" class="navbar-link">
+                  <span class="glyphicon glyphicon-shopping-cart">
                   </span>
                 </a>
             </p>

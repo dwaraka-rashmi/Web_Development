@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductController",ProductController);
 
-    function ProductController($location,$routeParams,ProductService,$window,ProductSearchService,UserService) {
+    function ProductController($location,$routeParams,$window,ProductSearchService,UserService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
@@ -110,6 +110,25 @@
                         vm.error = "user not updated";
                     });
         }
+
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
+        
     }
+
+
 
 })();

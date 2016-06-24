@@ -8,6 +8,7 @@ module.exports = function() {
     var ReviewSchemaProject = mongoose.Schema({
         itemId: String,
         _user:{type:mongoose.Schema.ObjectId,ref:"UserProject"},
+        username : String,
         productReviews: String,
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.review"});

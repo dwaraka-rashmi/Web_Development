@@ -8,7 +8,7 @@
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Best Shop
+                Product
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.logout()" class="navbar-link">
@@ -23,20 +23,8 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="input-group">
-        <input ng-model="model.searchText" type="text" class="form-control" placeholder="Start Shopping..">
-    <span class="input-group-btn">
-        <a ng-click="model.searchProducts(model.searchText)" class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
-    </div>
-    <hgroup ng-if="model.search" class="mb20">
-        <h5>Search Results</h5>
-        <h6 class="lead"><strong class="text-danger">{{model.totalResults}}</strong> results were found for the search for <strong class="text-danger">{{model.term}}</strong></h6>
-    </hgroup>
-    <div  ng-if="model.items">
-        <div class="list-group search" ng-repeat= "item in model.items">
+    <div  ng-if="model.products">
+        <div class="list-group search" ng-repeat= "item in model.products">
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
@@ -67,8 +55,8 @@
     <div class="container-fluid">
         <div class="navbar-footer">
             <p class="navbar-text pull-left">
-                <a href="#/user/product" class="navbar-link">
-                  <span class="glyphicon glyphicon-shopping-cart">
+                <a href="{{model.item.productUrl}}" class="navbar-link">
+                  <span class="glyphicon glyphicon-new-window">
                   </span>
                 </a>
             </p>

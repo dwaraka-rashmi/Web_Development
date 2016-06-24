@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductSearchController",ProductSearchController);
 
-    function ProductSearchController($location,$routeParams,$window,ProductSearchService) {
+    function ProductSearchController($location,$window,ProductSearchService,UserService) {
         var vm = this;
         vm.searchProducts = searchProducts;
 
@@ -44,6 +44,24 @@
                         vm.error="Unable to search Flickr";
                     });
         }
+
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
+
+
     }
 })();
 

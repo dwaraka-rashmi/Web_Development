@@ -20,11 +20,11 @@ module.exports = function() {
         return ReviewProject.findOne({itemId:itemId});
     }
     
-    function updateProductReview(productId,product){
-        delete product._id;
+    function updateProductReview(reviewId,review){
+        delete review._id;
         return ReviewProject
-            .update({_id: productId},{
-                $set: product
+            .update({_id: reviewId},{
+                $set: review
             });
     }
 

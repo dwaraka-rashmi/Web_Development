@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductDealController",ProductDealController);
 
-    function ProductDealController($location,$routeParams,$window,ProductService,ProductSearchService,$http) {
+    function ProductDealController($location,$routeParams,$window,ProductSearchService,UserService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
@@ -28,6 +28,21 @@
                     });
         }
         init();
+
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
+                    });
+        }
 
     }
 

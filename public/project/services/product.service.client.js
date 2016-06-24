@@ -1,56 +1,55 @@
 /**
- * Created by Rashmi_Dwaraka on 6/21/2016.
+ * Created by Rashmi_Dwaraka on 6/18/2016.
  */
 (function(){
     angular
         .module("BestShop")
-        .factory("ProductService", ProductService);
-
-    function ProductService($http) {
-        
+        .factory("ProductSearchService", ProductSearchService);
+    
+    function ProductSearchService($http) {
         var api = {
-            getProductReviewByItemId:getProductReviewByItemId,
-            updateProductReview:updateProductReview,
-            createProductReview:createProductReview
-            // updateProduct:updateProduct
+            searchProducts: searchProducts,
+            getDeals:getDeals,
+            getProductById:getProductById,
+            createProduct : createProduct,
+            getProductLocal:getProductLocal,
+            updateProduct:updateProduct
         };
         return api;
 
-        // function updateProduct(review,item,userId){
-        //
-        //     var product = {
-        //         item : item,
-        //         review : review,
-        //         userId: userId
-        //     };
-        //     $http.put("/api/product/review",product);
-        //
-        // }
+        function getDeals(){
+            var url = "http://api.walmartlabs.com/v1/search?query=deals+value+discount+clearance" +
+                "&format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&callback=JSON_CALLBACK";
+            return $http.jsonp(url);
+        }
+        
+        function searchProducts(searchTerm) {
+            var url = "http://api.walmartlabs.com/v1/search?query="+searchTerm+
+                       "&format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&callback=JSON_CALLBACK";
+            return $http.jsonp(url);
+        }
 
-        function getProductReviewByItemId(itemId){
-            var url = "/api/product/review/"+itemId;
+        function getProductById(itemId){
+            var url = "http://api.walmartlabs.com/v1/items/"+itemId+
+                        "?apiKey=y9sfyhfq8wxk69hhy3xcqsj9&format=json&callback=JSON_CALLBACK";
+            return $http.jsonp(url);
+        }
+        
+        function getProductLocal(itemId){
+            var url = "/api/product/"+itemId;
             return $http.get(url);
         }
+
+        function updateProduct(item){
+            var url = "/api/product/";
+            return $http.put(url,item);
+        }
         
-        function updateProductReview(reviewId,review,itemId,userId){
-            var url = "/api/product/review/"+reviewId;
-            var ProductReview = {
-                review : review,
-                itemId : itemId,
-                userId: userId
-            };
-            return $http.put(url,ProductReview);
+        function createProduct(item){
+            var url = "/api/product/";
+            return $http.post(url,item);
         }
 
-        function createProductReview(review,itemId,userId){
-            var url = "/api/product/review/";
-            var ProductReview = {
-                review : review,
-                itemId : itemId,
-                userId: userId
-            };
-            return $http.post(url,ProductReview);
-        }
-        
+
     }
 })();

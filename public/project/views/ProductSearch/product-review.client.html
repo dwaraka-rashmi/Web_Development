@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/" class="navbar-link">
-                  <span class="glyphicon glyphicon-home">
+                <a href="#/product/{{model.item.itemId}}" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left">
                   </span>
                 </a>
             </p>
@@ -11,8 +11,8 @@
                 Product Review
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateProductReview()" class="navbar-link">
-                  <span class="glyphicon glyphicon-ok">
+                <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off">
                   </span>
                 </a>
             </p>
@@ -79,7 +79,7 @@
                 </a>
             </p>
             <p class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}" class="navbar-link">
+                <a href="#/user/" class="navbar-link">
                   <span class="glyphicon glyphicon-user">
                   </span>
                 </a>

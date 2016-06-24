@@ -28,13 +28,21 @@
                 .then(function(response){
                     vm.user = response.data;
                     var followedBy = vm.user.followedBy;
-                    for(var i = 0; i < followedBy.length; i++)
-                    {
-                        if(followedBy[i] == loggedUserId)
-                        {
+                    if(followedBy) {
+                        if (followedBy.indexOf(loggedUserId) >= 0) {
                             vm.followed = true;
                         }
                     }
+                    if(!vm.user.pic){
+                        vm.user.pic = "../project/images/profilePic.png";
+                    }
+                    // for(var i = 0; i < followedBy.length; i++)
+                    // {
+                    //     if(followedBy[i] == loggedUserId)
+                    //     {
+                    //         vm.followed = true;
+                    //     }
+                    // }
                 });
             vm.success = false;
             vm.error = false;
@@ -64,6 +72,22 @@
                     },
                     function(error){
                         vm.error = error;
+                    });
+        }
+
+        vm.logout = logout;
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function(response){
+                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $location.url("/login");
+                    },
+                    function(error){
+                        vm.error = "Unable to logout";
                     });
         }
         
