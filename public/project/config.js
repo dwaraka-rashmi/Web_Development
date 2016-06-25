@@ -91,6 +91,14 @@
                     loggedIn:checkLoggedIn
                 }
             })
+            .when("/category/search", {
+                templateUrl: "views/ProductSearch/category-search.view.client.html",
+                controller: "CategorySearchController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
             .otherwise({
                 redirectTo: "/login"
             });

@@ -4,21 +4,41 @@
 (function(){
     angular
         .module("BestShop")
-        .controller("ProductSearchController",ProductSearchController);
+        .controller("CategorySearchController",CategorySearchController);
 
-    function ProductSearchController($location,$window,ProductSearchService,UserService) {
+    function CategorySearchController($location,$window,CategorySearchService,UserService) {
         var vm = this;
         vm.searchProducts = searchProducts;
+        vm.pagecount = 0;
 
         vm.search = false;
         if($window.sessionStorage.getItem("currentUser")) {
             var userId = $window.sessionStorage.getItem("currentUser");
         }
         
+        function init(){
+            CategorySearchService
+                .getCategory()
+                .then(
+                    function(response){
+                        vm.categories = response.data;
+                        for(var i in vm.categories){
+                            if(!vm.categories[i].image){
+                                vm.categories[i].image = '../images/itemImage.png';
+                            }
+                        }
+                    },
+                    function(err){
+                        vm.error = "Unable to fetch the Categories";
+                    });
+        }
         
-        function searchProducts(searchText) {
-            ProductSearchService
-                .searchProducts(searchText)
+        init();
+
+        function searchProducts(category,categoryId) {
+            vm.categorySearch = category;
+            CategorySearchService
+                .searchProducts(category,categoryId)
                 .then(
                     function(response){
                         console.log(response.data);
@@ -31,6 +51,7 @@
                         vm.error="Unable to search Walmart";
                     });
         }
+
 
         vm.logout = logout;
 

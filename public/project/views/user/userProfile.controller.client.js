@@ -52,7 +52,8 @@
                 .then(
                     function(response){
                         if(response.data.category && (vm.category.indexOf(response.data.category)<0)) {
-                            vm.category.push(response.data.category);
+                            vm.category.push({"category":response.data.category,
+                            "categoryId":response.data.categoryId});
                         }
                         fetchProductInterests();
                     },

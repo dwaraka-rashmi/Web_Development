@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/" class="navbar-link">
-                  <span class="glyphicon glyphicon-home blue">
+                <a href="#/product/search" class="navbar-link">
+                  <span class="glyphicon glyphicon-chevron-left blue">
                   </span>
                 </a>
             </p>
@@ -23,26 +23,36 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="input-group">
-        <input ng-model="model.searchText" type="text" class="form-control" placeholder="Start Shopping..">
-        <span class="input-group-btn">
-        <a ng-click="model.searchProducts(model.searchText)" class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-        </span>
+    <!--<div ng-if="!model.search" class="row">-->
+        <!--<div class="col-xs-6" ng-repeat="category in model.categories">-->
+            <!--<a ng-click="model.searchProducts(category.category,category.categoryId)" class="thumbnail">-->
+                <!--<img img-responsive src="{{category.image}}" alt="Image not available!"-->
+                     <!--onerror="this.onerror=null;this.src='../images/itemImage.png';" />-->
+                <!--<h6>{{category.category}}</h6>-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle btn-block" type="button" data-toggle="dropdown">Categories
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li ng-repeat="category in model.categories" class="btn-block">
+                <a ng-click="model.searchProducts(category.category,category.categoryId)">
+                    {{category.category}}
+                </a>
+            </li>
+        </ul>
     </div>
-    <div>
-        <span>
-            <a ng-if="!model.search" href="#/category/search" class="btn btn-block btn-primary">Search By Category</a>
-        </span>
-    </div>
+    <!--<ul class="pager">-->
+        <!--<li ng-if="model.pagecount==0" class="previous"><a href="#/category/search">Previous</a></li>-->
+        <!--<li ng-if="model.pagecount>0" class="previous"><a ng-click="model.searchProducts(model.pagecount)">Previous</a></li>-->
+        <!--<li class="next"><a ng-click="model.searchProducts(model.pagecount)">Next</a></li>-->
+    <!--</ul>-->
     <hgroup ng-if="model.search" class="mb20">
-        <h6 class="lead">
-            <strong class="text-danger">{{model.totalResults}}
-            </strong> results were found for the search for <strong class="text-danger">{{model.term}}</strong></h6>
+        <h6 class="lead"><strong class="text-danger">{{model.totalResults}}</strong> results were found for the search for <strong class="text-danger">{{model.categorySearch}}</strong></h6>
     </hgroup>
     <div  ng-if="model.items">
-        <div class="list-group search"  ng-repeat= "item in model.items">
+        <div class="list-group search" ng-repeat= "item in model.items">
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
@@ -72,6 +82,12 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
+            <p class="navbar-text pull-left">
+                <a href="#/" class="navbar-link">
+                  <span class="glyphicon glyphicon-home blue">
+                  </span>
+                </a>
+            </p>
             <p class="navbar-text pull-right">
                 <a href="#/user" class="navbar-link">
                   <span class="glyphicon glyphicon-user blue">

@@ -102,6 +102,16 @@ p.navbar-text.pull-left {
 
 }
 
+.cat-image{
+    width: 10%;
+    display: block;
+    margin: auto;
+}
+
+.dropdown-menu>li>a {
+    padding: 2px 59px!important;
+}
+
 .meta-search {
     margin-bottom: 0px;
 }

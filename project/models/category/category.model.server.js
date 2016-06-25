@@ -14,10 +14,15 @@ module.exports = function() {
         findCategoryById:findCategoryById,
         findCategoryByCategoryId:findCategoryByCategoryId,
         findByCategoryName:findByCategoryName,
-        deleteCategory:deleteCategory
+        deleteCategory:deleteCategory,
+        findAllCategories:findAllCategories
     };
     return api;
 
+    function findAllCategories(){
+        return CategoryProject.find();
+    }
+    
     function findByCategoryName(name){
         return CategoryProject.find({"category":name});
     }
