@@ -30,6 +30,11 @@
             };
             return $http.put(url,ProductReview);
         }
+        
+        function approveReview(reviewId){
+            var url = "/api/product/review/approve/"+reviewId;
+            return $http.put(url);
+        }
 
         function createProductReview(review,itemId,userId,username){
             var url = "/api/product/review/";
@@ -37,7 +42,8 @@
                 review : review,
                 itemId : itemId,
                 userId: userId,
-                username:username
+                username:username,
+                isReviewed: false
             };
             return $http.post(url,ProductReview);
         }

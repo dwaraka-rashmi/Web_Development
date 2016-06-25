@@ -10,6 +10,7 @@ module.exports = function() {
         _user:{type:mongoose.Schema.ObjectId,ref:"UserProject"},
         username : String,
         productReviews: String,
+        isReviewed: Boolean,
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "project.review"});
 

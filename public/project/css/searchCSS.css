@@ -53,6 +53,7 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .amazing-reviews {
     font-size: 10pt;
     margin-top: 2%;
+    margin-bottom: -2%;
     padding-left: 2%;
     background-color: #eee;
 }

@@ -8,7 +8,7 @@
     function Config($routeProvider) {
         $routeProvider
             .when("/",{
-                templateUrl: "views/ProductHome/product-home.client.html",
+                templateUrl: "views/ProductHome/product-home.view.client.html",
                 controller: "ProductHomeController",
                 controllerAs: "model"
             })
@@ -31,7 +31,7 @@
                 }
             })
             .when("/product/search", {
-                templateUrl: "views/ProductSearch/product-search.client.html",
+                templateUrl: "views/ProductSearch/product-search.view.client.html",
                 controller: "ProductSearchController",
                 controllerAs: "model",
                 resolve:{
@@ -39,7 +39,7 @@
                 }
             })
             .when("/product/:pid", {
-                templateUrl: "views/ProductSearch/product-detail.client.html",
+                templateUrl: "views/ProductSearch/product-detail.view.client.html",
                 controller: "ProductController",
                 controllerAs: "model",
                 resolve:{
@@ -47,7 +47,7 @@
                 }
             })
             .when("/product/:pid/review", {
-                templateUrl: "views/ProductSearch/product-review.client.html",
+                templateUrl: "views/ProductSearch/product-review.view.client.html",
                 controller: "ProductReviewController",
                 controllerAs: "model",
                 resolve:{
@@ -63,12 +63,12 @@
                 }
             })
             .when("/product/deal/:pid", {
-                templateUrl: "views/ProductHome/product-deal-detail.client.html",
+                templateUrl: "views/ProductHome/product-deal-detail.view.client.html",
                 controller: "ProductDealController",
                 controllerAs: "model"
             })
             .when("/user/product", {
-                templateUrl: "views/ProductSearch/product-saved.client.html",
+                templateUrl: "views/ProductSearch/product-saved.view.client.html",
                 controller: "ProductSavedController",
                 controllerAs: "model",
                 resolve:{

@@ -10,12 +10,24 @@ module.exports = function() {
 
     var api = {
         createProductReview: createProductReview,
-        updateProductReview:updateProductReview,
-        findProductReviewByItemId:findProductReviewByItemId
+        updateProductReview: updateProductReview,
+        findProductReviewByItemId:findProductReviewByItemId,
+        findProductReviewById: findProductReviewById,
+        deleteReview:deleteReview,
+        findProductAllUnapprovedReview:findProductAllUnapprovedReview
         
     };
     return api;
-    
+
+
+    function findProductAllUnapprovedReview(){
+        return ReviewProject.find({isReviewed:false});
+    }
+
+    function findProductReviewById(reviewId){
+        return ReviewProject.findById(reviewId);
+    }
+
     function findProductReviewByItemId(itemId){
         return ReviewProject.find({itemId:itemId});
     }
@@ -30,6 +42,10 @@ module.exports = function() {
 
     function createProductReview(review){
         return ReviewProject.create(review);
+    }
+
+    function deleteReview(reviewId){
+        return ReviewProject.remove({_id: reviewId});
     }
     
 };

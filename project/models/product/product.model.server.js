@@ -11,9 +11,15 @@ module.exports = function() {
     var api = {
         createProduct: createProduct,
         updateProduct:updateProduct,
-        findProductByItemId:findProductByItemId
+        findProductByItemId:findProductByItemId,
+        findProductById:findProductById,
+        deleteProduct:deleteProduct
     };
     return api;
+    
+    function findProductById(productId){
+        return ProductProject.findById(productId);
+    }
     
     function findProductByItemId(itemId){
         return ProductProject.findOne({itemId:itemId});
@@ -29,6 +35,10 @@ module.exports = function() {
 
     function createProduct(product){
         return ProductProject.create(product);
+    }
+
+    function deleteProduct(productId){
+        return ProductProject.remove(productId);
     }
     
 };

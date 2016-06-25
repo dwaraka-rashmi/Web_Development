@@ -26,18 +26,18 @@
         }
 
         function init(){
-            //upate on fetching data from db abd update product to db
+            
             ProductReviewService
                 .getProductReviewByItemId(itemId)
                 .then(
                     function(response){
                         console.log(response.data);
                         vm.items = response.data;
-
                     },
                     function(error){
                         vm.error="Unable to access Walmart";
                     });
+            
             ProductSearchService
                 .getProductById(itemId)
                 .then(

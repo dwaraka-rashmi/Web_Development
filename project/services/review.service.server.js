@@ -6,12 +6,14 @@ module.exports = function(app,models){
 
     var reviewModelProject = models.reviewModelProject;
 
-    app.get("/api/product/review/:id",getProductReviewById);
+    app.get("/api/product/review/:itemId",getProductReviewByItemId);
     app.put("/api/product/review/:rid",updateProductReview);
     app.post("/api/product/review",createProductReview);
+    app.put("/api/product/review/approve/:rid",approveReview);
+    app.delete("/api/product/review/:rid",disapproveReview);
 
-    function getProductReviewById(req,res){
-        var itemId = req.params.id;
+    function getProductReviewByItemId(req,res){
+        var itemId = req.params.itemId;
         reviewModelProject
             .findProductReviewByItemId(itemId)
             .then(
@@ -20,6 +22,20 @@ module.exports = function(app,models){
                 },
                 function(error){
                     res.json({});
+                }
+            )
+    }
+
+    function disapproveReview(req,res){
+        var reviewId = req.params.rid;
+        reviewModelProject
+            .deleteReview(reviewId)
+            .then(
+                function(response){
+                    res.json(200);
+                },
+                function(error){
+                    res.json(400);
                 }
             )
     }
@@ -46,10 +62,27 @@ module.exports = function(app,models){
         var reviewObject = {
             itemId : req.body.itemId,
             _user : req.body.userId,
-            productReviews: req.body.review
+            productReviews: req.body.review,
+            isReviewed:false
         };
         reviewModelProject
             .updateProductReview(reviewId,reviewObject)
+            .then(
+                function(resposne){
+                    res.json(200);
+                },
+                function(error){
+                    res.json(400);
+                });
+    }
+
+    function approveReview(req,res){
+        var reviewId = req.params.rid;
+        var review = {
+            isReviewed:true
+        };
+        reviewModelProject
+            .updateProductReview(reviewId,review)
             .then(
                 function(resposne){
                     res.json(200);
