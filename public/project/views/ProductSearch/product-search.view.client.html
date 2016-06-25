@@ -23,17 +23,18 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
+    <div>
+        <span>
+            <a href="#/category/search" class="btn btn-block btn-primary">Search By Category</a>
+        </span>
+    </div>
+    <br>
     <div class="input-group">
         <input ng-model="model.searchText" type="text" class="form-control" placeholder="Start Shopping..">
         <span class="input-group-btn">
         <a ng-click="model.searchProducts(model.searchText)" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
-        </span>
-    </div>
-    <div>
-        <span>
-            <a ng-if="!model.search" href="#/category/search" class="btn btn-block btn-primary">Search By Category</a>
         </span>
     </div>
     <hgroup ng-if="model.search" class="mb20">
