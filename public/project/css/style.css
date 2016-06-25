@@ -164,6 +164,15 @@ a:hover {
     color: #0073b7;
 }
 
+.green, .green a {
+    color: green;
+}
+
+.del-review {
+    padding-right: 50%;
+    padding-top: 15%;
+}
+
 body{
     font-family: 'Open Sans Condensed', sans-serif;
     background-color: ghostwhite;

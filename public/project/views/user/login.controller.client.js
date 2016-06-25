@@ -21,8 +21,8 @@
                             var user = response.data;
                             if (user) {
                                 // $location.url("/user/" + user._id);
-                                // $location.url("/user");
-                                $location.url("/product/search");
+                                $location.url("/user");
+                                // $location.url("/product/search");
                             }
                             else {
                                 vm.error = "user not found";

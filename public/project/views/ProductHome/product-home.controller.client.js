@@ -18,7 +18,7 @@
                     function(response){
                         console.log(response.data);
                         vm.items= response.data.items;
-                        if(!$window.sessionStorage.getItem("currentUser")) {
+                        if($window.sessionStorage.getItem("currentUser")==='0') {
                             vm.alert = "Login to continue..";
                         }
                     },

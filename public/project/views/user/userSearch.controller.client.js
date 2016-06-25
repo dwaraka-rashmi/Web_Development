@@ -29,7 +29,9 @@
                             if (usersRet[i]._id === userId) {
                                 usersRet.splice(i,1);
                             }
-                            if(!usersRet[i].pic){
+                        }
+                        for (var i in usersRet) {
+                            if(usersRet[i].pic === undefined){
                                 usersRet[i].pic = "../project/images/profilePic.png";
                             }
                         }
@@ -52,6 +54,9 @@
                             if(!vm.users[i].pic){
                                 vm.users[i].pic = "../project/images/profilePic.png";
                             }
+                        }
+                        if(vm.users.length===0){
+                            vm.alert = "No users found";
                         }
                     },
                     function(response){

@@ -106,8 +106,8 @@
                         if(user ==  '0'){
                             console.log(user._id);
                             $rootScope.currentUser = null;
-                            $window.sessionStorage.setItem("currentUser",user._id);
-                            $window.sessionStorage.setItem("currentUsername",user.username);
+                            $window.sessionStorage.setItem("currentUser",'0');
+                            $window.sessionStorage.setItem("currentUsername",'0');
                             deferred.reject();
                             $location.url("/login");
                         } else {

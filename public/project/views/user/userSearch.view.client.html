@@ -31,6 +31,9 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
+    <div ng-if="model.alert" class="alert alert-warning">
+        {{model.alert}}
+    </div>
     <div class="row">
         <a href="#/user/{{user._id}}" class="col-xs-6 thumbnail" ng-repeat="user in model.users">
             <span>
