@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <p class="navbar-text pull-left">
                 <a href="#/product/{{model.item.itemId}}" class="navbar-link">
-                  <span class="glyphicon glyphicon-chevron-left">
+                  <span class="glyphicon glyphicon-chevron-left blue">
                   </span>
                 </a>
             </p>
@@ -12,7 +12,7 @@
             </a>
             <p class="navbar-text pull-right">
                 <a ng-click="model.logout()" class="navbar-link">
-                  <span class="glyphicon glyphicon-off">
+                  <span class="glyphicon glyphicon-off red">
                   </span>
                 </a>
             </p>
@@ -55,7 +55,9 @@
     <div class="list-group search" ng-repeat= "review in model.items">
         <div class=amazing-reviews>
             <!--<blockquote>-->
-            <a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
+            <a ng-if="model.userId===review._user" href="#/user"><strong>{{review.username}}</strong></a>
+            <a ng-if="model.userId!==review._user" href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
+            <!--<a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>-->
             <p>{{review.productReviews}}</p>
             <!--</blockquote>-->
         </div>
@@ -66,13 +68,13 @@
         <div class="navbar-footer">
             <p class="navbar-text pull-left">
                 <a href="{{model.item.productUrl}}" class="navbar-link">
-                  <span class="glyphicon glyphicon-new-window">
+                  <span class="glyphicon glyphicon-new-window blue">
                   </span>
                 </a>
             </p>
             <p class="navbar-text pull-right">
                 <a href="#/user/" class="navbar-link">
-                  <span class="glyphicon glyphicon-user">
+                  <span class="glyphicon glyphicon-user blue">
                   </span>
                 </a>
             </p>

@@ -48,7 +48,6 @@ button.upload-image{
     opacity: 0.8;
 }
 
-
 .jumbotron{
     background-color: aliceblue!important;
 }
@@ -162,7 +161,7 @@ a:hover {
 }
 
 .blue, .blue a {
-    color: blue;
+    color: #0073b7;
 }
 
 body{
