@@ -62,7 +62,8 @@
                                     itemId : itemId,
                                     productName: vm.item.name,
                                     Users : [userId],
-                                    category:vm.item.categoryPath
+                                    category:vm.item.categoryPath,
+                                    categoryId:vm.item.categoryNode
                                 };
                                 ProductSearchService
                                     .createProduct(item)

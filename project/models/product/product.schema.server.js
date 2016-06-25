@@ -9,6 +9,7 @@ module.exports = function() {
         productName: String,
         itemId: String,
         category : String,
+        categoryId:String,
         Users :[{type:mongoose.Schema.ObjectId,ref:"UserProject"}],
         Reviews:[{type:mongoose.Schema.ObjectId,ref:"ReviewProject"}],
         dateCreated: {type: Date, default: Date.now}

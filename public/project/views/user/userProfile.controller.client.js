@@ -5,7 +5,7 @@
     angular
         .module("BestShop")
         .controller("UserProfileController",UserProfileController);
-    function UserProfileController($location,$routeParams, UserService,$window){
+    function UserProfileController($location,$routeParams, UserService,$window,ProductSearchService){
 
         var vm = this;
         vm.error = false;
@@ -36,18 +36,30 @@
                     if(!vm.user.pic){
                         vm.user.pic = "../project/images/profilePic.png";
                     }
-                    // for(var i = 0; i < followedBy.length; i++)
-                    // {
-                    //     if(followedBy[i] == loggedUserId)
-                    //     {
-                    //         vm.followed = true;
-                    //     }
-                    // }
+                    vm.category = [];
+                    vm.products = vm.user.productsSaved;
+                    fetchProductInterests();
                 });
             vm.success = false;
             vm.error = false;
         }
         init();
+
+        function fetchProductInterests(){
+            if(vm.products.length>0)
+            ProductSearchService
+                .getProductLocal(vm.products.pop())
+                .then(
+                    function(response){
+                        if(response.data.category && (vm.category.indexOf(response.data.category)<0)) {
+                            vm.category.push(response.data.category);
+                        }
+                        fetchProductInterests();
+                    },
+                    function(error){
+                        vm.error = "failed to fetch data";
+                    });
+        }
 
         function followUser(){
             UserService

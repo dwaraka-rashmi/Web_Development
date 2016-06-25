@@ -8,7 +8,8 @@ module.exports=function(){
     var models = {
         userModelProject: require("./user/user.model.server")(),
         productModelProject: require("./product/product.model.server")(),
-        reviewModelProject: require("./review/review.model.server")()
+        reviewModelProject: require("./review/review.model.server")(),
+        categoryModelProject: require("./category/category.model.server")()
     };
     
     return models;

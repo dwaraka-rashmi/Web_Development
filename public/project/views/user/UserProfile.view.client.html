@@ -40,6 +40,11 @@
                             </span>
                         </p>
                     </div>
+                    <div ng-if="model.category">
+                        <ul ng-repeat="cat in model.category">
+                            <li>{{cat}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

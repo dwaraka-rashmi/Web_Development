@@ -36,6 +36,7 @@
                     .getProductById(vm.user.productsSaved.pop())
                     .then(function (response) {
                             var item = response.data;
+                        if(!item.errors)
                             vm.products.push(item);
                             fetchSavedProducts();
                         },
