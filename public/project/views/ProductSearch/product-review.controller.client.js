@@ -6,7 +6,7 @@
         .module("BestShop")
         .controller("ProductReviewController",ProductReviewController);
 
-    function ProductReviewController($location,$routeParams,$window,ProductReviewService,UserService) {
+    function ProductReviewController($location,$routeParams,$window,ProductReviewService,UserService,ProductSearchService) {
 
         var vm = this;
         var itemId = $routeParams.pid;
@@ -33,6 +33,17 @@
                     function(response){
                         console.log(response.data);
                         vm.items = response.data;
+
+                    },
+                    function(error){
+                        vm.error="Unable to access Walmart";
+                    });
+            ProductSearchService
+                .getProductById(itemId)
+                .then(
+                    function(response){
+                        console.log(response.data);
+                        vm.item = response.data;
                     },
                     function(error){
                         vm.error="Unable to access Walmart";
@@ -47,9 +58,11 @@
                     function(response){
                         var review = response.data;
                         updateUserProductReview(review._id);
+                        $("#review-text-area").val('');
                     },
                     function(error){
                         vm.error = "Unable to add the review. Try again later."
+                        $("#review-text-area").val('');
                     });
         }
         

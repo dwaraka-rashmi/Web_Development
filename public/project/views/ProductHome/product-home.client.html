@@ -8,41 +8,53 @@
             </p>
             <p class="navbar-text pull-right">
                 <a ng-click="model.logout()" class="navbar-link">
-                  <span class="glyphicon glyphicon-off">
+                  <span class="glyphicon glyphicon-off red">
                   </span>
                 </a>
             </p>
         </div>
     </div>
 </nav>
-<div class="container product-search">
+<div class="container">
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div ng-if="model.alert" class="alert alert-warning">
-        <div class="login">
-            <a class="btn btn-success btn-block"
-               href="#/login">Sign In</a>
-        </div>
-        <div class="login">
-            <a class="btn btn-success btn-block"
-               href="#/register">Sign Up</a>
-        </div>
-    </div>
-    <div ng-if="!model.alert" class="alert alert-info">
-        <a class="btn btn-success btn-block"
-           href="#/product/search">Start Shopping..</a>
-    </div>
+    <!--<div ng-if="model.alert" class="alert alert-warning">-->
+        <!--<div class="login">-->
+            <!--<a class="btn btn-success btn-block"-->
+               <!--href="#/login">Sign In</a>-->
+        <!--</div>-->
+        <!--<div class="login">-->
+            <!--<a class="btn btn-success btn-block"-->
+               <!--href="#/register">Sign Up</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div ng-if="!model.alert" class="alert alert-info">-->
+        <!--<a class="btn btn-success btn-block"-->
+           <!--href="#/product/search">Start Shopping..</a>-->
+    <!--</div>-->
     <h3>Deals of the day!</h3>
-    <div class="row">
-        <a href="#/product/deal/{{item.itemId}}" class="col-xs-6 thumbnail" ng-repeat="item in model.items">
-            <span>
-            <div style="width:100%">{{item.name}}</div>
-            <div class="btn btn-primary btn-sm">$ {{item.salePrice}}</div>
-            </span>
-            <img ng-src="{{item.thumbnailImage}}" onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
-        </a>
-    </div>
+    <div class="row destacados">
+        <div class="col-sm-12">
+            <a href="#/product/deal/{{item.itemId}}" ng-repeat="item in model.items">
+                <img ng-src="{{item.thumbnailImage}}" onerror="this.onerror=null;this.src='../project/images/itemImage.png';"
+                     class="img-thumbnail"/>
+                <h6>{{item.name}}</h6>
+                <h6>$ {{item.salePrice}}</h6>
+                <!--<p>{{item.shortDescription}}</p>-->
+                <hr class="section-divide"/>
+            </a>
+        </div>
+        <!--<div class="row">-->
+        <!--<a href="#/product/deal/{{item.itemId}}" class="col-xs-6 thumbnail" ng-repeat="item in model.items">-->
+            <!--<span>-->
+            <!--<div style="width:100%">{{item.name}}</div>-->
+            <!--<div class="btn btn-primary btn-sm">$ {{item.salePrice}}</div>-->
+            <!--</span>-->
+            <!--<img ng-src="{{item.thumbnailImage}}" onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />-->
+        <!--</a>-->
+        <!--</div>-->
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
@@ -51,6 +63,12 @@
                 <a href="#/user/{{model.userId}}" class="navbar-link">
             <span class="glyphicon glyphicon-user">
             </span>
+                </a>
+            </p>
+            <p ng-if="!model.alert" class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-shopping-cart">
+                    </span>
                 </a>
             </p>
         </div>

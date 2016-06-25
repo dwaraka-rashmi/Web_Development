@@ -1,5 +1,5 @@
 
-.container { margin-top: 20px; }
+.container { margin-top: -10%; }
 .mb20 { margin-bottom: 20px; }
 
 hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
@@ -50,9 +50,15 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 
 }
 
-
 .amazing-reviews {
-    font-size: 12pt;
+    font-size: 10pt;
+    margin-top: 2%;
+    padding-left: 2%;
+    background-color: #eee;
+}
+.review-row {
+    margin-right: 0px!important;
+    margin-left: -15px!important;
 }
 .amazing-reviews blockquote {
     font-family: Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
@@ -167,10 +173,10 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
     }
 }
 @media (min-width: 700px) {
-    .amazing-reviews blockquote {
-        width: 75%;
-        margin: 30px 15px 0 15px;
-    }
+    /*.amazing-reviews blockquote {*/
+        /*width: 75%;*/
+        /*margin: 30px 15px 0 15px;*/
+    /*}*/
     .amazing-reviews blockquote:nth-of-type(even) {
         margin-left: calc(25% - 15px);
     }
@@ -183,4 +189,23 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
         width: 100%;
         padding: 0 75px;
     }
+}
+
+/*home product*/
+.destacados{
+    padding: 20px 0;
+    text-align: center;
+}
+.destacados > div > div{
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.destacados > div:hover > div{
+    margin-top: -10px;
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    transition: 0.5s;
 }

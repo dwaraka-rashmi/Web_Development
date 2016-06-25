@@ -26,7 +26,6 @@ input.form-control {
 
 .product-name {
     width:100%;
-    margin-top: -10%;
 }
 
 .login {
@@ -49,11 +48,9 @@ button.upload-image{
     opacity: 0.8;
 }
 
+
 .jumbotron{
     background-color: aliceblue!important;
-}
-.product-search{
-    margin-top: -5%;
 }
 
 form div label {
@@ -159,9 +156,19 @@ a:hover {
     width: 100%;
     height: 100%;
 }
+
+.red, .red a {
+    color: red;
+}
+
+.blue, .blue a {
+    color: blue;
+}
+
 body{
     font-family: 'Open Sans Condensed', sans-serif;
     background-color: ghostwhite;
+    margin-top: 10%!important;
     /*style="background-image: url('images/shop.jpg');"*/
 }
 .nav-bar {
@@ -230,9 +237,6 @@ nav.nav-bar ul {
     background:#005c83
 }
 @media screen and (max-width: 480px) {
-    .nav-container, .container {
-
-    }
 
     .nav-menu {
         color: #fff;
@@ -279,7 +283,6 @@ nav.nav-bar ul {
         padding-top: 30px ;
     }
 }
-
 
 .follow-button {
     color: white !important;

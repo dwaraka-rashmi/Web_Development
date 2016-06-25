@@ -33,16 +33,13 @@
                href="#/register">Sign Up</a>
         </div>
     </div>
-    <div class="product-detail">
         <span>
             <div class="product-name">{{model.item.name}}</div>
             <div class="btn btn-default btn-block price">Sale Price ${{model.item.salePrice}}</div>
                 </span>
-        <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
-        <img class="price" ng-src="{{model.item.mediumImage}}"
-             onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
-    </div>
-
+    <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
+    <img class="price" ng-src="{{model.item.mediumImage}}"
+         onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

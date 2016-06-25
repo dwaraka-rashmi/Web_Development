@@ -18,7 +18,7 @@
         return api;
 
         function getDeals(){
-            var url = "http://api.walmartlabs.com/v1/search?query=deals+value+discount+clearance" +
+            var url = "http://api.walmartlabs.com/v1/search?query=deals+value+discount+clearance+featured" +
                 "&format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&callback=JSON_CALLBACK";
             return $http.jsonp(url);
         }

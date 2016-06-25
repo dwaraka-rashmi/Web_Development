@@ -34,7 +34,7 @@
     <div class="row">
         <a href="#/user/{{user._id}}" class="col-xs-6 thumbnail" ng-repeat="user in model.users">
             <span>
-            <div style="width:100%">{{user.username}}</div>
+            <div style="width:100%">{{user.username}} - {{user.firstName}} {{user.lastName}}</div>
             <!--<div class="btn btn-primary">$ {{item.salePrice}}</div>-->
                 </span>
             <img class="media-object img-circle" ng-src="{{user.pic}}"

@@ -30,35 +30,34 @@
                href="#/register">Sign Up</a>
         </div>
     </div>
-    <h4>Product: {{model.item.name}}</h4>
+    <h4>{{model.item.name}}</h4>
     <div class="col-xs-12 col-sm-12 col-md-3">
         <div ng-if="model.item.numReviews">
             <i class="glyphicon glyphicon-user"></i><span>{{model.item.numReviews}}</span>
-            <img img-responsive src="{{item.customerRatingImage}}" alt="No reviews available to view" />
+            <img img-responsive src="{{item.customerRatingImage}}" alt="No ratings available" />
         </div>
     </div>
     <span>
-        <div class="row">
+        <div class="row review-row">
         <div class="col-md-6">
-            <div class="widget-area no-padding blank">
+            <!--<div class="widget-area no-padding blank">-->
                 <div class="status-upload">
                     <form>
                         <textarea ng-model="model.review" id="review-text-area" class="review-text" placeholder="Type a new review..." ></textarea>
                         <button ng-click="model.addReview(model.review)" id="review-button"
-                                type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                                type="submit" class="btn btn-success btn-block"><i class="fa fa-share"></i> Add..</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     </span>
-    {{model.item}}
     <div class="list-group search" ng-repeat= "review in model.items">
         <div class=amazing-reviews>
-            <blockquote>
+            <!--<blockquote>-->
             <a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
             <p>{{review.productReviews}}</p>
-            </blockquote>
+            <!--</blockquote>-->
         </div>
     </div>
 </div>

@@ -48,6 +48,11 @@
                     function(response){
                         console.log(response.data);
                         vm.users = response.data;
+                        for(var i = 0;i<vm.users.length;i++){
+                            if(!vm.users[i].pic){
+                                vm.users[i].pic = "../project/images/profilePic.png";
+                            }
+                        }
                     },
                     function(response){
                         vm.error="Unable to search for users";

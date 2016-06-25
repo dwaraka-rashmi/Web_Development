@@ -23,15 +23,13 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div class="product-detail">
-        <span>
-            <div class="product-name">{{model.item.name}}</div>
-            <div class="btn btn-default btn-block price">Sale Price ${{model.item.salePrice}}</div>
-                </span>
-        <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
-        <img class="price" ng-src="{{model.item.mediumImage}}"
-             onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
-    </div>
+    <span>
+       <div class="product-name">{{model.item.name}}</div>
+       <div class="btn btn-default btn-block price">Sale Price ${{model.item.salePrice}}</div>
+    </span>
+    <img class="price" ng-src="{{model.item.customerRatingImage}}"/>
+    <img class="price" ng-src="{{model.item.mediumImage}}"
+         onerror="this.onerror=null;this.src='../project/images/itemImage.png';" />
     <a href="#/product/{{model.item.itemId}}/review/" class="btn btn-block btn-primary">Customer Reviews</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
