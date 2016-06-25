@@ -514,7 +514,7 @@ img.zoom-img:hover {
 .tech-icon{
     display: block;
     margin: auto;
-    width: 100%;
+    width: 70%;
     /*padding: 0px 0px 0px 50px;*/
 }
 
@@ -985,11 +985,18 @@ img.zoom-img:hover {
 
 .pattern{
     background-color: orange;
+    /*width: 112%;*/
+    /*margin-left: -6%;*/
+    /*margin-right: 0%;*/
+}
+
+.divider{
+    width :65.5%;
 }
 
 .tile-progress {
     /*background-color: #303641;*/
-    background-color: orange!important;
+    background-color: darkgray!important;
     color: #fff;
 }
 .tile-progress {
