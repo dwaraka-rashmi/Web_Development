@@ -12,7 +12,8 @@
             getProductReviewByItemId:getProductReviewByItemId,
             updateProductReview:updateProductReview,
             createProductReview:createProductReview,
-            getProductReviewToReview:getProductReviewToReview
+            getProductReviewToReview:getProductReviewToReview,
+            approveReview:approveReview
         };
         return api;
         
@@ -22,7 +23,7 @@
         }
         
         function getProductReviewToReview(){
-            var url = "/api/product/toReview";
+            var url = "/api/product/review/all/toReview";
             return $http.get(url);
         }
         

@@ -2,6 +2,29 @@ input.form-control {
     margin-bottom: 1%;
     border-color: black;
 }
+
+.form-center{
+    margin-top : 20%;
+}
+
+input.form-review {
+    margin-bottom: 1%;
+    border-color: black;
+    margin-left: 3%;
+}
+
+textarea.form-review {
+    margin-bottom: 1%;
+    border-color: black;
+    margin-left: 3%;
+}
+
+button.form-review {
+    margin-bottom: 1%;
+    border-color: black;
+    margin-left: 3%;
+}
+
 .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
     border-color: black;
 }

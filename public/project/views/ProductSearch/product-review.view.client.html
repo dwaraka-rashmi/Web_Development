@@ -53,12 +53,11 @@
                 <!--<div class="widget-area no-padding blank">-->
                     <div class="status-upload">
                         <form>
-                            <label for="username">Username</label>
                             <input ng-model="model.reviewTitle"
-                                   type="text" class="form-control" id="username" placeholder="RashmiDwaraka" readonly/>
-                            <textarea ng-model="model.review" id="review-text-area" class="review-text" placeholder="Type a new review..." ></textarea>
+                                   type="text" class="form-review form-control btn-block" id="reviewTitle" placeholder="Title"/>
+                            <textarea ng-model="model.review" id="review-text-area" class="form-review form-control btn-block" placeholder="Type a new review..." ></textarea>
                             <button ng-click="model.addReview(model.review,model.reviewTitle)" id="review-button"
-                                    type="submit" class="btn btn-success btn-block"><i class="fa fa-share"></i> Add..</button>
+                                    type="submit" class="form-review form-control btn btn-success btn-block"><i class="fa fa-share"></i> Add..</button>
                         </form>
                     </div>
                 <!--</div>-->

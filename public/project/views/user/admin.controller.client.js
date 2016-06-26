@@ -75,6 +75,8 @@
                 .then(
                     function(response){
                         vm.reviews = response.data;
+                        vm.reviewsCount = response.data.length;
+                        console.log(vm.reviews);
                     },
                     function(error){
                         vm.error ="unable to fetch reviews";
@@ -82,7 +84,7 @@
                 )
 
         }
-        
+
         function searchUsers(searchText) {
             UserService
                 .searchUsers(searchText)

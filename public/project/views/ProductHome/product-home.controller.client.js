@@ -10,7 +10,7 @@
 
         var vm = this;
         var getProduct = getProduct;
-        
+        vm.logAlert = false;
         function init() {
             ProductSearchService
                 .getDeals()
@@ -18,8 +18,8 @@
                     function(response){
                         console.log(response.data);
                         vm.items= response.data.items;
-                        if($window.sessionStorage.getItem("currentUser")==='0') {
-                            vm.logAlert = "Login to continue..";
+                        if($window.sessionStorage.getItem("currentUser")!=='0') {
+                            vm.logAlert = true;
                         }
                     },
                     function(response){

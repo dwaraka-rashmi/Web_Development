@@ -63,10 +63,12 @@
                         var review = response.data;
                         updateUserProductReview(review._id);
                         $("#review-text-area").val('');
+                        $("#reviewTitle").val('');
                     },
                     function(error){
                         vm.error = "Unable to add the review. Try again later.";
                         $("#review-text-area").val('');
+                        $("#reviewTitle").val('');
                     });
         }
         
