@@ -128,12 +128,12 @@
                                             <!--<button type="button" class="btn btn-primary btn-xs" title="Edit">-->
                                                 <!--<span class="glyphicon glyphicon-pencil"></span>-->
                                             <!--</button>-->
-                                            <button type="button" class="btn btn-success btn-xs pull-right" title="Approved">
+                                            <a ng-click="model.approveReview(review._id)" class="btn btn-success btn-xs pull-right" title="Approved">
                                                 <span class="glyphicon glyphicon-ok"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-xs pull-right" title="Delete">
+                                            </a>
+                                            <a ng-click="model.deleteReview(review._id)" class="btn btn-danger btn-xs pull-right" title="Delete">
                                                 <span class="glyphicon glyphicon-trash"></span>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

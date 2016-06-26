@@ -19,6 +19,8 @@
         vm.logout = logout;
         vm.searchUsers = searchUsers;
         vm.checkUserProfile = checkUserProfile;
+        vm.approveReview = approveReview;
+        vm.deleteReview = deleteReview;
         vm.error = false;
 
         function init(){
@@ -84,8 +86,7 @@
                     },
                     function(error){
                         vm.error ="unable to fetch reviews";
-                    }
-                )
+                    });
 
         }
 
@@ -138,7 +139,6 @@
                     });
         }
 
-
         function updateUser(newUser){
             UserService.updateUser(id,newUser)
                 .then(
@@ -149,5 +149,32 @@
                         vm.error = error;
                     });
         }
+
+        function approveReview(reviewId){
+            ProductReviewService
+                .approveReview(reviewId)
+                .then(
+                    function(response){
+                        getReviewsOnInit();
+                    },
+                    function(error){
+                        vm.error ="unable to fetch reviews";
+                    }
+                )
+        }
+
+        function deleteReview(reviewId){
+            ProductReviewService
+                .deleteReview(reviewId)
+                .then(
+                    function(response){
+                        getReviewsOnInit();
+                    },
+                    function(error){
+                        vm.error ="unable to fetch reviews";
+                    }
+                )
+        }
+        
     }
 })();

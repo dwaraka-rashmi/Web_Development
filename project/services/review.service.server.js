@@ -11,7 +11,7 @@ module.exports = function(app,models){
     app.put("/api/product/review/:rid", updateProductReview);
     app.put("/api/product/review/approve/:rid", approveReview);
     app.post("/api/product/review", createProductReview);
-    app.delete("/api/product/review/:rid", disapproveReview);
+    app.delete("/api/product/review/disapprove/:rid", disapproveReview);
 
     function getProductReviewByItemId(req,res){
         var itemId = req.params.itemId;

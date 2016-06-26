@@ -69,9 +69,9 @@
             <!--<blockquote>-->
             <a ng-if="model.userId===review._user" href="#/user"><strong>{{review.username}}  </strong>
                 <p class="pull-right">
-                <a href="model.deleteReview()" class="navbar-link">
-                    <span class="glyphicon glyphicon-trash red del-review"></span>
-                </a>
+                    <a ng-click="model.updateReview(review._id,review.productReviews,review.reviewTitle)" class="btn btn-success btn-xs pull-right" title="Edit">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
             </p>
         </a>
         <a ng-if="model.userId!==review._user" href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>

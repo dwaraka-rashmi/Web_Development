@@ -13,7 +13,8 @@
             updateProductReview:updateProductReview,
             createProductReview:createProductReview,
             getProductReviewToReview:getProductReviewToReview,
-            approveReview:approveReview
+            approveReview:approveReview,
+            deleteReview: deleteReview
         };
         return api;
         
@@ -56,6 +57,12 @@
             };
             return $http.post(url,ProductReview);
         }
+        
+        function deleteReview(reviewId){
+            var url = "/api/product/review/disapprove/"+reviewId;
+            return $http.delete(url);
+        }
+        
         
     }
 })();
