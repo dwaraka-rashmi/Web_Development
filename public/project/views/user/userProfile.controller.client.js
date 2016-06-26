@@ -21,6 +21,12 @@
         vm.unfollowUser = unfollowUser;
         vm.error = false;
         vm.followed = false;
+        vm.back=back;
+
+        function back(){
+            $window.history.back();
+        }
+
 
         function init(){
             UserService
@@ -51,11 +57,15 @@
                 .getProductLocal(vm.products.pop())
                 .then(
                     function(response){
-                        if(response.data.category && (vm.category.indexOf(response.data.category)<0)) {
-                            vm.category.push({"category":response.data.category,
-                            "categoryId":response.data.categoryId});
+                        if(response.data) {
+                            if (response.data.category && (vm.category.indexOf(response.data.category) < 0)) {
+                                vm.category.push({
+                                    "category": response.data.category,
+                                    "categoryId": response.data.categoryId
+                                });
+                            }
+                            fetchProductInterests();
                         }
-                        fetchProductInterests();
                     },
                     function(error){
                         vm.error = "failed to fetch data";
@@ -103,6 +113,8 @@
                         vm.error = "Unable to logout";
                     });
         }
-        
+
+
+
     }
 })();

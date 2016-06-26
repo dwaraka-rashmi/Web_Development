@@ -20,30 +20,38 @@
         vm.searchUsers = searchUsers;
 
         function init(){
-            UserService
-                .findUsers()
-                .then(
-                    function(response){
-                        var usersRet = response.data;
-                        for (var i in usersRet) {
-                            if (usersRet[i]._id === userId) {
-                                usersRet.splice(i,1);
+            var searchText = $window.sessionStorage.getItem("userSearch");
+            vm.searchText=searchText;
+            if(!searchText) {
+                UserService
+                    .findUsers()
+                    .then(
+                        function (response) {
+                            var usersRet = response.data;
+                            for (var i in usersRet) {
+                                if (usersRet[i]._id === userId) {
+                                    usersRet.splice(i, 1);
+                                }
                             }
-                        }
-                        for (var i in usersRet) {
-                            if(usersRet[i].pic === undefined){
-                                usersRet[i].pic = "../project/images/profilePic.png";
+                            for (var i in usersRet) {
+                                if (usersRet[i].pic === undefined) {
+                                    usersRet[i].pic = "../project/images/profilePic.png";
+                                }
                             }
-                        }
-                        vm.users = usersRet;
-                    },
-                    function(error){
-                        vm.error = "Unable to access users data";
-                    });
+                            vm.users = usersRet;
+                        },
+                        function (error) {
+                            vm.error = "Unable to access users data";
+                        });
+            }
+            else{
+                searchUsers(searchText);
+            }
         }
         init();
 
         function searchUsers(searchText) {
+            $window.sessionStorage.setItem("userSearch",searchText);
             UserService
                 .searchUsers(searchText)
                 .then(

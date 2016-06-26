@@ -15,7 +15,13 @@
         if($window.sessionStorage.getItem("currentUser")) {
             var userId = $window.sessionStorage.getItem("currentUser");
         }
-        
+
+        vm.back=back;
+
+        function back(){
+            $window.history.back();
+        }
+
         function init(){
             CategorySearchService
                 .getCategory()
@@ -31,11 +37,18 @@
                     function(err){
                         vm.error = "Unable to fetch the Categories";
                     });
+            var searchText = $window.sessionStorage.getItem("categorySearch");
+            var searchTextId = $window.sessionStorage.getItem("categorySearchId");
+            if(searchText){
+                searchProducts(searchText,searchTextId);
+            }
         }
         
         init();
 
         function searchProducts(category,categoryId) {
+            $window.sessionStorage.setItem("categorySearch",category);
+            $window.sessionStorage.setItem("categorySearchId",categoryId);
             vm.categorySearch = category;
             CategorySearchService
                 .searchProducts(category,categoryId)

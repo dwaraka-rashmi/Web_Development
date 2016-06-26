@@ -15,6 +15,12 @@
             userId = $window.sessionStorage.getItem("currentUser");
         }
 
+        vm.back=back;
+
+        function back(){
+            $window.history.back();
+        }
+
         function init(){
             ProductSearchService
                 .getProductById(itemId)

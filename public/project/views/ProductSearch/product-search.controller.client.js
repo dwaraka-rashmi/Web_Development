@@ -15,8 +15,30 @@
             var userId = $window.sessionStorage.getItem("currentUser");
         }
         
+        function init(){
+            var searchText = $window.sessionStorage.getItem("productSearch");
+            if(searchText){
+                vm.searchText=searchText;
+                ProductSearchService
+                    .searchProducts(searchText)
+                    .then(
+                        function(response){
+                            console.log(response.data);
+                            vm.search = true;
+                            vm.term = response.data.query;
+                            vm.totalResults = response.data.totalResults;
+                            vm.items= response.data.items;
+                        },
+                        function(response){
+                            vm.error="Unable to search Walmart";
+                        });
+            }
+        }
+        
+        init();
         
         function searchProducts(searchText) {
+            $window.sessionStorage.setItem("productSearch",searchText);
             ProductSearchService
                 .searchProducts(searchText)
                 .then(
