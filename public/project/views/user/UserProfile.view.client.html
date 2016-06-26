@@ -22,11 +22,13 @@
 </nav>
 <div class="container">
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
-        <li><a data-toggle="tab" href="#fav">Shopping Interests</a></li>
+        <li ng-click="model.currentView = 'profile'" ng-class="[{active: model.currentView === 'profile'}]">
+            <a data-toggle="tab">Profile</a></li>
+        <li ng-click="model.currentView = 'fav'" ng-class="[{active: model.currentView === 'fav'}]">
+            <a data-toggle="tab">Shopping Interests</a></li>
     </ul>
     <div class="tab-content">
-        <div id='profile' class="row tab-pane fade in active">
+        <div id='profile' class="row tab-pane fade in active" ng-class="[{active: model.currentView === 'profile'}]">
             <div class="col-md-4">
                 <div class="well well-sm">
                     <div class="media">
@@ -48,17 +50,14 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="model.category">
-                    <ul ng-repeat="cat in model.category">
-                        <li>{{cat.category}}</li>
-                    </ul>
-                </div>
             </div>
         </div>
-        <div id='fav' class="tab-pane fade">
-            <ul ng-repeat="cat in model.category">
-                <li>{{cat.category}}</li>
-            </ul>
+        <div id='fav' class="tab-pane fade in" ng-class="[{active: model.currentView === 'fav'}]">
+            <div ng-if="model.category">
+                <ul ng-repeat="cat in model.category">
+                    <li>{{cat.category}}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

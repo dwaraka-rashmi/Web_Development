@@ -29,6 +29,7 @@
 
 
         function init(){
+            vm.currentView = 'profile';
             UserService
                 .findUserById(userId)
                 .then(function(response){
