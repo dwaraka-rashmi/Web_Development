@@ -114,54 +114,24 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">
+                            <li class="list-group-item" ng-repeat="review in model.reviews">
                                 <div class="row">
                                     <div class="col-xs-10 col-md-11">
                                         <div>
-                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                Google Style Login Page Design Using Bootstrap</a>
-                                            <div class="mic-info">
-                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                            </div>
+                                            <h4><strong>{{review.productReviewTitle}}</strong></h4>
+                                            <h5 class="user-info"><strong>By: {{review.username}} on {{review.dateCreated}}</strong></h5>
                                         </div>
                                         <div class="comment-text">
-                                            Awesome design
+                                            {{review.productReviews}}
                                         </div>
                                         <div class="action">
                                             <!--<button type="button" class="btn btn-primary btn-xs" title="Edit">-->
                                                 <!--<span class="glyphicon glyphicon-pencil"></span>-->
                                             <!--</button>-->
-                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                            <button type="button" class="btn btn-success btn-xs pull-right" title="Approved">
                                                 <span class="glyphicon glyphicon-ok"></span>
                                             </button>
-                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-xs-10 col-md-11">
-                                        <div>
-                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                Google Style Login Page Design Using Bootstrap</a>
-                                            <div class="mic-info">
-                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                            </div>
-                                        </div>
-                                        <div class="comment-text">
-                                            Awesome design
-                                        </div>
-                                        <div class="action">
-                                            <!--<button type="button" class="btn btn-primary btn-xs" title="Edit">-->
-                                                <!--<span class="glyphicon glyphicon-pencil"></span>-->
-                                            <!--</button>-->
-                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                                <span class="glyphicon glyphicon-ok"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                            <button type="button" class="btn btn-danger btn-xs pull-right" title="Delete">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                         </div>

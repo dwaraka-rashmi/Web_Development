@@ -7,6 +7,9 @@ input.form-control {
     margin-top : 20%;
 }
 
+.user-info{
+    color: dodgerblue!important;
+}
 input.form-review {
     margin-bottom: 1%;
     border-color: black;

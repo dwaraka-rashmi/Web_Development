@@ -76,6 +76,10 @@
                     function(response){
                         vm.reviews = response.data;
                         vm.reviewsCount = response.data.length;
+                        for(var i in vm.reviews){
+                            vm.reviews[i].dateCreated = vm.reviews[i].dateCreated.split("T")[0];
+                            console.log(vm.reviews[i].dateCreated);
+                        }
                         console.log(vm.reviews);
                     },
                     function(error){
