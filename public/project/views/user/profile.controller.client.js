@@ -44,12 +44,18 @@
         }
 
         function init(){
+
             UserService
                 .findUserById(id)
                 .then(function(response){
-                    vm.user = response.data;
-                    if(!vm.user.pic){
-                        vm.user.pic = "../project/images/profilePic.png";
+                    if(response.data.username === "admin"){
+                        $location.url("/admin");
+                    }
+                    else {
+                        vm.user = response.data;
+                        if (!vm.user.pic) {
+                            vm.user.pic = "../project/images/profilePic.png";
+                        }
                     }
                 });
             vm.success = false;

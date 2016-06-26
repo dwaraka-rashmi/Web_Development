@@ -55,9 +55,9 @@
         }
         init();
 
-        function addReview(review){
+        function addReview(review,reviewTitle){
             ProductReviewService
-                .createProductReview(review,itemId, vm.userId,vm.username)
+                .createProductReview(review,itemId, vm.userId,vm.username,reviewTitle)
                 .then(
                     function(response){
                         var review = response.data;
@@ -65,14 +65,14 @@
                         $("#review-text-area").val('');
                     },
                     function(error){
-                        vm.error = "Unable to add the review. Try again later."
+                        vm.error = "Unable to add the review. Try again later.";
                         $("#review-text-area").val('');
                     });
         }
         
-        function updateReview(reviewId,review){
+        function updateReview(reviewId,review,reviewTitle){
             ProductReviewService
-                .updateProductReview(reviewId,review,itemId, vm.userId,vm.username)
+                .updateProductReview(reviewId,review,itemId, vm.userId,vm.username,reviewTitle)
                 .then(
                     function(response){
                         init();

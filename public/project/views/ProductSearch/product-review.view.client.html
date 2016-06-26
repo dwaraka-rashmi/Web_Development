@@ -49,35 +49,38 @@
     </div>
     <span>
         <div class="row review-row">
-        <div class="col-md-6">
-            <!--<div class="widget-area no-padding blank">-->
-                <div class="status-upload">
-                    <form>
-                        <textarea ng-model="model.review" id="review-text-area" class="review-text" placeholder="Type a new review..." ></textarea>
-                        <button ng-click="model.addReview(model.review)" id="review-button"
-                                type="submit" class="btn btn-success btn-block"><i class="fa fa-share"></i> Add..</button>
-                    </form>
-                </div>
+            <div class="col-md-6">
+                <!--<div class="widget-area no-padding blank">-->
+                    <div class="status-upload">
+                        <form>
+                            <label for="username">Username</label>
+                            <input ng-model="model.reviewTitle"
+                                   type="text" class="form-control" id="username" placeholder="RashmiDwaraka" readonly/>
+                            <textarea ng-model="model.review" id="review-text-area" class="review-text" placeholder="Type a new review..." ></textarea>
+                            <button ng-click="model.addReview(model.review,model.reviewTitle)" id="review-button"
+                                    type="submit" class="btn btn-success btn-block"><i class="fa fa-share"></i> Add..</button>
+                        </form>
+                    </div>
+                <!--</div>-->
             </div>
         </div>
-    </div>
     </span>
     <div class="list-group search" ng-repeat= "review in model.items">
         <a class=amazing-reviews>
             <!--<blockquote>-->
             <a ng-if="model.userId===review._user" href="#/user"><strong>{{review.username}}  </strong>
                 <p class="pull-right">
-                    <a href="model.deleteReview()" class="navbar-link">
-                        <span class="glyphicon glyphicon-trash red del-review"></span>
-                    </a>
-                </p>
-            </a>
-            <a ng-if="model.userId!==review._user" href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
-            <!--<a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>-->
-            <p>{{review.productReviews}}</p>
-            <!--</blockquote>-->
-        </div>
-    </div>
+                <a href="model.deleteReview()" class="navbar-link">
+                    <span class="glyphicon glyphicon-trash red del-review"></span>
+                </a>
+            </p>
+        </a>
+        <a ng-if="model.userId!==review._user" href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
+        <!--<a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>-->
+        <p>{{review.productReviews}}</p>
+        <!--</blockquote>-->
+</div>
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

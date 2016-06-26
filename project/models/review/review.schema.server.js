@@ -9,6 +9,7 @@ module.exports = function() {
         itemId: String,
         _user:{type:mongoose.Schema.ObjectId,ref:"UserProject"},
         username : String,
+        productReviewTitle: String,
         productReviews: String,
         isReviewed: Boolean,
         dateCreated: {type: Date, default: Date.now}

@@ -15,7 +15,7 @@
         function createUser(user){
             if(user) {
                 if (user.username && user.password && user.verifyPassword) {
-                    if (user.password.match(user.verifyPassword)) {
+                    if ((user.password.match(user.verifyPassword))&& !user.username.match("admin")) {
                         UserService
                             .register(user)
                             .then(

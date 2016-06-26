@@ -11,7 +11,8 @@
         var api = {
             getProductReviewByItemId:getProductReviewByItemId,
             updateProductReview:updateProductReview,
-            createProductReview:createProductReview
+            createProductReview:createProductReview,
+            getProductReviewToReview:getProductReviewToReview
         };
         return api;
         
@@ -20,10 +21,16 @@
             return $http.get(url);
         }
         
-        function updateProductReview(reviewId,review,itemId,userId,username){
+        function getProductReviewToReview(){
+            var url = "/api/product/toReview";
+            return $http.get(url);
+        }
+        
+        function updateProductReview(reviewId,review,itemId,userId,username,reviewTitle){
             var url = "/api/product/review/"+reviewId;
             var ProductReview = {
                 review : review,
+                reviewTitle:reviewTitle,
                 itemId : itemId,
                 userId: userId,
                 username:username
@@ -36,10 +43,11 @@
             return $http.put(url);
         }
 
-        function createProductReview(review,itemId,userId,username){
+        function createProductReview(review,itemId,userId,username,reviewTitle){
             var url = "/api/product/review/";
             var ProductReview = {
                 review : review,
+                reviewTitle:reviewTitle,
                 itemId : itemId,
                 userId: userId,
                 username:username,

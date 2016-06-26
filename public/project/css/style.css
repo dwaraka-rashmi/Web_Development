@@ -102,6 +102,13 @@ p.navbar-text.pull-left {
 
 }
 
+.tab-css {
+    margin-bottom: 3%!important;
+}
+.username {
+    width :100%;
+}
+
 .cat-image{
     width: 10%;
     display: block;

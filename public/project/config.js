@@ -22,6 +22,14 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+            .when("/admin", {
+                templateUrl: "views/user/admin.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
             .when("/user", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
@@ -86,6 +94,14 @@
             .when("/user/:uid", {
                 templateUrl: "views/user/userProfile.view.client.html",
                 controller: "UserProfileController",
+                controllerAs: "model",
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
+            })
+            .when("/user/delete/:uid", {
+                templateUrl: "views/user/userProfile.delete.view.client.html",
+                controller: "UserProfileDeleteController",
                 controllerAs: "model",
                 resolve:{
                     loggedIn:checkLoggedIn

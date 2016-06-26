@@ -23,7 +23,7 @@
             if(!$window.sessionStorage.getItem("currentUser")){
                 vm.logAlert = true;
             }
-            
+
             var searchText = $window.sessionStorage.getItem("userSearch");
             vm.searchText=searchText;
             if(!searchText) {
@@ -33,7 +33,7 @@
                         function (response) {
                             var usersRet = response.data;
                             for (var i in usersRet) {
-                                if (usersRet[i]._id === userId) {
+                                if (usersRet[i]._id === userId || usersRet[i].username === "admin") {
                                     usersRet.splice(i, 1);
                                 }
                             }

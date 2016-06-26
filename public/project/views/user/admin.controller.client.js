@@ -4,13 +4,12 @@
 (function(){
     angular
         .module("BestShop")
-        .controller("ProfileController",ProfileController);
-    function ProfileController($location,$routeParams, UserService,$window){
+        .controller("AdminController",AdminController);
+    function AdminController($location,$routeParams, UserService,$window,ProductReviewService){
 
         var vm = this;
         vm.updateUser = updateUser;
         vm.error = false;
-        // var id = $routeParams.uid;
         var id = undefined;
         if($window.sessionStorage.getItem("currentUser")) {
             var id = $window.sessionStorage.getItem("currentUser");
@@ -18,7 +17,97 @@
         vm.id = id;
         vm.unregister = unregister;
         vm.logout = logout;
+        vm.searchUsers = searchUsers;
+        vm.checkUserProfile = checkUserProfile;
         vm.error = false;
+
+        function init(){
+            if($window.sessionStorage.getItem("currentView")==="user"){
+                vm.currentView = 'user';
+                $window.sessionStorage.setItem("currentView","profile");
+            }
+            else {
+                vm.currentView = 'profile';
+            }
+            UserService
+                .findUserById(id)
+                .then(function(response){
+                    vm.user = response.data;
+                    if(!vm.user.pic){
+                        vm.user.pic = "../project/images/profilePic.png";
+                    }
+                });
+            getUsersOnInit();
+            getReviewsOnInit();
+            vm.success = false;
+            vm.error = false;
+
+        }
+        init();
+
+        function getUsersOnInit(){
+            UserService
+                .findUsers()
+                .then(
+                    function (response) {
+                        var usersRet = response.data;
+                        for (var i in usersRet) {
+                            if (usersRet[i]._id === id) {
+                                usersRet.splice(i, 1);
+                            }
+                        }
+                        for (var i in usersRet) {
+                            if (usersRet[i].pic === undefined) {
+                                usersRet[i].pic = "../project/images/profilePic.png";
+                            }
+                        }
+                        vm.users = usersRet;
+                    },
+                    function (error) {
+                        vm.error = "Unable to access users data";
+                    });
+        }
+
+        function getReviewsOnInit(){
+
+            ProductReviewService
+                .getProductReviewToReview()
+                .then(
+                    function(response){
+                        vm.reviews = response.data;
+                    },
+                    function(error){
+                        vm.error ="unable to fetch reviews";
+                    }
+                )
+
+        }
+        
+        function searchUsers(searchText) {
+            UserService
+                .searchUsers(searchText)
+                .then(
+                    function(response){
+                        console.log(response.data);
+                        vm.users = response.data;
+                        for(var i = 0;i<vm.users.length;i++){
+                            if(!vm.users[i].pic){
+                                vm.users[i].pic = "../project/images/profilePic.png";
+                            }
+                        }
+                        if(vm.users.length===0){
+                            vm.alert = "No users found";
+                        }
+                    },
+                    function(response){
+                        vm.error="Unable to search for users";
+                    });
+        }
+
+        function checkUserProfile(id){
+            $window.sessionStorage.setItem("currentView","user");
+            $location.url("/user/delete/"+id);
+        }
 
         function logout(){
             UserService
@@ -43,19 +132,6 @@
                     });
         }
 
-        function init(){
-            UserService
-                .findUserById(id)
-                .then(function(response){
-                    vm.user = response.data;
-                    if(!vm.user.pic){
-                        vm.user.pic = "../project/images/profilePic.png";
-                    }
-                });
-            vm.success = false;
-            vm.error = false;
-        }
-        init();
 
         function updateUser(newUser){
             UserService.updateUser(id,newUser)

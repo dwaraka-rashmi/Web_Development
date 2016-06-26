@@ -7,6 +7,7 @@ module.exports = function(app,models){
     var reviewModelProject = models.reviewModelProject;
 
     app.get("/api/product/review/:itemId",getProductReviewByItemId);
+    app.get("/api/product/toReview",getProductReviewToReview);
     app.put("/api/product/review/:rid",updateProductReview);
     app.post("/api/product/review",createProductReview);
     app.put("/api/product/review/approve/:rid",approveReview);
@@ -17,8 +18,21 @@ module.exports = function(app,models){
         reviewModelProject
             .findProductReviewByItemId(itemId)
             .then(
-                function(item){
-                    res.json(item);
+                function(reviews){
+                    res.json(reviews);
+                },
+                function(error){
+                    res.json({});
+                }
+            )
+    }
+
+    function getProductReviewToReview(req,res){
+        reviewModelProject
+            .findProductAllUnapprovedReview()
+            .then(
+                function(reviews){
+                    res.json(reviews);
                 },
                 function(error){
                     res.json({});
@@ -45,7 +59,9 @@ module.exports = function(app,models){
             itemId : req.body.itemId,
             _user : req.body.userId,
             productReviews: req.body.review,
-            username:req.body.username
+            productReviewTitle : req.body.reviewTitle,
+            username:req.body.username,
+            isReviewed:false
         };
         reviewModelProject
             .createProductReview(reviewObject)
@@ -63,7 +79,7 @@ module.exports = function(app,models){
             itemId : req.body.itemId,
             _user : req.body.userId,
             productReviews: req.body.review,
-            isReviewed:false
+            productReviewTitle : req.body.reviewTitle,
         };
         reviewModelProject
             .updateProductReview(reviewId,reviewObject)

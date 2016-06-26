@@ -8,9 +8,9 @@
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Profile
+                Admin Profile
             </a>
-            <p class="navbar-text pull-right">
+            <p ng-if="model.currentView==='profile'" class="navbar-text pull-right">
                 <a ng-click="model.updateUser(model.user)" class="navbar-link">
                   <span class="glyphicon glyphicon-ok blue">
                   </span>
@@ -24,69 +24,179 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Failed!</strong> Your profile could not be updated.
     </div>
-
     <div ng-if="model.success" class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Success!</strong> Your profile was saved.
     </div>
-    <div ng-if="model.user.pic" class="media-body media-middle">
-        <a href="{{model.user.pic}}">
-            <img class="media-object image-circle" src="{{model.user.pic}}" alt="Profile Picture"
-                 onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
-        </a>
+    <ul class="nav nav-tabs tab-css">
+        <li ng-click="model.currentView = 'profile'" ng-class="[{active: model.currentView === 'profile'}]">
+            <a data-toggle="tab">Profile</a></li>
+        <li ng-click="model.currentView = 'user'" ng-class="[{active: model.currentView === 'user'}]">
+            <a data-toggle="tab">Users</a></li>
+        <li ng-click="model.currentView = 'review'" ng-class="[{active: model.currentView === 'review'}]">
+            <a data-toggle="tab">Reviews</a></li>
+    </ul>
+    <div class="tab-content">
+        <div ng-show="model.currentView === 'profile'" class="tab-pane fade in active" ng-class="[{active: model.currentView === 'profile'}]">
+            <div ng-if="model.user.pic" class="media-body media-middle">
+                <a href="{{model.user.pic}}">
+                    <img class="media-object image-circle" src="{{model.user.pic}}" alt="Profile Picture"
+                         onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
+                </a>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input ng-model="model.user.username"
+                           type="text" class="form-control" id="username" placeholder="RashmiDwaraka" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="rashmidwaraka@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input ng-model="model.user.firstName"
+                           type="text" class="form-control" id="first-name" placeholder="Rashmi">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input ng-model="model.user.lastName"
+                           type="text" class="form-control" id="last-name" placeholder="Dwaraka">
+                </div>
+                <form action="/api/uploadPic"  method="post" enctype="multipart/form-data">
+                    <input  name="myFile" type="file" class="form-control"/>
+                    <input  name="userId" value="{{model.id}}" style="display: none"/>
+                    <button type="submit" class="btn btn-block btn-primary upload-image">Upload Image</button>
+                </form>
+                <a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
+                <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
+            </form>
+        </div>
+        <div ng-show="model.currentView === 'user'" class="tab-pane fade in " ng-class="[{active: model.currentView === 'user'}]">
+            <div class="input-group">
+                <input ng-model="model.searchText" type="text" class="form-control" placeholder="Find Best Shop Users..">
+            <span class="input-group-btn">
+                <a ng-click="model.searchUsers(model.searchText)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
+            </div>
+            <div ng-if="model.error" class="alert alert-danger">
+                {{model.error}}
+            </div>
+            <div ng-if="model.alert" class="alert alert-warning">
+                {{model.alert}}
+            </div>
+            <div class="col-xs-6 thumbnail" ng-repeat="user in model.users">
+                <!--<a href="#/user/delete/{{user._id}}">-->
+                <a ng-click="model.checkUserProfile(user._id)">
+                    <span><div class="username">{{user.username}} - {{user.firstName}} {{user.lastName}}</div></span>
+                    <img class="media-object img-circle" ng-src="{{user.pic}}"
+                         onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
+                </a>
+                <button ng-click="model.deleteUser(user._id)" type="button"
+                        class="btn btn-danger btn-xs pull-right" title="Delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                <!--<a href="model.deleteUser(user._id)" class="pull-right">-->
+                    <!--<span class="glyphicon glyphicon-trash red del-review"></span>-->
+                <!--</a>-->
+            </div>
+        </div>
+        <div ng-show="model.currentView === 'review'" class="tab-pane fade in " ng-class="[{active: model.currentView === 'review'}]">
+            <div class="row">
+                <div class="panel panel-default widget">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment"></span>
+                <span class="label label-info pull-right">
+                    78</span>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                Google Style Login Page Design Using Bootstrap</a>
+                                            <div class="mic-info">
+                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Awesome design
+                                        </div>
+                                        <div class="action">
+                                            <!--<button type="button" class="btn btn-primary btn-xs" title="Edit">-->
+                                                <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                            <!--</button>-->
+                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-10 col-md-11">
+                                        <div>
+                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                Google Style Login Page Design Using Bootstrap</a>
+                                            <div class="mic-info">
+                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Awesome design
+                                        </div>
+                                        <div class="action">
+                                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input ng-model="model.user.username"
-                   type="text" class="form-control" id="username" placeholder="RashmiDwaraka" readonly>
-            <!--value="{{model.user.username}}"-->
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="rashmidwaraka@gmail.com">
-        </div>
-        <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input ng-model="model.user.firstName"
-                   type="text" class="form-control" id="first-name" placeholder="Rashmi">
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input ng-model="model.user.lastName"
-                   type="text" class="form-control" id="last-name" placeholder="Dwaraka">
-        </div>
-        <form action="/api/uploadPic"  method="post" enctype="multipart/form-data">
-            <input  name="myFile" type="file" class="form-control"/>
-            <input  name="userId" value="{{model.id}}" style="display: none"/>
-            <button type="submit" class="btn btn-block btn-primary upload-image">Upload Image</button>
-        </form>
-        <a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
-        <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
-    </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-footer">
-            <p class="navbar-text pull-left">
-                <a href="#/user/search" class="navbar-link">
-                  <span class="glyphicon glyphicon-user">
-                  </span><span class="glyphicon glyphicon-user blue">
-                  </span>
-                </a>
-            </p>
-            <p class="navbar-text pull-right">
-                <a href="#/user/product" class="navbar-link">
-                  <span class="glyphicon glyphicon-heart blue">
-                  </span>
-                </a>
-            </p>
-            <p class="navbar-text pull-right">
-                <a href="#/product/search" class="navbar-link">
-                  <span class="glyphicon glyphicon-shopping-cart blue">
-                  </span>
-                </a>
-            </p>
+            <!--<p class="navbar-text pull-left">-->
+            <!--<a href="#/user/search" class="navbar-link">-->
+            <!--<span class="glyphicon glyphicon-user">-->
+            <!--</span><span class="glyphicon glyphicon-user blue">-->
+            <!--</span>-->
+            <!--</a>-->
+            <!--</p>-->
+            <!--<p class="navbar-text pull-right">-->
+            <!--<a href="#/user/product" class="navbar-link">-->
+            <!--<span class="glyphicon glyphicon-heart blue">-->
+            <!--</span>-->
+            <!--</a>-->
+            <!--</p>-->
+            <!--<p class="navbar-text pull-right">-->
+            <!--<a href="#/product/search" class="navbar-link">-->
+            <!--<span class="glyphicon glyphicon-shopping-cart blue">-->
+            <!--</span>-->
+            <!--</a>-->
+            <!--</p>-->
         </div>
     </div>
 </nav>
