@@ -36,7 +36,12 @@
                 .then(
                     function(response){
                         console.log(response.data);
+                        vm.reviewsCount = response.data.length;
                         vm.items = response.data;
+                        for(var i in vm.items){
+                            vm.items[i].dateCreated = vm.items[i].dateCreated.split("T")[0];
+                            console.log(vm.items[i].dateCreated);
+                        }
                     },
                     function(error){
                         vm.error="Unable to access Walmart";

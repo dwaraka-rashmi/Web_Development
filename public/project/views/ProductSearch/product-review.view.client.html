@@ -64,20 +64,44 @@
             </div>
         </div>
     </span>
-    <div class="list-group search" ng-repeat= "review in model.items">
-        <a class=amazing-reviews>
-            <!--<blockquote>-->
-            <a ng-if="model.userId===review._user" href="#/user"><strong>{{review.username}}  </strong>
-                <p class="pull-right">
-                    <a ng-click="model.updateReview(review._id,review.productReviews,review.reviewTitle)" class="btn btn-success btn-xs pull-right" title="Edit">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-            </p>
-        </a>
-        <a ng-if="model.userId!==review._user" href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>
-        <!--<a href="#/user/{{model.userId}}"><strong>{{review.username}}</strong></a>-->
-        <p>{{review.productReviews}}</p>
-        <!--</blockquote>-->
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <span class="label label-info pull-right">
+                    {{model.reviewsCount}}</span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="review in model.items">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <h4><strong>{{review.productReviewTitle}}</strong></h4>
+                                    By: <a ng-if="model.userId===review._user" href="#/user"><strong>{{review.username}}  </strong></a>on {{review.dateCreated}}</strong></h5>
+                                    <!--<h5 class="user-info"><strong>By: {{review.username}} on {{review.dateCreated}}</strong></h5>-->
+                                </div>
+                                <div class="comment-text">
+                                    {{review.productReviews}}
+                                </div>
+                                <!--<div class="action">-->
+                                    <!--&lt;!&ndash;<button type="button" class="btn btn-primary btn-xs" title="Edit">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<span class="glyphicon glyphicon-pencil"></span>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                    <!--<a ng-click="model.updateReview(review._id,review.productReviews,review.reviewTitle)" class="btn btn-success btn-xs pull-right" title="Edit">-->
+                                        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                    <!--</a>-->
+                                    <!--<a ng-click="model.deleteReview(review._id)" class="btn btn-danger btn-xs pull-right" title="Delete">-->
+                                        <!--<span class="glyphicon glyphicon-trash"></span>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </div>
