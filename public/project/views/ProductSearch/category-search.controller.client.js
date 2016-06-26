@@ -23,6 +23,9 @@
         }
 
         function init(){
+            if(!$window.sessionStorage.getItem("currentUser")){
+                vm.logAlert = true;
+            }
             CategorySearchService
                 .getCategory()
                 .then(
@@ -73,8 +76,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
-                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

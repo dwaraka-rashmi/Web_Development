@@ -25,8 +25,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
-                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

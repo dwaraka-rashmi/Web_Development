@@ -6,7 +6,7 @@
                       <img img-responsive src="./images/logo.png"/>
                   </span>
             </p>
-            <div ng-if="model.alert">
+            <div ng-if="model.logAlert">
             <p class="navbar-text pull-right">
                 <a ng-click="model.logout()" class="navbar-link">
                   <span class="glyphicon glyphicon-off green">
@@ -14,7 +14,7 @@
                 </a>
             </p>
             </div>
-            <div ng-if="!model.alert">
+            <div ng-if="!model.logAlert">
                 <p class="navbar-text pull-right">
                     <a ng-click="model.logout()" class="navbar-link">
                   <span class="glyphicon glyphicon-off red">

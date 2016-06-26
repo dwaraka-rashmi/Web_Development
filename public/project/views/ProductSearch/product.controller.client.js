@@ -15,13 +15,10 @@
             userId = $window.sessionStorage.getItem("currentUser");
         }
 
-        vm.back=back;
-
-        function back(){
-            $window.history.back();
-        }
-
         function init(){
+            if(!$window.sessionStorage.getItem("currentUser")){
+                vm.logAlert = true;
+            }
             ProductSearchService
                 .getProductById(itemId)
                 .then(function(response){
@@ -124,8 +121,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
-                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

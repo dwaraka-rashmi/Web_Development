@@ -19,7 +19,7 @@
                         console.log(response.data);
                         vm.items= response.data.items;
                         if($window.sessionStorage.getItem("currentUser")==='0') {
-                            vm.alert = "Login to continue..";
+                            vm.logAlert = "Login to continue..";
                         }
                     },
                     function(response){
@@ -35,8 +35,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
-                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

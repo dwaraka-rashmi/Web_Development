@@ -16,6 +16,9 @@
         }
         
         function init(){
+            if(!$window.sessionStorage.getItem("currentUser")){
+                vm.logAlert = true;
+            }
             var searchText = $window.sessionStorage.getItem("productSearch");
             if(searchText){
                 vm.searchText=searchText;
@@ -61,8 +64,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
-                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

@@ -12,6 +12,11 @@
         var itemId = $routeParams.pid;
         vm.alert = false;
         function init(){
+
+            if(!$window.sessionStorage.getItem("currentUser")){
+                vm.logAlert = true;
+            }
+
             ProductSearchService
                 .getProductById(itemId)
                 .then(
@@ -36,7 +41,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

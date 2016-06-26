@@ -10,12 +10,22 @@
             <a class="navbar-brand" href="#">
                 Product
             </a>
-            <p class="navbar-text pull-right">
-                <a ng-click="model.logout()" class="navbar-link">
+            <div ng-if="model.logAlert">
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off green">
+                  </span>
+                    </a>
+                </p>
+            </div>
+            <div ng-if="!model.logAlert">
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.logout()" class="navbar-link">
                   <span class="glyphicon glyphicon-off red">
                   </span>
-                </a>
-            </p>
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 </nav>

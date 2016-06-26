@@ -21,14 +21,11 @@
         vm.unfollowUser = unfollowUser;
         vm.error = false;
         vm.followed = false;
-        vm.back=back;
-
-        function back(){
-            $window.history.back();
-        }
-
 
         function init(){
+            if(!$window.sessionStorage.getItem("currentUser")){
+                vm.logAlert = true;
+            }
             vm.currentView = 'profile';
             UserService
                 .findUserById(userId)
@@ -106,8 +103,7 @@
                 .logout()
                 .then(
                     function(response){
-                        $window.sessionStorage.setItem("currentUser",'0');
-                        $window.sessionStorage.setItem("currentUsername",'0');
+                        $window.sessionStorage.clear();
                         $location.url("/login");
                     },
                     function(error){

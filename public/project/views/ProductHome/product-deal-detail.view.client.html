@@ -10,12 +10,22 @@
             <a class="navbar-brand" href="#">
                 Product
             </a>
-            <p class="navbar-text pull-right">
-                <a ng-click="model.logout()" class="navbar-link">
+            <div ng-if="model.logAlert">
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.logout()" class="navbar-link">
+                  <span class="glyphicon glyphicon-off green">
+                  </span>
+                    </a>
+                </p>
+            </div>
+            <div ng-if="!model.logAlert">
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.logout()" class="navbar-link">
                   <span class="glyphicon glyphicon-off red">
                   </span>
-                </a>
-            </p>
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 </nav>
@@ -23,16 +33,16 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <div ng-if="model.alert" class="alert alert-warning">
-        <div class="login">
-            <a class="btn btn-success btn-block"
-               href="#/login">Sign In</a>
-        </div>
-        <div class="login">
-            <a class="btn btn-success btn-block"
-               href="#/register">Sign Up</a>
-        </div>
-    </div>
+    <!--<div ng-if="model.alert" class="alert alert-warning">-->
+    <!--<div class="login">-->
+    <!--<a class="btn btn-success btn-block"-->
+    <!--href="#/login">Sign In</a>-->
+    <!--</div>-->
+    <!--<div class="login">-->
+    <!--<a class="btn btn-success btn-block"-->
+    <!--href="#/register">Sign Up</a>-->
+    <!--</div>-->
+    <!--</div>-->
         <span>
             <div class="product-name">{{model.item.name}}</div>
             <div class="btn btn-default btn-block price">Sale Price ${{model.item.salePrice}}</div>
