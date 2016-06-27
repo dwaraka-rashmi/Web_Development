@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                    <a href="#/user/search" class="navbar-link">
+                <a href="#/user/search" class="navbar-link">
                   <span class="glyphicon glyphicon-chevron-left blue">
                   </span>
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Profile
+                User Profile
             </a>
             <div ng-if="model.logAlert">
                 <p class="navbar-text pull-right">
@@ -42,8 +42,7 @@
                 <div class="well well-sm">
                     <div class="media">
                         <a class="thumbnail pull-left" href="#">
-                            <img class="media-object img-circle" src="{{model.user.pic}}"
-                                 onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
+                            <img class="media-object img-circle" src="{{model.user.pic}}" onerror="this.onerror=null;this.src='../project/images/profilePic.png';">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">{{model.user.username}} - {{model.user.firstName}} {{model.user.lastName}}</h4>
@@ -88,4 +87,92 @@
         </div>
     </div>
 </nav>
-
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+            <!--<p class="navbar-text pull-left">-->
+               <!--<a href="#/user/search" class="navbar-link">-->
+                  <!--<span class="glyphicon glyphicon-chevron-left blue">-->
+                  <!--</span>-->
+                <!--</a>-->
+            <!--</p>-->
+            <!--<a class="navbar-brand" href="#">-->
+                <!--User Profile-->
+            <!--</a>-->
+            <!--<div ng-if="model.logAlert">-->
+                <!--<p class="navbar-text pull-right">-->
+                    <!--<a ng-click="model.logout()" class="navbar-link">-->
+                  <!--<span class="glyphicon glyphicon-off green">-->
+                  <!--</span>-->
+                    <!--</a>-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--<div ng-if="!model.logAlert">-->
+                <!--<p class="navbar-text pull-right">-->
+                    <!--<a ng-click="model.logout()" class="navbar-link">-->
+                  <!--<span class="glyphicon glyphicon-off red">-->
+                  <!--</span>-->
+                    <!--</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<!--<div class="container">-->
+    <!--<ul class="nav nav-tabs">-->
+        <!--<li ng-click="model.currentView = 'profile'" ng-class="[{active: model.currentView === 'profile'}]">-->
+            <!--<a data-toggle="tab">Profile</a></li>-->
+        <!--<li ng-click="model.currentView = 'fav'" ng-class="[{active: model.currentView === 'fav'}]">-->
+            <!--<a data-toggle="tab">Shopping Interests</a></li>-->
+    <!--</ul>-->
+    <!--<div class="tab-content">-->
+        <!--<div id='profile' class="row tab-pane fade in active" ng-class="[{active: model.currentView === 'profile'}]">-->
+            <!--<div class="col-md-4">-->
+                <!--<div class="well well-sm">-->
+                    <!--<div class="media">-->
+                        <!--<a class="thumbnail pull-left" href="#">-->
+                            <!--<img class="media-object img-circle" src="{{model.user.pic}}" onerror="this.onerror=null;this.src='../project/images/profilePic.png';">-->
+                        <!--</a>-->
+                        <!--<div class="media-body">-->
+                            <!--<h4 class="media-heading">{{model.user.username}} - {{model.user.firstName}} {{model.user.lastName}}</h4>-->
+                            <!--<p><span class="btn btn-info btn-block">{{model.user.followers.length}} followers</span>-->
+                                <!--<span class="btn btn-warning btn-block">{{model.user.followedBy.length}} following</span>-->
+                            <!--<span ng-if="model.followed" class="btn btn-danger btn-block">-->
+                                <!--<a class="follow-button" ng-click="model.unfollowUser()">Unfollow</a>-->
+                            <!--</span>-->
+                            <!--<span ng-if="!model.followed" class="btn btn-success btn-block">-->
+                                <!--<a class="follow-button" ng-click="model.followUser()">follow</a>-->
+                            <!--</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div id='fav' class="tab-pane fade in" ng-class="[{active: model.currentView === 'fav'}]">-->
+            <!--<div ng-if="model.category">-->
+                <!--<ul ng-repeat="cat in model.category">-->
+                    <!--<li>{{cat.category}}</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-footer">-->
+            <!--<p class="navbar-text pull-left">-->
+                <!--<a href="#/" class="navbar-link">-->
+                  <!--<span class="glyphicon glyphicon-home blue">-->
+                  <!--</span>-->
+                <!--</a>-->
+            <!--</p>-->
+            <!--<p class="navbar-text pull-right">-->
+                <!--<a href="#/user" class="navbar-link">-->
+                  <!--<span class="glyphicon glyphicon-user blue">-->
+                  <!--</span>-->
+                <!--</a>-->
+            <!--</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
