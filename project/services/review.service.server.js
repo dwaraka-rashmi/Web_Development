@@ -5,7 +5,7 @@
 module.exports = function(app,models){
 
     var reviewModelProject = models.reviewModelProject;
-0
+
     app.get("/api/product/review/all/toReview", getProductReviewToReview);
     app.get("/api/product/review/:itemId", getProductReviewByItemId);
     app.get("/api/product/review/user/:userId",getProductReviewByUser);
@@ -92,7 +92,8 @@ module.exports = function(app,models){
             itemId : req.body.itemId,
             _user : req.body.userId,
             productReviews: req.body.review,
-            productReviewTitle : req.body.reviewTitle
+            productReviewTitle : req.body.reviewTitle,
+            isReviewed:false
         };
         reviewModelProject
             .updateProductReview(reviewId,reviewObject)

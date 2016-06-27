@@ -16,12 +16,6 @@
             var userId = $window.sessionStorage.getItem("currentUser");
         }
 
-        vm.back=back;
-
-        function back(){
-            $window.history.back();
-        }
-
         function init(){
             if(!$window.sessionStorage.getItem("currentUser")){
                 vm.logAlert = true;

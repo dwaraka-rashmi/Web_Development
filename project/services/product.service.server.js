@@ -10,6 +10,8 @@ module.exports = function(app,models){
     app.get("/api/product/:id", getProductById);
     app.post("/api/product/", createProduct);
     app.get("/api/product/user/:userId", getProductByUser);
+    app.delete("/api/product/delete/:pid", deleteProduct);
+
 
     function getProductById(req,res){
         var itemId = req.params.id;
@@ -63,6 +65,20 @@ module.exports = function(app,models){
                 },
                 function(error){
                     res.json({});
+                }
+            )
+    }
+
+    function deleteProduct(req,res){
+        var productId = req.params.pid;
+        productModelProject
+            .deleteProduct(product)
+            .then(
+                function(response){
+                    res.json(200);
+                },
+                function(error){
+                    res.json(400);
                 }
             )
     }

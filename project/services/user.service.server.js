@@ -26,15 +26,7 @@ module.exports = function(app,models){
     
     var multer = require('multer'); // npm install multer save
     var uploadProPic = multer ({ dest: __dirname+'/../../public/uploads' });
-
     app.post("/api/uploadPic",uploadProPic.single('myFile'),uploadImage);
-
-    // app.get("/auth/facebook",passport.authenticate('facebookP'));
-    // app.get('/auth/facebook/callback',
-    //     passport.authenticate('facebookP', {
-    //         successRedirect: '/project/#/user',
-    //         failureRedirect: '/project/#/login'
-    //     }));
 
     app.get("/auth/google", passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get("/auth/google/callback",
@@ -46,13 +38,6 @@ module.exports = function(app,models){
     passport.use('bs',new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-
-    // var facebookConfig = {
-    //     clientID     : process.env.FACEBOOK_CLIENT_ID,
-    //     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    //     callbackURL  : process.env.FACEBOOK_CALLBACK_URL1
-    // };
-    // passport.use('facebookP',new PFacebookStrategy(facebookConfig, facebookLogin));
 
     var googleConfig = {
         clientID     : process.env.GOOGLE_CLIENT_ID,
@@ -99,34 +84,6 @@ module.exports = function(app,models){
             );
     }
 
-    //Facebook Login function
-    // function facebookLogin(token, refreshToken, profile, done) {
-    //     userModelProject
-    //         .findFacebookUser(profile.id)
-    //         .then(
-    //             function(facebookuser){
-    //                 if(facebookuser){
-    //                     return done(null,facebookuser);
-    //                 } else {
-    //                     facebookuser = {
-    //                         username: profile.displayName.replace(/ /g,''),
-    //                         facebook: {
-    //                             token:token,
-    //                             id: profile.id,
-    //                             displayName:profile.displayName
-    //                         }
-    //                     };
-    //                     userModelProject
-    //                         .createUser(facebookuser)
-    //                         .then(
-    //                             function(user){
-    //                                 done(null,user);
-    //                             }
-    //                         );
-    //                 }
-    //             }
-    //         )
-    // }
 
     function localStrategy(username, password, done) {
         userModelProject
@@ -240,8 +197,7 @@ module.exports = function(app,models){
                     }
                     else {
                         console.log("already exists");
-                        res.json({});
-                        // res.statusCode(400).send(error);
+                        res.statusCode(400).send(error);
                     }
                 },
                 function(error){
@@ -356,7 +312,7 @@ module.exports = function(app,models){
 
         var id = req.params.id;
         var userFollowed = req.body;
-        console.log(userFollowed);
+        console.log("userfollowed: "+userFollowed);
         userModelProject
             .findUserById(id)
             .then(
@@ -367,7 +323,6 @@ module.exports = function(app,models){
                         .then(
                             function(stats) {
                                 updateFollowedBy(userFollowed.userId,id,res);
-                                // res.send(200);
                             },
                             function(error) {
                                 res.statusCode(404).send(error);
@@ -390,7 +345,7 @@ module.exports = function(app,models){
                         .updateUser(id,user)
                         .then(
                             function(stats) {
-                                res.send(200);
+                                res.json(200);
                             },
                             function(error) {
                                 res.statusCode(404).send(error);
@@ -441,7 +396,7 @@ module.exports = function(app,models){
                         .then(
                             function(stats) {
                                 console.log(stats);
-                                res.send(200);
+                                res.json(200);
                             },
                             function(error) {
                                 res.statusCode(404).send(error);
@@ -462,10 +417,10 @@ module.exports = function(app,models){
             .then(
                 function(stats) {
                     console.log(stats);
-                    res.send(200);
+                    res.json(200);
                 },
                 function(error) {
-                    res.statusCode(404).send(error);
+                    res.statusCode(404).json(error);
                 }
             );
     }
@@ -475,15 +430,12 @@ module.exports = function(app,models){
         console.log(req.body);
         var myFile = req.file;
         if(myFile) {
-            var originalname = myFile.originalname; // file name on user's computer
             var filename = myFile.filename; // new file name in upload folder
             var path = myFile.path; // full path of uploaded file
             var destination = myFile.destination; // folder where file is saved to
-            var size = myFile.size;
-            var mimetype = myFile.mimetype;
-
+            var pic_path = "/uploads/" + filename;
             var user = {
-                "pic" : "/uploads/" + filename
+                "pic" : pic_path
             };
             console.log(user);
             var id = req.body.userId;
