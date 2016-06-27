@@ -32,18 +32,26 @@
                     .then(
                         function (response) {
                             var usersRet = response.data;
+<<<<<<< HEAD
                             var users = usersRet;
                             for (var i in users) {
                                 if (users[i]._id === userId || users[i].username === "admin") {
                                     usersRet.splice(i, 1);
-                                }
-                            }
+=======
                             for (var i in usersRet) {
                                 if (usersRet[i].pic === undefined) {
                                     usersRet[i].pic = "../project/images/profilePic.png";
+>>>>>>> c259c4fa90dd82354faf367be4326ac228d2abe9
                                 }
                             }
-                            vm.users = usersRet;
+                            vm.users = [];
+                            for (var i in usersRet) {
+                                if (usersRet[i]._id !== userId || usersRet[i].username !== "admin") {
+                                    vm.users.push(usersRet[i]);
+                                }
+                            }
+
+                            // vm.users = usersRet;
                         },
                         function (error) {
                             vm.error = "Unable to access users data";
