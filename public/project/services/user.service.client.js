@@ -91,6 +91,7 @@
         }
 
         function followUser(loggedUserId,userId){
+
             var url = "/api/user/follow/"+loggedUserId;
             var userToFollow = {
                 userId : userId
@@ -99,6 +100,7 @@
         }
         
         function unfollowUser(loggedUserId,userId){
+
             var url = "/api/user/unfollow/"+loggedUserId;
             var userToUnFollow = {
                 userId : userId
