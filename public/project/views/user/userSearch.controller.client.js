@@ -32,8 +32,9 @@
                     .then(
                         function (response) {
                             var usersRet = response.data;
-                            for (var i in usersRet) {
-                                if (usersRet[i]._id === userId || usersRet[i].username === "admin") {
+                            var users = usersRet;
+                            for (var i in users) {
+                                if (users[i]._id === userId || users[i].username === "admin") {
                                     usersRet.splice(i, 1);
                                 }
                             }
