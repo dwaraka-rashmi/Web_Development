@@ -1,225 +1,463 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>HOME Page</title>
-    <!--<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">-->
-    <!--<script src="js/jquery-1.11.0.min.js"></script>-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Development CS5610">
+    <meta name="author" content="Rashmi Dwaraka">
 
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <title>Web Development CS5610 - RASHMI DWARAKA</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript">
-        addEventListener("load", function() {
-            setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar(){
-            window.scrollTo(0,1);
-        }
-    </script>
-    <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function($) {
-            $(".scroll").click(function(event){
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-            });
-        });
-    </script>
-    <!---pop-up-box---->
-    <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-    <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
-    <!---//pop-up-box---->
-    <!--<script>-->
-    <!--$(document).ready(function() {-->
-    <!--$('.popup-with-zoom-anim').magnificPopup({-->
-    <!--type: 'inline',-->
-    <!--fixedContentPos: false,-->
-    <!--fixedBgPos: true,-->
-    <!--overflowY: 'auto',-->
-    <!--closeBtnInside: true,-->
-    <!--preloader: false,-->
-    <!--midClick: true,-->
-    <!--removalDelay: 300,-->
-    <!--mainClass: 'my-mfp-zoom-in'-->
-    <!--});-->
-    <!--});-->
-    <!--</script>-->
-    <script>
-        $(document).ready(function() {
-            $('body').addClass('js');
-            var $menu = $('#menu'),
-                    $menulink = $('.menu-link');
+    <!-- Bootstrap Core CSS -->
+    <link href="css1/bootstrap.min.css" rel="stylesheet">
 
-            $menulink.click(function() {
-                $menulink.toggleClass('active');
-                $menu.toggleClass('active');
-                return false;
-            });});
-    </script>
+    <!-- Custom CSS -->
+    <link href="css1/agency.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body>
 
-<div class="container">
-    <div id="pattern" class="pattern">
-        <a href="#menu" class="menu-link">Menu</a>
-        <nav id="menu" role="navigation">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#project">Project</a></li>
-                <li><a href="#assignment">Assignment</a></li>
-                <li><a href="#tech">Tech</a></li>
-                <li><a href="#contact">Contact</a></li>
+<body id="page-top" class="index">
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Web Development CS5610</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse custom-bar" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Projects</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
             </ul>
-        </nav>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-    <div class="banner navbar-static-top">
-        <img class="img-circle img-responsive" src="images/profilePic1.jpg" align ="middle"/>
-        <h1>Rashmi Dwaraka</h1>
-        <p>Masters in Computer Science at Northeastern University</p>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <a href="#services" class="page-scroll btn btn-lg">Tell Me More - Walmart Products</a>
+        </div>
     </div>
-</div>
-<div class="assignment">
+</header>
+
+<!-- Services Section -->
+<section id="services">
     <div class="container">
         <div class="row">
-            <div class="col-md-6" id='project'>
-                <div class="tile-progress tile-primary">
-                    <div class="tile-header">
-                        <h3>Project</h3>
-                        <span>A Shoppers Community for Walmart
-                        </span>
-                        <span class="glyphicon glyphicon-shopping-cart">
-                  </span>
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Services</h2>
+                <h3 class="section-subheading text-muted"></h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="service-heading">E-Commerce</h4>
+                <p class="text-muted">Unbiased Customer Feedback Portal for Walmart built on MEAN Stack</p>
+            </div>
+            <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="service-heading">Responsive Design</h4>
+                <p class="text-muted">Boostrap enables responsive design for the portal</p>
+            </div>
+            <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="service-heading">Web Security</h4>
+                <p class="text-muted">Passport.js and Google OAuth for authentication</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Project</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="/project/#/">
+                    <div class="portfolio-hover">
                     </div>
-                    <div class="tile-progressbar">
-                        <span class="divider" data-fill="65.5%"></span>
-                    </div>
-                    <div class="tile-footer">
-                        <a href="/project/index.html#/" class="btn btn-success btn-sm">Explore..</a>
-                        <a href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/project"
-                           class="btn btn-primary btn-sm">Github</a>
-                    </div>
+                    <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Shoppers community - Walmart</h4>
                 </div>
             </div>
-            <div class="col-md-6" id='assignment'>
-                <div class="tile-progress tile-primary">
-                    <div class="tile-header">
-                        <h3>Assignment</h3>
-                        <span>Web Application Maker</span>
-                        <span class="glyphicon glyphicon-tags">
-                  </span>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="/assignment/#/login">
+                    <div class="portfolio-hover">
                     </div>
-                    <div class="tile-progressbar">
-                        <span class="divider" data-fill="65.5%"></span>
+                    <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Web Application Maker</h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev">
+                    <div class="portfolio-hover">
                     </div>
-                    <div class="tile-footer">
-                        <button href="/assignment/index.html#/login"
-                                type="button" class="btn btn-success btn-sm">Explore..</button>
-                        <button href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment"
-                                type="button" class="btn btn-primary btn-sm">Github</button>
-                    </div>
+                    <img src="images/github.png" class="img-responsive custom-width" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Github Code Repository</h4>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container" id='tech'>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="tile-progress tile-primary">
-                <div class="tile-header">
-                    <h3>Technologies Used:</h3>
-                        <img class="tech-icon" img-responsive src="../images/tech.png"/>
-                </div>
-                <div class="tile-progressbar">
-                    <span class="divider" data-fill="65.5%"></span>
-                </div>
-                <div class="tile-footer">
-                    <span>Web Development CS5610 Course</span>
-                </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">About</h2>
+                <h2 class="section-heading">Rashmi Dwaraka</h2>
+
+                <h3 class="section-subheading text-muted">Graduate Computer Science Student at Northeastern University</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="img/profilePic1.jpg" class="img-responsive img-circle center-image" alt="">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Contact</h2>
+                <h3 class="section-heading">rashmidwaraka@gmail.com</h3>
             </div>
         </div>
     </div>
-</div>
-</div>
-<div class="contact" id="contact">
-    <div class="container bg">
-        <div class="social">
-            <div class="container">
-                <div class="social-main">
-                    <ul>
-                        <li><span class="fa" onclick="location='https://www.facebook.com/rashmi.dwaraka?_rdr'"></span></li>
-                        <li><span class="tw" onclick="location='https://twitter.com/search?q=rashmi.dwaraka'"></span></li>
-                        <li><span class="g" onclick="location='https://plus.google.com/u/0/+rashmidwaraka5'"></span></li>
-                        <li><span class="in" onclick="location='https://www.linkedin.com/in/rashmidwaraka'"></span></li>
-                    </ul>
-                    <div class="clearfix"> </div>
-                </div>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        $().UItoTop({ easingType: 'easeOutQuart' });
-                    });
-                </script>
-                <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <!--<div class="col-lg-4">-->
+            <div class="col-lg-12 text-center">
+                <ul class="list-inline social-buttons">
+                    <li><a href='https://twitter.com/search?q=rashmi.dwaraka'><i class="fa fa-twitter white"></i></a>
+                    </li>
+                    <li><a href='https://www.facebook.com/rashmi.dwaraka?_rdr'><i class="fa fa-facebook white"></i></a>
+                    </li>
+                    <li><a href='https://www.linkedin.com/in/rashmidwaraka'><i class="fa fa-linkedin white"></i></a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="map">
-            <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'>
-            </script>
-            <div style='overflow:hidden;height:300px;width:100%;'>
-                <div id='gmap_canvas' style='height:300px;width:100%;'>
-                </div>
-                <div>
-                    <small><a href="http://embedgooglemaps.com">
-                        embed google maps
-                    </a></small>
-                </div>
-                <div>
-                    <small>
-                        <a href="https://termsandcondiitionssample.com">
-                            terms and conditions generator</a></small>
-                </div>
-                <style>#gmap_canvas img{
-                    max-width:none!important;
-                    background:none!important
-                }
-                </style>
-            </div>
-            <script type='text/javascript'>
-                function init_map(){
-                    var myOptions = {
-                        zoom:12,center:new google.maps.LatLng(42.3600825,-71.05888010000001),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                    marker = new google.maps.Marker(
-                            {map: map,position: new google.maps.LatLng(42.3600825,-71.05888010000001)
-                            });
-                    infowindow = new google.maps.InfoWindow({
-                        content:'<strong>Boston</strong><br>Boston<br>'
-                    });
-                    google.maps.event.addListener(marker, 'click', function(){
-                        infowindow.open(map,marker);
-                    });
-                    infowindow.open(map,marker);
-                }
-                google.maps.event.addDomListener(window, 'load', init_map);
-            </script>
         </div>
     </div>
-</div>
-</div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="js1/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js1/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="js1/classie.js"></script>
+<script src="js1/cbpAnimatedHeader.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="js1/jqBootstrapValidation.js"></script>
+<script src="js1/contact_me.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js1/agency.js"></script>
+
 </body>
+
 </html>
+
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
+<!--<head>-->
+<!--<title>HOME Page</title>-->
+<!--&lt;!&ndash;<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="js/jquery-1.11.0.min.js"></script>&ndash;&gt;-->
+<!--<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>-->
+<!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+<!--<meta name="apple-mobile-web-app-status-bar-style" content="black">-->
+<!--<meta name="viewport" content="initial-scale=1.25, user-scalable = no">-->
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+
+<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+<!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>-->
+
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--<script type="application/x-javascript">-->
+<!--addEventListener("load", function() {-->
+<!--setTimeout(hideURLbar, 0);-->
+<!--}, false);-->
+<!--function hideURLbar(){-->
+<!--window.scrollTo(0,1);-->
+<!--}-->
+<!--</script>-->
+<!--&lt;!&ndash; start-smoth-scrolling &ndash;&gt;-->
+<!--<script type="text/javascript" src="js/move-top.js"></script>-->
+<!--<script type="text/javascript" src="js/easing.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--$(document).ready(function($) {-->
+<!--$(".scroll").click(function(event){-->
+<!--event.preventDefault();-->
+<!--$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);-->
+<!--});-->
+<!--});-->
+<!--</script>-->
+<!--&lt;!&ndash;-pop-up-box&#45;&#45;&ndash;&gt;-->
+<!--<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>-->
+<!--<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>-->
+<!--&lt;!&ndash;-//pop-up-box&#45;&#45;&ndash;&gt;-->
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+<!--&lt;!&ndash;$(document).ready(function() {&ndash;&gt;-->
+<!--&lt;!&ndash;$('.popup-with-zoom-anim').magnificPopup({&ndash;&gt;-->
+<!--&lt;!&ndash;type: 'inline',&ndash;&gt;-->
+<!--&lt;!&ndash;fixedContentPos: false,&ndash;&gt;-->
+<!--&lt;!&ndash;fixedBgPos: true,&ndash;&gt;-->
+<!--&lt;!&ndash;overflowY: 'auto',&ndash;&gt;-->
+<!--&lt;!&ndash;closeBtnInside: true,&ndash;&gt;-->
+<!--&lt;!&ndash;preloader: false,&ndash;&gt;-->
+<!--&lt;!&ndash;midClick: true,&ndash;&gt;-->
+<!--&lt;!&ndash;removalDelay: 300,&ndash;&gt;-->
+<!--&lt;!&ndash;mainClass: 'my-mfp-zoom-in'&ndash;&gt;-->
+<!--&lt;!&ndash;});&ndash;&gt;-->
+<!--&lt;!&ndash;});&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--$('body').addClass('js');-->
+<!--var $menu = $('#menu'),-->
+<!--$menulink = $('.menu-link');-->
+
+<!--$menulink.click(function() {-->
+<!--$menulink.toggleClass('active');-->
+<!--$menu.toggleClass('active');-->
+<!--return false;-->
+<!--});});-->
+<!--</script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--<div id="pattern" class="pattern">-->
+<!--<a href="#menu" class="menu-link">Menu</a>-->
+<!--<nav id="menu" role="navigation">-->
+<!--<ul>-->
+<!--<li><a href="#home">Home</a></li>-->
+<!--<li><a href="#project">Project</a></li>-->
+<!--<li><a href="#assignment">Assignment</a></li>-->
+<!--<li><a href="#tech">Tech</a></li>-->
+<!--<li><a href="#contact">Contact</a></li>-->
+<!--</ul>-->
+<!--</nav>-->
+<!--</div>-->
+<!--<div class="banner navbar-static-top">-->
+<!--<img class="img-circle img-responsive" src="images/profilePic1.jpg" align ="middle"/>-->
+<!--<h1>Rashmi Dwaraka</h1>-->
+<!--<p>Masters in Computer Science at Northeastern University</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="assignment">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-md-6" id='project'>-->
+<!--<div class="tile-progress tile-primary">-->
+<!--<div class="tile-header">-->
+<!--<h3>Project</h3>-->
+<!--<span>A Shoppers Community for Walmart-->
+<!--</span>-->
+<!--<span class="glyphicon glyphicon-shopping-cart">-->
+<!--</span>-->
+<!--</div>-->
+<!--<div class="tile-progressbar">-->
+<!--<span class="divider" data-fill="65.5%"></span>-->
+<!--</div>-->
+<!--<div class="tile-footer">-->
+<!--<a href="/project/index.html#/" class="btn btn-success btn-sm">Explore..</a>-->
+<!--<a href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/project"-->
+<!--class="btn btn-primary btn-sm">Github</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6" id='assignment'>-->
+<!--<div class="tile-progress tile-primary">-->
+<!--<div class="tile-header">-->
+<!--<h3>Assignment</h3>-->
+<!--<span>Web Application Maker</span>-->
+<!--<span class="glyphicon glyphicon-tags">-->
+<!--</span>-->
+<!--</div>-->
+<!--<div class="tile-progressbar">-->
+<!--<span class="divider" data-fill="65.5%"></span>-->
+<!--</div>-->
+<!--<div class="tile-footer">-->
+<!--<button href="/assignment/index.html#/login"-->
+<!--type="button" class="btn btn-success btn-sm">Explore..</button>-->
+<!--<button href="https://github.com/dwaraka-rashmi/dwaraka-rashmi-web-dev/tree/master/assignment"-->
+<!--type="button" class="btn btn-primary btn-sm">Github</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="container" id='tech'>-->
+<!--<div class="row">-->
+<!--<div class="col-md-12">-->
+<!--<div class="tile-progress tile-primary">-->
+<!--<div class="tile-header">-->
+<!--<h3>Technologies Used:</h3>-->
+<!--<img class="tech-icon" img-responsive src="../images/tech.png"/>-->
+<!--</div>-->
+<!--<div class="tile-progressbar">-->
+<!--<span class="divider" data-fill="65.5%"></span>-->
+<!--</div>-->
+<!--<div class="tile-footer">-->
+<!--<span>Web Development CS5610 Course</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="contact" id="contact">-->
+<!--<div class="container bg">-->
+<!--<div class="social">-->
+<!--<div class="container">-->
+<!--<div class="social-main">-->
+<!--<ul>-->
+<!--<li><span class="fa" onclick="location='https://www.facebook.com/rashmi.dwaraka?_rdr'"></span></li>-->
+<!--<li><span class="tw" onclick="location='https://twitter.com/search?q=rashmi.dwaraka'"></span></li>-->
+<!--<li><span class="g" onclick="location='https://plus.google.com/u/0/+rashmidwaraka5'"></span></li>-->
+<!--<li><span class="in" onclick="location='https://www.linkedin.com/in/rashmidwaraka'"></span></li>-->
+<!--</ul>-->
+<!--<div class="clearfix"> </div>-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--$(document).ready(function() {-->
+<!--$().UItoTop({ easingType: 'easeOutQuart' });-->
+<!--});-->
+<!--</script>-->
+<!--<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="map">-->
+<!--<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'>-->
+<!--</script>-->
+<!--<div style='overflow:hidden;height:300px;width:100%;'>-->
+<!--<div id='gmap_canvas' style='height:300px;width:100%;'>-->
+<!--</div>-->
+<!--<div>-->
+<!--<small><a href="http://embedgooglemaps.com">-->
+<!--embed google maps-->
+<!--</a></small>-->
+<!--</div>-->
+<!--<div>-->
+<!--<small>-->
+<!--<a href="https://termsandcondiitionssample.com">-->
+<!--terms and conditions generator</a></small>-->
+<!--</div>-->
+<!--<style>#gmap_canvas img{-->
+<!--max-width:none!important;-->
+<!--background:none!important-->
+<!--}-->
+<!--</style>-->
+<!--</div>-->
+<!--<script type='text/javascript'>-->
+<!--function init_map(){-->
+<!--var myOptions = {-->
+<!--zoom:12,center:new google.maps.LatLng(42.3600825,-71.05888010000001),-->
+<!--mapTypeId: google.maps.MapTypeId.ROADMAP-->
+<!--};-->
+<!--map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);-->
+<!--marker = new google.maps.Marker(-->
+<!--{map: map,position: new google.maps.LatLng(42.3600825,-71.05888010000001)-->
+<!--});-->
+<!--infowindow = new google.maps.InfoWindow({-->
+<!--content:'<strong>Boston</strong><br>Boston<br>'-->
+<!--});-->
+<!--google.maps.event.addListener(marker, 'click', function(){-->
+<!--infowindow.open(map,marker);-->
+<!--});-->
+<!--infowindow.open(map,marker);-->
+<!--}-->
+<!--google.maps.event.addDomListener(window, 'load', init_map);-->
+<!--</script>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
