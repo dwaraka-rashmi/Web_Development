@@ -14,9 +14,16 @@
             createProduct : createProduct,
             getProductLocal:getProductLocal,
             updateProduct:updateProduct,
-            loadMore:loadMore
+            loadMore:loadMore,
+            getProductsByUser:getProductsByUser
         };
         return api;
+        
+        
+        function getProductsByUser(userId){
+            var url = "/api/product/user/"+userId;
+            return $http.get(url);
+        }
 
         function getDeals(){
             var url = "http://api.walmartlabs.com/v1/search?query=deals+value+discount+clearance+featured" +

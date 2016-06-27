@@ -5,7 +5,7 @@
     angular
         .module("BestShop")
         .controller("AdminController",AdminController);
-    function AdminController($location,$routeParams, UserService,$window,ProductReviewService){
+    function AdminController($location,$routeParams, UserService,$window,ProductReviewService,ProductSearchService){
 
         var vm = this;
         vm.updateUser = updateUser;
@@ -21,6 +21,7 @@
         vm.checkUserProfile = checkUserProfile;
         vm.approveReview = approveReview;
         vm.deleteReview = deleteReview;
+        vm.deleteUser = deleteUser;
         vm.error = false;
 
         function init(){
@@ -109,6 +110,72 @@
                     function(response){
                         vm.error="Unable to search for users";
                     });
+        }
+
+        function deleteUser(userId){
+            UserService
+                .deleteUser(userId)
+                .then(
+                    function(response){
+                        ProductSearchService
+                            .getProductsByUser(userId)
+                            .then(
+                                function(response){
+                                    vm.productsToDelete = response.data;
+                                    deleteProductsAssociated(userId);
+                                },
+                                function(error){
+                                    vm.error = "unable to delete reviews associated with views";
+                                });
+
+                        ProductReviewService
+                            .getReviewsByUser(userId)
+                            .then(
+                                function(response){
+                                    vm.reviewsToDelete = response.data;
+                                    deleteReviewsAssociated();
+                                },
+                                function(error){
+                                    vm.error = "unable to delete reviews associated with views";
+                                });
+                        init();
+                    },
+                    function(error){
+                        vm.error ="unable to delete the user";
+                    });
+        }
+
+        function deleteProductsAssociated(userId) {
+            if(vm.productsToDelete.length>0){
+                var product = vm.productsToDelete.pop();
+                product.Users.splice(product.Users.indexOf(userId),1);
+                ProductSearchService
+                    .updateProduct(product)
+                    .then(
+                        function (response) {
+                            deleteProductsAssociated(userId);
+                        },
+                        function (error) {
+                            vm.error = "unable to delete reviews associated with views";
+                            deleteProductsAssociated(userId);
+                        });
+            }
+            else init();
+        }
+
+        function deleteReviewsAssociated(){
+            if(vm.reviewsToDelete.length>0) {
+                var review = vm.reviewsToDelete.pop();
+                ProductReviewService
+                    .deleteReview(review._id)
+                    .then(
+                        function(response){
+                            deleteReviewsAssociated();
+                        },
+                        function(error){
+                            deleteReviewsAssociated();
+                        });
+            } else init();
         }
 
         function checkUserProfile(id){

@@ -8,11 +8,25 @@ module.exports = function(app,models){
 0
     app.get("/api/product/review/all/toReview", getProductReviewToReview);
     app.get("/api/product/review/:itemId", getProductReviewByItemId);
+    app.get("/api/product/review/user/:userId",getProductReviewByUser);
     app.put("/api/product/review/:rid", updateProductReview);
     app.put("/api/product/review/approve/:rid", approveReview);
     app.post("/api/product/review", createProductReview);
     app.delete("/api/product/review/disapprove/:rid", disapproveReview);
 
+    function getProductReviewByUser(req,res){
+        var userId = req.params.userId;
+        reviewModelProject
+            .findProductReviewByUser(userId)
+            .then(
+                function(reviews) {
+                    res.json(reviews);
+                },
+                function(error) {
+                    res.json(400);
+                });
+    }
+    
     function getProductReviewByItemId(req,res){
         var itemId = req.params.itemId;
         reviewModelProject

@@ -6,9 +6,10 @@ module.exports = function(app,models){
 
     var productModelProject = models.productModelProject;
 
-    app.put("/api/product/",updateProduct);
-    app.get("/api/product/:id",getProductById);
-    app.post("/api/product/",createProduct);
+    app.put("/api/product/", updateProduct);
+    app.get("/api/product/:id", getProductById);
+    app.post("/api/product/", createProduct);
+    app.get("/api/product/user/:userId", getProductByUser);
 
     function getProductById(req,res){
         var itemId = req.params.id;
@@ -20,6 +21,19 @@ module.exports = function(app,models){
                 },
                 function(error){
                     res.json({});
+                });
+    }
+    
+    function getProductByUser(req,res){
+        var id = req.params.userId;
+        productModelProject
+            .findProductByUser(id)
+            .then(
+                function(items){
+                    res.json(items);
+                },
+                function(error){
+                    res.json(400);
                 });
     }
     

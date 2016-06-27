@@ -13,6 +13,7 @@
             updateProductReview:updateProductReview,
             createProductReview:createProductReview,
             getProductReviewToReview:getProductReviewToReview,
+            getReviewsByUser:getReviewsByUser,
             approveReview:approveReview,
             deleteReview: deleteReview
         };
@@ -23,10 +24,16 @@
             return $http.get(url);
         }
         
+        function getReviewsByUser(userId){
+            var url = "/api/product/review/user/"+userId;
+            return $http.get(url);
+        }
+        
         function getProductReviewToReview(){
             var url = "/api/product/review/all/toReview";
             return $http.get(url);
         }
+        
         
         function updateProductReview(reviewId,review,itemId,userId,username,reviewTitle){
             var url = "/api/product/review/"+reviewId;

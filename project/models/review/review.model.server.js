@@ -14,7 +14,8 @@ module.exports = function() {
         findProductReviewByItemId:findProductReviewByItemId,
         findProductReviewById: findProductReviewById,
         deleteReview:deleteReview,
-        findProductAllUnapprovedReview:findProductAllUnapprovedReview
+        findProductAllUnapprovedReview:findProductAllUnapprovedReview,
+        findProductReviewByUser:findProductReviewByUser
         
     };
     return api;
@@ -23,7 +24,10 @@ module.exports = function() {
     function findProductAllUnapprovedReview(){
         return ReviewProject.find({isReviewed:false});
     }
-    
+
+    function findProductReviewByUser(userId){
+        return ReviewProject.find({"_user":userId});
+    }
 
     function findProductReviewById(reviewId){
         return ReviewProject.findById(reviewId);

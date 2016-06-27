@@ -13,7 +13,8 @@ module.exports = function() {
         updateProduct:updateProduct,
         findProductByItemId:findProductByItemId,
         findProductById:findProductById,
-        deleteProduct:deleteProduct
+        deleteProduct:deleteProduct,
+        findProductByUser:findProductByUser
     };
     return api;
     
@@ -39,6 +40,10 @@ module.exports = function() {
 
     function deleteProduct(productId){
         return ProductProject.remove(productId);
+    }
+
+    function findProductByUser(userId){
+        return ProductProject.find({"Users":userId});
     }
     
 };
