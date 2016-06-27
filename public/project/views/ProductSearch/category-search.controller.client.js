@@ -46,6 +46,8 @@
                 searchProducts(searchText,searchTextId);
             }
         }
+
+        vm.items = [];
         
         init();
 
@@ -61,7 +63,12 @@
                         vm.search = true;
                         vm.term = response.data.query;
                         vm.totalResults = response.data.totalResults;
-                        vm.items= response.data.items;
+                        for (var i in response.data.items){
+                            vm.items.push(response.data.items[i]);
+                        }
+                        vm.itemCount = response.data.items.length;
+                        vm.load = true;
+                        // vm.items= response.data.items;
                     },
                     function(response){
                         vm.error="Unable to search Walmart";
@@ -82,6 +89,33 @@
                     function(error){
                         vm.error = "Unable to logout";
                     });
+        }
+
+        vm.loadMore = loadMore;
+
+        function loadMore(){
+            category = $window.sessionStorage.getItem("categorySearch");
+            categoryId = $window.sessionStorage.getItem("categorySearchId");
+            ProductSearchService
+                .loadMore(vm.items.length,category,categoryId)
+                .then(
+                    function(response){
+                        console.log(response.data);
+                        vm.search = true;
+                        vm.term = response.data.query;
+                        vm.totalResults = response.data.totalResults;
+                        for (var i in response.data.items){
+                            vm.items.push(response.data.items[i]);
+                        }
+
+                        vm.itemCount = response.data.items.length;
+                        vm.load = true;
+                        // vm.items= response.data.items;
+                    },
+                    function(response){
+                        vm.error="Unable to search Walmart";
+                    });
+
         }
 
 

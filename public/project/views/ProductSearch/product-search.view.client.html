@@ -52,7 +52,7 @@
             <strong class="text-danger">{{model.totalResults}}
             </strong> results were found for the search for <strong class="text-danger">{{model.term}}</strong></h6>
     </hgroup>
-    <div  ng-if="model.items">
+    <div class="row" ng-if="model.items">
         <div class="list-group search"  ng-repeat= "item in model.items">
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <article class="search-result row">
@@ -78,6 +78,9 @@
                 </article>
             </section>
         </div>
+    </div>
+    <div ng-if="model.load">
+    <a ng-click="model.loadMore(model.searchText)" class="btn btn-block btn-primary">Load more..</a>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

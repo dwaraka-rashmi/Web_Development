@@ -9,7 +9,7 @@
     function ProductSearchController($location,$window,ProductSearchService,UserService) {
         var vm = this;
         vm.searchProducts = searchProducts;
-
+        vm.items=[];
         vm.search = false;
         if($window.sessionStorage.getItem("currentUser")) {
             var userId = $window.sessionStorage.getItem("currentUser");
@@ -22,19 +22,7 @@
             var searchText = $window.sessionStorage.getItem("productSearch");
             if(searchText){
                 vm.searchText=searchText;
-                ProductSearchService
-                    .searchProducts(searchText)
-                    .then(
-                        function(response){
-                            console.log(response.data);
-                            vm.search = true;
-                            vm.term = response.data.query;
-                            vm.totalResults = response.data.totalResults;
-                            vm.items= response.data.items;
-                        },
-                        function(response){
-                            vm.error="Unable to search Walmart";
-                        });
+                searchProducts(searchText);
             }
         }
         
@@ -50,7 +38,13 @@
                         vm.search = true;
                         vm.term = response.data.query;
                         vm.totalResults = response.data.totalResults;
-                        vm.items= response.data.items;
+                        for (var i in response.data.items){
+                            vm.items.push(response.data.items[i]);
+                        }
+
+                        vm.itemCount = response.data.items.length;
+                        vm.load = true;
+                        // vm.items= response.data.items;
                     },
                     function(response){
                         vm.error="Unable to search Walmart";
@@ -72,6 +66,30 @@
                     });
         }
 
+        vm.loadMore = loadMore;
+        
+        function loadMore(searchTerm){
+            ProductSearchService
+                .loadMore(vm.items.length,searchTerm)
+                .then(
+                    function(response){
+                        console.log(response.data);
+                        vm.search = true;
+                        vm.term = response.data.query;
+                        vm.totalResults = response.data.totalResults;
+                        for (var i in response.data.items){
+                            vm.items.push(response.data.items[i]);
+                        }
+
+                        vm.itemCount = response.data.items.length;
+                        vm.load = true;
+                        // vm.items= response.data.items;
+                    },
+                    function(response){
+                        vm.error="Unable to search Walmart";
+                    });
+            
+        }
 
     }
 })();

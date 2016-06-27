@@ -9,7 +9,8 @@
     function CategorySearchService($http) {
         var api = {
             searchProducts: searchProducts,
-            getCategory:getCategory
+            getCategory:getCategory,
+            loadMore:loadMore
             // ,
             // getProductById:getProductById,
             // createProduct : createProduct,
@@ -29,6 +30,13 @@
             return $http.jsonp(url);
         }
 
+        function loadMore(page,category,categoryId){
+            var url = "http://api.walmartlabs.com/v1/search?query="+category+
+                "&categoryId="+categoryId+"&format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&start="+(page+1)+"&callback=JSON_CALLBACK";
+            
+            return $http.jsonp(url);
+
+        }
         // function getProductById(itemId){
         //     var url = "http://api.walmartlabs.com/v1/items/"+itemId+
         //                 "?apiKey=y9sfyhfq8wxk69hhy3xcqsj9&format=json&callback=JSON_CALLBACK";

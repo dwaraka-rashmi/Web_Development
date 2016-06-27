@@ -13,7 +13,8 @@
             getProductById:getProductById,
             createProduct : createProduct,
             getProductLocal:getProductLocal,
-            updateProduct:updateProduct
+            updateProduct:updateProduct,
+            loadMore:loadMore
         };
         return api;
 
@@ -21,6 +22,13 @@
             var url = "http://api.walmartlabs.com/v1/search?query=deals+value+discount+clearance+featured" +
                 "&format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&callback=JSON_CALLBACK";
             return $http.jsonp(url);
+        }
+
+        function loadMore(page,searchTerm){
+            var url = "http://api.walmartlabs.com/v1/search?query="+searchTerm+
+                "&format=json&apiKey=y9sfyhfq8wxk69hhy3xcqsj9&start="+(page+1)+"&callback=JSON_CALLBACK";
+            return $http.jsonp(url);
+
         }
         
         function searchProducts(searchTerm) {

@@ -33,15 +33,6 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <!--<div ng-if="!model.search" class="row">-->
-        <!--<div class="col-xs-6" ng-repeat="category in model.categories">-->
-            <!--<a ng-click="model.searchProducts(category.category,category.categoryId)" class="thumbnail">-->
-                <!--<img img-responsive src="{{category.image}}" alt="Image not available!"-->
-                     <!--onerror="this.onerror=null;this.src='../images/itemImage.png';" />-->
-                <!--<h6>{{category.category}}</h6>-->
-            <!--</a>-->
-        <!--</div>-->
-    <!--</div>-->
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle btn-block" type="button" data-toggle="dropdown">Categories
             <span class="caret"></span></button>
@@ -53,16 +44,11 @@
             </li>
         </ul>
     </div>
-    <!--<ul class="pager">-->
-        <!--<li ng-if="model.pagecount==0" class="previous"><a href="#/category/search">Previous</a></li>-->
-        <!--<li ng-if="model.pagecount>0" class="previous"><a ng-click="model.searchProducts(model.pagecount)">Previous</a></li>-->
-        <!--<li class="next"><a ng-click="model.searchProducts(model.pagecount)">Next</a></li>-->
-    <!--</ul>-->
     <hgroup ng-if="model.search" class="mb20">
         <h6 class="lead"><strong class="text-danger">{{model.totalResults}}</strong> results were found for the search for <strong class="text-danger">{{model.categorySearch}}</strong></h6>
     </hgroup>
-    <div  ng-if="model.items">
-        <div class="list-group search" ng-repeat= "item in model.items">
+    <div class="row" ng-if="model.items">
+        <div class="list-group search"  ng-repeat= "item in model.items">
             <section class="col-xs-12 col-sm-6 col-md-12">
                 <article class="search-result row">
                     <div class="col-xs-12 col-sm-12 col-md-6 excerpet">
@@ -87,6 +73,9 @@
                 </article>
             </section>
         </div>
+    </div>
+    <div ng-if="model.load">
+        <a ng-click="model.loadMore()" class="btn btn-block btn-primary">Load more..</a>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
