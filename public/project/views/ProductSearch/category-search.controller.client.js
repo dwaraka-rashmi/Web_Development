@@ -96,7 +96,7 @@
         function loadMore(){
             category = $window.sessionStorage.getItem("categorySearch");
             categoryId = $window.sessionStorage.getItem("categorySearchId");
-            ProductSearchService
+            CategorySearchService
                 .loadMore(vm.items.length,category,categoryId)
                 .then(
                     function(response){

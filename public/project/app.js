@@ -4,6 +4,5 @@
 (function() {
     angular
         .module("BestShop",["ngRoute"]);
-
 })();
 
