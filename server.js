@@ -14,18 +14,10 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
         process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
         process.env.OPENSHIFT_APP_NAME;
+    // connectionString = ''+ process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+    //     process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+    //     process.env.OPENSHIFT_APP_NAME+'';
 }
-
-// var user = process.env.OPENSHIFT_MONGODB_DB_USERNAME;
-// var password = process.env.OPENSHIFT_MONGODB_DB_PASSWORD;
-// var host = process.env.OPENSHIFT_MONGODB_DB_HOST;
-// var port = process.env.OPENSHIFT_MONGODB_DB_PORT;
-// var connectionString;
-// if(user && password && host && port) {
-//     connectionString = 'mongodb://' + user + ':' + password + '@' + host + ':' + port + '/webdev';
-// } else {
-//     connectionString = 'mongodb://localhost/cs5610WebDev';
-// }
 
 var mongoose = require("mongoose");
 mongoose.connect(connectionString);
