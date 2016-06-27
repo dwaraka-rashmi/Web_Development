@@ -356,3 +356,100 @@ nav.nav-bar ul {
     width: 70%;
     margin-left: -15px;
 }
+
+.main-container {
+}
+.skyblue {
+    background-color: #22c8ff;
+}
+.deepskyblue {
+    background-color: #00bfff;
+}
+.darkerskyblue {
+    background-color: #00a6dd;
+}
+.carousel-indicators {
+    bottom: 0;
+}
+.carousel-control.right,
+.carousel-control.left {
+    background-image: none;
+}
+.carousel .item {
+    min-height: 350px;
+    height: 100%;
+    width:100%;
+}
+.carousel-caption h3,
+.carousel-caption h4,
+.carousel .icon-container,
+.carousel-caption button {
+    background-color: #09c;
+}
+.carousel-caption h3,
+.carousel-caption h4{
+    padding: .5em;
+}
+.carousel .icon-container {
+    display: inline-block;
+    font-size: 25px;
+    line-height: 25px;
+    padding: 1em;
+    text-align: center;
+    border-radius: 50%;
+}
+.carousel-caption button {
+    border-color: #00bfff;
+    margin-top: 1em;
+}
+
+.p {
+    padding-top: 125px;
+    text-align: center;
+}
+
+.p a {
+    text-decoration: underline;
+}
+
+.navbar-home{
+    opacity: 1;
+}
+
+.navbar-home .navbar-brand{
+    opacity: 1;
+}
+
+.navbar-brand>img{
+    width: 15%;
+}
+
+.navbar-brand>p{
+    float: right;
+}
+
+.col-lg-12>img{
+    width: 100%;
+    float: top;
+    margin: 5px;
+    padding-top: 12px;
+    position: relative;
+}
+
+.col-lg-12>h1{
+    float: left;
+    position: relative;
+}
+
+.col-lg-12>p{
+    float: bottom;
+    position: relative;
+}
+
+.alert-warning{
+    background-color: #ecb573;
+}
+
+.home-img {
+    width:100%;
+}
