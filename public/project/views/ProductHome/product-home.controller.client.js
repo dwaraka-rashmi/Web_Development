@@ -10,7 +10,16 @@
 
         var vm = this;
         var getProduct = getProduct;
-        vm.logAlert = false;
+
+        var userId;
+        vm.logAlert = true;
+        if($window.sessionStorage.getItem("currentUser")) {
+            if ($window.sessionStorage.getItem("currentUser") !== '0') {
+                vm.logAlert = false;
+                userId = $window.sessionStorage.getItem("currentUser");
+            }
+        }
+
         function init() {
             ProductSearchService
                 .getDeals()
@@ -18,9 +27,6 @@
                     function(response){
                         console.log(response.data);
                         vm.items= response.data.items;
-                        if($window.sessionStorage.getItem("currentUser")!=='0') {
-                            vm.logAlert = true;
-                        }
                     },
                     function(response){
                         vm.error="Unable to access Walmart";

@@ -1,9 +1,6 @@
 /**
  * Created by Rashmi_Dwaraka on 6/20/2016.
  */
-/**
- * Created by Rashmi_Dwaraka on 5/26/2016.
- */
 (function(){
     angular
         .module("BestShop")
@@ -12,10 +9,8 @@
     function UserSearchController($location,UserService,$window) {
 
         var vm = this;
-        var id;
-        if($window.sessionStorage.getItem("currentUser")) {
-            var id = $window.sessionStorage.getItem("currentUser");
-        }
+        var id = $window.sessionStorage.getItem("currentUser");
+
         userId = id;
         vm.searchUsers = searchUsers;
 
