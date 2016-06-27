@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "web-dev",
   "version": "1.0.0",
   "description": "Web Dev at Northeastern University",
@@ -28,16 +27,5 @@
     "start": "node server.js"
   },
   "author": "Rashmi Dwaraka",
-=======
-  "name": "openshift-cartridge-nodejs-template",
-  "version": "1.0.1",
-  "description": "Custom Node.js cartridge for OpenShift - sample application",
-  "private": true,
-  "main": "start.js",
-  "scripts": {
-    "start": "node --use_strict start.js"
-  },
-  "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
->>>>>>> 1a5f0aba223047666e2c2e5f7139637ea951cdfa
   "license": "ISC"
 }
