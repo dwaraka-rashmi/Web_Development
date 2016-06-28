@@ -317,7 +317,12 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    user.followers.push(userFollowed.userId);
+                    if(!user.followers){
+                        user.followers = [userFollowed.userId];
+                    }
+                    else {
+                        user.followers.push(userFollowed.userId);
+                    }
                     userModelProject
                         .updateUser(id,user)
                         .then(
@@ -340,7 +345,13 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    user.followedBy.push(followedById);
+                    if(!user.followedBy){
+                        user.followedBy = [followedById];
+                    }
+                    else {
+                        user.followedBy.push(followedById);
+                    }
+                  
                     userModelProject
                         .updateUser(id,user)
                         .then(
