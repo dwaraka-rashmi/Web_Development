@@ -5,7 +5,7 @@
     angular
         .module("BestShop")
         .controller("LoginController",LoginController);
-    function LoginController($location,UserService){
+    function LoginController($location,UserService,$window){
 
         var vm = this;
         vm.error = false;
@@ -20,13 +20,14 @@
                             console.log(response.data);
                             var user = response.data;
                             if (user) {
+                                $window.sessionStorage.setItem("currentUser",user._id);
                                 if(user.username==="admin" && user.isAdmin){
                                     $location.url("/admin");
                                 }
                                 else {
                                     // $location.url("/user/" + user._id);
-                                    $location.url("/user");
-                                    // $location.url("/product/search");
+                                    // $location.url("/user");
+                                    $location.url("/");
                                 }
                             }
                             else {
