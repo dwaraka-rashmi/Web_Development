@@ -314,20 +314,20 @@ module.exports = function(app,models){
         var userFollowed = req.body;
         console.log("userfollowed: "+userFollowed);
         userModelProject
-            .findUserById(id)
+            .findUserById(userFollowed.userId)
             .then(
                 function(user) {
                     if(!user.followers){
-                        user.followers = [userFollowed.userId];
+                        user.followers = [id];
                     }
                     else {
-                        user.followers.push(userFollowed.userId);
+                        user.followers.push(id);
                     }
                     userModelProject
-                        .updateUser(id,user)
+                        .updateUser(userFollowed.userId,user)
                         .then(
                             function(stats) {
-                                updateFollowedBy(userFollowed.userId,id,res);
+                                updateFollowing(id,userFollowed.userId,res);
                             },
                             function(error) {
                                 res.statusCode(404).send(error);
@@ -340,16 +340,16 @@ module.exports = function(app,models){
             );
     }
 
-    function updateFollowedBy(id,followedById,res){
+    function updateFollowing(id,followedById,res){
         userModelProject
             .findUserById(id)
             .then(
                 function(user) {
-                    if(!user.followedBy){
-                        user.followedBy = [followedById];
+                    if(!user.following){
+                        user.following = [followedById];
                     }
                     else {
-                        user.followedBy.push(followedById);
+                        user.following.push(followedById);
                     }
                   
                     userModelProject
@@ -382,7 +382,7 @@ module.exports = function(app,models){
                         .then(
                             function(stats) {
                                 console.log(stats);
-                                updateUnFollowedBy(userUnFollowed.userId,id,res);
+                                updateUnFollow(userUnFollowed.userId,id,res);
                                 // res.send(200);
                             },
                             function(error) {
@@ -396,12 +396,12 @@ module.exports = function(app,models){
             );
     }
 
-    function updateUnFollowedBy(id,followedById,res){
+    function updateUnFollow(id,followingId,res){
         userModelProject
             .findUserById(id)
             .then(
                 function(user) {
-                    user.followedBy.splice(user.followedBy.indexOf(followedById),1);
+                    user.following.splice(user.following.indexOf(followingId),1);
                     userModelProject
                         .updateUser(id,user)
                         .then(

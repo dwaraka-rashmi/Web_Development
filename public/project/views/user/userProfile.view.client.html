@@ -47,7 +47,7 @@
                         <div class="media-body">
                             <h4 class="media-heading">{{model.user.username}} - {{model.user.firstName}} {{model.user.lastName}}</h4>
                             <p><span class="btn btn-info btn-block">{{model.user.followers.length}} followers</span>
-                                <span class="btn btn-warning btn-block">{{model.user.followedBy.length}} following</span>
+                                <span class="btn btn-warning btn-block">{{model.user.following.length}} following</span>
                             <span ng-if="model.followed" class="btn btn-danger btn-block">
                                 <a class="follow-button" ng-click="model.unfollowUser()">Unfollow</a>
                             </span>

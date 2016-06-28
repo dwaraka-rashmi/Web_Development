@@ -31,9 +31,9 @@
                 .findUserById(userId)
                 .then(function(response){
                     vm.user = response.data;
-                    var followedBy = vm.user.followedBy;
-                    if(followedBy) {
-                        if (followedBy.indexOf(loggedUserId) >= 0) {
+                    var following = vm.user.following;
+                    if(following) {
+                        if (following.indexOf(loggedUserId) >= 0) {
                             vm.followed = true;
                         }
                     }
