@@ -42,12 +42,20 @@
         }
 
         vm.items = [];
-        
+
         init();
 
         function searchProducts(category,categoryId) {
-            $window.sessionStorage.setItem("categorySearch",category);
-            $window.sessionStorage.setItem("categorySearchId",categoryId);
+            if($window.sessionStorage.getItem("categorySearch")) {
+                if (!$window.sessionStorage.getItem("categorySearch").match(category)) {
+                    vm.items = [];
+                }
+            }
+            else {
+                $window.sessionStorage.setItem("categorySearch",category);
+                $window.sessionStorage.setItem("categorySearchId",categoryId);
+            }
+
             vm.categorySearch = category;
             CategorySearchService
                 .searchProducts(category,categoryId)
