@@ -29,7 +29,13 @@
         init();
         
         function searchProducts(searchText) {
-            $window.sessionStorage.setItem("productSearch",searchText);
+
+            if(!$window.sessionStorage.getItem("productSearch").match(searchText)){
+                vm.items=[];
+            }
+            else {
+                $window.sessionStorage.setItem("productSearch", searchText);
+            }
             ProductSearchService
                 .searchProducts(searchText)
                 .then(
