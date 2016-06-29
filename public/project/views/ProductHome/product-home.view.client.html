@@ -5,7 +5,6 @@
                   <span class="logo">
                       <img img-responsive src="./images/logo.png"/>
                   </span>
-            <h6 class="navbar-brand font-custom">Shopper's Paradise</h6>
             </p>
             <div ng-if="model.logAlert">
             <p class="navbar-text pull-right">
@@ -39,8 +38,8 @@
             <a href="#/product/deal/{{item.itemId}}" ng-repeat="item in model.items">
                 <img ng-src="{{item.thumbnailImage}}" onerror="this.onerror=null;this.src='../project/images/itemImage.png';"
                      class="img-thumbnail"/>
-                <h6>{{item.name}}</h6>
-                <h6>$ {{item.salePrice}}</h6>
+                <h4>{{item.name}}</h4>
+                <h4>$ {{item.salePrice}}</h4>
             </a>
         </div>
 </div>
