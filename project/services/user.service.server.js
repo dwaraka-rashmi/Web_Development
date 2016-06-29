@@ -317,14 +317,10 @@ module.exports = function(app,models){
             .findUserById(userFollowed.userId)
             .then(
                 function(user) {
-                    if(!user.followers){
-                        user.followers = [id];
-                    }
-                    else {
-                        user.followers.push(id);
-                    }
+                    var updateUser = user.toJSON();
+                    updateUser.followers.push(id);
                     userModelProject
-                        .updateUser(userFollowed.userId,user)
+                        .updateUser(userFollowed.userId,updateUser)
                         .then(
                             function(stats) {
                                 updateFollowing(id,userFollowed.userId,res);
@@ -345,15 +341,11 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    if(!user.following){
-                        user.following = [followedById];
-                    }
-                    else {
-                        user.following.push(followedById);
-                    }
+                    var updateUser = user.toJSON();
+                    updateUser.following.push(followedById);
                   
                     userModelProject
-                        .updateUser(id,user)
+                        .updateUser(id,updateUser)
                         .then(
                             function(stats) {
                                 res.json(200);
@@ -376,9 +368,10 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    user.followers.splice((user.followers.indexOf(userUnFollowed.userId)),1);
+                    var updateUser = user.toJSON();
+                    updateUser.followers.splice((updateUser.followers.indexOf(userUnFollowed.userId)),1);
                     userModelProject
-                        .updateUser(id,user)
+                        .updateUser(id,updateUser)
                         .then(
                             function(stats) {
                                 console.log(stats);
@@ -401,9 +394,10 @@ module.exports = function(app,models){
             .findUserById(id)
             .then(
                 function(user) {
-                    user.following.splice(user.following.indexOf(followingId),1);
+                    var updateUser = user.toJSON();
+                    updateUser.following.splice(updateUser.following.indexOf(followingId),1);
                     userModelProject
-                        .updateUser(id,user)
+                        .updateUser(id,updateUser)
                         .then(
                             function(stats) {
                                 console.log(stats);
