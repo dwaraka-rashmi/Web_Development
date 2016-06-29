@@ -29,7 +29,7 @@
                             var usersRet = response.data;
                             var users = usersRet;
                             for (var i in users) {
-                                if (users[i]._id === userId || users[i].username === "admin") {
+                                if (users[i]._id === userId || users[i].username.match("admin")) {
                                     usersRet.splice(i, 1);
                                 }
                             }
