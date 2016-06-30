@@ -51,10 +51,8 @@
                     vm.items = [];
                 }
             }
-            else {
-                $window.sessionStorage.setItem("categorySearch",category);
-                $window.sessionStorage.setItem("categorySearchId",categoryId);
-            }
+            $window.sessionStorage.setItem("categorySearch",category);
+            $window.sessionStorage.setItem("categorySearchId",categoryId);
 
             vm.categorySearch = category;
             CategorySearchService

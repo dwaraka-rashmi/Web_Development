@@ -34,9 +34,8 @@
                     vm.items = [];
                 }
             }
-            else {
-                $window.sessionStorage.setItem("productSearch", searchText);
-            }
+            $window.sessionStorage.setItem("productSearch", searchText);
+
             ProductSearchService
                 .searchProducts(searchText)
                 .then(
