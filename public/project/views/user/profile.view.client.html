@@ -39,22 +39,22 @@
         <div class="form-group">
             <label for="username">Username</label>
             <input ng-model="model.user.username"
-                   type="text" class="form-control" id="username" placeholder="RashmiDwaraka" readonly>
+                   type="text" class="form-control" id="username" placeholder="User Name" readonly>
             <!--value="{{model.user.username}}"-->
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="rashmidwaraka@gmail.com">
+            <input type="email" class="form-control" id="email" placeholder="email address">
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
             <input ng-model="model.user.firstName"
-                   type="text" class="form-control" id="first-name" placeholder="Rashmi">
+                   type="text" class="form-control" id="first-name" placeholder="First Name">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
             <input ng-model="model.user.lastName"
-                   type="text" class="form-control" id="last-name" placeholder="Dwaraka">
+                   type="text" class="form-control" id="last-name" placeholder="Last Name">
         </div>
         </form>
         <form action="/api/user/uploadPic"  method="post" enctype="multipart/form-data">
