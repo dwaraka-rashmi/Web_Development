@@ -56,14 +56,14 @@
             <input ng-model="model.user.lastName"
                    type="text" class="form-control" id="last-name" placeholder="Dwaraka">
         </div>
-        <form action="/api/uploadPic"  method="post" enctype="multipart/form-data">
+        </form>
+        <form action="/api/user/uploadPic"  method="post" enctype="multipart/form-data">
             <input  name="myFile" type="file" class="form-control"/>
             <input  name="userId" value="{{model.id}}" style="display: none"/>
             <button type="submit" class="btn btn-block btn-primary upload-image">Upload Image</button>
         </form>
         <a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
         <a ng-click="model.unregister()" class="btn btn-danger btn-block">Unregister</a>
-    </form>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

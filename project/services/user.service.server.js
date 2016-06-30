@@ -26,7 +26,7 @@ module.exports = function(app,models){
     
     var multer = require('multer'); // npm install multer save
     var uploadProPic = multer ({ dest: __dirname+'/../../public/uploads' });
-    app.post("/api/uploadPic",uploadProPic.single('myFile'),uploadImage);
+    app.post("/api/user/uploadPic",uploadProPic.single('myFile'),uploadImage);
 
     app.get("/auth/google", passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get("/auth/google/callback",

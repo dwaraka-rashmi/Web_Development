@@ -11,10 +11,7 @@
         vm.updateUser = updateUser;
         vm.error = false;
         // var id = $routeParams.uid;
-        var id = undefined;
-        if($window.sessionStorage.getItem("currentUser")) {
-            var id = $window.sessionStorage.getItem("currentUser");
-        }
+        var id = $window.sessionStorage.getItem("currentUser");
         vm.id = id;
         vm.unregister = unregister;
         vm.logout = logout;
